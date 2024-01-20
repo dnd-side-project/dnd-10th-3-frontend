@@ -6829,6 +6829,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chromatic@npm:^10.3.1":
+  version: 10.3.1
+  resolution: "chromatic@npm:10.3.1"
+  bin:
+    chroma: dist/bin.js
+    chromatic: dist/bin.js
+    chromatic-cli: dist/bin.js
+  checksum: 51c664ef66b637eb5da00ec977c673ee61499b3ceac6236e13def2b9211b5ea7af6c274ee71c3d1d215c891d1dd9a7d3f91fd7b4f8c07eddc3f6cd8b36550800
+  languageName: node
+  linkType: hard
+
 "chrome-trace-event@npm:^1.0.2":
   version: 1.0.3
   resolution: "chrome-trace-event@npm:1.0.3"
@@ -7976,6 +7987,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^6.19.0"
     autoprefixer: "npm:^10.0.1"
     axios: "npm:^1.6.5"
+    chromatic: "npm:^10.3.1"
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.1.0"
     cypress: "npm:^13.6.3"

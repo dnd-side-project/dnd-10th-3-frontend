@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "chromatic": "npx chromatic --project-token=chpt_977a62753423afd"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
@@ -43,6 +44,7 @@
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
     "autoprefixer": "^10.0.1",
+    "chromatic": "^10.3.1",
     "cypress": "^13.6.3",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
@@ -63,5 +65,7 @@
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.0.2",
+  "readme": "ERROR: No README data found!",
+  "_id": "dnd-10th-3-frontend@0.1.0"
 }
