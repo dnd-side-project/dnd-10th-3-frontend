@@ -5,11 +5,43 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: yarn-deps-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-deps-${{ hashFiles('yarn.lock') }}
+
+      - name: Chromatic에 배포
+        id: chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          onlyChanged: true
+          autoAcceptChanges: true
+
+  vercel:
     runs-on: ubuntu-latest
     container: pandoc/latex
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Install mustache (to update the date)
         run: apk add ruby && gem install mustache
       - name: creates output
@@ -28,3 +60,14 @@ jobs:
           target-branch: main
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
+
+  github-bot:
+    runs-on: ubuntu-latest
+    needs: [chromatic, vercel]
+    steps:
+      - name: PR 코멘트로 Preview URL 남기기
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Storybook url: ${{ needs.chromatic.outputs.storybook_url }}
+            vercel url: ${{ needs.vercel.outputs.vercel_url }}
