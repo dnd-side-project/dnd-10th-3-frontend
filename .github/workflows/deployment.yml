@@ -2,7 +2,7 @@ name: deploy with vercel
 
 on:
   push:
-    branches: [main]
+    branches: [chore/cicd]
 
 jobs:
   chromatic:
