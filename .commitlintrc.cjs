@@ -47,7 +47,7 @@ module.exports = {
         ':memo:': '📝 (docs) 문서 수정',
         ':rocket:': '🚀 (deploy) 배포 관련 작업',
         ':lipstick:': '💄 (design) 단순 css 디자인 수정 작업',
-        ':with_check_mark:': '✅ (test) 테스트 관련 작업',
+        ':white_check_mark:': '✅ (test) 테스트 관련 작업',
         ':construction:': '🚧 (wip) working in progress, 임시 커밋',
         ':heavy_plus_sign:': '➕ (add file) 파일 추가',
         ':heavy_minus_sign:': '➖ (remove file) 파일 삭제',
