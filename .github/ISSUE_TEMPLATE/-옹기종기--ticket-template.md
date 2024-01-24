@@ -1,8 +1,10 @@
 ---
-name: [옹기종기] Ticket Template
+name: "[옹기종기] Ticket Template"
 about: DND 10기 3조의 작업 티켓 템플릿입니다.
-title: '[FEAT] 이_티켓에서_작업할_내용을_한_줄로_요약해서_작성'
-labels:
+title: "[FEAT] 이_티켓에서_작업할_내용을_한_줄로_요약해서_작성"
+labels: ''
+assignees: ''
+
 ---
 
 <!-- 티켓 이슈 제목 템플릿입니다. -->

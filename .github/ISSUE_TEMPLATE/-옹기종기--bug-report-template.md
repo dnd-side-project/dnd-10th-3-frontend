@@ -1,8 +1,10 @@
 ---
-name: [옹기종기] Bug Report Template
-about: DND 10기 3조의 작업 티켓 템플릿입니다.
-title: '[BUG] 버그를_한_줄로_요약해서_작성'
-labels:
+name: "[옹기종기] Bug Report Template"
+about: DND 10기 3조의 버그 리포트 템플릿입니다.
+title: "[BUG] 버그를_한_줄로_요약해서_작성"
+labels: ''
+assignees: ''
+
 ---
 
 <!-- 버그 리포트 이슈 제목입니다. -->
@@ -12,7 +14,7 @@ labels:
 
 <!-- 사진이 있다면 함께 첨부해 주세요 -->
 
-## bug 재연 방법
+## bug 재현 방법
 
 ## 기타 참고사항
 
@@ -20,4 +22,4 @@ labels:
 
 ## ✅ Issue 등록 전 확인 후 체크해 주세요! (x 표시 해 주세요.)
 
-- [ ] Labels, Milestone을 등록했습니다.
+- [ ] Labels을 등록했습니다.
