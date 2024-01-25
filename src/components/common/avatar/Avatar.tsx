@@ -13,10 +13,10 @@ export const Avatar = ({ size = 24, profileImage }: AvatarProps) => {
       style={{ width: size, height: size }}
       className="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-white"
     >
-      {!profileImage ? (
-        <UserIcon width={`calc(${size} / 1.5)`} height={`calc(${size} / 1.5)`} />
-      ) : (
+      {!!profileImage ? (
         <Image src={profileImage} width={size} height={size} alt="profile_image" />
+      ) : (
+        <UserIcon width={`calc(${size} / 1.5)`} height={`calc(${size} / 1.5)`} />
       )}
     </div>
   );
