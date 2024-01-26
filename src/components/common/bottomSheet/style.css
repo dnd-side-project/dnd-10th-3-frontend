@@ -1,0 +1,18 @@
+:root {
+  --rsbs-content-opacity: 1;
+  --rsbs-max-w: var(--layout-max-w);
+  /* --rsbs-ml: env(safe-area-inset-left);
+  --rsbs-mr: env(safe-area-inset-right); */
+  --rsbs-ml: auto;
+  --rsbs-mr: auto;
+}
+
+[data-rsbs-header] {
+  text-align: left;
+  padding-bottom: 0;
+  box-shadow: none;
+}
+
+[data-rsbs-footer] {
+  box-shadow: none;
+}
