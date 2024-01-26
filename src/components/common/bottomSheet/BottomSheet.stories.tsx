@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Button } from '@/components/common/button';
+
 import { BottomSheet } from '.';
-import { Button } from '../button';
 
 const meta: Meta<typeof BottomSheet> = {
   title: 'components/common/bottomSheet',

@@ -1,6 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { forwardRef, type ButtonHTMLAttributes } from 'react';
 
+//TODO : text-white 에러
 const buttonVariants = cva(
   'inline-flex items-center justify-center gap-[6px] font-semibold transition-colors duration-200 disabled:pointer-events-none disabled:opacity-30',
   {
