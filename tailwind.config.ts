@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss';
 
+import { borderRadius, boxShadow, colors, spacing } from './styles/theme';
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -13,6 +15,10 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    colors,
+    spacing,
+    borderRadius,
+    boxShadow,
     screens: {
       375: { max: '375px' },
       390: { max: '390px' },

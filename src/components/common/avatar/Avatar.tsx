@@ -11,7 +11,7 @@ export const Avatar = ({ size = 24, profileImage }: AvatarProps) => {
   return (
     <div
       style={{ width: size, height: size }}
-      className="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-white"
+      className="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl"
     >
       {!!profileImage ? (
         <Image src={profileImage} width={size} height={size} alt="profile_image" />
