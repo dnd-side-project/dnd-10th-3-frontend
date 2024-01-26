@@ -3,6 +3,7 @@ import { forwardRef, useCallback, useState } from 'react';
 
 import { colors } from '@/../styles/theme';
 import SubmitIcon from '@/assets/icons/submit.svg';
+import { cn } from '@/lib/core';
 
 //TODO : bg-white 대체 하기, 원래 flex h-[56px] 좌측에 있었습니다.
 //TODO : 디자인 나오면 본격적으로 입히기
@@ -44,7 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={inputContainerVariants({ isFocused })}>
         <input
-          className={inputVariants({ className })}
+          className={cn(inputVariants(), className)}
           ref={ref}
           onFocus={handleFocus}
           onBlur={handleBlur}
