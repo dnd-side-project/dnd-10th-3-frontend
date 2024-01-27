@@ -11,7 +11,7 @@ export interface BottomSheetProps extends BaseBottomSheetProps {
   FooterComponent?: React.ReactNode;
   fixedMaxHeight?: number;
 }
-
+//test: rebase 후 push 할경우 실패 에러 체크
 export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
   (
     {
