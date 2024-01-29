@@ -2,6 +2,7 @@ import { type VariantProps } from 'class-variance-authority';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 
 import Submit from '@/assets/icons/submit.svg'; // NOTE: 임시 아이콘
+import { Spinner } from '@/components/common/spinner';
 import { cn } from '@/lib/core';
 
 import { IconProps, LoadingProps } from './types';
@@ -38,8 +39,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {/* TODO: 로딩 UI */}
-        {isLoading && <span>로딩...</span>}
+        {isLoading && <Spinner />}
         {iconOnly ? (
           <Submit width="32px" height="32px" color="currentColor" /> // FIXME: icon 변경
         ) : (
