@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Divider } from '@/components/common/divider';
+
 import { Typography } from './Typography';
 
 const meta: Meta<typeof Typography> = {
@@ -19,120 +21,47 @@ export default meta;
 
 type Story = StoryObj<typeof Typography>;
 
-export const Heading1: Story = {
-  args: {
-    type: 'heading1',
-    children: (
-      <>
-        Hello world!
-        <br />
-        We are 옹기종기
-      </>
-    ),
-  },
-};
-
-export const Heading2: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'heading2',
-  },
-};
-
-export const Heading3: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'heading3',
-  },
-};
-
-export const Heading4: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'heading4',
-  },
-};
-
-export const Title1: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'title1',
-  },
-};
-
-export const Title2: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'title2',
-  },
-};
-
-export const Title3: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'title3',
-  },
-};
-
-export const Title4: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'title4',
-  },
-};
-
-export const Title5: Story = {
-  args: {
-    ...Heading1.args,
-    type: 'title5',
-  },
-};
-
-export const Body1: Story = {
-  args: {
-    type: 'body1',
-    children: 'We are 옹기종기',
-  },
-};
-
-export const Body2: Story = {
-  args: {
-    ...Body1.args,
-    type: 'body2',
-  },
-};
-
-export const Body3: Story = {
-  args: {
-    ...Body1.args,
-    type: 'body3',
-  },
-};
-
-export const SubLabel1: Story = {
-  args: {
-    ...Body1.args,
-    type: 'subLabel1',
-  },
-};
-
-export const SubLabel2: Story = {
-  args: {
-    ...Body1.args,
-    type: 'subLabel2',
-  },
-};
-
-export const Caption1: Story = {
-  args: {
-    ...Body1.args,
-    type: 'caption1',
-  },
-};
-
-export const Caption2: Story = {
-  args: {
-    ...Body1.args,
-    type: 'caption2',
-  },
+export const Default: Story = {
+  render: () => (
+    <>
+      <Typography type={'heading1'} className="pb-lg">
+        Typography
+      </Typography>
+      <Typography type={'heading2'} className="pb-4xs">
+        heading
+      </Typography>
+      <Typography type={'heading1'}>축의금 결정이 너무 어려웠나요?!, 24px, bold</Typography>
+      <Typography type={'heading2'}>축의금 결정이 너무 어려웠나요?! , 22px, semibold</Typography>
+      <Typography type={'heading3'}>축의금 결정이 너무 어려웠나요?!, 18px, semibold</Typography>
+      <Typography type={'heading4'}>축의금 결정이 너무 어려웠나요?!, 16px, semibold</Typography>
+      <Divider />
+      <Typography type={'heading2'} className="pb-4xs">
+        title
+      </Typography>
+      <Typography type={'title1'}>축의금 결정이 너무 어려웠나요?!, 20px, semibold</Typography>
+      <Typography type={'title2'}>축의금 결정이 너무 어려웠나요?!, 18px, semibold</Typography>
+      <Typography type={'title3'}>축의금 결정이 너무 어려웠나요?!, 16px, semibold</Typography>
+      <Typography type={'title4'}>축의금 결정이 너무 어려웠나요?!, 14px, semibold</Typography>
+      <Typography type={'title5'}>축의금 결정이 너무 어려웠나요?!, 12px, semibold</Typography>
+      <Divider />
+      <Typography type={'heading2'} className="pb-4xs">
+        paragraph(body)
+      </Typography>
+      <Typography type={'body1'}>축의금 결정이 너무 어려웠나요?!, 18px, medium</Typography>
+      <Typography type={'body2'}>축의금 결정이 너무 어려웠나요?!, 16px, medium</Typography>
+      <Typography type={'body3'}>축의금 결정이 너무 어려웠나요?!, 14px, medium</Typography>
+      <Divider />
+      <Typography type={'heading2'} className="pb-4xs">
+        subLabel
+      </Typography>
+      <Typography type={'subLabel1'}>축의금 결정이 너무 어려웠나요?!, 16px, semibold</Typography>
+      <Typography type={'subLabel2'}>축의금 결정이 너무 어려웠나요?!, 14px, semibold</Typography>
+      <Divider />
+      <Typography type={'heading2'} className="pb-4xs">
+        caption
+      </Typography>
+      <Typography type={'caption1'}>축의금 결정이 너무 어려웠나요?!, 12px, medium</Typography>
+      <Typography type={'caption2'}>축의금 결정이 너무 어려웠나요?!, 8px, medium</Typography>
+    </>
+  ),
 };
