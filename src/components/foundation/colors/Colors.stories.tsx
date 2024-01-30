@@ -46,6 +46,7 @@ export const Default: Story = {
         <div className="mb-4 h-16 bg-gray-400 text-white hover:shadow-xl  w-[300px]">gray-400</div>
         <div className="mb-4 h-16 bg-gray-500 text-white hover:shadow-xl  w-[300px]">gray-500</div>
         <div className="mb-4 h-16 bg-gray-600 text-white hover:shadow-xl w-[300px]">gray-600</div>
+        <div className="bg-gray-650 mb-4 h-16 text-white hover:shadow-xl w-[300px]">gray-650</div>
       </div>
     </div>
   ),
