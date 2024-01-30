@@ -24,7 +24,7 @@ type Story = StoryObj<typeof Typography>;
 export const Default: Story = {
   render: () => (
     <>
-      <Typography type={'heading1'} className="pb-lg">
+      <Typography type={'heading1'} className="pb-lg ">
         Typography
       </Typography>
       <Typography type={'heading2'} className="pb-4xs">
