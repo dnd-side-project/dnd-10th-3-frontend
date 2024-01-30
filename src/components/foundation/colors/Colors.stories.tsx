@@ -24,13 +24,13 @@ export const Default: Story = {
       </Typography>
       <Divider />
       <div className="flex flex-col">
-        <div className="bg-primary-100 mb-4 h-16 hover:shadow-xl w-[300px]">primary-100</div>
-        <div className="bg-primary-200 mb-4 h-16 hover:shadow-xl w-[300px]">primary-200</div>
-        <div className="bg-primary-300 mb-4 h-16 hover:shadow-xl w-[300px]">primary-300</div>
-        <div className="bg-primary-400 mb-4 h-16 hover:shadow-xl w-[300px]">primary-400</div>
-        <div className="bg-primary-500 mb-4 h-16 hover:shadow-xl w-[300px]">primary-500</div>
-        <div className="bg-primary-600 mb-4 h-16 hover:shadow-xl w-[300px]">primary-600</div>
-        <div className="bg-primary-700 mb-4 h-16 hover:shadow-xl w-[300px]">primary-700</div>
+        <div className="mb-4 h-16 w-[300px] bg-primary-100 hover:shadow-xl">primary-100</div>
+        <div className="mb-4 h-16 w-[300px] bg-primary-200 hover:shadow-xl">primary-200</div>
+        <div className="mb-4 h-16 w-[300px] bg-primary-300 hover:shadow-xl">primary-300</div>
+        <div className="mb-4 h-16 w-[300px] bg-primary-400 hover:shadow-xl">primary-400</div>
+        <div className="mb-4 h-16 w-[300px] bg-primary-500 hover:shadow-xl">primary-500</div>
+        <div className="mb-4 h-16 w-[300px] bg-primary-600 hover:shadow-xl">primary-600</div>
+        <div className="mb-4 h-16 w-[300px] bg-primary-700 hover:shadow-xl">primary-700</div>
       </div>
       <Divider />
       <Typography type={'title1'}>보조 컬러</Typography>
@@ -39,14 +39,14 @@ export const Default: Story = {
       </Typography>
       <Divider />
       <div className="flex flex-col">
-        <div className="mb-4 h-16 hover:shadow-xl w-[300px] bg-gray-50">gray-50</div>
-        <div className="mb-4 h-16 bg-gray-100 hover:shadow-xl w-[300px]">gray-100</div>
-        <div className="mb-4 h-16 bg-gray-200 hover:shadow-xl w-[300px]">gray-200</div>
-        <div className="mb-4 h-16 bg-gray-300 hover:shadow-xl w-[300px]">gray-300</div>
-        <div className="mb-4 h-16 bg-gray-400 text-white hover:shadow-xl  w-[300px]">gray-400</div>
-        <div className="mb-4 h-16 bg-gray-500 text-white hover:shadow-xl  w-[300px]">gray-500</div>
-        <div className="mb-4 h-16 bg-gray-600 text-white hover:shadow-xl w-[300px]">gray-600</div>
-        <div className="bg-gray-650 mb-4 h-16 text-white hover:shadow-xl w-[300px]">gray-650</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-50 hover:shadow-xl">gray-50</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-100 hover:shadow-xl">gray-100</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-200 hover:shadow-xl">gray-200</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-300 hover:shadow-xl">gray-300</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-400 text-white  hover:shadow-xl">gray-400</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-500 text-white  hover:shadow-xl">gray-500</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-600 text-white hover:shadow-xl">gray-600</div>
+        <div className="mb-4 h-16 w-[300px] bg-gray-650 text-white hover:shadow-xl">gray-650</div>
       </div>
     </div>
   ),
@@ -60,7 +60,7 @@ export const Gradient: Story = {
       <Divider />
       <div className="flex flex-col">
         <Typography type={'body3'}>mainGradient</Typography>
-        <div className="mb-4 h-96 bg-mainGradient hover:shadow-xl w-[300px]"></div>
+        <div className="mb-4 h-96 w-[300px] bg-mainGradient hover:shadow-xl"></div>
       </div>
     </div>
   ),
