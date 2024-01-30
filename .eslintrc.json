@@ -5,16 +5,17 @@
     "next",
     "prettier",
     "plugin:storybook/recommended",
-    "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
     "plugin:tailwindcss/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
-    "plugin:import/recommended"
+    "plugin:import/recommended",
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "@typescript-eslint/no-unused-vars": ["warn"],
+    "prettier/prettier": "off",
     "import/no-unresolved": "off",
     "import/order": [
       "error",
