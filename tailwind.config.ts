@@ -19,6 +19,9 @@ const config: Config = {
       spacing,
       borderRadius,
       boxShadow,
+      fontFamily: {
+        pretendard: ['var(--font-pretendard)'],
+      },
     },
     screens: {
       375: { max: '375px' },
