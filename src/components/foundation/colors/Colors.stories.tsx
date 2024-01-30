@@ -50,3 +50,17 @@ export const Default: Story = {
     </div>
   ),
 };
+
+export const Gradient: Story = {
+  render: () => (
+    <div>
+      <Typography type={'title1'}>Gradient 컬러</Typography>
+      <Typography type={'body3'}>Gradient를 공유합니다.</Typography>
+      <Divider />
+      <div className="flex flex-col">
+        <Typography type={'body3'}>mainGradient</Typography>
+        <div className="mb-4 h-96 bg-mainGradient hover:shadow-xl w-[300px]"></div>
+      </div>
+    </div>
+  ),
+};
