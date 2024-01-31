@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import Providers from '@/contexts/Providers';
 
+import { pretendard } from './fonts';
 import './globals.css';
 
 // TODO: 메타 데이터 수정
@@ -17,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
+      <body className={`${pretendard.variable}`}>
         <Providers>
-          <div className="layout">{children}</div>
+          <div className="layout font-pretendard">{children}</div>
         </Providers>
       </body>
     </html>

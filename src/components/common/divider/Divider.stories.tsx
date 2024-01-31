@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Typography } from '@/components/common/typography';
+import { Typography } from '@/foundations/typography';
 
 import Divider from './Divider';
 

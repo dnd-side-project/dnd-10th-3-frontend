@@ -1,12 +1,15 @@
-export const colors = {
+
+
+ export const colors = {
   gray: {
-    70: '#232C39',
-    60: '#333D4B',
-    50: '#4E5968',
-    40: '#8490A0',
-    30: '#C2C9D0',
-    20: '#EFF1F3',
-    10: '#F7F8FA',
+    50: '#F9FAFB',
+    100: '#EDF0F3',
+    200: '#C5C8CB',
+    300: '#9DA0A3',
+    400: '#75787B',
+    500: '#4D5053',
+    600: '#25282B',
+    650: '#151719',
   },
   purple: {
     80: '#4B25B5',
@@ -29,6 +32,15 @@ export const colors = {
     30: '#69B1FF',
     20: '#BAE0FF',
     10: '#E6F4FF',
+  },
+  primary: {
+    100: '#FFF5FA',
+    200: '#FFE0F0',
+    300: '#FFCCE6',
+    400: '#FFB8DC',
+    500: '#FFA3D2',
+    600: '#FF91C6',
+    700: '#FF75B8',
   },
   current: 'currentColor',
 };
