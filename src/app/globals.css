@@ -10,8 +10,4 @@
   .layout {
     @apply mx-auto min-h-[var(--layout-min-h)] w-full max-w-[var(--layout-max-w)];
   }
-  body {
-    /* TODO font */
-    /* @apply font-sans;  */
-  }
 }
