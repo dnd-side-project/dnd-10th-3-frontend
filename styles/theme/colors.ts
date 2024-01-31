@@ -1,4 +1,6 @@
-export const colors = {
+import { ColorKey, ColorType } from "@/foundations/colors/Colors.types";
+
+ export const colors:ColorType = {
   gray: {
     50: '#F9FAFB',
     100: '#EDF0F3',
@@ -42,3 +44,6 @@ export const colors = {
   },
   current: 'currentColor',
 };
+
+export const colorList: ColorKey[] = Object.keys(colors) as ColorKey[]
+//consolg -> colorList : [ 'gray', 'purple', 'red', 'blue', 'primary', 'current']
