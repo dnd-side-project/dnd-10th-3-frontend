@@ -23,6 +23,10 @@ const config: Config = {
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
       },
+      colors,
+      spacing,
+      borderRadius,
+      boxShadow,
     },
     screens: {
       375: { max: '375px' },
