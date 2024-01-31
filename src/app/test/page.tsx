@@ -5,6 +5,7 @@ import WorryImage from '@/assets/images/test-worry.png';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Typography } from '@/foundations/typography';
+//TEST : 임시
 
 const Home = () => {
   return (
