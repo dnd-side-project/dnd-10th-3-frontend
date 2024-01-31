@@ -13,8 +13,8 @@ const inputContainerVariants = cva(
   {
     variants: {
       isFocused: {
-        true: 'border-blue-20',
-        false: 'border-gray-20',
+        true: 'border-primary-200',
+        false: 'border-gray-100',
       },
       disabled: {
         true: 'cursor-not-allowed opacity-50',
@@ -25,7 +25,7 @@ const inputContainerVariants = cva(
 
 //TODO : bg-white 대체 하기, 원래 flex h-[56px] 좌측에 있었습니다.
 const inputVariants = cva(
-  ' w-full placeholder:text-gray-30 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+  ' w-full placeholder:text-gray-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
 );
 
 export interface InputProps
@@ -55,7 +55,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <div className="size-[32px]">
             <SubmitIcon
               className="cursor-pointer transition-colors duration-300"
-              fill={props.disabled || !props.value ? colors.gray[20] : colors.gray[40]}
+              fill={props.disabled || !props.value ? colors.gray[200] : colors.gray[400]}
               onClick={onSubmit}
             />
           </div>
