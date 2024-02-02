@@ -1,3 +1,5 @@
+'use client';
+
 import { cva, type VariantProps } from 'class-variance-authority';
 import { forwardRef, useCallback, useState } from 'react';
 
@@ -9,12 +11,12 @@ import { cn } from '@/lib/core';
 //TODO : 디자인 나오면 본격적으로 입히기
 
 const inputContainerVariants = cva(
-  'flex h-[56px] w-full items-center gap-6xs rounded-md border p-3xs shadow-thumb',
+  'flex h-[56px] w-full items-center gap-6xs rounded-md border bg-white p-3xs shadow-thumb',
   {
     variants: {
       isFocused: {
-        true: 'border-blue-20',
-        false: 'border-gray-20',
+        true: 'border-primary-200',
+        false: 'border-gray-100',
       },
       disabled: {
         true: 'cursor-not-allowed opacity-50',
@@ -25,7 +27,7 @@ const inputContainerVariants = cva(
 
 //TODO : bg-white 대체 하기, 원래 flex h-[56px] 좌측에 있었습니다.
 const inputVariants = cva(
-  ' w-full placeholder:text-gray-30 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+  ' w-full bg-white placeholder:text-gray-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ',
 );
 
 export interface InputProps
@@ -55,7 +57,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <div className="size-[32px]">
             <SubmitIcon
               className="cursor-pointer transition-colors duration-300"
-              fill={props.disabled || !props.value ? colors.gray[20] : colors.gray[40]}
+              fill={props.disabled || !props.value ? colors.gray[200] : colors.gray[400]}
               onClick={onSubmit}
             />
           </div>
