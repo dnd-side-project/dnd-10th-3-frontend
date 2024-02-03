@@ -1,7 +1,7 @@
 import { type VariantProps } from 'class-variance-authority';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 
-import Submit from '@/assets/icons/submit.svg'; // NOTE: 임시 아이콘
+import { Icon } from '@/components/common/icon';
 import { Spinner } from '@/components/common/spinner';
 import { cn } from '@/lib/core';
 
@@ -20,7 +20,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       width,
       className,
       children,
-      icon, // TODO: icon 목록(타입) 정해놓기
+      icon,
+      iconColor = 'gray',
       iconOnly = false,
       iconSide = 'left',
       isLoading,
@@ -41,17 +42,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading && <Spinner />}
         {iconOnly ? (
-          <Submit width="32px" height="32px" color="currentColor" /> // FIXME: icon 변경
+          <Icon icon={icon!} size={20} color={iconColor} />
         ) : (
           <>
-            {/* FIXME: icon 변경 */}
-            {icon && iconSide === 'left' && (
-              <Submit width="32px" height="32px" color="currentColor" />
-            )}
+            {icon && iconSide === 'left' && <Icon icon={icon} size={20} color={iconColor} />}
             {children}
-            {icon && iconSide === 'right' && (
-              <Submit width="32px" height="32px" color="currentColor" />
-            )}
+            {icon && iconSide === 'right' && <Icon icon={icon} size={20} color={iconColor} />}
           </>
         )}
       </button>

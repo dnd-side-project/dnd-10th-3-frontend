@@ -51,36 +51,36 @@ export const ButtonWithIcon: Story = {
   render: () => (
     <>
       <div className="flex items-center justify-center gap-4xs">
-        <Button icon="icon" variant="primary">
+        <Button icon="filledHeart" variant="primary">
           버튼
         </Button>
-        <Button icon="icon" variant="primary" disabled>
+        <Button icon="filledHeart" variant="primary" disabled>
           버튼
         </Button>
-        <Button icon="icon" variant="secondary">
+        <Button icon="filledHeart" variant="secondary">
           버튼
         </Button>
-        <Button icon="icon" variant="secondary" disabled>
+        <Button icon="filledHeart" variant="secondary" disabled>
           버튼
         </Button>
-        <Button icon="icon" variant="primary" width="full">
+        <Button icon="filledHeart" variant="primary" width="full">
           버튼
         </Button>
       </div>
       <div className="flex items-center justify-center gap-4xs">
-        <Button icon="icon" variant="primary" iconSide="right">
+        <Button icon="filledHeart" variant="primary" iconSide="right">
           버튼
         </Button>
-        <Button icon="icon" variant="primary" iconSide="right" disabled>
+        <Button icon="filledHeart" variant="primary" iconSide="right" disabled>
           버튼
         </Button>
-        <Button icon="icon" variant="secondary" iconSide="right">
+        <Button icon="filledHeart" variant="secondary" iconSide="right">
           버튼
         </Button>
-        <Button icon="icon" variant="secondary" iconSide="right" disabled>
+        <Button icon="filledHeart" variant="secondary" iconSide="right" disabled>
           버튼
         </Button>
-        <Button icon="icon" variant="primary" iconSide="right" width="full">
+        <Button icon="filledHeart" variant="primary" iconSide="right" width="full">
           버튼
         </Button>
       </div>
@@ -91,11 +91,11 @@ export const ButtonWithIcon: Story = {
 export const IconOnlyButton: Story = {
   render: () => (
     <div className="flex items-center justify-center gap-4xs">
-      <Button icon="icon" iconOnly variant="primary" />
-      <Button icon="icon" iconOnly variant="primary" disabled />
-      <Button icon="icon" iconOnly variant="secondary" />
-      <Button icon="icon" iconOnly variant="secondary" disabled />
-      <Button icon="icon" iconOnly variant="primary" width="full" />
+      <Button icon="filledHeart" iconOnly variant="primary" />
+      <Button icon="filledHeart" iconOnly variant="primary" disabled />
+      <Button icon="filledHeart" iconOnly variant="secondary" />
+      <Button icon="filledHeart" iconOnly variant="secondary" disabled />
+      <Button icon="filledHeart" iconOnly variant="primary" width="full" />
     </div>
   ),
 };
@@ -110,10 +110,10 @@ export const LoadingState: Story = {
         <Button variant="primary" isLoading disabled>
           버튼
         </Button>
-        <Button variant="primary" icon="icon" isLoading>
+        <Button variant="primary" icon="filledHeart" isLoading>
           버튼
         </Button>
-        <Button variant="primary" icon="icon" isLoading disabled>
+        <Button variant="primary" icon="filledHeart" isLoading disabled>
           버튼
         </Button>
         <Button variant="primary" width="full" isLoading>
@@ -127,10 +127,10 @@ export const LoadingState: Story = {
         <Button variant="secondary" isLoading disabled>
           버튼
         </Button>
-        <Button variant="secondary" icon="icon" isLoading>
+        <Button variant="secondary" icon="filledHeart" isLoading>
           버튼
         </Button>
-        <Button variant="secondary" icon="icon" isLoading disabled>
+        <Button variant="secondary" icon="filledHeart" isLoading disabled>
           버튼
         </Button>
         <Button variant="secondary" width="full" isLoading>
@@ -146,10 +146,10 @@ const IconButtonWithDataComponent = () => {
 
   return (
     <>
-      <Button icon="icon" variant={'primary'} onClick={() => setData((prev) => prev + 1)}>
+      <Button icon="filledHeart" variant={'primary'} onClick={() => setData((prev) => prev + 1)}>
         Click me! <span>{data}</span>
       </Button>
-      <Button icon="icon" variant={'secondary'} onClick={() => setData((prev) => prev + 1)}>
+      <Button icon="filledHeart" variant={'secondary'} onClick={() => setData((prev) => prev + 1)}>
         Click me! <span>{data}</span>
       </Button>
     </>
