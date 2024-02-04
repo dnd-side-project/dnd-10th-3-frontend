@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
+import { iconList } from '@/components/common/icon/assets';
+
 import { Button } from '.';
 
 const meta = {
@@ -39,7 +41,16 @@ export const Basic: Story = {
         <Button variant="secondary" disabled>
           버튼
         </Button>
-        <Button variant="secondary" width="full" disabled>
+        <Button variant="secondary" width="full">
+          버튼
+        </Button>
+      </div>
+      <div className="flex items-center justify-center gap-4xs">
+        <Button variant="empty">버튼</Button>
+        <Button variant="empty" disabled>
+          버튼
+        </Button>
+        <Button variant="empty" width="full">
           버튼
         </Button>
       </div>
@@ -63,6 +74,12 @@ export const ButtonWithIcon: Story = {
         <Button icon="filledHeart" variant="secondary" disabled>
           버튼
         </Button>
+        <Button icon="filledHeart" variant="empty">
+          버튼
+        </Button>
+        <Button icon="filledHeart" variant="empty" disabled>
+          버튼
+        </Button>
         <Button icon="filledHeart" variant="primary" width="full">
           버튼
         </Button>
@@ -80,6 +97,12 @@ export const ButtonWithIcon: Story = {
         <Button icon="filledHeart" variant="secondary" iconSide="right" disabled>
           버튼
         </Button>
+        <Button icon="filledHeart" variant="empty" iconSide="right">
+          버튼
+        </Button>
+        <Button icon="filledHeart" variant="empty" iconSide="right" disabled>
+          버튼
+        </Button>
         <Button icon="filledHeart" variant="primary" iconSide="right" width="full">
           버튼
         </Button>
@@ -90,13 +113,26 @@ export const ButtonWithIcon: Story = {
 
 export const IconOnlyButton: Story = {
   render: () => (
-    <div className="flex items-center justify-center gap-4xs">
-      <Button icon="filledHeart" iconOnly variant="primary" />
-      <Button icon="filledHeart" iconOnly variant="primary" disabled />
-      <Button icon="filledHeart" iconOnly variant="secondary" />
-      <Button icon="filledHeart" iconOnly variant="secondary" disabled />
-      <Button icon="filledHeart" iconOnly variant="primary" width="full" />
-    </div>
+    <>
+      <div className="flex items-center gap-4xs">
+        <Button icon="filledHeart" iconOnly variant="primary" />
+        <Button icon="filledHeart" iconOnly variant="primary" disabled />
+        <Button icon="filledHeart" iconOnly variant="primary" width="full" />
+        <Button icon="filledHeart" iconOnly variant="primary" width="full" disabled />
+      </div>
+      <div className="flex items-center gap-4xs">
+        <Button icon="filledHeart" iconOnly variant="secondary" />
+        <Button icon="filledHeart" iconOnly variant="secondary" disabled />
+        <Button icon="filledHeart" iconOnly variant="secondary" width="full" />
+        <Button icon="filledHeart" iconOnly variant="secondary" width="full" disabled />
+      </div>
+      <div className="flex items-center gap-4xs">
+        <Button icon="filledHeart" iconOnly variant="empty" />
+        <Button icon="filledHeart" iconOnly variant="empty" disabled />
+        <Button icon="filledHeart" iconOnly variant="empty" width="full" />
+        <Button icon="filledHeart" iconOnly variant="empty" width="full" disabled />
+      </div>
+    </>
   ),
 };
 
@@ -137,6 +173,23 @@ export const LoadingState: Story = {
           버튼
         </Button>
       </div>
+      <div className="flex items-center gap-4xs">
+        <Button variant="empty" isLoading>
+          버튼
+        </Button>
+        <Button variant="empty" isLoading disabled>
+          버튼
+        </Button>
+        <Button variant="empty" icon="filledHeart" isLoading>
+          버튼
+        </Button>
+        <Button variant="empty" icon="filledHeart" isLoading disabled>
+          버튼
+        </Button>
+        <Button variant="empty" width="full" isLoading>
+          버튼
+        </Button>
+      </div>
     </>
   ),
 };
@@ -150,6 +203,9 @@ const IconButtonWithDataComponent = () => {
         Click me! <span>{data}</span>
       </Button>
       <Button icon="filledHeart" variant={'secondary'} onClick={() => setData((prev) => prev + 1)}>
+        Click me! <span>{data}</span>
+      </Button>
+      <Button icon="filledHeart" variant={'empty'} onClick={() => setData((prev) => prev + 1)}>
         Click me! <span>{data}</span>
       </Button>
     </>
@@ -171,7 +227,7 @@ export const Playground: Story = {
   argTypes: {
     variant: {
       control: { type: 'inline-radio' },
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'empty'],
     },
     width: {
       control: { type: 'inline-radio' },
@@ -183,7 +239,7 @@ export const Playground: Story = {
     },
     icon: {
       control: { type: 'select' },
-      options: ['none'],
+      options: iconList,
     },
   },
 };
