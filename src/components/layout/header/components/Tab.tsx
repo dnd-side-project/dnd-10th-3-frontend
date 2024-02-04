@@ -4,10 +4,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { tabMap, tabs } from '@/constants/tab';
 import { cn } from '@/lib/core';
-
-const tabMap = { test: '테스트', vote: '투표' } as const;
-const tabs = Object.keys(tabMap) as (keyof typeof tabMap)[];
 
 const Tab = () => {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
