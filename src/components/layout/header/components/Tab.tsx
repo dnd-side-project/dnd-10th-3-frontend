@@ -14,7 +14,7 @@ const Tab = () => {
     <nav className="select-none overflow-hidden rounded-full border border-gray-200 text-sm font-semibold">
       <ul className="flex">
         {tabs.map((tab) => (
-          <li key={tab} className="relative px-6 py-2 text-center">
+          <li key={tab} className="relative px-xs py-5xs text-center">
             <Link
               href={`/${tab}`}
               onClick={() => setSelectedTab(tab)}

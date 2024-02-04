@@ -14,7 +14,7 @@ const Header = ({ children, className, ...props }: HeaderProps) => {
   return (
     <header
       className={cn(
-        'sticky top-0 z-10 flex max-w-3xl items-center justify-between px-6 pb-7 pt-14',
+        'sticky top-0 z-10 flex max-w-3xl items-center justify-between px-xs pb-sm pt-xl',
         className,
       )}
       {...props}
