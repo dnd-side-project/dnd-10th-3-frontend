@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} layout flex`}>
+      <body className={`${pretendard.variable}`}>
         <Providers>
-          <div className="flex grow flex-col font-pretendard">{children}</div>
+          <div className="layout font-pretendard">{children}</div>
         </Providers>
       </body>
     </html>
