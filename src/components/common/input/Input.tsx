@@ -4,8 +4,9 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { forwardRef, useCallback, useState } from 'react';
 
 import { colors } from '@/../styles/theme';
-import SubmitIcon from '@/assets/icons/submit.svg';
 import { cn } from '@/lib/core';
+
+import { Icon } from '../icon';
 
 //TODO : bg-white 대체 하기, 원래 flex h-[56px] 좌측에 있었습니다.
 //TODO : 디자인 나오면 본격적으로 입히기
@@ -55,7 +56,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         />
         {includeSubmitButton && (
           <div className="size-[32px]">
-            <SubmitIcon
+            <Icon
+              icon="submit"
+              size={32}
               className="cursor-pointer transition-colors duration-300"
               fill={props.disabled || !props.value ? colors.gray[200] : colors.gray[400]}
               onClick={onSubmit}
