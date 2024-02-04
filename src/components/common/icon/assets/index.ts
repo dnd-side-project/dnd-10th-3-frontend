@@ -5,6 +5,7 @@ import Kakaotalk from './Kakaotalk';
 import Profile from './Profile';
 import Reply from './Reply';
 import Search from './Search';
+import Settings from './Settings';
 import Submit from './Submit';
 import User from './User';
 import Votebox from './Votebox';
@@ -20,6 +21,7 @@ export const iconMap = {
   reply: Reply,
   chevronLeft: ChevronLeft,
   votebox: Votebox,
+  settings: Settings,
 };
 
 export type IconType = keyof typeof iconMap;
