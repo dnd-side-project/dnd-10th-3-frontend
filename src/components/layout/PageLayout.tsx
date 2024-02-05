@@ -1,8 +1,17 @@
-import { PropsWithChildren } from 'react';
+import { ReactNode } from 'react';
 
-const PageLayout = ({ children }: PropsWithChildren) => {
+import { cn } from '@/lib/core';
+
+type Props = {
+  children: ReactNode;
+  className?: string;
+};
+
+const PageLayout = ({ children, className }: Props) => {
   return (
-    <main className="relative flex h-dvh w-full flex-col items-center px-4 pb-10">{children}</main>
+    <main className={cn('relative flex h-dvh w-full flex-col  px-4 pb-10', className)}>
+      {children}
+    </main>
   );
 };
 
