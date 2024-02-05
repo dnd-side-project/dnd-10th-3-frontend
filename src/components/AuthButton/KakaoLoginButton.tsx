@@ -8,7 +8,7 @@ const KakaoLoginButton = () => {
       icon="kakaotalk"
       width="full"
       iconColor="black"
-      className="bg-auth-kakao px-md text-gray-600"
+      className="rounded-lg bg-auth-kakao px-[14px] text-gray-600"
     >
       <span className="grow">카카오로 시작하기</span>
     </Button>
