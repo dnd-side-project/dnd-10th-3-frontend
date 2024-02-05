@@ -42,6 +42,6 @@ export const iconMap = {
   add : Add
 };
 
-// TODO : ADD 컴포넌트 추가 2월 5일 스토리북 추가 요망
+
 export type IconType = keyof typeof iconMap;
 export const iconList = Object.keys(iconMap) as IconType[];
