@@ -5,14 +5,13 @@ import WorryImage from '@/assets/images/test-worry.png';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Header } from '@/components/layout/header';
-import PageLayout from '@/components/layout/PageLayout';
 import { Typography } from '@/foundations/typography';
 
 //TEST : 임시
 
 const Home = () => {
   return (
-    <PageLayout className="items-center bg-mainGradient">
+    <main className={'relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4'}>
       {/* TODO : 아이폰 크기일 경우 INPUT이 화면에서 짤리는 상황, 추후 디자인 수정 이후 변경 필수 */}
       <Header>
         <Header.Logo />
@@ -41,7 +40,7 @@ const Home = () => {
           </Button>
         </div>
       </div>
-    </PageLayout>
+    </main>
   );
 };
 

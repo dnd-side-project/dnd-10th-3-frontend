@@ -3,14 +3,13 @@ import Image from 'next/image';
 import TestImage from '@/assets/images/testWorry.png';
 import { Button } from '@/components/common/button';
 import { ProgressBar } from '@/components/common/progressBar';
-import PageLayout from '@/components/layout/PageLayout';
 import { Typography } from '@/foundations/typography';
 
 import FormLayout from './components/FormLayout';
 const Home = () => {
   const userName = '상대';
   return (
-    <PageLayout className="pb-10">
+    <main className={'relative flex h-dvh w-full flex-col items-center  px-4 pb-10'}>
       <FormLayout
         header={
           <>
@@ -48,7 +47,7 @@ const Home = () => {
           </div>
         }
       />
-    </PageLayout>
+    </main>
   );
 };
 
