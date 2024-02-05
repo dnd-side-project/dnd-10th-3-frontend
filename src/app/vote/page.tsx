@@ -2,6 +2,7 @@ import { Avatar } from '@/components/common/avatar';
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { Input } from '@/components/common/input';
+import { Tabs } from '@/components/common/tabs';
 import { Tag } from '@/components/common/tag';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
@@ -9,18 +10,22 @@ import { Typography } from '@/foundations/typography';
 const VotePage = () => {
   return (
     <main className={'relative flex size-full flex-col px-4 pb-10'}>
-      <Header>
+      <Header className="bg-white">
         <Header.Logo />
         <Header.Tab />
         <Header.IconLink href="/my-page" icon="user" />
       </Header>
+
+      <div className="sticky top-[126px] z-10 bg-white px-4">
+        <Tabs tabItems={['전체', '축의금', '하객룩', '브라이덜 샤워', '기타']} />
+      </div>
 
       {/* <카테고리 탭/> */}
       <div className="p-xs">
         <Typography type={'heading1'}>
           결혼식 참석시 <br /> 고민이었던 부분을 나눠보세요.
         </Typography>
-        {/* searchInput 구현하여 수정해야한다*/}
+        {/* TODO: searchInput 구현하여 수정해야한다*/}
         <div className="py-4xs">
           <Input placeholder="무엇이 고민이신가요?" />
         </div>
@@ -152,11 +157,11 @@ const VotePage = () => {
       </div>
 
       {/* FloatButton*/}
-      <div className="fixed bottom-5xl right-xs z-20">
+      <div className="fixed bottom-5xl right-xs z-20 ">
         <Button
           icon="add"
           iconOnly
-          className="h-[56px] w-xl rounded-[100%] bg-primary-500"
+          className=" h-[56px] w-xl rounded-[100%] bg-primary-500"
           iconColor="white"
         />
       </div>

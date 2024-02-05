@@ -14,7 +14,7 @@ export type TabProps = {
 // TODO : active가 눌렸을때 LayoutShifting이 미묘하게 일어나는데 리팩토링해야함
 
 const tabContainerVariants = cva(
-  'flex h-lg grow items-center justify-center text-gray-400 hover:text-gray-700',
+  'flex h-lg grow cursor-pointer items-center justify-center text-gray-400 hover:text-gray-700',
   {
     variants: {
       active: {
