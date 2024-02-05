@@ -11,6 +11,7 @@ export const COLORS = {
   gray: '#9DA0A3',
   pink: '#FF91C6',
   black: '#151719',
+  white: '#ffffff',
 };
 
 const Icon = ({ icon, size = 20, color = 'gray', ...props }: Props) => {

@@ -25,8 +25,14 @@ const VotePage = () => {
       </div>
 
       {/* FloatButton*/}
-
-      <Button icon="add" iconOnly />
+      <div className="absolute bottom-5xl right-xs">
+        <Button
+          icon="add"
+          iconOnly
+          className="h-[56px] w-xl rounded-[100%] bg-primary-500"
+          iconColor="white"
+        />
+      </div>
     </PageLayout>
   );
 };

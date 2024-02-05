@@ -10,7 +10,7 @@ import FormLayout from './components/FormLayout';
 const Home = () => {
   const userName = '상대';
   return (
-    <PageLayout>
+    <PageLayout className="pb-10">
       <FormLayout
         header={
           <>

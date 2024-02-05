@@ -9,9 +9,7 @@ type Props = {
 
 const PageLayout = ({ children, className }: Props) => {
   return (
-    <main className={cn('relative flex h-dvh w-full flex-col  px-4 pb-10', className)}>
-      {children}
-    </main>
+    <main className={cn('relative flex h-dvh w-full flex-col px-4', className)}>{children}</main>
   );
 };
 
