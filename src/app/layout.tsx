@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${pretendard.variable}`}>
         <Providers>
-          <div className="layout font-pretendard">{children}</div>
+          <div className="layout font-pretendard ">{children}</div>
         </Providers>
       </body>
     </html>
