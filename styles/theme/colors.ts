@@ -1,6 +1,4 @@
-
-
- export const colors = {
+export const colors = {
   gray: {
     50: '#F9FAFB',
     100: '#EDF0F3',
@@ -41,6 +39,9 @@
     500: '#FFA3D2',
     600: '#FF91C6',
     700: '#FF75B8',
+  },
+  auth: {
+    kakao: '#FEE500',
   },
   current: 'currentColor',
 };
