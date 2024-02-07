@@ -1,11 +1,21 @@
 import Image from 'next/image';
 
 import worry from '@/assets/images/test-worry.png';
-import { KakaoLoginButton } from '@/components/AuthButton';
 import { Header } from '@/components/layout/header';
+import { CALLBACK_URL } from '@/constants/auth';
 import { Typography } from '@/foundations/typography';
 
-const LoginPage = () => {
+import KakaoLoginButton from './_components/KakaoLoginButton';
+
+type Props = {
+  searchParams: {
+    [CALLBACK_URL]: string;
+  };
+};
+
+const LoginPage = ({ searchParams }: Props) => {
+  const { callbackUrl } = searchParams;
+
   return (
     <div className="relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4 pb-10">
       <Header>
@@ -20,7 +30,7 @@ const LoginPage = () => {
 
       <Image src={worry} width={274} height={197} alt="logo" priority className="my-auto" />
 
-      <KakaoLoginButton />
+      <KakaoLoginButton callbackUrl={callbackUrl} />
     </div>
   );
 };
