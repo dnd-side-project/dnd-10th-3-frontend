@@ -27,7 +27,17 @@ const useAuth = () => {
     },
   });
 
-  return { kakaoLogin };
+  const { mutate: logout } = useMutation({
+    mutationFn: () => post('/logout'),
+    onSuccess: () => {
+      router.push('/');
+    },
+    onError: () => {
+      // TODO
+    },
+  });
+
+  return { kakaoLogin, logout };
 };
 
 export default useAuth;
