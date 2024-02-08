@@ -10,14 +10,25 @@ import { Typography } from '@/foundations/typography';
 const VotePage = () => {
   return (
     <main className={'relative flex size-full flex-col px-4 pb-10'}>
-      <Header className="bg-white">
+      <Header className="z-30 bg-white">
         <Header.Logo />
         <Header.Tab />
         <Header.IconLink href="/my-page" icon="user" />
       </Header>
 
-      <div className="sticky top-[126px] z-10 bg-white px-4">
-        <Tabs tabItems={['전체', '축의금', '하객룩', '브라이덜 샤워', '기타']} />
+      <div className="sticky top-[126px] z-30 bg-white px-4">
+        <Tabs
+          tabItems={[
+            '전체',
+            '축의금',
+            '하객룩',
+            '브라이덜 샤워',
+            '기타',
+            '전체',
+            '테스트',
+            '브라이덜',
+          ]}
+        />
       </div>
 
       {/* <카테고리 탭/> */}
