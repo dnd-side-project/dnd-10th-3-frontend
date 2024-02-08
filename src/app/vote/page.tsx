@@ -42,6 +42,14 @@ const VotePage = () => {
         </div>
       </div>
       <div className="w-full px-xs">
+        {/* TODO: Select*/}
+        <div className="flex justify-end pb-3xs text-gray-400">
+          <select>
+            <option>인기순</option>
+            <option>최신순</option>
+            <option>추천순</option>
+          </select>
+        </div>
         <div
           className="  flex flex-col gap-4xs rounded-[16px] border border-gray-100 p-3xs shadow-thumb "
           id="container"
