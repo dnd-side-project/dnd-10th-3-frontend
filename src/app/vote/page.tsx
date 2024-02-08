@@ -176,7 +176,7 @@ const VotePage = () => {
       </div>
 
       {/* FloatButton*/}
-      <div className="fixed bottom-5xl right-xs z-20 ">
+      <div className="sticky bottom-5xl z-20 flex justify-end">
         <Button
           icon="add"
           iconOnly
