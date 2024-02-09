@@ -38,9 +38,14 @@ const VotePage = () => {
             <Typography type={'heading1'}>
               결혼식 참석시 <br /> 고민이었던 부분을 나눠보세요.
             </Typography>
-            {/* TODO: searchInput 구현하여 수정해야한다*/}
             <div className="py-4xs">
-              <Input placeholder="무엇이 고민이신가요?" icon="search" iconSide="left" />
+              <Input
+                placeholder="무엇이 고민이신가요?"
+                icon="search"
+                iconSide="left"
+                borderRadius={'larger'}
+                bgcolor={'gray'}
+              />
             </div>
           </div>
           <div className="w-full px-xs">
@@ -178,7 +183,7 @@ const VotePage = () => {
           </div>
         </>
       ) : (
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/3">
           <EmptyVoteLayout />
         </div>
       )}

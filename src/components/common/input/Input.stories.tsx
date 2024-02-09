@@ -21,18 +21,31 @@ const meta: Meta<typeof Input> = {
     },
     onChange: { action: 'changed' },
   },
+  tags: ['autodocs'],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Input>;
 
-const Example = ({ className, icon, iconColor, iconSide, onSubmit }: InputProps) => {
+const Example = ({
+  variant,
+  className,
+  bgcolor,
+  borderRadius,
+  icon,
+  iconColor,
+  iconSide,
+  onSubmit,
+}: InputProps) => {
   const { value, handleChange } = useInput('');
 
   return (
     <Input
+      bgcolor={bgcolor}
+      variant={variant}
       value={value}
+      borderRadius={borderRadius}
       onChange={handleChange}
       placeholder="Text Input"
       onSubmit={onSubmit}
@@ -49,7 +62,11 @@ export const Basic: Story = {
 };
 
 export const SearchInput: Story = {
-  render: () => <Example icon="search" iconSide="left" />,
+  render: () => <Example icon="search" iconSide="left" borderRadius="larger" bgcolor="gray" />,
+};
+
+export const EmptyInput: Story = {
+  render: () => <Example variant={'empty'} />,
 };
 export const RightIconInput: Story = {
   render: () => <Example icon="submit" iconSide="right" />,

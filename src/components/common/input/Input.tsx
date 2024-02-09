@@ -1,34 +1,17 @@
 'use client';
 
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps } from 'class-variance-authority';
 import { InputHTMLAttributes, forwardRef, useCallback, useState } from 'react';
 
 import { Icon } from '@/components/common/icon';
 import { cn } from '@/lib/core';
 
 import { InputIconProps } from './types';
-
-const inputContainerVariants = cva(
-  'flex h-[56px] w-full items-center gap-5xs rounded-md border bg-white p-3xs shadow-thumb',
-  {
-    variants: {
-      isFocused: {
-        true: 'border-primary-700',
-        false: 'border-gray-100',
-      },
-      disabled: {
-        true: 'cursor-not-allowed opacity-50',
-      },
-    },
-  },
-);
-
-const inputVariants = cva(
-  ' w-full bg-white placeholder:text-gray-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ',
-);
+import { inputContainerVariants, inputVariants } from './variant';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> &
+  VariantProps<typeof inputContainerVariants> &
   InputIconProps & {
     onSubmit?: VoidFunction;
   };
@@ -36,7 +19,10 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      variant,
+      borderRadius,
       className,
+      bgcolor,
       icon,
       iconColor = 'gray',
       iconSide = 'left',
@@ -51,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const handleBlur = useCallback(() => setIsFocused(false), []);
 
     return (
-      <div className={inputContainerVariants({ isFocused })}>
+      <div className={inputContainerVariants({ isFocused, borderRadius, bgcolor, variant })}>
         {icon && iconSide === 'left' && <Icon icon={icon} size={20} color={iconColor} />}
         <input
           className={cn(inputVariants(), className)}
