@@ -1,0 +1,1 @@
+export { EmptyVoteLayout } from './EmptyVoteLayout';
