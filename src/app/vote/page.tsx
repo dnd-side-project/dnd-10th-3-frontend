@@ -2,42 +2,18 @@ import { Avatar } from '@/components/common/avatar';
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { Input } from '@/components/common/input';
-import { Tabs } from '@/components/common/tabs';
 import { Tag } from '@/components/common/tag';
 import { EmptyVoteLayout } from '@/components/layout/errors';
-import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 
+import VoteHeader from './_component/VoteHeader';
 import VoteLayout from './_component/VoteLayout';
 
 const VotePage = () => {
   const isVoteExist = true;
   return (
     <VoteLayout
-      header={
-        <>
-          <Header className="z-30 bg-white">
-            <Header.Logo />
-            <Header.Tab />
-            <Header.IconLink href="/my-page" icon="user" />
-          </Header>
-
-          <div className="sticky top-[126px] z-30 bg-white px-4">
-            <Tabs
-              tabItems={[
-                '전체',
-                '축의금',
-                '하객룩',
-                '브라이덜 샤워',
-                '기타',
-                '전체',
-                '테스트',
-                '브라이덜',
-              ]}
-            />
-          </div>
-        </>
-      }
+      header={<VoteHeader />}
       contents={
         <>
           {isVoteExist ? (
@@ -200,14 +176,12 @@ const VotePage = () => {
       footer={
         <>
           {isVoteExist ? (
-            <div className="fixed bottom-5xl z-20 flex justify-end">
-              <Button
-                icon="add"
-                iconOnly
-                className=" h-[56px] w-xl rounded-[100%] bg-primary-500"
-                iconColor="white"
-              />
-            </div>
+            <Button
+              icon="add"
+              iconOnly
+              className=" h-[56px] w-xl rounded-[100%] bg-primary-500"
+              iconColor="white"
+            />
           ) : null}
         </>
       }
