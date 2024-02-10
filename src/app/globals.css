@@ -8,7 +8,7 @@
     --layout-min-h: 100dvh;
   }
   .layout {
-    @apply mx-auto min-h-[var(--layout-min-h)] w-full max-w-[var(--layout-max-w)];
+    @apply bg-red-300 mx-auto min-h-[var(--layout-min-h)] w-full max-w-[var(--layout-max-w)];
   }
 }
 
