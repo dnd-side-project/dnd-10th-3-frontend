@@ -56,8 +56,9 @@ const Home = () => {
           <FormLayout
             header={
               <>
-                {'< 임시 아이콘'}
-                <br />
+                <Header>
+                  <Header.Previous />
+                </Header>
                 <ProgressBar currentProgress={10} className="pt-3xs" />
               </>
             }
