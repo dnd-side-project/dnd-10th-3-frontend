@@ -7,6 +7,7 @@ import LogoImage from '@/assets/images/logo.png';
 import WorryImage from '@/assets/images/test-worry.png';
 import TestImage from '@/assets/images/testWorry.png';
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Input } from '@/components/common/input';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Header } from '@/components/layout/header';
@@ -56,9 +57,7 @@ const Home = () => {
           <FormLayout
             header={
               <>
-                <Header>
-                  <Header.Previous />
-                </Header>
+                <Icon icon="chevronLeft" color="black" size={24} />
                 <ProgressBar currentProgress={10} className="pt-3xs" />
               </>
             }
@@ -82,7 +81,7 @@ const Home = () => {
             }
             footer={
               <div className=" flex flex-col gap-3xs">
-                <Button variant={'primary'} width="full" onClick={() => setStep('사전')}>
+                <Button variant={'secondary'} width="full" onClick={() => setStep('사전')}>
                   예
                 </Button>
                 <Button variant={'secondary'} width="full" onClick={() => setStep('사전')}>
