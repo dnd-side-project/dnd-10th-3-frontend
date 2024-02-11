@@ -4,6 +4,7 @@ export const spacing = {
   '6xs': '0.25rem', // 4px
   '5xs': '0.5rem', // 8px
   '4xs': '0.75rem', // 12px
+  
   '3xs': '1rem', // 16px
   '2xs': '1.25rem', // 20px
   xs: '1.5rem', // 24px

@@ -1,3 +1,4 @@
+import Add from './Add';
 import Check from './Check';
 import ChevronLeft from './ChevronLeft';
 import ChevronRight from './ChevronRight';
@@ -38,7 +39,9 @@ export const iconMap = {
   photo: Photo,
   more: More,
   link: Link,
+  add : Add
 };
+
 
 export type IconType = keyof typeof iconMap;
 export const iconList = Object.keys(iconMap) as IconType[];

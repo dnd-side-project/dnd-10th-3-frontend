@@ -1,10 +1,10 @@
 import type { PropsWithChildren, ReactNode } from 'react';
 
 interface FormLayoutProps {
-  header: ReactNode | string;
-  comment: ReactNode | string;
-  body: ReactNode | string;
-  footer: ReactNode | string;
+  header: ReactNode;
+  comment: ReactNode;
+  body: ReactNode;
+  footer: ReactNode;
 }
 
 const FormLayout = ({ header, comment, body, footer }: PropsWithChildren<FormLayoutProps>) => {

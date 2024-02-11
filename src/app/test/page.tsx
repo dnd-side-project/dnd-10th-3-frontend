@@ -4,19 +4,20 @@ import LogoImage from '@/assets/images/logo.png';
 import WorryImage from '@/assets/images/test-worry.png';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
+
 //TEST : 임시
 
 const Home = () => {
   return (
-    <div className="relative flex h-[100dvh] w-full flex-col items-center overflow-hidden bg-mainGradient px-4xs">
-      <div className="flex w-full items-center justify-between px-3xs pt-2xl 390:pt-sm">
-        <div className="">
-          <Image src={LogoImage} width={50} height={20} alt="logo" priority />
-        </div>
-        <div className="h-sm w-6xl bg-gray-400"></div>
-        <div>아이콘</div>
-      </div>
+    <main className={'relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4'}>
+      {/* TODO : 아이폰 크기일 경우 INPUT이 화면에서 짤리는 상황, 추후 디자인 수정 이후 변경 필수 */}
+      <Header>
+        <Header.Logo />
+        <Header.Tab />
+        <Header.IconLink href="/my-page" icon="user" />
+      </Header>
       <div className="z-10 flex w-full flex-col items-center justify-center gap-[24px] py-xl 390:h-[200px] 390:py-xs">
         <Image src={LogoImage} width={150} height={91} alt="logo" priority />
         <Typography type={'heading2'} className="text-gray-500">
@@ -39,7 +40,7 @@ const Home = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
