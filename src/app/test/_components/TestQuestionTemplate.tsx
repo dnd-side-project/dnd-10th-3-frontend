@@ -6,7 +6,6 @@ import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Typography } from '@/foundations/typography';
-import { TestFormValue } from '@/types/test';
 
 import FormLayout from './FormLayout';
 
@@ -16,14 +15,8 @@ type Props = {
   badgeStatus: string;
   question: ReactNode;
   image: string | StaticImport;
-  answerList: AnswerButtonType[];
-  registerTitle: keyof TestFormValue;
+  answerList: string[];
   onPrevStep?: () => void;
-};
-
-type AnswerButtonType = {
-  id: number;
-  answer: string;
 };
 
 const TestQuestionTemplate = ({
@@ -63,14 +56,14 @@ const TestQuestionTemplate = ({
         }
         footer={
           <div className=" flex flex-col gap-3xs">
-            {answerList.map(({ answer, id }) => {
+            {answerList.map((answer, index) => {
               //HERE : Button에 register 매소드를 연결할 수 없어 하위에 Input 엘리먼트를 추가하였습니다.
               return (
                 <Button
                   variant={'secondary'}
                   width="full"
                   onClick={onChangeStep}
-                  key={id}
+                  key={index}
                   className="h-md"
                 >
                   {answer}
