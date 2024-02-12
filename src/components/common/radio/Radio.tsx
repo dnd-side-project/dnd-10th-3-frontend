@@ -1,5 +1,3 @@
-'use client';
-
 import { VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/core';
