@@ -9,17 +9,18 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
+import { Range } from '@/types/util';
 
-import TestQuestion from './_components/TestQuestion';
+import Step from './_components/Step';
+import TestQuestionTemplate from './_components/TestQuestionTemplate';
 
-export type StepProps = '홈' | '사전질문1' | '사전질문2' | '본질문1' | '본질문10';
+export type StepProps = Range<0, 13>;
 const Home = () => {
-  const userName = '상대';
-  const [step, setStep] = useState<StepProps>('홈');
+  const [step, setStep] = useState<StepProps>(0);
 
   return (
     <>
-      {step === '홈' && (
+      <Step check={step === 0}>
         <main className={'relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4'}>
           {/* TODO : 아이폰 크기일 경우 INPUT이 화면에서 짤리는 상황, 추후 디자인 수정 이후 변경 필수 */}
           <Header>
@@ -43,21 +44,19 @@ const Home = () => {
           <div className="flex w-full flex-col items-center">
             <div className="absolute bottom-[10px] flex w-[95%] flex-col px-xs">
               <Button className=" bg-gray-700" width="full">
-                <Typography
-                  type={'body1'}
-                  className="text-white"
-                  onClick={() => setStep('사전질문1')}
-                >
+                <Typography type={'body1'} className="text-white" onClick={() => setStep(1)}>
                   테스트하고 축의금 알아보기
                 </Typography>
               </Button>
             </div>
           </div>
         </main>
-      )}
+      </Step>
 
-      {step === '사전질문1' && (
-        <TestQuestion
+      <Step check={step === 1}>
+        <TestQuestionTemplate
+          onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
+          registerTitle="firstPreTest"
           question={
             <>
               보다 정확한 답변을 드리기 위해
@@ -67,16 +66,18 @@ const Home = () => {
           image={`/images/testWorry.png`}
           badgeStatus={'사전'}
           progress={0}
-          onChangeStep={() => setStep('사전질문2')}
+          onChangeStep={() => setStep(2)}
           answerList={[
             { id: 1, answer: '남성' },
             { id: 2, answer: '여성' },
           ]}
         />
-      )}
+      </Step>
 
-      {step === '사전질문2' && (
-        <TestQuestion
+      <Step check={step === 2}>
+        <TestQuestionTemplate
+          onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
+          registerTitle="secondPreTest"
           question={
             <>
               사전 질문 마지막 단계예요. <br />
@@ -86,7 +87,7 @@ const Home = () => {
           image={`/images/testWorry.png`}
           badgeStatus={'사전'}
           progress={0}
-          onChangeStep={() => setStep('본질문1')}
+          onChangeStep={() => setStep(11)}
           answerList={[
             { id: 1, answer: '10대' },
             { id: 2, answer: '20대' },
@@ -94,32 +95,36 @@ const Home = () => {
             { id: 4, answer: '40대' },
           ]}
         />
-      )}
+      </Step>
 
-      {step === '본질문1' && (
-        <TestQuestion
+      <Step check={step === 11}>
+        <TestQuestionTemplate
+          registerTitle="love"
+          onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
           question={
             <>
-              나는 {userName}에게 <br /> 마지막 남은 닭다리 하나를 <br />
+              나는 상대에게 <br /> 마지막 남은 닭다리 하나를 <br />
               나눠줄 수 있다.
             </>
           }
           image={`/images/testWorry.png`}
           badgeStatus={'1/10'}
           progress={10}
-          onChangeStep={() => setStep('본질문10')}
+          onChangeStep={() => setStep(12)}
           answerList={[
             { id: 1, answer: '예' },
             { id: 2, answer: '아니오' },
           ]}
         />
-      )}
+      </Step>
 
-      {step === '본질문10' && (
-        <TestQuestion
+      <Step check={step === 12}>
+        <TestQuestionTemplate
+          registerTitle="love"
+          onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
           question={
             <>
-              {userName}가 와서 <br /> 축사를 하기로 약속했다.
+              상대가 와서 <br /> 축사를 하기로 약속했다.
               <br />
               이때 나는?
             </>
@@ -127,13 +132,13 @@ const Home = () => {
           image={`/images/testWorry.png`}
           badgeStatus={'10/10'}
           progress={100}
-          onChangeStep={() => setStep('홈')}
+          onChangeStep={() => setStep(0)}
           answerList={[
             { id: 1, answer: '어떻게 쓸 지 고민되지만 연락줘서 고맙다.' },
             { id: 2, answer: '쓸 말이 없어 막막하고 스트레스 받는다.' },
           ]}
         />
-      )}
+      </Step>
     </>
   );
 };

@@ -22,7 +22,7 @@ export default function RootLayout({
         <Providers>
           <div className="layout font-pretendard ">{children}</div>
         </Providers>
-      </body>
+    </body>
     </html>
   );
 }

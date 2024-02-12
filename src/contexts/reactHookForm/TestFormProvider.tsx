@@ -5,13 +5,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useIsMounted } from '@/hooks/useIsMounted';
 import type { TestFormValue } from '@/types/test';
 
-const CreateGoalFormProvider = ({ children }: PropsWithChildren) => {
+const TestFormProvider = ({ children }: PropsWithChildren) => {
   const isMounted = useIsMounted();
 
   const methods = useForm<TestFormValue>();
 
   const submit = (data: TestFormValue) => {
-    // TODO: 불필요한 submit이 호출되는 문제 해결 필요
+    console.log('data', data);
+    // TODO: API와 연동 해야합니다.
   };
 
   return (
@@ -23,4 +24,4 @@ const CreateGoalFormProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default CreateGoalFormProvider;
+export default TestFormProvider;

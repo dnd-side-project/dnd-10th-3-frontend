@@ -1,6 +1,10 @@
-// TODO : 테스트 결과 구조 논의 요망
 
 export type TestFormValue =  {
-    title: string;
+    buddy: string
+    firstPreTest: string
+    secondPreTest: string
+    trust: number,
+    love : number,
+    talk : number
 }
   

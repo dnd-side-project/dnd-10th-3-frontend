@@ -6,6 +6,7 @@ import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Typography } from '@/foundations/typography';
+import { TestFormValue } from '@/types/test';
 
 import FormLayout from './FormLayout';
 
@@ -16,6 +17,8 @@ type Props = {
   question: ReactNode;
   image: string | StaticImport;
   answerList: AnswerButtonType[];
+  registerTitle: keyof TestFormValue;
+  onPrevStep?: () => void;
 };
 
 type AnswerButtonType = {
@@ -23,20 +26,23 @@ type AnswerButtonType = {
   answer: string;
 };
 
-const TestQuestion = ({
+const TestQuestionTemplate = ({
   answerList,
   badgeStatus,
   image,
   question,
   progress,
   onChangeStep,
+  onPrevStep,
 }: Props) => {
   return (
     <main className={'relative flex h-dvh w-full flex-col items-center  px-4 pb-10'}>
       <FormLayout
         header={
           <>
-            <Icon icon="chevronLeft" color="black" size={24} />
+            <div className="w-fit" onClick={onPrevStep} role="presentation">
+              <Icon icon="chevronLeft" color="black" size={24} />
+            </div>
             <ProgressBar currentProgress={progress} className="pt-3xs" />
           </>
         }
@@ -57,11 +63,20 @@ const TestQuestion = ({
         }
         footer={
           <div className=" flex flex-col gap-3xs">
-            {answerList.map(({ answer, id }) => (
-              <Button variant={'secondary'} width="full" onClick={onChangeStep} key={id}>
-                {answer}
-              </Button>
-            ))}
+            {answerList.map(({ answer, id }) => {
+              //HERE : Button에 register 매소드를 연결할 수 없어 하위에 Input 엘리먼트를 추가하였습니다.
+              return (
+                <Button
+                  variant={'secondary'}
+                  width="full"
+                  onClick={onChangeStep}
+                  key={id}
+                  className="h-md"
+                >
+                  {answer}
+                </Button>
+              );
+            })}
           </div>
         }
       />
@@ -69,4 +84,4 @@ const TestQuestion = ({
   );
 };
 
-export default TestQuestion;
+export default TestQuestionTemplate;
