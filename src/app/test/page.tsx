@@ -5,23 +5,21 @@ import { useState } from 'react';
 
 import LogoImage from '@/assets/images/logo.png';
 import { default as WorryImage } from '@/assets/images/test-worry.png';
-import TestImage from '@/assets/images/testWorry.png';
 import { Button } from '@/components/common/button';
-import { Icon } from '@/components/common/icon';
 import { Input } from '@/components/common/input';
-import { ProgressBar } from '@/components/common/progressBar';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 
-import FormLayout from './_components/FormLayout';
+import TestQuestion from './_components/TestQuestion';
 
+export type StepProps = '홈' | '사전질문1' | '사전질문2' | '본질문1' | '본질문10';
 const Home = () => {
   const userName = '상대';
-  const [step, setStep] = useState('사전');
+  const [step, setStep] = useState<StepProps>('홈');
 
   return (
     <>
-      {step === '사전' ? (
+      {step === '홈' && (
         <main className={'relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4'}>
           {/* TODO : 아이폰 크기일 경우 INPUT이 화면에서 짤리는 상황, 추후 디자인 수정 이후 변경 필수 */}
           <Header>
@@ -45,52 +43,96 @@ const Home = () => {
           <div className="flex w-full flex-col items-center">
             <div className="absolute bottom-[10px] flex w-[95%] flex-col px-xs">
               <Button className=" bg-gray-700" width="full">
-                <Typography type={'body1'} className="text-white" onClick={() => setStep('사전1')}>
+                <Typography
+                  type={'body1'}
+                  className="text-white"
+                  onClick={() => setStep('사전질문1')}
+                >
                   테스트하고 축의금 알아보기
                 </Typography>
               </Button>
             </div>
           </div>
         </main>
-      ) : (
-        <main className={'relative flex h-dvh w-full flex-col items-center  px-4 pb-10'}>
-          <FormLayout
-            header={
-              <>
-                <Icon icon="chevronLeft" color="black" size={24} />
-                <ProgressBar currentProgress={10} className="pt-3xs" />
-              </>
-            }
-            comment={
-              <div className="flex flex-col gap-4xs">
-                <div className="flex w-2xl items-center justify-center rounded-2xl bg-primary-200 py-6xs">
-                  {/* TODO : Tag 디자인 시스템 추가 요망 */}
-                  <span className="text-primary-600">1/10</span>
-                </div>
-                {/* TODO : Typography 디자인 시스템 추가 요망 */}
-                <Typography type={'heading2'}>
-                  나는 {userName}에게 <br /> 마지막 남은 닭다리 하나를 <br />
-                  나눠줄 수 있다.
-                </Typography>
-              </div>
-            }
-            body={
-              <div className="absolute right-0">
-                <Image src={TestImage} width={215} height={215} alt="testImage" />
-              </div>
-            }
-            footer={
-              <div className=" flex flex-col gap-3xs">
-                <Button variant={'secondary'} width="full" onClick={() => setStep('사전')}>
-                  예
-                </Button>
-                <Button variant={'secondary'} width="full" onClick={() => setStep('사전')}>
-                  아니오
-                </Button>
-              </div>
-            }
-          />
-        </main>
+      )}
+
+      {step === '사전질문1' && (
+        <TestQuestion
+          question={
+            <>
+              보다 정확한 답변을 드리기 위해
+              <br /> 성별을 선택해주세요.
+            </>
+          }
+          image={`/images/testWorry.png`}
+          badgeStatus={'사전'}
+          progress={0}
+          onChangeStep={() => setStep('사전질문2')}
+          answerList={[
+            { id: 1, answer: '남성' },
+            { id: 2, answer: '여성' },
+          ]}
+        />
+      )}
+
+      {step === '사전질문2' && (
+        <TestQuestion
+          question={
+            <>
+              사전 질문 마지막 단계예요. <br />
+              나이를 선택해주세요.
+            </>
+          }
+          image={`/images/testWorry.png`}
+          badgeStatus={'사전'}
+          progress={0}
+          onChangeStep={() => setStep('본질문1')}
+          answerList={[
+            { id: 1, answer: '10대' },
+            { id: 2, answer: '20대' },
+            { id: 3, answer: '30대' },
+            { id: 4, answer: '40대' },
+          ]}
+        />
+      )}
+
+      {step === '본질문1' && (
+        <TestQuestion
+          question={
+            <>
+              나는 {userName}에게 <br /> 마지막 남은 닭다리 하나를 <br />
+              나눠줄 수 있다.
+            </>
+          }
+          image={`/images/testWorry.png`}
+          badgeStatus={'1/10'}
+          progress={10}
+          onChangeStep={() => setStep('본질문10')}
+          answerList={[
+            { id: 1, answer: '예' },
+            { id: 2, answer: '아니오' },
+          ]}
+        />
+      )}
+
+      {step === '본질문10' && (
+        <TestQuestion
+          question={
+            <>
+              {userName}가 와서 <br /> 축사를 하기로 약속했다.
+              <br />
+              이때 나는?
+            </>
+          }
+          image={`/images/testWorry.png`}
+          badgeStatus={'10/10'}
+          progress={100}
+          onChangeStep={() => setStep('홈')}
+          answerList={[
+            { id: 1, answer: '어떻게 쓸 지 고민되지만 연락줘서 고맙다.' },
+            { id: 2, answer: '쓸 말이 없어 막막하고 스트레스 받는다.' },
+          ]}
+        />
       )}
     </>
   );
