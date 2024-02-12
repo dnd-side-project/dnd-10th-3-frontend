@@ -25,13 +25,14 @@ const VotePage = () => {
                     placeholder="무엇이 고민이신가요?"
                     icon="search"
                     iconSide="left"
-                    borderRadius="larger"
+                    borderRadius="large"
                     bgcolor="gray"
+                    className="text-[14px]"
                   />
                 </div>
               </div>
               {/* TODO: Select*/}
-              <div className="flex justify-end px-xs pb-3xs  text-gray-400">
+              <div className="flex justify-end px-xs pb-3xs text-gray-400">
                 <select>
                   <option>인기순</option>
                   <option>최신순</option>
