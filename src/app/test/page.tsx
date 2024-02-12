@@ -1,5 +1,6 @@
 'use client';
 
+import { useFunnel } from '@toss/use-funnel';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -17,7 +18,8 @@ import FormLayout from './_components/FormLayout';
 
 const Home = () => {
   const userName = '상대';
-  const [step, setStep] = useState<'사전' | 0>('사전');
+  const [step, setStepp] = useState<'사전' | 0>('사전');
+  const [Funnel, setStep] = useFunnel(['홈', '사전1', '사전2']);
 
   return (
     <>
@@ -45,7 +47,7 @@ const Home = () => {
           <div className="flex w-full flex-col items-center">
             <div className="absolute bottom-[10px] flex w-[95%] flex-col px-xs">
               <Button className=" bg-gray-700" width="full">
-                <Typography type={'body1'} className="text-white" onClick={() => setStep(0)}>
+                <Typography type={'body1'} className="text-white" onClick={() => setStepp(0)}>
                   테스트하고 축의금 알아보기
                 </Typography>
               </Button>
@@ -81,10 +83,10 @@ const Home = () => {
             }
             footer={
               <div className=" flex flex-col gap-3xs">
-                <Button variant={'secondary'} width="full" onClick={() => setStep('사전')}>
+                <Button variant={'secondary'} width="full" onClick={() => setStepp('사전')}>
                   예
                 </Button>
-                <Button variant={'secondary'} width="full" onClick={() => setStep('사전')}>
+                <Button variant={'secondary'} width="full" onClick={() => setStepp('사전')}>
                   아니오
                 </Button>
               </div>

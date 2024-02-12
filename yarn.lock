@@ -1531,7 +1531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.3.1":
+"@babel/runtime@npm:^7.14.8, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.3.1":
   version: 7.23.9
   resolution: "@babel/runtime@npm:7.23.9"
   dependencies:
@@ -4787,6 +4787,80 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toss/assert@npm:^1.1.12":
+  version: 1.1.12
+  resolution: "@toss/assert@npm:1.1.12"
+  dependencies:
+    "@toss/utils": "npm:^1.4.6"
+  checksum: 3a0210b0a6c59f8f2211cc88b0ae7b835497af95455c1d93f20301fa06c3c3d008ddaedd312df506d7158a187383b27f2c9f5140d9810778cdfeb05a0d4abde7
+  languageName: node
+  linkType: hard
+
+"@toss/react@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "@toss/react@npm:1.6.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.14.8"
+    "@toss/storage": "npm:^1.3.1"
+    "@toss/utils": "npm:^1.4.6"
+    classnames: "npm:^2.3.1"
+    lodash.debounce: "npm:^4.0.8"
+    lodash.throttle: "npm:^4.1.1"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18
+  checksum: 0893ced511b8c0ae55451f1a7056d95887a3fd43531fb30699c1208605d58c32250dd242bbcd4316f8f507b8f367d46c65bbe1b344d9bf686f1d02968cbeb742
+  languageName: node
+  linkType: hard
+
+"@toss/storage@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@toss/storage@npm:1.3.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.19.0"
+  checksum: ed2c7702f3f90ee502bc11aeec55dcd4af59e9e1b90f84cff98d3e106680c70e1b8796eb77947de16929d1af8c42fdb01fdcc0af0b5c1d0deb7e8a8e0ef61b2c
+  languageName: node
+  linkType: hard
+
+"@toss/use-funnel@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@toss/use-funnel@npm:1.3.1"
+  dependencies:
+    "@toss/assert": "npm:^1.1.12"
+    "@toss/react": "npm:^1.6.1"
+    "@toss/storage": "npm:^1.3.1"
+    "@toss/use-query-param": "npm:^1.2.1"
+    "@toss/utils": "npm:^1.4.6"
+    fast-deep-equal: "npm:^3.1.3"
+  peerDependencies:
+    next: ^11.1 || ^12 || ^13
+    react: ^16.8 || ^17 || ^18
+    react-dom: ^16.8 || ^17 || ^18
+    react-query: ^3
+  checksum: 426eecb22e918f590ae3386248e1c0dcf4c4ccdb8594512d85fe1e3ae23368d7c19a28bea56775e70b8bdc84bdfaf2975d530e6960f33225eceb41851de0e37a
+  languageName: node
+  linkType: hard
+
+"@toss/use-query-param@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@toss/use-query-param@npm:1.2.1"
+  peerDependencies:
+    next: ^11.1 || ^12 || ^13
+    react: ^16.8 || ^17 || ^18
+    react-dom: ^16.8 || ^17 || ^18
+  checksum: 289b372d2ef8e7b99fe9ed0b36075f5547b29da08fd8b598cafbd398063fbf8fcdf30e0040d582b0b483769b95b2a72134c9a0beb4ea092838bcf214a3e4fbcb
+  languageName: node
+  linkType: hard
+
+"@toss/utils@npm:^1.4.6":
+  version: 1.4.6
+  resolution: "@toss/utils@npm:1.4.6"
+  dependencies:
+    "@babel/runtime": "npm:^7.14.8"
+    date-fns: "npm:^2.25.0"
+  checksum: d1c956c1ab2bb4039e3f8df36ae4bbccf3247a651768a27412e3189582ea32551b9f892e8965c62fe478f82e74f4837eec697bf2431893bb233a2cf8a6755448
+  languageName: node
+  linkType: hard
+
 "@trysound/sax@npm:0.2.0":
   version: 0.2.0
   resolution: "@trysound/sax@npm:0.2.0"
@@ -7184,6 +7258,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2.3.1":
+  version: 2.5.1
+  resolution: "classnames@npm:2.5.1"
+  checksum: afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
+  languageName: node
+  linkType: hard
+
 "clean-css@npm:^5.2.2":
   version: 5.3.3
   resolution: "clean-css@npm:5.3.3"
@@ -7919,6 +8000,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^2.25.0":
+  version: 2.30.0
+  resolution: "date-fns@npm:2.30.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.21.0"
+  checksum: e4b521fbf22bc8c3db332bbfb7b094fd3e7627de0259a9d17c7551e2d2702608a7307a449206065916538e384f37b181565447ce2637ae09828427aed9cb5581
+  languageName: node
+  linkType: hard
+
 "dayjs@npm:^1.10.4":
   version: 1.11.10
   resolution: "dayjs@npm:1.11.10"
@@ -8283,6 +8373,7 @@ __metadata:
     "@svgr/webpack": "npm:^8.1.0"
     "@tanstack/react-query": "npm:^5.17.15"
     "@tanstack/react-query-devtools": "npm:^5.17.18"
+    "@toss/use-funnel": "npm:^1.3.1"
     "@types/github-label-sync": "npm:^2"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
@@ -12437,6 +12528,13 @@ __metadata:
   version: 4.4.0
   resolution: "lodash.startcase@npm:4.4.0"
   checksum: bd82aa87a45de8080e1c5ee61128c7aee77bf7f1d86f4ff94f4a6d7438fc9e15e5f03374b947be577a93804c8ad6241f0251beaf1452bf716064eeb657b3a9f0
+  languageName: node
+  linkType: hard
+
+"lodash.throttle@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.throttle@npm:4.1.1"
+  checksum: 14628013e9e7f65ac904fc82fd8ecb0e55a9c4c2416434b1dd9cf64ae70a8937f0b15376a39a68248530adc64887ed0fe2b75204b2c9ec3eea1cb2d66ddd125d
   languageName: node
   linkType: hard
 
