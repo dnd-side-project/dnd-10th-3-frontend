@@ -1,13 +1,16 @@
 export const colors = {
   gray: {
-    50: '#F9FAFB',
-    100: '#EDF0F3',
-    200: '#C5C8CB',
-    300: '#9DA0A3',
-    400: '#75787B',
-    500: '#4D5053',
-    600: '#25282B',
-    650: '#151719',
+    50: '#EBF0F5',
+    100: '#E0E8EF',
+    200: '#CCD8E3',
+    300: '#B3C2D1',
+    400: '#9CABBB',
+    500: '#808E9D',
+    600: '#677686',
+    700: '#505B68',
+    800: '#3A424B',
+    900: '#23282E',
+    1000: '#151719',
   },
   purple: {
     80: '#4B25B5',
@@ -39,9 +42,15 @@ export const colors = {
     500: '#FFA3D2',
     600: '#FF91C6',
     700: '#FF75B8',
+    800: '#FF3DA0',
   },
   auth: {
     kakao: '#FEE500',
   },
+  secondary: {
+    deep: '#5382FF',
+    light: '#EBF0FF',
+  },
+  warning: '#FB2314',
   current: 'currentColor',
 };

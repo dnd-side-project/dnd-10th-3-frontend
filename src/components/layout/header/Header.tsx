@@ -5,6 +5,7 @@ import { HTMLAttributes } from 'react';
 import LogoImage from '@/assets/images/logo.png';
 import { Icon } from '@/components/common/icon';
 import { IconType } from '@/components/common/icon/assets';
+import { COLORS } from '@/components/common/icon/Icon';
 import { cn } from '@/lib/core';
 
 import { Previous, Tab } from './components';
@@ -14,7 +15,7 @@ const Header = ({ children, className, ...props }: HeaderProps) => {
   return (
     <header
       className={cn(
-        'sticky top-0 z-10 flex w-full items-center justify-between px-xs pb-sm pt-xl',
+        'sticky bg-white top-0 z-50 h-[68px] flex w-full items-center justify-between py-3xs px-2xs',
         className,
       )}
       {...props}
@@ -25,21 +26,18 @@ const Header = ({ children, className, ...props }: HeaderProps) => {
 };
 
 const Logo = () => {
-  return (
-    <Link href="/">
-      <Image src={LogoImage} width={50} height={20} alt="logo" priority />
-    </Link>
-  );
+  return <Image src={LogoImage} width={50} height={20} alt="logo" priority />;
 };
 
 type IconLinkProps = {
   href: string;
   icon: IconType;
+  iconColor?: keyof typeof COLORS;
 };
-const IconLink = ({ href, icon }: IconLinkProps) => {
+const IconLink = ({ href, icon, iconColor = 'gray' }: IconLinkProps) => {
   return (
     <Link href={href}>
-      <Icon icon={icon} color="black" size={20} />
+      <Icon icon={icon} color={iconColor} size={32} />
     </Link>
   );
 };
