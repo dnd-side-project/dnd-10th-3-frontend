@@ -5,8 +5,9 @@ import { motion } from 'framer-motion';
 import { HTMLAttributes } from 'react';
 
 import { cn } from '@/lib/core';
+import { Range } from '@/types/util';
 
-type Props = { gauge: number } & VariantProps<typeof gaugeVariants> &
+type Props = { gauge: Range<0, 101> } & VariantProps<typeof gaugeVariants> &
   HTMLAttributes<HTMLDivElement>;
 
 const gaugeVariants = cva('absolute inset-y-0 -left-full right-full -z-10 -translate-x-full', {
