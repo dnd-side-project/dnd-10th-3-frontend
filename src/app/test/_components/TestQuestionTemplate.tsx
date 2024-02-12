@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
+import { Tag } from '@/components/common/tag';
 import { Typography } from '@/foundations/typography';
 
 import FormLayout from './FormLayout';
@@ -41,11 +42,7 @@ const TestQuestionTemplate = ({
         }
         comment={
           <div className="flex flex-col gap-4xs">
-            <div className="flex w-2xl items-center justify-center rounded-2xl bg-primary-200 py-6xs">
-              {/* TODO : Tag 디자인 시스템 추가 요망 */}
-              <span className="text-primary-600">{badgeStatus}</span>
-            </div>
-            {/* TODO : Typography 디자인 시스템 추가 요망 */}
+            <Tag>{badgeStatus}</Tag>
             <Typography type={'heading2'}>{question}</Typography>
           </div>
         }
@@ -57,7 +54,6 @@ const TestQuestionTemplate = ({
         footer={
           <div className=" flex flex-col gap-3xs">
             {answerList.map((answer, index) => {
-              //HERE : Button에 register 매소드를 연결할 수 없어 하위에 Input 엘리먼트를 추가하였습니다.
               return (
                 <Button
                   variant={'secondary'}
