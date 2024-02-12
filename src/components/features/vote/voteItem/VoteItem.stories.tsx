@@ -80,19 +80,19 @@ export const WithGauge: Story = {
     <>
       <div>내가 선택한 항목이 가장 표가 많은 경우</div>
       <VoteItem>
-        <VoteItem.Gauge color="primary" gauge={50} />
+        <VoteItem.Progress color="primary" progress={50} />
         <VoteItem.Radio disabled checked />
         <VoteItem.Span>5만원</VoteItem.Span>
         <VoteItem.Span className="grow-0 text-primary-700">50표 / 50%</VoteItem.Span>
       </VoteItem>
       <VoteItem>
-        <VoteItem.Gauge color="gray" gauge={25} />
+        <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled />
         <VoteItem.Span>7만원</VoteItem.Span>
         <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
       </VoteItem>
       <VoteItem>
-        <VoteItem.Gauge color="gray" gauge={25} />
+        <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled />
         <VoteItem.Span>10만원</VoteItem.Span>
         <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
@@ -100,19 +100,19 @@ export const WithGauge: Story = {
 
       <div className="mt-sm">내가 선택한 항목이 가장 표가 많지 않은 경우</div>
       <VoteItem>
-        <VoteItem.Gauge color="primary" gauge={50} />
+        <VoteItem.Progress color="primary" progress={50} />
         <VoteItem.Radio disabled />
         <VoteItem.Span>5만원</VoteItem.Span>
         <VoteItem.Span className="grow-0 text-primary-700">50표 / 50%</VoteItem.Span>
       </VoteItem>
       <VoteItem>
-        <VoteItem.Gauge color="gray" gauge={25} />
+        <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled checked color="primary" />
         <VoteItem.Span>7만원</VoteItem.Span>
         <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
       </VoteItem>
       <VoteItem>
-        <VoteItem.Gauge color="gray" gauge={25} />
+        <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled />
         <VoteItem.Span>10만원</VoteItem.Span>
         <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
