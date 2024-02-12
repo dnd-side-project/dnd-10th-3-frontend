@@ -8,6 +8,7 @@ export type Props = {
 
 // TODO 디자인 상 아이콘 색깔이 통일되었을 때 재구성 필요
 export const COLORS = {
+  lightGray: '#B3C2D1',
   gray: '#9DA0A3',
   pink: '#FF91C6',
   black: '#151719',
