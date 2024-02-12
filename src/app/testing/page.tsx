@@ -9,7 +9,7 @@ import FormLayout from './components/FormLayout';
 const Home = () => {
   const userName = '상대';
   return (
-    <main className={'relative flex h-dvh w-full flex-col items-center  px-4 pb-10'}>
+    <main className={'relative flex h-dvh w-full flex-col items-center px-4 pb-5'}>
       <FormLayout
         header={
           <>

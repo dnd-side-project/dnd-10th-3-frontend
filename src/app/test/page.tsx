@@ -32,7 +32,7 @@ const Home = () => {
         <Input type="fit" placeholder=" 상대 이름을 입력해주세요" className="text-center" />
       </div>
       <div className="flex w-full flex-col items-center">
-        <div className="absolute bottom-[10px] flex w-[95%] flex-col px-xs">
+        <div className="absolute bottom-[20px] flex w-[95%] flex-col px-xs">
           <Button className=" bg-gray-700" width="full">
             <Typography type={'body1'} className="text-white">
               테스트하고 축의금 알아보기
