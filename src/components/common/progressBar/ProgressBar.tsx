@@ -18,7 +18,7 @@ export const ProgressBar = ({ currentProgress, width, ...props }: ProgressBarPro
     <div className={cn(ProgressBarContainerVariants({ width }))} {...props}>
       <div className="relative h-[6px] w-[100%] rounded-lg bg-gray-100">
         <div
-          className="absolute left-0 top-0 z-[1] h-[6px] rounded-lg bg-primary-600"
+          className="absolute left-0 top-0 z-[1] h-[6px] rounded-lg bg-primary-700"
           style={{ width: `${currentProgress}%` }}
         />
       </div>
