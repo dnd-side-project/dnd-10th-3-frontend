@@ -25,4 +25,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Loading>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+  args: {
+    progress: 50,
+  },
+};
