@@ -1,3 +1,5 @@
+import { colors } from 'styles/theme';
+
 import Add from './Add';
 import Airplane from './Airplane';
 import Check from './Check';
@@ -23,7 +25,6 @@ import Submit from './Submit';
 import User from './User';
 import Votebox from './Votebox';
 import X from './X';
-import { colors } from '../../../../../styles/theme';
 
 export const iconMap = {
   filledHeart: FilledHeart,
