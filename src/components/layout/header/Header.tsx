@@ -15,7 +15,7 @@ const Header = ({ children, className, ...props }: HeaderProps) => {
   return (
     <header
       className={cn(
-        'sticky bg-white top-0 z-50 h-[68px] flex w-full items-center justify-between py-3xs px-2xs',
+        'sticky bg-inherit top-0 z-50 h-[68px] flex w-full items-center justify-between py-3xs px-2xs',
         className,
       )}
       {...props}
