@@ -4,8 +4,7 @@ import { HTMLAttributes } from 'react';
 
 import LogoImage from '@/assets/images/logo.png';
 import { Icon } from '@/components/common/icon';
-import { IconType } from '@/components/common/icon/assets';
-import { COLORS } from '@/components/common/icon/Icon';
+import { IconColor, IconType } from '@/components/common/icon/assets';
 import { cn } from '@/lib/core';
 
 import { Previous, Tab } from './components';
@@ -32,9 +31,9 @@ const Logo = () => {
 type IconLinkProps = {
   href: string;
   icon: IconType;
-  iconColor?: keyof typeof COLORS;
+  iconColor?: IconColor;
 };
-const IconLink = ({ href, icon, iconColor = 'gray' }: IconLinkProps) => {
+const IconLink = ({ href, icon, iconColor = 'gray-300' }: IconLinkProps) => {
   return (
     <Link href={href}>
       <Icon icon={icon} color={iconColor} size={32} />

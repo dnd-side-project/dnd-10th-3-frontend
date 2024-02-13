@@ -31,6 +31,7 @@ const config: StorybookConfig = {
       ...config.resolve.alias,
       // path alias 추가
       '@': path.resolve(__dirname, '../src'),
+      styles: path.resolve(__dirname, '../styles'),
     };
 
     const imageRule = config.module?.rules?.find((rule) => {

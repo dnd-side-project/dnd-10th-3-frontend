@@ -1,5 +1,4 @@
-import { IconType } from '../icon/assets';
-import { COLORS } from '../icon/Icon';
+import { IconColor, IconType } from '../icon/assets';
 
 export type LoadingProps = {
   isLoading?: boolean;
@@ -10,7 +9,7 @@ export type IconProps =
       icon?: IconType;
       iconSide?: 'left' | 'right';
       iconOnly?: false;
-      iconColor?: keyof typeof COLORS;
+      iconColor?: IconColor;
       iconSize?: number;
       children: React.ReactNode;
     }
@@ -18,7 +17,7 @@ export type IconProps =
       icon: IconType;
       iconSide?: never;
       iconOnly: true;
-      iconColor?: keyof typeof COLORS;
+      iconColor?: IconColor;
       iconSize?: number;
       children?: never;
     };
