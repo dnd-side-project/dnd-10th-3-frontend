@@ -7,7 +7,15 @@ import { cn } from '@/lib/core';
 type Props = { icon: IconType } & Omit<ComponentProps<typeof Button>, 'icon'>;
 
 const IconButton = ({ icon, className }: Props) => {
-  return <Button variant="empty" iconOnly icon={icon} className={cn('!p-0', className)} />;
+  return (
+    <Button
+      variant="empty"
+      iconOnly
+      icon={icon}
+      iconColor="gray-300"
+      className={cn('!p-0', className)}
+    />
+  );
 };
 
 export default IconButton;

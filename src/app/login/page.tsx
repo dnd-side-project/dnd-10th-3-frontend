@@ -10,7 +10,7 @@ const LoginPage = () => {
     <div className="relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4 pb-10">
       <Header>
         <Header.Logo />
-        <Header.IconLink href="/my-page" icon="user" />
+        <Header.IconLink href="/my-page" icon="mypage" />
       </Header>
 
       <div className="mt-16 flex flex-col items-center gap-1">
