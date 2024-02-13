@@ -48,29 +48,11 @@ export const WithHeight: Story = {
   render: () => (
     <>
       <DummyTypo />
-      <Divider height={'sm'} />
+      <Divider height={1} />
       <DummyTypo />
-      <Divider height={'md'} />
+      <Divider height={2} />
       <DummyTypo />
-      <Divider height={'lg'} />
-      <DummyTypo />
-    </>
-  ),
-};
-
-export const WithMargin: Story = {
-  render: () => (
-    <>
-      <DummyTypo />
-      <Divider margin={'xs'} />
-      <DummyTypo />
-      <Divider margin={'sm'} />
-      <DummyTypo />
-      <Divider margin={'md'} />
-      <DummyTypo />
-      <Divider margin={'lg'} />
-      <DummyTypo />
-      <Divider margin={'xl'} />
+      <Divider height={8} />
       <DummyTypo />
     </>
   ),
@@ -80,9 +62,11 @@ export const WithColor: Story = {
   render: () => (
     <>
       <DummyTypo />
-      <Divider color="dimmed" />
+      <Divider color="gray-50" />
       <DummyTypo />
-      <Divider color="primary" />
+      <Divider color="gray-100" />
+      <DummyTypo />
+      <Divider color="gray-600" />
       <DummyTypo />
     </>
   ),
@@ -94,24 +78,19 @@ export const Playground: Story = {
       control: { type: 'inline-radio' },
       options: ['25%', '50%', '100%'],
     },
-    margin: {
-      control: { type: 'inline-radio' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
     color: {
       control: { type: 'inline-radio' },
-      options: ['primary', 'dimmed'],
+      options: ['gray-50', 'gray-100', 'gray-600'],
     },
     height: {
       control: { type: 'inline-radio' },
-      options: ['sm', 'md', 'lg'],
+      options: [1, 2, 8],
     },
   },
   args: {
     width: '100%',
-    margin: 'md',
-    color: 'dimmed',
-    height: 'sm',
+    color: 'gray-50',
+    height: 1,
   },
   render: (args) => (
     <>
