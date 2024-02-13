@@ -23,6 +23,7 @@ import Submit from './Submit';
 import User from './User';
 import Votebox from './Votebox';
 import X from './X';
+import { colors } from '../../../../../styles/theme';
 
 export const iconMap = {
   filledHeart: FilledHeart,
@@ -52,5 +53,16 @@ export const iconMap = {
   user: User,
 };
 
+export const COLORS = {
+  'gray-1000': colors['gray'][1000],
+  'gray-400': colors['gray'][400],
+  'gray-300': colors['gray'][300],
+  'gray-200': colors['gray'][200],
+  'gray-100': colors['gray'][100],
+  'primary-700': colors['primary'][700],
+  white: '#ffffff',
+};
+
 export type IconType = keyof typeof iconMap;
+export type IconColor = keyof typeof COLORS;
 export const iconList = Object.keys(iconMap) as IconType[];

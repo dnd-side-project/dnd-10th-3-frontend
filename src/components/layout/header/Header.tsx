@@ -34,7 +34,7 @@ type IconLinkProps = {
   icon: IconType;
   iconColor?: keyof typeof COLORS;
 };
-const IconLink = ({ href, icon, iconColor = 'gray' }: IconLinkProps) => {
+const IconLink = ({ href, icon, iconColor = 'gray-300' }: IconLinkProps) => {
   return (
     <Link href={href}>
       <Icon icon={icon} color={iconColor} size={32} />
