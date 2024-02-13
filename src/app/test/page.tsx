@@ -1,3 +1,8 @@
+/**
+ * HERE: - TestQuestionTemplate 컴포넌트를 만들어 정적 데이터를 주입 받도록 구현하였습니다. 다만 기능 구현을 위해 빠르게 구현한 부분이라
+ * 더 간결한 방법이 있는지 궁금합니다. 사소한 부분이라도 알려주시면 바로 수정하겠습니다! 감사합니다.
+ */
+
 'use client';
 
 import Image from 'next/image';
