@@ -62,7 +62,7 @@ export const Basic: Story = {
 };
 
 export const SearchInput: Story = {
-  render: () => <Example icon="search" iconSide="left" borderRadius="larger" bgcolor="gray" />,
+  render: () => <Example icon="search" iconSide="left" borderRadius="large" bgcolor="gray" />,
 };
 
 export const EmptyInput: Story = {
