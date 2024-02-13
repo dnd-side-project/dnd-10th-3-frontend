@@ -10,7 +10,7 @@ const VoteHeader = () => {
         <Header.IconLink href="/my-page" icon="user" />
       </Header>
 
-      <div className="sticky top-[126px] z-30 bg-white px-4">
+      <div className="sticky top-[68px] z-30 bg-white px-4">
         <Tabs
           tabItems={[
             '전체',

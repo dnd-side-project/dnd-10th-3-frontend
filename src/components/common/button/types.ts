@@ -11,6 +11,7 @@ export type IconProps =
       iconSide?: 'left' | 'right';
       iconOnly?: false;
       iconColor?: keyof typeof COLORS;
+      iconSize?: number;
       children: React.ReactNode;
     }
   | {
@@ -18,5 +19,6 @@ export type IconProps =
       iconSide?: never;
       iconOnly: true;
       iconColor?: keyof typeof COLORS;
+      iconSize?: number;
       children?: never;
     };
