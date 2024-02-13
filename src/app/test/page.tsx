@@ -7,7 +7,7 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 
 import LogoImage from '@/assets/images/logo.png';
 import { default as WorryImage } from '@/assets/images/test-worry.png';
@@ -20,16 +20,17 @@ import { Typography } from '@/foundations/typography';
 import { Range } from '@/types/util';
 
 import { Step, TestQuestionTemplate } from './_components';
+import { initialState, reducer } from './_helper/reducer';
 
 export type StepProps = Range<0, 12>;
+
 const Home = () => {
   const router = useRouter();
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [step, setStep] = useState<StepProps>(0);
 
-  // 의도 : 임시 로직입니다.
   const handleChangeStep = (index: StepProps) => {
     if (index === QUESTIONS_ORDERS.lastPage) router.push('/test/result');
-
     setStep((index + 2) as StepProps);
   };
 
@@ -56,10 +57,16 @@ const Home = () => {
             <Image src={WorryImage} width={275} alt="logo" priority />
           </div>
           <div className="flex w-[80%] justify-center px-5xs py-3xs">
-            <Input type="fit" placeholder=" 상대 이름을 입력해주세요" className="text-center" />
+            <Input
+              type="fit"
+              placeholder=" 상대 이름을 입력해주세요"
+              className="text-center"
+              value={state.buddy}
+              onChange={(e) => dispatch({ type: 'setBuddyName', value: e.target.value })}
+            />
           </div>
           <div className="flex w-full flex-col items-center">
-            <div className="absolute bottom-[10px] flex w-[95%] flex-col px-xs">
+            <div className="absolute bottom-[20px] flex w-[95%] flex-col px-xs">
               <Button className=" bg-gray-700" width="full">
                 <Typography type={'body1'} className="text-white" onClick={() => setStep(1)}>
                   테스트하고 축의금 알아보기
@@ -74,6 +81,10 @@ const Home = () => {
         return (
           <Step check={step === question.id} key={question.id}>
             <TestQuestionTemplate
+              id={question.id}
+              onDispatchEvent={(value) =>
+                dispatch({ type: `${QUESTIONS[index].type}`, value: value })
+              }
               onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
               question={QUESTIONS[index].question}
               image={QUESTIONS[index].image}

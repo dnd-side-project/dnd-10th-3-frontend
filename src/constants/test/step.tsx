@@ -1,7 +1,10 @@
 import { ReactNode } from 'react';
 
+import { TestActionType } from '@/app/test/_helper/reducer';
+
 type Question = {
   id: number;
+  type: TestActionType;
   badgeStatus?: string;
   question: ReactNode;
   image: string;
@@ -17,6 +20,7 @@ export const QUESTIONS_ORDERS = {
 export const QUESTIONS: Question[] = [
   {
     id: 1,
+    type: 'setFirstPreQuestion',
     badgeStatus: '사전',
     question: (
       <>
@@ -31,6 +35,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 2,
     badgeStatus: '사전',
+    type: 'setSecondPreQuestion',
     question: (
       <>
         사전 질문 마지막 단계예요. <br />
@@ -43,6 +48,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 3,
+    type: 'love',
     question: (
       <>
         나는 상대에게 <br /> 마지막 남은 닭다리 하나를 <br />
@@ -55,6 +61,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 4,
+    type: 'talk',
     question: (
       <>
         초췌한 몰골로 <br /> 짚 앞 슈퍼에 나온 나, <br />
@@ -67,6 +74,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 5,
+    type: 'trust',
     question: (
       <>
         지인의 결혼식과 <br /> 상대의 결혼식이 겹쳤다.
@@ -80,6 +88,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 6,
+    type: 'talk',
     question: (
       <>
         나는 상대와 <br /> 단둘이 식사를 할 수 있다.
@@ -91,6 +100,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 7,
+    type: 'love',
     question: (
       <>
         상대의 생일날 <br /> 나의 반응은?
@@ -102,6 +112,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 8,
+    type: 'trust',
     question: (
       <>
         상대가 결혼할 사람이라며
@@ -114,6 +125,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 9,
+    type: 'trust',
     question: (
       <>
         상대에게 다수가 모르는 <br /> 나의 비밀이나 고민을
@@ -126,6 +138,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 10,
+    type: 'trust',
     question: (
       <>
         상대와 만나기로 약속한 당일 <br /> 갑자기 연락이 없다. <br /> 나의 반응은?
@@ -140,6 +153,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 11,
+    type: 'trust',
     question: (
       <>
         상대가 연락와서

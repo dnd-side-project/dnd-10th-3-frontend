@@ -6,11 +6,13 @@ import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Tag } from '@/components/common/tag';
+import { PRE_QUESTIONS_LENGTH } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
 
 import FormLayout from './FormLayout';
 
 type Props = {
+  id: number;
   onChangeStep: () => void;
   progress: number;
   badgeStatus: string;
@@ -18,9 +20,11 @@ type Props = {
   image: string | StaticImport;
   answerList: string[];
   onPrevStep?: () => void;
+  onDispatchEvent: (value: string) => void;
 };
 
 const TestQuestionTemplate = ({
+  id,
   answerList,
   badgeStatus,
   image,
@@ -28,9 +32,10 @@ const TestQuestionTemplate = ({
   progress,
   onChangeStep,
   onPrevStep,
+  onDispatchEvent,
 }: Props) => {
   return (
-    <main className={'relative flex h-dvh w-full flex-col items-center  px-4 pb-10'}>
+    <main className={'relative flex h-dvh w-full flex-col items-center px-4 pb-5'}>
       <FormLayout
         header={
           <>
@@ -58,7 +63,19 @@ const TestQuestionTemplate = ({
                 <Button
                   variant={'secondary'}
                   width="full"
-                  onClick={onChangeStep}
+                  onClick={() => {
+                    if (id <= PRE_QUESTIONS_LENGTH) {
+                      onChangeStep();
+                      onDispatchEvent(answer);
+
+                      //긍정 답변일 경우 + 1 의도
+                    } else if (index === 0) {
+                      onChangeStep();
+                      onDispatchEvent(answer);
+                    } else {
+                      onChangeStep();
+                    }
+                  }}
                   key={index}
                   className="h-md"
                 >
