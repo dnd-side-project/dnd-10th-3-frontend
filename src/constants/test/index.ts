@@ -1,2 +1,3 @@
-export { QESTIONS_ORDERS_LENGTH } from './progress';
-export { QESTIONS_ORDERS, QUESTIONS } from './step';
+export { QUESTIONS_ORDERS_LENGTH } from './progress';
+export { QUESTIONS, QUESTIONS_ORDERS } from './step';
+

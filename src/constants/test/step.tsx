@@ -9,7 +9,7 @@ type Question = {
   answerList: string[];
 };
 
-export const QESTIONS_ORDERS = {
+export const QUESTIONS_ORDERS = {
   home: 0,
   lastPage: 10,
 };

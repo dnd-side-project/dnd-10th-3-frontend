@@ -14,13 +14,12 @@ import { default as WorryImage } from '@/assets/images/test-worry.png';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Header } from '@/components/layout/header';
-import { PRE_QESTIONS_LENGTH, QESTIONS_ORDERS_LENGTH } from '@/constants/test/progress';
-import { QESTIONS_ORDERS, QUESTIONS } from '@/constants/test/step';
+import { PRE_QUESTIONS_LENGTH, QUESTIONS_ORDERS_LENGTH } from '@/constants/test/progress';
+import { QUESTIONS, QUESTIONS_ORDERS } from '@/constants/test/step';
 import { Typography } from '@/foundations/typography';
 import { Range } from '@/types/util';
 
-import Step from './_components/Step';
-import TestQuestionTemplate from './_components/TestQuestionTemplate';
+import { Step, TestQuestionTemplate } from './_components';
 
 export type StepProps = Range<0, 12>;
 const Home = () => {
@@ -29,16 +28,16 @@ const Home = () => {
 
   // 의도 : 임시 로직입니다.
   const handleChangeStep = (index: StepProps) => {
-    if (index === QESTIONS_ORDERS.lastPage) router.push('/test/result');
+    if (index === QUESTIONS_ORDERS.lastPage) router.push('/test/result');
 
     setStep((index + 2) as StepProps);
   };
 
-  const totalPages = QESTIONS_ORDERS_LENGTH;
+  const totalPages = QUESTIONS_ORDERS_LENGTH;
 
   return (
     <>
-      <Step check={step === QESTIONS_ORDERS.home}>
+      <Step check={step === QUESTIONS_ORDERS.home}>
         <main className={'relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4'}>
           {/* TODO : 아이폰 크기일 경우 INPUT이 화면에서 짤리는 상황, 추후 디자인 수정 이후 변경 필수 */}
           <Header>
@@ -80,7 +79,7 @@ const Home = () => {
               image={QUESTIONS[index].image}
               badgeStatus={
                 QUESTIONS[index].badgeStatus ||
-                `${QUESTIONS[index].progress - PRE_QESTIONS_LENGTH}/${totalPages - PRE_QESTIONS_LENGTH}`
+                `${QUESTIONS[index].progress - PRE_QUESTIONS_LENGTH}/${totalPages - PRE_QUESTIONS_LENGTH}`
               }
               progress={(QUESTIONS[index].progress / totalPages) * 100}
               onChangeStep={() => handleChangeStep(index as StepProps)}
