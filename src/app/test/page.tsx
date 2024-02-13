@@ -22,7 +22,7 @@ const Home = () => {
 
   // 의도 : 임시 로직입니다.
   const handleChangeStep = (index: StepProps) => {
-    if (index === 3) {
+    if (index === 10) {
       setStep(0);
     } else {
       setStep((index + 2) as StepProps);
