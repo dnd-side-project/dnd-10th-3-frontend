@@ -31,7 +31,7 @@ export const MainHeader: Story = {
     <Header>
       <Header.Logo />
       <Header.Tab />
-      <Header.IconLink href="/my-page" icon="user" iconColor="lightGray" />
+      <Header.IconLink href="/my-page" icon="mypage" iconColor="gray-300" />
     </Header>
   ),
 };
@@ -40,7 +40,7 @@ export const MainHeaderWithoutTab: Story = {
   render: () => (
     <Header>
       <Header.Logo />
-      <Header.IconLink href="/my-page" icon="user" iconColor="lightGray" />
+      <Header.IconLink href="/my-page" icon="mypage" iconColor="gray-300" />
     </Header>
   ),
 };
@@ -57,7 +57,7 @@ export const PreviousAndSettings: Story = {
   render: () => (
     <Header>
       <Header.Previous />
-      <Header.IconLink href="/my-page/settings" icon="settings" iconColor="black" />
+      <Header.IconLink href="/my-page/settings" icon="settings" iconColor="gray-1000" />
     </Header>
   ),
 };

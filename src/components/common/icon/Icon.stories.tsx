@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Icon } from '.';
-import { iconList } from './assets';
+import { COLORS, iconList } from './assets';
 
 const meta = {
   title: 'components/common/icon',
@@ -23,37 +23,26 @@ export default meta;
 type Story = StoryObj<typeof Icon>;
 
 export const Basic: Story = {
-  render: () => (
+  args: {
+    color: 'gray-1000',
+  },
+  argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: Object.keys(COLORS),
+    },
+    icon: {
+      control: false,
+    },
+    size: {
+      control: false,
+    },
+  },
+  render: ({ color }) => (
     <div className="grid grid-cols-4 gap-4">
       {iconList.map((icon) => (
         <div key={icon} className="flex flex-col items-center justify-center gap-1">
-          <Icon icon={icon} size={30} />
-          <span>{icon}</span>
-        </div>
-      ))}
-    </div>
-  ),
-};
-
-export const Pink: Story = {
-  render: () => (
-    <div className="grid grid-cols-4 gap-4">
-      {iconList.map((icon) => (
-        <div key={icon} className="flex flex-col items-center justify-center gap-1">
-          <Icon icon={icon} size={30} color="pink" />
-          <span>{icon}</span>
-        </div>
-      ))}
-    </div>
-  ),
-};
-
-export const Black: Story = {
-  render: () => (
-    <div className="grid grid-cols-4 gap-4">
-      {iconList.map((icon) => (
-        <div key={icon} className="flex flex-col items-center justify-center gap-1">
-          <Icon icon={icon} size={30} color="black" />
+          <Icon icon={icon} size={30} color={color} />
           <span>{icon}</span>
         </div>
       ))}
@@ -74,7 +63,7 @@ export const Playground: Story = {
   args: {
     icon: 'heart',
     size: 20,
-    color: 'gray',
+    color: 'gray-1000',
   },
   render: (args) => (
     <>

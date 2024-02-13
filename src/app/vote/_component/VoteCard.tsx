@@ -48,13 +48,13 @@ const VoteCard = () => {
           <div className="flex w-full justify-between gap-4xs">
             <div className="flex items-center gap-6xs">
               <div className="flex items-center gap-6xs">
-                <Icon icon="heart" size={13} color="pink" />
+                <Icon icon="heart" size={13} color="primary-700" />
                 <Typography type="body3" className="text-gray-400">
                   123
                 </Typography>
               </div>
               <div className="flex w-full items-center gap-6xs">
-                <Icon icon="reply" size={13} />
+                <Icon icon="reply" size={13} color="gray-300" />
                 <Typography type="body3" className="text-gray-400">
                   32
                 </Typography>

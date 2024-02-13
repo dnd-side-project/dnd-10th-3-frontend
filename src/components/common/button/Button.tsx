@@ -21,7 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       children,
       icon,
-      iconColor = 'gray',
+      iconColor = 'gray-300',
       iconSize = 20,
       iconOnly = false,
       iconSide = 'left',

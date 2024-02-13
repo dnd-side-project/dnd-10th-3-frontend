@@ -9,7 +9,7 @@ const Previous = () => {
 
   return (
     <button onClick={() => router.back()}>
-      <Icon icon="chevronLeft" color="black" size={20} />
+      <Icon icon="chevronLeft" color="gray-1000" size={20} />
     </button>
   );
 };

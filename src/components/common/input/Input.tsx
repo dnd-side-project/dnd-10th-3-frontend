@@ -24,7 +24,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
       bgcolor,
       icon,
-      iconColor = 'gray',
+      iconColor = 'gray-400',
       iconSide = 'left',
       onSubmit = () => {},
       ...props
