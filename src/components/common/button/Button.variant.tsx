@@ -5,8 +5,8 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-gray-600 text-gray-100',
-        secondary: 'bg-gray-100 text-gray-600',
+        primary: 'bg-gray-1000 text-white',
+        secondary: 'bg-gray-100 text-gray-1000',
         empty: 'bg-transparent',
       },
       width: {
