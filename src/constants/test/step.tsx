@@ -11,6 +11,7 @@ type Question = {
 
 export const QESTIONS_ORDERS = {
   home: 0,
+  lastPage: 10,
 };
 
 export const QUESTIONS: Question[] = [

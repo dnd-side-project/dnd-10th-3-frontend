@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import LogoImage from '@/assets/images/logo.png';
@@ -18,15 +19,14 @@ import TestQuestionTemplate from './_components/TestQuestionTemplate';
 
 export type StepProps = Range<0, 12>;
 const Home = () => {
+  const router = useRouter();
   const [step, setStep] = useState<StepProps>(0);
 
   // 의도 : 임시 로직입니다.
   const handleChangeStep = (index: StepProps) => {
-    if (index === 10) {
-      setStep(0);
-    } else {
-      setStep((index + 2) as StepProps);
-    }
+    if (index === QESTIONS_ORDERS.lastPage) router.push('/test/result');
+
+    setStep((index + 2) as StepProps);
   };
 
   const totalPages = QESTIONS_ORDERS_LENGTH;
