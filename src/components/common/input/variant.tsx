@@ -12,15 +12,13 @@ export const inputContainerVariants = cva('flex w-full items-center gap-5xs bord
     borderRadius: {
       basic: 'rounded-md',
       large: 'rounded-lg',
-      larger: 'rounded-3xl',
     },
     height: {
-      basic: 'h-md',
-      large: 'h-[52px]',
-      larger: 'h-xl',
+      basic: 'h-[36px]',
+      large: 'h-md',
     },
     isFocused: {
-      true: 'border-primary-700',
+      true: 'border-primary-700 bg-white',
       false: 'border-gray-100',
     },
     disabled: {
@@ -30,7 +28,7 @@ export const inputContainerVariants = cva('flex w-full items-center gap-5xs bord
   defaultVariants: {
     borderRadius: 'basic',
     height: 'basic',
-    bgcolor: 'white',
+    bgcolor: 'gray',
   },
 });
 

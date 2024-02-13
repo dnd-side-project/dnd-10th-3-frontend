@@ -5,8 +5,8 @@ import { Icon } from '@/components/common/icon';
 import { Spinner } from '@/components/common/spinner';
 import { cn } from '@/lib/core';
 
+import { buttonVariants } from './Button.variant';
 import { IconProps, LoadingProps } from './types';
-import { buttonVariants } from './variant';
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> &
@@ -36,7 +36,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type="button"
         className={cn(
           buttonVariants({ variant, width, className }),
-          disabled && 'cursor-not-allowed opacity-40',
+          disabled && 'cursor-not-allowed text-gray-400 bg-[#D7DBE0]',
         )}
         ref={ref}
         {...props}
