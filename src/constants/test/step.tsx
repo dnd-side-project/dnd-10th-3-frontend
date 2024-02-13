@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 type Question = {
   id: number;
-  badgeStatus: string;
+  badgeStatus?: string;
   question: ReactNode;
   image: string;
   progress: number;
@@ -24,7 +24,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 0,
+    progress: 1,
     answerList: ['남성', '여성'],
   },
   {
@@ -37,12 +37,11 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 0,
+    progress: 2,
     answerList: ['10대', '20대', '30대', '40대'],
   },
   {
     id: 3,
-    badgeStatus: '1/10',
     question: (
       <>
         나는 상대에게 <br /> 마지막 남은 닭다리 하나를 <br />
@@ -50,12 +49,23 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 10,
+    progress: 3,
     answerList: ['예', '아니요'],
   },
   {
     id: 4,
-    badgeStatus: '10/10',
+    question: (
+      <>
+        초췌한 몰골로 <br /> 짚 앞 슈퍼에 나온 나, <br />
+        우연히 상대와 마주쳤다면?
+      </>
+    ),
+    image: `/images/testWorry.png`,
+    progress: 4,
+    answerList: ['창피하지만 인사정도 나눌 수 있다.', '조용히 최대한 피한다.'],
+  },
+  {
+    id: 4,
     question: (
       <>
         상대가 와서 <br /> 축사를 하기로 약속했다.

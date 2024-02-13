@@ -8,7 +8,8 @@ import { default as WorryImage } from '@/assets/images/test-worry.png';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Header } from '@/components/layout/header';
-import { QESTIONS_ORDERS, QUESTIONS } from '@/constants/step';
+import { PRE_QESTIONS_LENGTH, QESTIONS_ORDERS_LENGTH } from '@/constants/test/progress';
+import { QESTIONS_ORDERS, QUESTIONS } from '@/constants/test/step';
 import { Typography } from '@/foundations/typography';
 import { Range } from '@/types/util';
 
@@ -27,6 +28,8 @@ const Home = () => {
       setStep((index + 2) as StepProps);
     }
   };
+
+  const totalPages = QESTIONS_ORDERS_LENGTH;
 
   return (
     <>
@@ -70,8 +73,11 @@ const Home = () => {
               onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
               question={QUESTIONS[index].question}
               image={QUESTIONS[index].image}
-              badgeStatus={QUESTIONS[index].badgeStatus}
-              progress={QUESTIONS[index].progress}
+              badgeStatus={
+                QUESTIONS[index].badgeStatus ||
+                `${QUESTIONS[index].progress - PRE_QESTIONS_LENGTH}/${totalPages - PRE_QESTIONS_LENGTH}`
+              }
+              progress={(QUESTIONS[index].progress / totalPages) * 100}
               onChangeStep={() => handleChangeStep(index as StepProps)}
               answerList={QUESTIONS[index].answerList}
             />

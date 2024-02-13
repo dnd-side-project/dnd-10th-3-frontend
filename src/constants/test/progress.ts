@@ -1,0 +1,2 @@
+export const QESTIONS_ORDERS_LENGTH = 11;
+export const PRE_QESTIONS_LENGTH = 2;
