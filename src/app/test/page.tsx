@@ -8,18 +8,18 @@ import { default as WorryImage } from '@/assets/images/test-worry.png';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Header } from '@/components/layout/header';
-import { question } from '@/constants/step';
+import { QESTIONS_ORDERS, QUESTIONS } from '@/constants/step';
 import { Typography } from '@/foundations/typography';
 import { Range } from '@/types/util';
 
 import Step from './_components/Step';
 import TestQuestionTemplate from './_components/TestQuestionTemplate';
 
-export type StepProps = Range<0, 13>;
+export type StepProps = Range<0, 12>;
 const Home = () => {
   const [step, setStep] = useState<StepProps>(0);
 
-  // 의도 :  임시 로직입니다.
+  // 의도 : 임시 로직입니다.
   const handleChangeStep = (index: StepProps) => {
     if (index === 3) {
       setStep(0);
@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <>
-      <Step check={step === 0}>
+      <Step check={step === QESTIONS_ORDERS.home}>
         <main className={'relative flex h-dvh w-full flex-col items-center bg-mainGradient px-4'}>
           {/* TODO : 아이폰 크기일 경우 INPUT이 화면에서 짤리는 상황, 추후 디자인 수정 이후 변경 필수 */}
           <Header>
@@ -63,17 +63,17 @@ const Home = () => {
         </main>
       </Step>
 
-      {question.map((element, index) => {
+      {QUESTIONS.map((question, index) => {
         return (
-          <Step check={step === element.id} key={element.id}>
+          <Step check={step === question.id} key={question.id}>
             <TestQuestionTemplate
               onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
-              question={question[index].question}
-              image={question[index].image}
-              badgeStatus={question[index].badgeStatus}
-              progress={question[index].progress}
+              question={QUESTIONS[index].question}
+              image={QUESTIONS[index].image}
+              badgeStatus={QUESTIONS[index].badgeStatus}
+              progress={QUESTIONS[index].progress}
               onChangeStep={() => handleChangeStep(index as StepProps)}
-              answerList={question[index].answerList}
+              answerList={QUESTIONS[index].answerList}
             />
           </Step>
         );

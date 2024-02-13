@@ -9,7 +9,11 @@ type Question = {
   answerList: string[];
 };
 
-export const question: Question[] = [
+export const QESTIONS_ORDERS = {
+  home: 0,
+};
+
+export const QUESTIONS: Question[] = [
   {
     id: 1,
     badgeStatus: '사전',
