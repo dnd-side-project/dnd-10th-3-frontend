@@ -82,8 +82,8 @@ const Home = () => {
           <Step check={step === question.id} key={question.id}>
             <TestQuestionTemplate
               id={question.id}
-              onDispatchEvent={(value) =>
-                dispatch({ type: `${QUESTIONS[index].type}`, value: value })
+              onDispatchEvent={(buttonValue) =>
+                dispatch({ type: `${QUESTIONS[index].type}`, value: buttonValue })
               }
               onPrevStep={() => setStep((prev) => (prev - 1) as StepProps)}
               question={QUESTIONS[index].question}
