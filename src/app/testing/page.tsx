@@ -15,7 +15,7 @@ const Home = () => {
           <>
             {'< 임시 아이콘'}
             <br />
-            <ProgressBar currentProgress={10} className="pt-3xs" />
+            <ProgressBar progress={10} className="pt-3xs" />
           </>
         }
         comment={

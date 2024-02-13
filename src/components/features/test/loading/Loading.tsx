@@ -14,7 +14,7 @@ const Loading = ({ progress }: Props) => {
     <div className="flex w-full flex-col items-center justify-center gap-xl">
       <Typography type="heading1">계산하는중</Typography>
       <Image src={ErrorWorry} width={126} alt="loadingWorry" />
-      <ProgressBar currentProgress={progress} />
+      <ProgressBar progress={progress} />
     </div>
   );
 };

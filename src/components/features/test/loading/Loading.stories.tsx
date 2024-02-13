@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Loading from './Loading';
 
@@ -11,8 +11,8 @@ const meta = {
   decorators: [
     (Story) => (
       <div className="bg-slate-200">
-        <div className="layout bg-white p-2xs">
-          <div className="flex w-full gap-2">
+        <div className="layout bg-white">
+          <div className="flex h-dvh w-full items-center justify-center p-xs">
             <Story />
           </div>
         </div>

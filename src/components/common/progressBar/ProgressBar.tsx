@@ -8,16 +8,16 @@ import { ProgressBarContainerVariants } from './variant';
 
 type ProgressBarProps = HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof ProgressBarContainerVariants> & {
-    currentProgress: number;
+    progress: number;
   };
 
-export const ProgressBar = ({ currentProgress, width, ...props }: ProgressBarProps) => {
+export const ProgressBar = ({ progress, width, ...props }: ProgressBarProps) => {
   return (
     <div className={cn(ProgressBarContainerVariants({ width }))} {...props}>
       <div className="relative h-[6px] overflow-hidden rounded-lg bg-gray-100">
         <motion.div
           className="absolute inset-y-0 -left-full right-full -translate-x-full rounded-lg bg-primary-700"
-          animate={{ x: `${currentProgress}%` }}
+          animate={{ x: `${progress}%` }}
           transition={{ type: 'tween', duration: 0.5, delay: 0.2 }}
         />
       </div>
