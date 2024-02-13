@@ -22,6 +22,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       icon,
       iconColor = 'gray',
+      iconSize = 20,
       iconOnly = false,
       iconSide = 'left',
       isLoading,
@@ -42,12 +43,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading && <Spinner />}
         {iconOnly ? (
-          <Icon icon={icon!} size={20} color={iconColor} />
+          <Icon icon={icon!} size={iconSize} color={iconColor} />
         ) : (
           <>
-            {icon && iconSide === 'left' && <Icon icon={icon} size={20} color={iconColor} />}
+            {icon && iconSide === 'left' && <Icon icon={icon} size={iconSize} color={iconColor} />}
             {children}
-            {icon && iconSide === 'right' && <Icon icon={icon} size={20} color={iconColor} />}
+            {icon && iconSide === 'right' && <Icon icon={icon} size={iconSize} color={iconColor} />}
           </>
         )}
       </button>
