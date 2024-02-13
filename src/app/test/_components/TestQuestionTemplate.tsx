@@ -40,7 +40,7 @@ const TestQuestionTemplate = ({
         header={
           <>
             <div className="w-fit" onClick={onPrevStep} role="presentation">
-              <Icon icon="chevronLeft" color="black" size={24} />
+              <Icon icon="chevronLeft" color="gray-1000" size={24} />
             </div>
             <ProgressBar currentProgress={progress} className="pt-3xs" />
           </>

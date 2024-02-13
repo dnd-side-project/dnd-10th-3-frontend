@@ -20,7 +20,7 @@ export const QUESTIONS_ORDERS = {
 export const QUESTIONS: Question[] = [
   {
     id: 1,
-    type: 'setFirstPreQuestion',
+    type: 'setGender',
     badgeStatus: '사전',
     question: (
       <>
@@ -35,7 +35,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 2,
     badgeStatus: '사전',
-    type: 'setSecondPreQuestion',
+    type: 'setAge',
     question: (
       <>
         사전 질문 마지막 단계예요. <br />

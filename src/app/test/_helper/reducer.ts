@@ -1,9 +1,8 @@
- // TODO : TestState 변수 프로퍼티 백엔드와 논의 예정, 변경해야함
 
  type TestState = {
     buddy: string;
-    firstPreQuestion: string;
-    secondPreQuestion: string;
+    gender: string;
+    age: string;
     trust: number;
     love: number;
     talk: number;
@@ -13,8 +12,8 @@
 
 export type TestAction =
     | { type: 'setBuddyName'; value: string }
-    | { type: 'setFirstPreQuestion'; value: string }
-    | { type: 'setSecondPreQuestion'; value: string }
+    | { type: 'setGender'; value: string }
+    | { type: 'setAge'; value: string }
     | { type: 'love'}
     | { type: 'talk'}
     | { type: 'trust'}
@@ -31,16 +30,16 @@ export function reducer(state: TestState, action: TestAction): TestState {
         buddy: action.value,
         };
       }
-      case 'setFirstPreQuestion': {
+      case 'setGender': {
         return {
          ...state,
-         firstPreQuestion: action.value,
+         gender: action.value,
         };
       }
-      case 'setSecondPreQuestion': {
+      case 'setAge': {
         return {
           ...state,
-          secondPreQuestion: action.value,
+          age: action.value,
         };
       }
       case 'trust': {
@@ -66,8 +65,8 @@ export function reducer(state: TestState, action: TestAction): TestState {
   
 export const initialState = {
     buddy: '',
-    firstPreQuestion: '',
-    secondPreQuestion: '',
+    gender: '',
+    age: '',
     trust: 0,
     love: 0,
     talk: 0,

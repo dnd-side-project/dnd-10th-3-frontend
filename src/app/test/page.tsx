@@ -27,6 +27,7 @@ export type StepProps = Range<0, 12>;
 const Home = () => {
   const router = useRouter();
   const [state, dispatch] = useReducer(reducer, initialState);
+  console.log('state', state);
   const [step, setStep] = useState<StepProps>(0);
 
   const handleChangeStep = (index: StepProps) => {
