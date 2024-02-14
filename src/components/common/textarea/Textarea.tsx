@@ -1,20 +1,18 @@
-import type { VariantProps } from 'class-variance-authority';
-import { cva } from 'class-variance-authority';
-import type { HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 
-//TODO : bg-white가 읽히지 않아 우선 제외했습니다.
-const textareaVariants = cva(
-  'flex w-full resize-none rounded-md border border-gray-20 p-3xs shadow-thumb placeholder:text-gray-30 focus-visible:border-blue-20 focus-visible:outline-none  disabled:cursor-not-allowed disabled:opacity-50',
-);
+import { cn } from '@/lib/core';
 
-interface TextareaProps
-  extends HTMLAttributes<HTMLTextAreaElement>,
-    VariantProps<typeof textareaVariants> {}
+type Props = InputHTMLAttributes<HTMLTextAreaElement>;
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, ...props }: TextareaProps, ref) => {
-    return <textarea className={textareaVariants({ className })} ref={ref} {...props} />;
-  },
-);
+const Textarea = forwardRef<HTMLTextAreaElement, Props>(({ className, ...props }: Props, ref) => {
+  return (
+    <textarea
+      className={cn('resize-none text-gray-1000 focus:outline-none', className)}
+      ref={ref}
+      {...props}
+    />
+  );
+});
 Textarea.displayName = 'Textarea';
+
+export default Textarea;

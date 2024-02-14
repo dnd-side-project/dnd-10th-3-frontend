@@ -1,28 +1,39 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Textarea } from './Textarea';
+import { Textarea } from '.';
 
-//TODO : TS-expect-error로 임시 해결
-const meta: Meta<typeof Textarea> = {
+const meta = {
   title: 'components/common/textarea',
   component: Textarea,
+  args: {
+    placeholder: '텍스트를 입력하세요',
+  },
   argTypes: {
-    //@ts-expect-error placeholder error, have to solve
     placeholder: {
       control: {
         type: 'text',
       },
     },
   },
-};
+  parameters: {
+    layout: 'fullscreen',
+  },
+  decorators: [
+    (Story) => (
+      <div className="bg-slate-200">
+        <div className="layout bg-white">
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+  tags: ['autodocs'],
+} satisfies Meta<typeof Textarea>;
 
 export default meta;
 
 type Story = StoryObj<typeof Textarea>;
 
 export const Basic: Story = {
-  args: {
-    //@ts-expect-error placeholder error, have to solve
-    placeholder: 'Text Input',
-  },
+  render: (args) => <Textarea {...args} />,
 };

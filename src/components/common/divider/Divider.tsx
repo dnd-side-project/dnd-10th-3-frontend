@@ -3,12 +3,12 @@ import { HTMLAttributes } from 'react';
 
 import { cn } from '@/lib/core';
 
-import { hrVariants } from './variant';
+import { dividerVariants } from './Divider.variant';
 
-export type Props = HTMLAttributes<HTMLHRElement> & VariantProps<typeof hrVariants>;
+export type Props = HTMLAttributes<HTMLHRElement> & VariantProps<typeof dividerVariants>;
 
-const Divider = ({ className, width, height, margin, color, ...props }: Props) => {
-  return <hr className={cn(hrVariants({ width, height, margin, color, className }))} {...props} />;
+const Divider = ({ className, width, height, color, ...props }: Props) => {
+  return <hr className={cn(dividerVariants({ width, height, color, className }))} {...props} />;
 };
 
 Divider.displayName = 'Divider';
