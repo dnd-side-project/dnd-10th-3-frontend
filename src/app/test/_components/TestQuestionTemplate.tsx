@@ -1,3 +1,5 @@
+'use client';
+
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 import { ReactNode } from 'react';
@@ -59,6 +61,7 @@ const TestQuestionTemplate = ({
         footer={
           <div className=" flex flex-col gap-3xs">
             {answerList.map((answer, index) => {
+              console.log('answer', answer);
               return (
                 <Button
                   variant={'secondary'}
