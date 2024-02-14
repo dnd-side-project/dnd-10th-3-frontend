@@ -10,7 +10,7 @@ import { CategorySelector, VoteDateForm, VoteForm } from '.';
 const CreateVoteForm = () => {
   return (
     <>
-      <Header className="z-auto">
+      <Header className="z-auto bg-white">
         <Button
           icon="x"
           iconOnly
