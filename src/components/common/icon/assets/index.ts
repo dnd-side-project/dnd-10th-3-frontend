@@ -7,6 +7,7 @@ import ChevronDown from './ChevronDown';
 import ChevronLeft from './ChevronLeft';
 import ChevronRight from './ChevronRight';
 import Clock from './Clock';
+import Confirm from './Confirm';
 import FilledHeart from './FilledHeart';
 import Heart from './Heart';
 import Kakaotalk from './Kakaotalk';
@@ -24,6 +25,7 @@ import Share from './Share';
 import Submit from './Submit';
 import User from './User';
 import Votebox from './Votebox';
+import Warning from './Warning';
 import X from './X';
 
 export const iconMap = {
@@ -52,6 +54,8 @@ export const iconMap = {
   airplane: Airplane,
   share: Share,
   user: User,
+  confirm: Confirm,
+  warning: Warning,
 };
 
 export const COLORS = {
@@ -61,6 +65,7 @@ export const COLORS = {
   'gray-200': colors['gray'][200],
   'gray-100': colors['gray'][100],
   'primary-700': colors['primary'][700],
+  warning: colors['warning'],
   white: '#ffffff',
 };
 
