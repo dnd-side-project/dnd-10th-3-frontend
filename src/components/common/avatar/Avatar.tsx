@@ -1,13 +1,15 @@
 import Image from 'next/image';
 
-import UserIcon from '@/assets/icons/user.svg';
+import { Icon } from '../icon';
+import { IconColor } from '../icon/assets';
 
 interface AvatarProps {
   size?: number;
   profileImage?: string;
+  color?: IconColor;
 }
 
-export const Avatar = ({ size = 24, profileImage }: AvatarProps) => {
+export const Avatar = ({ size = 24, profileImage, color = 'gray-300' }: AvatarProps) => {
   return (
     <div
       style={{ width: size, height: size }}
@@ -16,7 +18,12 @@ export const Avatar = ({ size = 24, profileImage }: AvatarProps) => {
       {!!profileImage ? (
         <Image src={profileImage} width={size} height={size} alt="profile_image" />
       ) : (
-        <UserIcon width={`calc(${size} / 1.5)`} height={`calc(${size} / 1.5)`} />
+        <Icon
+          icon="user"
+          width={`calc(${size} / 1.5)`}
+          height={`calc(${size} / 1.5)`}
+          color={color}
+        />
       )}
     </div>
   );
