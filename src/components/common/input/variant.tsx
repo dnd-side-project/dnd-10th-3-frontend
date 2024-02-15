@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 
-export const inputContainerVariants = cva('flex w-full items-center gap-5xs border p-3xs ', {
+export const inputContainerVariants = cva('flex w-full items-center gap-5xs border p-3xs', {
   variants: {
     variant: {
       empty: 'border-none bg-inherit shadow-none',
