@@ -37,7 +37,7 @@ const TestQuestionTemplate = ({
   onDispatchEvent,
 }: Props) => {
   return (
-    <main className={'relative flex h-dvh w-full flex-col items-center px-4 pb-5'}>
+    <main className={'relative flex h-dvh w-full flex-col items-center pb-5'}>
       <FormLayout
         header={
           <>
