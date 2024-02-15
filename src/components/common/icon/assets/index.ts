@@ -7,6 +7,7 @@ import ChevronDown from './ChevronDown';
 import ChevronLeft from './ChevronLeft';
 import ChevronRight from './ChevronRight';
 import Clock from './Clock';
+import Divider from './Divider';
 import FilledHeart from './FilledHeart';
 import Heart from './Heart';
 import Kakaotalk from './Kakaotalk';
@@ -52,6 +53,7 @@ export const iconMap = {
   airplane: Airplane,
   share: Share,
   user: User,
+  divider : Divider
 };
 
 export const COLORS = {
