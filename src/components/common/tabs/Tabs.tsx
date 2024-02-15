@@ -18,7 +18,7 @@ export const Tabs = ({ tabItems }: TabsProps) => {
   };
 
   return (
-    <div className="no-scrollbar flex gap-3xs overflow-x-scroll scroll-smooth border-b border-gray-100">
+    <div className="no-scrollbar flex gap-3xs overflow-x-scroll scroll-smooth border-b border-gray-100 px-4">
       {tabItems.map((item, index) => (
         <Tab key={index} active={index === currentTabIndex} onClick={() => handleClickTab(index)}>
           {item}
