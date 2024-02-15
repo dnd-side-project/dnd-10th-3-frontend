@@ -8,10 +8,7 @@ import { Typography } from '@/foundations/typography';
 const VoteCard = () => {
   return (
     <li className="px-xs">
-      <div
-        className="  flex flex-col gap-4xs rounded-[16px] border border-gray-100 p-3xs shadow-thumb "
-        id="container"
-      >
+      <div className="  flex flex-col gap-4xs rounded-[16px] border border-gray-100 p-3xs shadow-thumb ">
         {/* voteCardHeader */}
         <div id="header" className="flex items-center justify-between">
           <Tag>진행중</Tag>
