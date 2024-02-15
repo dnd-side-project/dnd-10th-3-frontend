@@ -1,4 +1,5 @@
 import { VariantProps } from 'class-variance-authority';
+import { motion } from 'framer-motion';
 import { HTMLAttributes } from 'react';
 
 import { cn } from '@/lib/core';
@@ -7,19 +8,17 @@ import { ProgressBarContainerVariants } from './variant';
 
 type ProgressBarProps = HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof ProgressBarContainerVariants> & {
-    currentProgress: number;
+    progress: number;
   };
 
-//TODO : 색 수정 및 디테일 수정해야합니다.
-//TODO : top-0 left-0도 린트 에러가 발생합니다.
-
-export const ProgressBar = ({ currentProgress, width, ...props }: ProgressBarProps) => {
+export const ProgressBar = ({ progress, width, ...props }: ProgressBarProps) => {
   return (
     <div className={cn(ProgressBarContainerVariants({ width }))} {...props}>
-      <div className="relative h-[6px] w-[100%] rounded-lg bg-gray-100">
-        <div
-          className="absolute left-0 top-0 z-[1] h-[6px] rounded-lg bg-primary-600"
-          style={{ width: `${currentProgress}%` }}
+      <div className="relative h-[6px] overflow-hidden rounded-lg bg-gray-100">
+        <motion.div
+          className="absolute inset-y-0 -left-full right-full -translate-x-full rounded-lg bg-primary-700"
+          animate={{ x: `${progress}%` }}
+          transition={{ type: 'tween', duration: 0.5, delay: 0.2 }}
         />
       </div>
     </div>

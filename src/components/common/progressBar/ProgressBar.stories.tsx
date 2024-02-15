@@ -6,7 +6,7 @@ const meta: Meta<typeof ProgressBar> = {
   title: 'components/common/progressBar',
   component: ProgressBar,
   argTypes: {
-    currentProgress: {
+    progress: {
       control: {
         type: 'number',
       },
@@ -21,21 +21,6 @@ type Story = StoryObj<typeof ProgressBar>;
 
 export const Default: Story = {
   args: {
-    currentProgress: 100,
+    progress: 100,
   },
-  render: () => (
-    <>
-      <ProgressBar currentProgress={10} />
-      <br />
-      <ProgressBar currentProgress={20} />
-      <br />
-      <ProgressBar currentProgress={30} />
-      <br />
-      <ProgressBar currentProgress={40} />
-      <br />
-      <ProgressBar currentProgress={80} />
-      <br />
-      <ProgressBar currentProgress={100} />
-    </>
-  ),
 };
