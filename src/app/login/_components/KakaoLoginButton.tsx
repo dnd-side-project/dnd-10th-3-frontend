@@ -17,7 +17,7 @@ const KakaoLoginButton = ({ callbackUrl = '/' }: Props) => {
       icon="kakaotalk"
       width="full"
       iconColor="gray-1000"
-      className="rounded-lg bg-auth-kakao px-[14px] text-gray-600"
+      className="rounded-lg bg-auth-kakao px-[14px] text-gray-1000"
       onClick={navigateToKakaoLogin}
     >
       <span className="grow">카카오로 시작하기</span>
