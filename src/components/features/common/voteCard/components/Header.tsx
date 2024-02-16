@@ -11,12 +11,12 @@ type Props = HTMLAttributes<HTMLDivElement> &
     remainingDay?: number;
     voter?: number;
     categories?: string;
-    color?: 'text-gray-600';
+    fontColor?: 'text-gray-600';
   };
 
 const headerVariants = cva(`flex items-center justify-between pb-3xs`);
 
-const Header = ({ remainingDay, voter, categories, className, color }: Props) => {
+const Header = ({ remainingDay, voter, categories, className, fontColor }: Props) => {
   return (
     <div className={cn(headerVariants({ className }))}>
       {categories ? (
@@ -31,13 +31,14 @@ const Header = ({ remainingDay, voter, categories, className, color }: Props) =>
       )}
 
       <div className="flex items-center">
+        {/* TODO : 정확히 날짜 처리 논의 후 리팩토링 예정 */}
         {remainingDay === 0 && (
           <Typography type="body2" className="text-gray-600">
             투표기간 종료
           </Typography>
         )}
-        {remainingDay && remainingDay !== 0 ? (
-          <Typography type="body2" className={cn('pr-5xs text-primary-700', color)}>
+        {remainingDay && remainingDay > 0 ? (
+          <Typography type="body2" className={cn('pr-5xs text-primary-700', fontColor)}>
             {remainingDay}일 남음
           </Typography>
         ) : null}

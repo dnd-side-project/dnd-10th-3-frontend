@@ -89,7 +89,7 @@ export const VoteWithoutFooter: Story = {
   render: () => {
     return (
       <VoteCard>
-        <VoteCard.Header remainingDay={2} voter={89} color="text-gray-600" />
+        <VoteCard.Header remainingDay={2} voter={89} fontColor="text-gray-600" />
         <VoteCard.VoteItemGroup>
           <VoteItem>
             <VoteItem.Radio checked />
