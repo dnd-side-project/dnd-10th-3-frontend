@@ -61,7 +61,6 @@ const TestQuestionTemplate = ({
         footer={
           <div className=" flex flex-col gap-3xs">
             {answerList.map((answer, index) => {
-              console.log('answer', answer);
               return (
                 <Button
                   variant={'secondary'}
