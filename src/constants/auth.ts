@@ -8,3 +8,9 @@ export const TOKEN = {
 };
 
 export const CALLBACK_URL = 'callbackUrl';
+
+export const LOGIN_MESSAGE = {
+  DEFAULT: '결혼식 논쟁 해결해요',
+  VOTE: '투표 결과 알아봐요',
+  CREATE: '결혼식 참석 고민 나눠봐요',
+};

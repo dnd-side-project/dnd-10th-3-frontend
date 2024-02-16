@@ -4,6 +4,7 @@ import worry from '@/assets/images/test-worry.png';
 import { Header } from '@/components/layout/header';
 import { CALLBACK_URL } from '@/constants/auth';
 import { Typography } from '@/foundations/typography';
+import { getLoginMessage } from '@/utils/auth';
 
 import KakaoLoginButton from './_components/KakaoLoginButton';
 
@@ -25,7 +26,7 @@ const LoginPage = ({ searchParams }: Props) => {
       <main className="flex size-full flex-col items-center px-4">
         <div className="mt-[23%] flex flex-col items-center gap-1">
           <Typography type="body2">3초만에 로그인하고</Typography>
-          <Typography type="title1">투표 결과 알아봐요</Typography>
+          <Typography type="title1">{getLoginMessage(callbackUrl)}</Typography>
         </div>
 
         <div className="relative my-auto h-1/3 w-2/3">
