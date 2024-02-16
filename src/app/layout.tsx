@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 
+import { ToastContainer } from '@/components/common/toast';
 import Providers from '@/contexts/Providers';
 
 import { pretendard } from './fonts';
+
 import './globals.css';
 
 // TODO: 메타 데이터 수정
@@ -20,6 +22,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${pretendard.variable}`}>
         <Providers>
+          <ToastContainer />
           <div className="layout font-pretendard ">{children}</div>
         </Providers>
       </body>
