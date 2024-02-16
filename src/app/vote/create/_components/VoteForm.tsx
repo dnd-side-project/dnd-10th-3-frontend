@@ -1,9 +1,22 @@
+'use client';
+
+import { useFieldArray, useFormContext } from 'react-hook-form';
+
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { VoteItem } from '@/components/features/vote/voteItem';
 import { Typography } from '@/foundations/typography';
+import { MAX_ITEM_LENGTH, MAX_VOTE_COUNT, MIN_VOTE_COUNT } from '@/schema/CreateVoteSchema';
+
+import { CreateVoteInput } from './CreateVoteForm';
 
 const VoteForm = () => {
+  const { control, register } = useFormContext<CreateVoteInput>();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'selections',
+  });
+
   return (
     <section className="flex flex-col gap-3xs rounded-2xl border border-gray-100 p-3xs">
       <Typography type="title4" className="flex items-center gap-6xs text-gray-600">
@@ -11,37 +24,39 @@ const VoteForm = () => {
         투표
       </Typography>
 
-      {/* TODO 로직 넣으면서 코드 정리 */}
       <div className="flex flex-col gap-5xs">
-        <div className="flex gap-3xs">
-          <Button variant="empty" iconOnly icon="remove" iconSize={20} className="!p-0" />
-          <VoteItem>
-            <VoteItem.Input placeholder="텍스트를 입력해 주세요." />
-            <VoteItem.IconButton icon="photo" />
-          </VoteItem>
-        </div>
-        <div className="flex gap-3xs">
-          <Button variant="empty" iconOnly icon="remove" iconSize={20} className="!p-0" />
-          <VoteItem>
-            <VoteItem.Input placeholder="텍스트를 입력해 주세요." />
-            <VoteItem.IconButton icon="photo" />
-          </VoteItem>
-        </div>
-        <div className="flex gap-3xs">
-          <Button variant="empty" iconOnly icon="remove" iconSize={20} className="!p-0" />
-          <VoteItem>
-            <VoteItem.Input placeholder="텍스트를 입력해 주세요." />
-            <VoteItem.IconButton icon="photo" />
-          </VoteItem>
-        </div>
+        {fields.map((field, index) => (
+          <div key={field.id} className="flex gap-3xs">
+            <Button
+              variant="empty"
+              iconOnly
+              icon="remove"
+              iconColor={fields.length <= MIN_VOTE_COUNT ? 'gray-100' : 'gray-300'}
+              className="!p-0"
+              disabled={fields.length <= MIN_VOTE_COUNT}
+              onClick={() => remove(index)}
+            />
+            <VoteItem>
+              <VoteItem.Input
+                key={field.id}
+                placeholder="텍스트를 입력해 주세요."
+                maxLength={MAX_ITEM_LENGTH}
+                {...register(`selections.${index}.content` as const)}
+              />
+              <VoteItem.IconButton icon="photo" />
+            </VoteItem>
+          </div>
+        ))}
       </div>
       <Button
         icon="add"
         width="full"
         variant="secondary"
-        iconColor="gray-1000"
+        iconColor={fields.length >= MAX_VOTE_COUNT ? 'gray-400' : 'gray-1000'}
         iconSize={14}
         className="text-sm"
+        onClick={() => append({ content: '' })}
+        disabled={fields.length >= MAX_VOTE_COUNT}
       >
         항목 추가
       </Button>
