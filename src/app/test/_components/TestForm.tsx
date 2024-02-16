@@ -22,15 +22,12 @@ export type StepProps = Range<0, 12>;
 const TestForm = () => {
   const router = useRouter();
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log('state', state);
   const [step, setStep] = useState<StepProps>(0);
 
   const handleChangeStep = (index: StepProps) => {
     if (index === QUESTIONS_ORDERS.lastPage) router.push('/test/result');
     setStep((index + 2) as StepProps);
   };
-
-  const totalPages = QUESTIONS_ORDERS_LENGTH;
 
   return (
     <>
@@ -87,9 +84,9 @@ const TestForm = () => {
                 image={QUESTIONS[index].image}
                 badgeStatus={
                   QUESTIONS[index].badgeStatus ||
-                  `${QUESTIONS[index].progress - PRE_QUESTIONS_LENGTH}/${totalPages - PRE_QUESTIONS_LENGTH}`
+                  `${step - PRE_QUESTIONS_LENGTH}/${QUESTIONS_ORDERS_LENGTH - PRE_QUESTIONS_LENGTH}`
                 }
-                progress={(QUESTIONS[index].progress / totalPages) * 100}
+                progress={(step / QUESTIONS_ORDERS_LENGTH) * 100}
                 onChangeStep={() => handleChangeStep(index as StepProps)}
                 answerList={QUESTIONS[index].answerList}
               />
