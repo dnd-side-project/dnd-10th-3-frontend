@@ -8,7 +8,6 @@ type Question = {
   badgeStatus?: string;
   question: ReactNode;
   image: string;
-  progress: number;
   answerList: string[];
 };
 
@@ -29,7 +28,6 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 1,
     answerList: ['남성', '여성'],
   },
   {
@@ -43,7 +41,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 2,
+
     answerList: ['10대', '20대', '30대', '40대'],
   },
   {
@@ -56,7 +54,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 3,
+
     answerList: ['예', '아니요'],
   },
   {
@@ -69,7 +67,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 4,
+
     answerList: ['창피하지만 인사정도 나눌 수 있다.', '조용히 최대한 피한다.'],
   },
   {
@@ -83,7 +81,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 5,
+
     answerList: ['상대방 결혼식에 참석해 얼굴 비춘다.', '미안하지만 송금으로 마음을 전한다.'],
   },
   {
@@ -95,7 +93,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 6,
+
     answerList: ['예', '아니오'],
   },
   {
@@ -107,7 +105,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 7,
+
     answerList: ['연락해서 축하라도 해줘야겠다.', '알아서 잘 보내겠지라는 생각으로 넘긴다.'],
   },
   {
@@ -120,7 +118,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 8,
+
     answerList: ['예전부터 이상형이 한결 같다.', '왜 나에게 인사를 시켜주는 지 모르겠다.'],
   },
   {
@@ -133,7 +131,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 9,
+
     answerList: ['예', '아니오'],
   },
   {
@@ -145,7 +143,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 10,
+
     answerList: [
       '무슨 사정이 있겠지. 연락오기를 기다린다.',
       '잠수탄 것 아닐까? 의심하며 귀가 준비한다.',
@@ -162,7 +160,7 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-    progress: 11,
+
     answerList: [
       '어떻게 쓸 지 고민되지만 연락줘서 고맙다.',
       '쓸 말이 없어 막막하고 스트레스 받는다.',
