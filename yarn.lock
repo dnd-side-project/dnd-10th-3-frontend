@@ -2266,6 +2266,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "@hookform/resolvers@npm:3.3.4"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: f7a5b8ba59cbb0859e7a212bd5cbcbc70bbdddd21d4fbe9f4a96d149b5756470cb29857a50334d8c1c64392e21007ccf5288d26aa407431784d4006a2570cb36
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -5182,7 +5191,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.167, @types/lodash@npm:^4.14.168":
+"@types/lodash.compact@npm:^3":
+  version: 3.0.9
+  resolution: "@types/lodash.compact@npm:3.0.9"
+  dependencies:
+    "@types/lodash": "npm:*"
+  checksum: 9eff2fecd6773352f5b762a2c58f261e3c83f61d7297efe94b08f9a4b524b24ccc2de5e8d728e2ffd42472fa06973df0856e474eb74b5e614813d26d7436efc6
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*, @types/lodash@npm:^4.14.167, @types/lodash@npm:^4.14.168":
   version: 4.14.202
   resolution: "@types/lodash@npm:4.14.202"
   checksum: 6064d43c8f454170841bd67c8266cc9069d9e570a72ca63f06bceb484cb4a3ee60c9c1f305c1b9e3a87826049fd41124b8ef265c4dd08b00f6766609c7fe9973
@@ -8393,6 +8411,7 @@ __metadata:
     "@commitlint/cli": "npm:^18.4.4"
     "@commitlint/config-conventional": "npm:^18.4.4"
     "@hookform/devtools": "npm:^4.3.1"
+    "@hookform/resolvers": "npm:^3.3.4"
     "@storybook/addon-a11y": "npm:^7.6.10"
     "@storybook/addon-essentials": "npm:^7.6.10"
     "@storybook/addon-interactions": "npm:^7.6.10"
@@ -8406,6 +8425,7 @@ __metadata:
     "@tanstack/react-query": "npm:^5.17.15"
     "@tanstack/react-query-devtools": "npm:^5.17.18"
     "@types/github-label-sync": "npm:^2"
+    "@types/lodash.compact": "npm:^3"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
@@ -8431,6 +8451,7 @@ __metadata:
     github-label-sync: "npm:^2.3.1"
     husky: "npm:^8.0.0"
     jest: "npm:^29.7.0"
+    lodash.compact: "npm:^3.0.1"
     next: "npm:14.1.0"
     postcss: "npm:^8"
     prettier: "npm:^3.2.4"
@@ -8443,6 +8464,7 @@ __metadata:
     tailwind-merge: "npm:^2.2.0"
     tailwindcss: "npm:^3.3.0"
     typescript: "npm:^5"
+    zod: "npm:^3.22.4"
     zustand: "npm:^4.5.0"
   languageName: unknown
   linkType: soft
@@ -12496,6 +12518,13 @@ __metadata:
   version: 4.3.0
   resolution: "lodash.camelcase@npm:4.3.0"
   checksum: fcba15d21a458076dd309fce6b1b4bf611d84a0ec252cb92447c948c533ac250b95d2e00955801ebc367e5af5ed288b996d75d37d2035260a937008e14eaf432
+  languageName: node
+  linkType: hard
+
+"lodash.compact@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "lodash.compact@npm:3.0.1"
+  checksum: 9cc32065f1a9aa90bf3caa987fb7e00f8b90a49209e7f9f37c601e595f396a83ebe8f3328b2ef7f365cf822c9f21697527620c9c9c9734f107453b4c6c4dd810
   languageName: node
   linkType: hard
 
@@ -17921,6 +17950,13 @@ __metadata:
   version: 1.0.0
   resolution: "yocto-queue@npm:1.0.0"
   checksum: 856117aa15cf5103d2a2fb173f0ab4acb12b4b4d0ed3ab249fdbbf612e55d1cadfd27a6110940e24746fb0a78cf640b522cc8bca76f30a3b00b66e90cf82abe0
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.22.4":
+  version: 3.22.4
+  resolution: "zod@npm:3.22.4"
+  checksum: 7578ab283dac0eee66a0ad0fc4a7f28c43e6745aadb3a529f59a4b851aa10872b3890398b3160f257f4b6817b4ce643debdda4fb21a2c040adda7862cab0a587
   languageName: node
   linkType: hard
 
