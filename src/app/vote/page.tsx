@@ -1,7 +1,7 @@
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { VoteCard, VoteItem } from '@/components/features/vote';
-import { EmptyVoteLayout } from '@/components/layout/errors';
+import { EmptyVote } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
 
 import VoteHeader from './_component/VoteHeader';
@@ -91,7 +91,7 @@ const VotePage = () => {
               </ul>
             </div>
           ) : (
-            <EmptyVoteLayout />
+            <EmptyVote />
           )}
         </>
       }

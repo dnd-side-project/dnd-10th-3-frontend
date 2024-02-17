@@ -2,8 +2,8 @@ import { VariantProps, cva } from 'class-variance-authority';
 import { HTMLAttributes } from 'react';
 
 import { Icon } from '@/components/common/icon';
-import { CategoriesItemType } from '@/components/common/tabs/Tabs';
 import { Tag } from '@/components/common/tag';
+import { CATEGORIES } from '@/constants/category';
 import { Typography } from '@/foundations/typography';
 import { cn } from '@/lib/core';
 
@@ -11,7 +11,7 @@ type Props = HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof headerVariants> & {
     remainingDay?: number;
     voter?: number;
-    categories?: CategoriesItemType;
+    categories?: (typeof CATEGORIES)[number];
     fontColor?: 'text-gray-600';
   };
 
