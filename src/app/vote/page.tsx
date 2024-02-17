@@ -1,7 +1,6 @@
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
-import { VoteCard } from '@/components/features/common/voteCard';
-import { VoteItem } from '@/components/features/vote/voteItem';
+import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVoteLayout } from '@/components/layout/errors';
 import { Typography } from '@/foundations/typography';
 
@@ -72,7 +71,7 @@ const VotePage = () => {
                     content=" 제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 연락 안하고 지내다가 최근에 연락이
         되었어요. 옛날..."
                   />
-                  <VoteCard.VoteItemGroup isBlur>
+                  <VoteCard.VoteItemGroup withBlur>
                     <VoteItem readOnly>
                       <VoteItem.Radio disabled />
                       <VoteItem.Span>5만원</VoteItem.Span>
