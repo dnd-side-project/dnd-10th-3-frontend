@@ -91,7 +91,7 @@ const VotePage = () => {
               </ul>
             </div>
           ) : (
-            <EmptyVoteLayout />
+            <EmptyVote />
           )}
         </>
       }

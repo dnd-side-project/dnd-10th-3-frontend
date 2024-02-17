@@ -1,1 +1,1 @@
-export { EmptyVoteLayout } from './EmptyVoteLayout';
+export { EmptyLayout } from './EmptyLayout';
