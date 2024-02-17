@@ -1,2 +1,4 @@
 export const QUESTIONS_ORDERS_LENGTH = 11;
 export const PRE_QUESTIONS_LENGTH = 2;
+
+export const PROGRESSRATE = (1 / QUESTIONS_ORDERS_LENGTH) * 100
