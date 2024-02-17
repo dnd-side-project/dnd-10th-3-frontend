@@ -1,9 +1,9 @@
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVoteLayout } from '@/components/layout/errors';
 import { Typography } from '@/foundations/typography';
 
-import VoteCard from './_component/VoteCard';
 import VoteHeader from './_component/VoteHeader';
 import VoteLayout from './_component/VoteLayout';
 
@@ -15,8 +15,8 @@ const VotePage = () => {
       contents={
         <>
           {isVoteExist ? (
-            <div className="flex flex-col">
-              <div className="w-full p-xs">
+            <div className="flex w-full flex-col">
+              <div className="w-full p-3xs">
                 <Typography type="heading1">
                   결혼식 참석시 <br /> 고민이었던 부분을 나눠보세요.
                 </Typography>
@@ -39,10 +39,55 @@ const VotePage = () => {
                   <option>추천순</option>
                 </select>
               </div>
-              <ul className="flex flex-col gap-3xs">
-                <VoteCard />
-                <VoteCard />
-                <VoteCard />
+              <ul className="flex flex-col gap-3xs p-3xs">
+                <VoteCard className="shadow-thumb">
+                  <VoteCard.Header categories="축의금" remainingDay={2} />
+                  <VoteCard.Description
+                    title="갑자기 연락 온 동창 축의금 얼마할까요? 고민됩니다."
+                    content=" 제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 연락 안하고 지내다가 최근에 연락이
+        되었어요. 옛날..."
+                  />
+                  <VoteCard.VoteItemGroup withBlur>
+                    <VoteItem readOnly>
+                      <VoteItem.Radio disabled />
+                      <VoteItem.Span>5만원</VoteItem.Span>
+                    </VoteItem>
+                    <VoteItem readOnly>
+                      <VoteItem.Radio disabled />
+                      <VoteItem.Span>7만원</VoteItem.Span>
+                    </VoteItem>
+                  </VoteCard.VoteItemGroup>
+                  <VoteCard.SubmitButton>
+                    <Button variant="primary" width="full">
+                      투표 참여하기
+                    </Button>
+                  </VoteCard.SubmitButton>
+                  <VoteCard.Footer likes={48} view={48} voter={451} />
+                </VoteCard>
+                <VoteCard className="shadow-thumb">
+                  <VoteCard.Header categories="축의금" remainingDay={2} />
+                  <VoteCard.Description
+                    title="갑자기 연락 온 동창 축의금 얼마할까요? 고민됩니다."
+                    content=" 제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 연락 안하고 지내다가 최근에 연락이
+        되었어요. 옛날..."
+                  />
+                  <VoteCard.VoteItemGroup withBlur>
+                    <VoteItem readOnly>
+                      <VoteItem.Radio disabled />
+                      <VoteItem.Span>5만원</VoteItem.Span>
+                    </VoteItem>
+                    <VoteItem readOnly>
+                      <VoteItem.Radio disabled />
+                      <VoteItem.Span>7만원</VoteItem.Span>
+                    </VoteItem>
+                  </VoteCard.VoteItemGroup>
+                  <VoteCard.SubmitButton>
+                    <Button variant="primary" width="full">
+                      투표 참여하기
+                    </Button>
+                  </VoteCard.SubmitButton>
+                  <VoteCard.Footer likes={48} view={48} voter={451} />
+                </VoteCard>
               </ul>
             </div>
           ) : (
