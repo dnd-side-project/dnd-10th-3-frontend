@@ -8,9 +8,6 @@ export const TOAST_MESSAGES = Object.freeze({
   VOTE_DELETE_SUCCESS: { type: 'default', text: '투표 삭제가 완료되었습니다' },
   VOTE_DELETE_FAIL: { type: 'warning', text: '투표 삭제에 실패했습니다' },
 
-  VOTE_TITLE_REQUIRED: { type: 'warning', text: '제목을 입력해 주세요' },
-  VOTE_CONTENT_REQUIRED: { type: 'warning', text: '내용을 입력해 주세요' },
-  LEAST_TWO_ITEMS_REQUIRED: { type: 'warning', text: '투표 항목을 2개 이상 입력해 주세요' },
   NAME_REQUIRED: { type: 'warning', text: '상대방의 이름을 입력해 주세요' },
   NICKNAME_REQUIRED: { type: 'warning', text: '닉네임을 입력해 주세요' },
 
@@ -27,4 +24,6 @@ export const TOAST_MESSAGES = Object.freeze({
   REPLY_DELETE_FAIL: { type: 'warning', text: '댓글 삭제에 실패했습니다' },
 
   LINK_COPIED: { type: 'warning', text: '링크가 복사되었습니다' },
+
+  ERROR: { type: 'warning', text: '잠시 후에 다시 시도해 주세요' },
 }) satisfies Record<string, { type: 'default' | 'warning'; text: string }>;
