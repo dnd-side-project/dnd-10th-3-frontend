@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { Tab } from './tab';
 
+export type CategoriesItemType = '전체' | '축의금' | '하객룩' | '브라이덜 샤워' | '기타';
+
 type TabsProps = {
-  tabItems: string[];
-  id?: string;
+  tabItems: CategoriesItemType[];
   className?: string;
 };
 

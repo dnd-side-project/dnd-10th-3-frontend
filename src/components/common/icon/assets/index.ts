@@ -8,6 +8,7 @@ import ChevronLeft from './ChevronLeft';
 import ChevronRight from './ChevronRight';
 import Clock from './Clock';
 import Confirm from './Confirm';
+import Divider from './Divider';
 import FilledHeart from './FilledHeart';
 import Heart from './Heart';
 import Kakaotalk from './Kakaotalk';
@@ -54,6 +55,7 @@ export const iconMap = {
   airplane: Airplane,
   share: Share,
   user: User,
+  divider : Divider,
   confirm: Confirm,
   warning: Warning,
 };
