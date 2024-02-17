@@ -2,11 +2,10 @@ import Image from 'next/image';
 
 import worry from '@/assets/images/test-worry.png';
 import { Header } from '@/components/layout/header';
+import { KakaoLoginButton } from '@/components/shared';
 import { CALLBACK_URL } from '@/constants/auth';
 import { Typography } from '@/foundations/typography';
 import { getLoginMessage } from '@/utils/auth';
-
-import KakaoLoginButton from './_components/KakaoLoginButton';
 
 type Props = {
   searchParams: {
