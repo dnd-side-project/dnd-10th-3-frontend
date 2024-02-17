@@ -5,6 +5,7 @@ import { HTMLAttributes } from 'react';
 import LogoImage from '@/assets/images/logo.png';
 import { Icon } from '@/components/common/icon';
 import { IconColor, IconType } from '@/components/common/icon/assets';
+import { Typography } from '@/foundations/typography';
 import { cn } from '@/lib/core';
 
 import { Previous, Tab } from './components';
@@ -36,14 +37,22 @@ type IconLinkProps = {
 const IconLink = ({ href, icon, iconColor = 'gray-300' }: IconLinkProps) => {
   return (
     <Link href={href}>
-      <Icon icon={icon} color={iconColor} size={32} />
+      <Icon icon={icon} color={iconColor} size={27} />
     </Link>
   );
+};
+
+type TextProps = {
+  text: string;
+};
+const Text = ({ text }: TextProps) => {
+  return <Typography type="body1">{text}</Typography>;
 };
 
 export default Object.assign(Header, {
   Logo,
   Tab,
+  Text,
   IconLink,
   Previous,
 });

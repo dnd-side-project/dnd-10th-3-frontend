@@ -37,7 +37,7 @@ const TestForm = () => {
           <Header>
             <Header.Logo />
             <Header.Tab />
-            <Header.IconLink href="/my-page" icon="user" />
+            <Header.IconLink href="/mypage" icon="mypage" />
           </Header>
           <div className="z-10 flex w-full flex-col items-center justify-center gap-[24px] py-xl 390:h-[200px] 390:py-xs">
             <Image src={LogoImage} width={150} height={91} alt="logo" priority />
