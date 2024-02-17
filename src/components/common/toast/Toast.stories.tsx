@@ -44,7 +44,7 @@ export const Warning: Story = {
 const BasicViewExample = () => {
   const toast = useToast();
 
-  return <Button onClick={() => toast('VOTE_MODIFY_SUCCESS')}>토스트 열기</Button>;
+  return <Button onClick={() => toast({ message: 'VOTE_MODIFY_SUCCESS' })}>토스트 열기</Button>;
 };
 
 export const BasicView: Story = {
@@ -74,7 +74,7 @@ const ScrollViewExample = () => {
           consequatur eos aspernatur sit pariatur nesciunt asperiores illum.
         </Typography>
       ))}
-      <Button width="full" onClick={() => toast('REPLY_DELETE_FAIL')}>
+      <Button width="full" onClick={() => toast({ message: 'REPLY_DELETE_FAIL' })}>
         토스트 열기
       </Button>
     </div>

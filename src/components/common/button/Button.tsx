@@ -26,7 +26,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly = false,
       iconSide = 'left',
       isLoading,
-      disabled,
       ...props
     },
     ref,
@@ -34,10 +33,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         type="button"
-        className={cn(
-          buttonVariants({ variant, width, className }),
-          disabled && 'cursor-not-allowed text-gray-400 bg-[#D7DBE0]',
-        )}
+        className={cn(buttonVariants({ variant, width, className }))}
         ref={ref}
         {...props}
       >

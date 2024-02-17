@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { BottomSheet } from '@/components/common/bottomSheet';
 import { Icon } from '@/components/common/icon';
@@ -8,9 +9,13 @@ import { OptionButton } from '@/components/shared';
 import { CATEGORIES } from '@/constants/category';
 import { Typography } from '@/foundations/typography';
 
+import { CreateVoteInput } from './CreateVoteForm';
+
 type SelectedCategory = undefined | (typeof CATEGORIES)[number];
 
 const CategorySelector = () => {
+  const { setValue } = useFormContext<CreateVoteInput>();
+
   const [selectedCategory, setSelectedCategory] = useState<SelectedCategory>(undefined);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
 
@@ -37,6 +42,7 @@ const CategorySelector = () => {
             isChecked={category === selectedCategory}
             onClick={() => {
               setSelectedCategory(category);
+              setValue('category', category);
               setIsBottomSheetOpen(false);
             }}
           />
