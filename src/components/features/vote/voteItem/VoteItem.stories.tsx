@@ -30,7 +30,7 @@ export const Basic: Story = {
   render: () => (
     <VoteItem>
       <VoteItem.Radio disabled />
-      <VoteItem.Span>10만원 내기</VoteItem.Span>
+      <VoteItem.Text>10만원 내기</VoteItem.Text>
       <VoteItem.IconButton icon="photo" />
     </VoteItem>
   ),
@@ -41,15 +41,15 @@ export const ReadOnly: Story = {
     <>
       <VoteItem readOnly>
         <VoteItem.Radio disabled />
-        <VoteItem.Span>5만원</VoteItem.Span>
+        <VoteItem.Text>5만원</VoteItem.Text>
       </VoteItem>
       <VoteItem readOnly>
         <VoteItem.Radio disabled />
-        <VoteItem.Span>7만원</VoteItem.Span>
+        <VoteItem.Text>7만원</VoteItem.Text>
       </VoteItem>
       <VoteItem readOnly>
         <VoteItem.Radio disabled checked color="gray" />
-        <VoteItem.Span>10만원</VoteItem.Span>
+        <VoteItem.Text>10만원</VoteItem.Text>
       </VoteItem>
     </>
   ),
@@ -64,7 +64,7 @@ const Voting = () => {
       {options.map((option) => (
         <VoteItem key={option} onClick={() => setSelected(option)}>
           <VoteItem.Radio checked={option === selected} />
-          <VoteItem.Span>{option}</VoteItem.Span>
+          <VoteItem.Text>{option}</VoteItem.Text>
         </VoteItem>
       ))}
     </>
@@ -82,40 +82,52 @@ export const WithGauge: Story = {
       <VoteItem>
         <VoteItem.Progress color="primary" progress={50} />
         <VoteItem.Radio disabled checked />
-        <VoteItem.Span>5만원</VoteItem.Span>
-        <VoteItem.Span className="grow-0 text-primary-700">50표 / 50%</VoteItem.Span>
+        <VoteItem.Text doubleLine>
+          <div>5만원</div>
+          <div className="text-primary-700">50표 / 50%</div>
+        </VoteItem.Text>
       </VoteItem>
       <VoteItem>
         <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled />
-        <VoteItem.Span>7만원</VoteItem.Span>
-        <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
+        <VoteItem.Text doubleLine>
+          <div>7만원</div>
+          <div>25표 / 25%</div>
+        </VoteItem.Text>
       </VoteItem>
       <VoteItem>
         <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled />
-        <VoteItem.Span>10만원</VoteItem.Span>
-        <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
+        <VoteItem.Text doubleLine>
+          <div>10만원</div>
+          <div>25표 / 25%</div>
+        </VoteItem.Text>
       </VoteItem>
 
       <div className="mt-sm">내가 선택한 항목이 가장 표가 많지 않은 경우</div>
       <VoteItem>
         <VoteItem.Progress color="primary" progress={50} />
         <VoteItem.Radio disabled />
-        <VoteItem.Span>5만원</VoteItem.Span>
-        <VoteItem.Span className="grow-0 text-primary-700">50표 / 50%</VoteItem.Span>
+        <VoteItem.Text doubleLine>
+          <div>5만원</div>
+          <div className="text-primary-700">50표 / 50%</div>
+        </VoteItem.Text>
       </VoteItem>
       <VoteItem>
         <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled checked color="primary" />
-        <VoteItem.Span>7만원</VoteItem.Span>
-        <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
+        <VoteItem.Text doubleLine>
+          <div>7만원</div>
+          <div>25표 / 25%</div>
+        </VoteItem.Text>
       </VoteItem>
       <VoteItem>
         <VoteItem.Progress color="gray" progress={25} />
         <VoteItem.Radio disabled />
-        <VoteItem.Span>10만원</VoteItem.Span>
-        <VoteItem.Span className="grow-0">25표 / 25%</VoteItem.Span>
+        <VoteItem.Text doubleLine>
+          <div>10만원</div>
+          <div>25표 / 25%</div>
+        </VoteItem.Text>
       </VoteItem>
     </>
   ),
@@ -131,6 +143,49 @@ export const WithInput: Story = {
       <VoteItem>
         <VoteItem.Input placeholder="텍스트를 입력해 주세요." />
         <VoteItem.IconButton icon="photo" />
+      </VoteItem>
+    </>
+  ),
+};
+
+export const WithImage: Story = {
+  render: () => (
+    <>
+      <VoteItem>
+        <VoteItem.Input placeholder="텍스트를 입력해 주세요." />
+        <VoteItem.Img src={'https://dummyimage.com/600x400/000/fff.jpg'} alt="uploaded" />
+      </VoteItem>
+      <VoteItem readOnly>
+        <VoteItem.Radio disabled />
+        <VoteItem.Text>5만원</VoteItem.Text>
+        <VoteItem.Img src={'https://dummyimage.com/600x400/000/fff.jpg'} alt="uploaded" />
+      </VoteItem>
+      <VoteItem>
+        <VoteItem.Progress color="gray" progress={25} />
+        <VoteItem.Radio disabled />
+        <VoteItem.Text doubleLine>
+          <div>10만원</div>
+          <div>25표 / 25%</div>
+        </VoteItem.Text>
+        <VoteItem.Img src={'https://dummyimage.com/600x400/000/fff.jpg'} alt="uploaded" />
+      </VoteItem>
+      <VoteItem>
+        <VoteItem.Progress color="primary" progress={50} />
+        <VoteItem.Radio disabled checked />
+        <VoteItem.Text doubleLine>
+          <div>5만원</div>
+          <div className="text-primary-700">50표 / 50%</div>
+        </VoteItem.Text>
+        <VoteItem.Img src={'https://dummyimage.com/600x400/000/fff.jpg'} alt="uploaded" />
+      </VoteItem>
+      <VoteItem>
+        <VoteItem.Progress color="gray" progress={25} />
+        <VoteItem.Radio disabled checked color="primary" />
+        <VoteItem.Text doubleLine>
+          <div>7만원</div>
+          <div>25표 / 25%</div>
+        </VoteItem.Text>
+        <VoteItem.Img src={'https://dummyimage.com/600x400/000/fff.jpg'} alt="uploaded" />
       </VoteItem>
     </>
   ),
