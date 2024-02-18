@@ -13,11 +13,11 @@ const ResultContents = () => {
       <Header>
         <Header.Previous />
       </Header>
-      <p className="pb-3xs pt-xs text-center">
+      <div className="pb-3xs pt-xs text-center">
         <Typography type="heading3">내 결혼식날</Typography>
         <Typography type="heading1">단체사진 플레시를 켜 줄 지인</Typography>
         <Typography type="body3">&quot;단체 플래시샷 1인분 책임질게요&quot;</Typography>
-      </p>
+      </div>
       <section className="flex flex-col items-center justify-center">
         <TempSVG />
         <Button
@@ -60,7 +60,7 @@ const ResultContents = () => {
               </div>
               <div className="flex-1">
                 {/* FIX : PROGRESSBAR 구현 제대로 다시 필요함 현재 에러  */}
-                <ProgressBar progress={PROGRESSRATE} />
+                <ProgressBar progress={80} />
               </div>
             </div>
             <div className="flex items-center gap-5xs">
