@@ -27,7 +27,7 @@ const ResultContents = () => {
               <Icon icon="caretUp" color="gray-300" size={12} />
             </div>
           </article>
-
+          {/* TODO : 컴포넌트 분리 예정 */}
           <article className="my-4xs flex w-full px-2xs ">
             <div className="flex w-full flex-col items-center justify-center  rounded-xl border  border-gray-100 py-xs">
               <Typography type="body2" className="mb-5xs w-[240px] text-center text-gray-1000">
@@ -42,6 +42,8 @@ const ResultContents = () => {
           </article>
 
           <TempertaureBox buddy="상대" trust={1} love={2} talk={3} temperature={4} />
+
+          {/* TODO : 컴포넌트 분리 예정 */}
           <article className="flex w-full flex-col items-center px-2xs">
             <Typography type="heading3" className="my-3xs">
               상대 축의금, 얼마 낼지 결정해봐요!
