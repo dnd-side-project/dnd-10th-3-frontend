@@ -1,5 +1,7 @@
+import { ResultContents } from './_components';
+
 const ResultPage = () => {
-  return <div>page</div>;
+  return <ResultContents />;
 };
 
 export default ResultPage;

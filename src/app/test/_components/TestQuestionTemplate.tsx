@@ -8,7 +8,7 @@ import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Tag } from '@/components/common/tag';
-import { PRE_QUESTIONS_LENGTH } from '@/constants/test/progress';
+import { PRE_QUESTIONS_LENGTH, PROGRESS_RATE } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
 
 import FormLayout from './FormLayout';
@@ -44,7 +44,7 @@ const TestQuestionTemplate = ({
             <div className="w-fit" onClick={onPrevStep} role="presentation">
               <Icon icon="chevronLeft" color="gray-1000" size={24} />
             </div>
-            <ProgressBar progress={progress} className="pt-3xs" />
+            <ProgressBar progress={progress} className="pt-3xs" progressRate={PROGRESS_RATE} />
           </>
         }
         comment={

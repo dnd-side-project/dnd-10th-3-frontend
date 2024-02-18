@@ -7,7 +7,7 @@ export type LoadingProps = {
 export type IconProps =
   | {
       icon?: IconType;
-      iconSide?: 'left' | 'right';
+      iconSide?: 'left' | 'right' | 'both';
       iconOnly?: false;
       iconColor?: IconColor;
       iconSize?: number;

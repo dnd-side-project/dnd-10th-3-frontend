@@ -2,6 +2,7 @@ import { colors } from 'styles/theme';
 
 import Add from './Add';
 import Airplane from './Airplane';
+import CaretUp from './CaretUp';
 import Check from './Check';
 import ChevronDown from './ChevronDown';
 import ChevronLeft from './ChevronLeft';
@@ -58,6 +59,7 @@ export const iconMap = {
   divider : Divider,
   confirm: Confirm,
   warning: Warning,
+  caretUp: CaretUp
 };
 
 export const COLORS = {

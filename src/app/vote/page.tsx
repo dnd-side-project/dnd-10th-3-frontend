@@ -50,11 +50,11 @@ const VotePage = () => {
                   <VoteCard.VoteItemGroup withBlur>
                     <VoteItem readOnly>
                       <VoteItem.Radio disabled />
-                      <VoteItem.Span>5만원</VoteItem.Span>
+                      <VoteItem.Text>5만원</VoteItem.Text>
                     </VoteItem>
                     <VoteItem readOnly>
                       <VoteItem.Radio disabled />
-                      <VoteItem.Span>7만원</VoteItem.Span>
+                      <VoteItem.Text>7만원</VoteItem.Text>
                     </VoteItem>
                   </VoteCard.VoteItemGroup>
                   <VoteCard.SubmitButton>
@@ -74,11 +74,11 @@ const VotePage = () => {
                   <VoteCard.VoteItemGroup withBlur>
                     <VoteItem readOnly>
                       <VoteItem.Radio disabled />
-                      <VoteItem.Span>5만원</VoteItem.Span>
+                      <VoteItem.Text>5만원</VoteItem.Text>
                     </VoteItem>
                     <VoteItem readOnly>
                       <VoteItem.Radio disabled />
-                      <VoteItem.Span>7만원</VoteItem.Span>
+                      <VoteItem.Text>7만원</VoteItem.Text>
                     </VoteItem>
                   </VoteCard.VoteItemGroup>
                   <VoteCard.SubmitButton>
