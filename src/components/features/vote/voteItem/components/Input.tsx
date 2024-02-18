@@ -8,7 +8,7 @@ const Input = forwardRef<HTMLInputElement, Props>(({ className, ...props }: Prop
   return (
     <input
       type="text"
-      className={cn('w-full text-sm focus:outline-none', className)}
+      className={cn('w-full py-3xs focus:outline-none', className)}
       ref={ref}
       {...props}
     />

@@ -6,7 +6,7 @@ import { VoteItem } from '@/components/features/vote/voteItem';
 import VoteCard from './VoteCard';
 
 const meta = {
-  title: 'components/features/voteCard',
+  title: 'components/features/vote/voteCard',
   component: VoteCard,
   parameters: {
     layout: 'fullscreen',
@@ -67,11 +67,11 @@ export const ReadOnlyWithFooter: Story = {
         <VoteCard.VoteItemGroup withBlur>
           <VoteItem readOnly>
             <VoteItem.Radio disabled />
-            <VoteItem.Span>5만원</VoteItem.Span>
+            <VoteItem.Text>5만원</VoteItem.Text>
           </VoteItem>
           <VoteItem readOnly>
             <VoteItem.Radio disabled />
-            <VoteItem.Span>7만원</VoteItem.Span>
+            <VoteItem.Text>7만원</VoteItem.Text>
           </VoteItem>
         </VoteCard.VoteItemGroup>
         <VoteCard.SubmitButton>
@@ -93,11 +93,11 @@ export const VoteWithoutFooter: Story = {
         <VoteCard.VoteItemGroup>
           <VoteItem>
             <VoteItem.Radio checked />
-            <VoteItem.Span>5만원</VoteItem.Span>
+            <VoteItem.Text>5만원</VoteItem.Text>
           </VoteItem>
           <VoteItem>
             <VoteItem.Radio />
-            <VoteItem.Span>7만원</VoteItem.Span>
+            <VoteItem.Text>7만원</VoteItem.Text>
           </VoteItem>
         </VoteCard.VoteItemGroup>
         <VoteCard.SubmitButton>
