@@ -2,13 +2,15 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 import { toggleNavItems } from '@/constants/toggleNav';
 import { cn } from '@/lib/core';
 
 const ToggleNav = () => {
-  const [selectedTab, setSelectedTab] = useState(toggleNavItems[0].name);
+  const pathname = usePathname();
+  const defaultTab = toggleNavItems[0].name;
+  const selectedTab = toggleNavItems.filter((item) => item.href === pathname)[0].name ?? defaultTab;
 
   return (
     <nav className="select-none overflow-hidden rounded-full bg-gray-50 text-sm font-semibold">
@@ -16,8 +18,7 @@ const ToggleNav = () => {
         {toggleNavItems.map(({ name, href }) => (
           <li key={name} className="relative px-3xs py-5xs text-center">
             <Link
-              href={`/${href}`}
-              onClick={() => setSelectedTab(name)}
+              href={href}
               className={cn(
                 'relative z-50 transition-colors duration-500',
                 name === selectedTab ? 'text-white' : 'text-gray-600',
