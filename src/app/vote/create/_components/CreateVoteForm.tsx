@@ -13,7 +13,7 @@ import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
 import { createVoteSchema } from '@/schema/CreateVoteSchema';
 
-import { CategorySelector, TitleInput, VoteDateForm, VoteForm } from '.';
+import { CategorySelector, TitleInput, VoteDateForm, VoteItemForm } from '.';
 
 export type CreateVoteInput = z.infer<typeof createVoteSchema>;
 
@@ -82,7 +82,7 @@ const CreateVoteForm = () => {
           className="max-h-[340px] min-h-[88px] grow"
           {...methods.register('content')}
         />
-        <VoteForm />
+        <VoteItemForm />
         <VoteDateForm />
       </div>
     </FormProvider>

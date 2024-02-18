@@ -11,7 +11,7 @@ import { MAX_ITEM_LENGTH, MAX_VOTE_COUNT, MIN_VOTE_COUNT } from '@/schema/Create
 import { VoteItemImgForm } from '.';
 import { CreateVoteInput } from './CreateVoteForm';
 
-const VoteForm = () => {
+const VoteItemForm = () => {
   const { control, register } = useFormContext<CreateVoteInput>();
   const { fields, append, remove } = useFieldArray({
     control,
@@ -65,4 +65,4 @@ const VoteForm = () => {
   );
 };
 
-export default VoteForm;
+export default VoteItemForm;
