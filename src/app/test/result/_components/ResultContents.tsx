@@ -3,10 +3,11 @@ import Image from 'next/image';
 import ResultType from '@/assets/images/resultType.png';
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
-import { ProgressBar } from '@/components/common/progressBar';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
+
+import TempertaureBox from './TempertaureBox';
 
 const ResultContents = () => {
   return (
@@ -40,48 +41,7 @@ const ResultContents = () => {
             </div>
           </article>
 
-          <article className="my-4xs flex w-full flex-col justify-center rounded-xl px-2xs">
-            <div className="w-full rounded-t-xl  bg-primary-200 px-3xs  py-5xs text-center">
-              <Typography type="title2">
-                당신과 상대의 온도는 <span className="text-primary-800">70&#8451;</span>
-              </Typography>
-            </div>
-            <div className="flex w-full flex-col gap-3xs rounded-b-xl border border-gray-100  p-3xs text-center">
-              <div className="flex items-center gap-5xs">
-                <div className="flex">
-                  <Typography type="body2" className="text-gray-700">
-                    믿음 지수
-                  </Typography>
-                </div>
-                <div className="flex-1">
-                  {/* FIXME : 프로그래스바 height 설저 */}
-                  <ProgressBar progress={60} className="h-5xs" />
-                </div>
-              </div>
-              <div className="flex items-center gap-5xs">
-                <div className="flex">
-                  <Typography type="body2" className="text-gray-700">
-                    하트 지수
-                  </Typography>
-                </div>
-                <div className="flex-1">
-                  {/* FIX : PROGRESSBAR 구현 제대로 다시 필요함 현재 에러  */}
-                  <ProgressBar progress={40} className="h-5xs" />
-                </div>
-              </div>
-              <div className="flex items-center gap-5xs">
-                <div className="flex">
-                  <Typography type="body2" className="text-gray-700">
-                    소통 지수
-                  </Typography>
-                </div>
-                <div className="flex-1">
-                  {/* FIX : PROGRESSBAR 구현 제대로 다시 필요함 현재 에러  */}
-                  <ProgressBar progress={50} className="h-5xs" />
-                </div>
-              </div>
-            </div>
-          </article>
+          <TempertaureBox buddy="상대" trust={1} love={2} talk={3} temperature={4} />
           <article className="flex w-full flex-col items-center px-2xs">
             <Typography type="heading3" className="my-3xs">
               상대 축의금, 얼마 낼지 결정해봐요!
