@@ -16,11 +16,11 @@ const ToggleNav = () => {
     <nav className="select-none overflow-hidden rounded-full bg-gray-50 text-sm font-semibold">
       <ul className="flex">
         {toggleNavItems.map(({ name, href }) => (
-          <li key={name} className="relative px-3xs py-5xs text-center">
+          <li key={name} className="relative py-5xs text-center">
             <Link
               href={href}
               className={cn(
-                'relative z-50 transition-colors duration-500',
+                'relative z-50 transition-colors duration-500 px-3xs py-5xs',
                 name === selectedTab ? 'text-white' : 'text-gray-600',
               )}
             >
