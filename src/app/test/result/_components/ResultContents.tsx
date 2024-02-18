@@ -7,7 +7,6 @@ import { Button } from '@/components/common/button';
 import { ProgressBar } from '@/components/common/progressBar';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
-import { PROGRESSRATE } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
 
 const ResultContents = () => {
@@ -18,8 +17,8 @@ const ResultContents = () => {
       </Header>
       <main className="pb-10">
         <section className="flex  flex-col items-center justify-center">
-          <article className="flex w-[350px] flex-col items-center justify-center px-2xs 390:w-full">
-            <Image src={ResultType} alt="result-image" />
+          <article className="flex  flex-col items-center justify-center px-2xs ">
+            <Image src={ResultType} width={335} height={487} alt="result-image" />
             <Button
               variant="empty"
               className="my-6xs text-gray-500"
@@ -43,10 +42,12 @@ const ResultContents = () => {
               </Typography>
             </div>
           </article>
-          {/* 온도 박스 */}
+
           <article className="my-4xs flex w-full flex-col justify-center rounded-xl px-2xs">
-            <div className="w-full rounded-t-xl border border-gray-100 bg-primary-200 px-3xs  py-5xs text-center">
-              <Typography type="title2">당신과 상대의 온도는 70도</Typography>
+            <div className="w-full rounded-t-xl  bg-primary-200 px-3xs  py-5xs text-center">
+              <Typography type="title2">
+                당신과 상대의 온도는 <span className="text-primary-800">70&#8451;</span>
+              </Typography>
             </div>
             <div className="flex w-full flex-col gap-3xs rounded-b-xl border border-gray-100  p-3xs text-center">
               <div className="flex items-center gap-5xs">
@@ -56,8 +57,8 @@ const ResultContents = () => {
                   </Typography>
                 </div>
                 <div className="flex-1">
-                  {/* FIX : PROGRESSBAR 구현 제대로 다시 필요함 현재 에러  */}
-                  <ProgressBar progress={PROGRESSRATE} />
+                  {/* FIXME : 프로그래스바 height 설저 */}
+                  <ProgressBar progress={60} className="h-5xs" />
                 </div>
               </div>
               <div className="flex items-center gap-5xs">
@@ -68,7 +69,7 @@ const ResultContents = () => {
                 </div>
                 <div className="flex-1">
                   {/* FIX : PROGRESSBAR 구현 제대로 다시 필요함 현재 에러  */}
-                  <ProgressBar progress={80} />
+                  <ProgressBar progress={40} className="h-5xs" />
                 </div>
               </div>
               <div className="flex items-center gap-5xs">
@@ -79,12 +80,11 @@ const ResultContents = () => {
                 </div>
                 <div className="flex-1">
                   {/* FIX : PROGRESSBAR 구현 제대로 다시 필요함 현재 에러  */}
-                  <ProgressBar progress={PROGRESSRATE} />
+                  <ProgressBar progress={50} className="h-5xs" />
                 </div>
               </div>
             </div>
           </article>
-          {/* 테스트 결과 투표 박스 */}
           <article className="flex w-full flex-col items-center px-2xs">
             <Typography type="heading3" className="my-3xs">
               상대 축의금, 얼마 낼지 결정해봐요!
@@ -117,7 +117,6 @@ const ResultContents = () => {
             </VoteCard>
           </article>
 
-          {/* 공유 박스 */}
           <article className="py-sm">
             <Typography type="body2" className="pb-3xs text-center">
               내 결과 공유하기
@@ -138,7 +137,7 @@ const ResultContents = () => {
               />
             </div>
           </article>
-          <div className="flex w-[335px] gap-5xs">
+          <div className="flex w-full gap-4xs px-2xs">
             <Button width="full" className="bg-primary-200 text-primary-800 ">
               테스트 다시 하기
             </Button>
@@ -147,26 +146,27 @@ const ResultContents = () => {
             </Button>
           </div>
 
-          {/* VoteCard 박스 */}
-          <article className="flex w-full flex-col items-center gap-3xs px-2xs pt-sm">
-            <Typography type="heading3">투표로 더 많은 논쟁을 해결해봐요</Typography>
-            <VoteCard className="w-full">
-              <VoteCard.Header categories="축의금" remainingDay={1} />
-              <VoteCard.Description
-                title="갑자기 연락온 동창 축의금 얼마할까요? 고민됩니다."
-                content="제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 하고 지내다가 최근에 연락이 되었어요. 옛날 생각이 나.."
-              />
-              <VoteCard.VoteItemGroup withBlur>
-                <VoteItem readOnly>
-                  <VoteItem.Radio></VoteItem.Radio>
-                  <VoteItem.Span>5만원</VoteItem.Span>
-                </VoteItem>
-                <VoteItem readOnly>
-                  <VoteItem.Radio></VoteItem.Radio>
-                  <VoteItem.Span>5만원</VoteItem.Span>
-                </VoteItem>
-              </VoteCard.VoteItemGroup>
-            </VoteCard>
+          <article className="w-full px-2xs pt-lg">
+            <div className="flex  flex-col items-center gap-3xs">
+              <Typography type="heading3">투표로 더 많은 논쟁을 해결해봐요</Typography>
+              <VoteCard className="w-full border-b-0">
+                <VoteCard.Header categories="축의금" remainingDay={1} />
+                <VoteCard.Description
+                  title="갑자기 연락온 동창 축의금 얼마할까요? 고민됩니다."
+                  content="제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 하고 지내다가 최근에 연락이 되었어요. 옛날 생각이 나.."
+                />
+                <VoteCard.VoteItemGroup withBlur>
+                  <VoteItem readOnly>
+                    <VoteItem.Radio></VoteItem.Radio>
+                    <VoteItem.Span>5만원</VoteItem.Span>
+                  </VoteItem>
+                  <VoteItem readOnly>
+                    <VoteItem.Radio></VoteItem.Radio>
+                    <VoteItem.Span>5만원</VoteItem.Span>
+                  </VoteItem>
+                </VoteCard.VoteItemGroup>
+              </VoteCard>
+            </div>
             <Button variant="primary" width="full">
               투표하고 축의금 논쟁 종결짓기
             </Button>

@@ -14,10 +14,16 @@ type ProgressBarProps = HTMLAttributes<HTMLDivElement> &
     PROGRESSRATE?: number;
   };
 
-export const ProgressBar = ({ progress, PROGRESSRATE, width, ...props }: ProgressBarProps) => {
+export const ProgressBar = ({
+  progress,
+  PROGRESSRATE,
+  width,
+  className,
+  ...props
+}: ProgressBarProps) => {
   return (
     <div className={cn(ProgressBarContainerVariants({ width }))} {...props}>
-      <div className="relative h-[6px] overflow-hidden rounded-lg bg-gray-100">
+      <div className={cn('relative h-[6px] overflow-hidden rounded-lg bg-gray-100', className)}>
         <motion.div
           className="absolute inset-y-0 -left-full right-full -translate-x-full rounded-lg bg-primary-700"
           animate={{ x: `${progress}%` }}
