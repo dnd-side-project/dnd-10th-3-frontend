@@ -30,7 +30,7 @@ export const MainHeader: Story = {
   render: () => (
     <Header>
       <Header.Logo />
-      <Header.Tab />
+      <Header.ToggleNav />
       <Header.IconLink href="/mypage" icon="mypage" iconColor="gray-300" />
     </Header>
   ),

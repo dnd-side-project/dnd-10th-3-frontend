@@ -35,7 +35,7 @@ const TestForm = () => {
         <div className="relative flex size-full h-dvh flex-col items-center bg-mainGradient pb-2xs">
           <Header>
             <Header.Logo />
-            <Header.Tab />
+            <Header.ToggleNav />
             <Header.IconLink href="/mypage" icon="mypage" />
           </Header>
 

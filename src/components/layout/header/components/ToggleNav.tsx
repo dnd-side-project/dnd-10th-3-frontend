@@ -4,28 +4,28 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { tabMap, tabs } from '@/constants/tab';
+import { toggleNavItems } from '@/constants/toggleNav';
 import { cn } from '@/lib/core';
 
-const Tab = () => {
-  const [selectedTab, setSelectedTab] = useState(tabs[0]);
+const ToggleNav = () => {
+  const [selectedTab, setSelectedTab] = useState(toggleNavItems[0].name);
 
   return (
     <nav className="select-none overflow-hidden rounded-full bg-gray-50 text-sm font-semibold">
       <ul className="flex">
-        {tabs.map((tab) => (
-          <li key={tab} className="relative px-3xs py-5xs text-center">
+        {toggleNavItems.map(({ name, href }) => (
+          <li key={name} className="relative px-3xs py-5xs text-center">
             <Link
-              href={`/${tab}`}
-              onClick={() => setSelectedTab(tab)}
+              href={`/${href}`}
+              onClick={() => setSelectedTab(name)}
               className={cn(
                 'relative z-50 transition-colors duration-500',
-                tab === selectedTab ? 'text-white' : 'text-gray-600',
+                name === selectedTab ? 'text-white' : 'text-gray-600',
               )}
             >
-              {tabMap[tab]}
+              {name}
             </Link>
-            {tab === selectedTab && (
+            {name === selectedTab && (
               <motion.div className="absolute inset-0 rounded-full bg-gray-900" layoutId="toggle" />
             )}
           </li>
@@ -35,4 +35,4 @@ const Tab = () => {
   );
 };
 
-export default Tab;
+export default ToggleNav;
