@@ -9,6 +9,9 @@ const meta = {
     layout: 'fullscreen',
     nextjs: {
       appDirectory: true,
+      navigation: {
+        pathname: '/test',
+      },
     },
   },
   decorators: [
