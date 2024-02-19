@@ -2,15 +2,24 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Icon } from '@/components/common/icon';
+import { Button } from '@/components/common/button';
 
-const Previous = () => {
+type Props = {
+  icon?: 'chevronLeft' | 'x';
+};
+
+const Previous = ({ icon = 'chevronLeft' }: Props) => {
   const router = useRouter();
 
   return (
-    <button onClick={() => router.back()}>
-      <Icon icon="chevronLeft" color="gray-1000" size={20} />
-    </button>
+    <Button
+      variant="empty"
+      iconOnly
+      icon={icon}
+      iconColor="gray-1000"
+      onClick={() => router.back()}
+      className="!p-0"
+    />
   );
 };
 

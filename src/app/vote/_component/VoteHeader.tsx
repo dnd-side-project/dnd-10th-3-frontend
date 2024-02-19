@@ -7,7 +7,7 @@ const VoteHeader = () => {
     <>
       <Header className="z-30 bg-white">
         <Header.Logo />
-        <Header.Tab />
+        <Header.ToggleNav />
         <Header.IconLink href="/mypage" icon="mypage" />
       </Header>
 
