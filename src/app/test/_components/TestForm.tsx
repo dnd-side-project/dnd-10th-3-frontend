@@ -106,7 +106,7 @@ const TestForm = () => {
         );
       })}
 
-      {step === QUESTIONS_ORDERS.loadingPage + 1 && <TestLoading />}
+      {step === QUESTIONS_ORDERS.loadingPage && <TestLoading />}
     </>
   );
 };
