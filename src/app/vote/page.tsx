@@ -28,8 +28,8 @@ const VotePage = () => {
                     icon="search"
                     iconSide="left"
                     borderRadius="large"
-                    bgcolor="gray"
-                    className="text-[14px]"
+                    bgcolor="lightGray"
+                    className="text-[14px] placeholder:text-gray-500"
                   />
                 </div>
               </div>
