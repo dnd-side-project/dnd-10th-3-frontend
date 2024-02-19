@@ -15,7 +15,7 @@ const middleware = async (request: NextRequest) => {
 };
 
 export const config = {
-  matcher: ['/vote/:path+', '/my-page'],
+  matcher: ['/vote/:path+', '/mypage'],
 };
 
 export default middleware;
