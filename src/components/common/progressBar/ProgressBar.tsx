@@ -12,12 +12,14 @@ type ProgressBarProps = HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof ProgressBarContainerVariants> & {
     progress: number;
     progressRate?: number;
+    duration?: number;
   };
 
 export const ProgressBar = ({
   progress,
   progressRate,
   width,
+  duration = 0.5,
   className,
   ...props
 }: ProgressBarProps) => {
@@ -28,7 +30,7 @@ export const ProgressBar = ({
           className="absolute inset-y-0 -left-full right-full -translate-x-full rounded-lg bg-primary-700"
           animate={{ x: `${progress}%` }}
           initial={{ x: progressRate ? `${progress - progressRate}%` : 0 }}
-          transition={{ type: 'tween', duration: 0.5, delay: 0.2 }}
+          transition={{ type: 'tween', duration: duration, delay: 0.2 }}
         />
       </div>
     </div>

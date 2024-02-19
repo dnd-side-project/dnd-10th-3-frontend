@@ -13,7 +13,8 @@ type Question = {
 
 export const QUESTIONS_ORDERS = {
   home: 0,
-  lastPage: 10,
+  lastPage: 11,
+  loadingPage: 12,
 };
 
 export const QUESTIONS: Question[] = [

@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useReducer, useState } from 'react';
 
 import { initialState, reducer } from '@/app/test/_helper/reducer';
@@ -16,18 +15,17 @@ import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
 import { Range } from '@/types/util';
 
+import TestLoading from './TestLoading';
 import TestQuestionTemplate from './TestQuestionTemplate';
 
 export type StepProps = Range<0, 12>;
 
 const TestForm = () => {
-  const router = useRouter();
   const toast = useToast();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [step, setStep] = useState<StepProps>(0);
 
   const handleChangeStep = (index: StepProps) => {
-    if (index === QUESTIONS_ORDERS.lastPage) router.push('/test/result');
     setStep((index + 2) as StepProps);
   };
 
@@ -104,6 +102,8 @@ const TestForm = () => {
           </section>
         );
       })}
+
+      {step === QUESTIONS_ORDERS.loadingPage && <TestLoading />}
     </>
   );
 };
