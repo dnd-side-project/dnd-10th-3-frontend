@@ -26,10 +26,7 @@ const TempertaureBox = ({ buddy, trust, love, talk, temperature }: Props) => {
             </Typography>
           </div>
           <div className="flex-1">
-            <ProgressBar
-              progress={Math.floor((trust / QUESTIONS_LENGTH_PER_TOPIC) * 100)}
-              className="h-[8px]"
-            />
+            <ProgressBar progress={Math.floor((trust / QUESTIONS_LENGTH_PER_TOPIC) * 100)} />
           </div>
         </div>
         <div className="flex items-center gap-5xs">
@@ -39,10 +36,7 @@ const TempertaureBox = ({ buddy, trust, love, talk, temperature }: Props) => {
             </Typography>
           </div>
           <div className="flex-1">
-            <ProgressBar
-              progress={Math.floor((love / QUESTIONS_LENGTH_PER_TOPIC) * 100)}
-              className="h-[8px]"
-            />
+            <ProgressBar progress={Math.floor((love / QUESTIONS_LENGTH_PER_TOPIC) * 100)} />
           </div>
         </div>
         <div className="flex items-center gap-5xs">
@@ -52,10 +46,7 @@ const TempertaureBox = ({ buddy, trust, love, talk, temperature }: Props) => {
             </Typography>
           </div>
           <div className="flex-1">
-            <ProgressBar
-              progress={Math.floor((talk / QUESTIONS_LENGTH_PER_TOPIC) * 100)}
-              className="h-[8px]"
-            />
+            <ProgressBar progress={Math.floor((talk / QUESTIONS_LENGTH_PER_TOPIC) * 100)} />
           </div>
         </div>
       </div>
