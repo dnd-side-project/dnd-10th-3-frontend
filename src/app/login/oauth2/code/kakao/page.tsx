@@ -1,7 +1,13 @@
+import { Suspense } from 'react';
+
 import KakaoLogin from './_components/KakaoLogin';
 
 const page = () => {
-  return <KakaoLogin />;
+  return (
+    <Suspense>
+      <KakaoLogin />
+    </Suspense>
+  );
 };
 
 export default page;

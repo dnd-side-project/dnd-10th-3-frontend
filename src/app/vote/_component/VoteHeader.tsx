@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { Tabs } from '@/components/common/tabs';
 import { Header } from '@/components/layout/header';
 import { CATEGORY_TAB } from '@/constants/category';
@@ -12,7 +14,9 @@ const VoteHeader = () => {
       </Header>
 
       <div className="sticky top-[68px] z-30 bg-white">
-        <Tabs tabItems={CATEGORY_TAB} />
+        <Suspense>
+          <Tabs tabItems={CATEGORY_TAB} />
+        </Suspense>
       </div>
     </>
   );
