@@ -10,7 +10,7 @@ import { cn } from '@/lib/core';
 const ToggleNav = () => {
   const pathname = usePathname();
   const defaultTab = toggleNavItems[0].name;
-  const selectedTab = toggleNavItems.filter((item) => item.href === pathname)[0].name ?? defaultTab;
+  const selectedTab = toggleNavItems.find((item) => item.href === pathname)?.name ?? defaultTab;
 
   return (
     <nav className="select-none overflow-hidden rounded-full bg-gray-50 text-sm font-semibold">
