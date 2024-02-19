@@ -7,6 +7,7 @@ import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 
+import ShareBox from './ShareBox';
 import TempertaureBox from './TempertaureBox';
 
 const ResultContents = () => {
@@ -76,26 +77,7 @@ const ResultContents = () => {
             </VoteCard>
           </article>
 
-          <article className="py-sm">
-            <Typography type="body2" className="pb-3xs text-center">
-              내 결과 공유하기
-            </Typography>
-            <div className=" flex h-[52px] justify-center gap-3xs">
-              <Button
-                icon="kakaotalk"
-                iconOnly
-                className="rounded-[100%] bg-[#FEE500]"
-                iconColor="gray-1000"
-              />
-              <Button
-                width="fit"
-                icon="link"
-                iconOnly
-                className="rounded-[100%] bg-gray-600"
-                iconColor="white"
-              />
-            </div>
-          </article>
+          <ShareBox />
           <div className="flex w-full gap-4xs px-2xs">
             <Button width="full" className="bg-primary-200 text-primary-800 ">
               테스트 다시 하기
