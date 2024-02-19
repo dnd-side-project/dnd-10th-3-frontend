@@ -9,6 +9,9 @@ const meta = {
     layout: 'fullscreen',
     nextjs: {
       appDirectory: true,
+      navigation: {
+        pathname: '/test',
+      },
     },
   },
   decorators: [
@@ -30,7 +33,7 @@ export const MainHeader: Story = {
   render: () => (
     <Header>
       <Header.Logo />
-      <Header.Tab />
+      <Header.ToggleNav />
       <Header.IconLink href="/mypage" icon="mypage" iconColor="gray-300" />
     </Header>
   ),
