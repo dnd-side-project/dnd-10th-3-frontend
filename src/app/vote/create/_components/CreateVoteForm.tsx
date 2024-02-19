@@ -24,7 +24,10 @@ const CreateVoteForm = () => {
       category: '',
       title: '',
       content: '',
-      selections: [{ content: '' }, { content: '' }],
+      selections: [
+        { content: '', img: null },
+        { content: '', img: null },
+      ],
       closeDate: '',
     },
   });

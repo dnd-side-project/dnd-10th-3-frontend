@@ -31,6 +31,7 @@ export const createVoteSchema = z.object({
     .array(
       z.object({
         content: z.string().min(MIN_INPUT_LENGTH, errorMessageMap['VOTE_ITEM_REQUIRED']),
+        img: z.string().nullable(),
       }),
     )
     .min(MIN_VOTE_COUNT, errorMessageMap['LEAST_TWO_ITEMS_REQUIRED'])
