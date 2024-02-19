@@ -24,7 +24,6 @@ const TestForm = () => {
   const toast = useToast();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [step, setStep] = useState<StepProps>(0);
-  console.log(step, 'step');
 
   const handleChangeStep = (index: StepProps) => {
     setStep((index + 2) as StepProps);
