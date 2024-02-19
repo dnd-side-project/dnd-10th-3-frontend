@@ -3,8 +3,9 @@ import { useRouter } from 'next/navigation';
 import { Loading } from '@/components/features/test/loading';
 import useTimeout from '@/hooks/useTimeout';
 
+const DELAY_SECOND = 4;
+
 const TestLoading = () => {
-  const DELAY_SECOND = 4;
   const router = useRouter();
   useTimeout(() => router.push('test/result'), DELAY_SECOND * 1000);
 
