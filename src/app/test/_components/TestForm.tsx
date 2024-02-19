@@ -13,6 +13,7 @@ import { Header } from '@/components/layout/header';
 import { PRE_QUESTIONS_LENGTH, QUESTIONS_ORDERS_LENGTH } from '@/constants/test/progress';
 import { QUESTIONS, QUESTIONS_ORDERS } from '@/constants/test/step';
 import { Typography } from '@/foundations/typography';
+import { useToast } from '@/hooks';
 import { Range } from '@/types/util';
 
 import TestQuestionTemplate from './TestQuestionTemplate';
@@ -21,6 +22,7 @@ export type StepProps = Range<0, 12>;
 
 const TestForm = () => {
   const router = useRouter();
+  const toast = useToast();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [step, setStep] = useState<StepProps>(0);
 
@@ -57,7 +59,17 @@ const TestForm = () => {
                 />
               </div>
             </div>
-            <Button width="full" onClick={() => setStep(1)}>
+            <Button
+              width="full"
+              onClick={() => {
+                if (!state.buddy) {
+                  //FIXME 명세대로 사용했으나 string 형식의 인수는 ToastParams 형식 매개 변수 할당할 수 없다고 합니다.
+                  // return () => toast('NICKNAME_REQUIRED');
+                  return toast({ type: 'default', message: '상대방의 이름을 입력해 주세요' });
+                }
+                setStep(1);
+              }}
+            >
               테스트하고 축의금 알아보기
             </Button>
           </main>
