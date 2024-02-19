@@ -44,7 +44,7 @@ const TestQuestionTemplate = ({
             <div className="w-fit" onClick={onPrevStep} role="presentation">
               <Icon icon="chevronLeft" color="gray-1000" size={24} />
             </div>
-            <ProgressBar progress={progress} className="pt-3xs" progressRate={PROGRESS_RATE} />
+            <ProgressBar progress={progress} className="mt-3xs" progressRate={PROGRESS_RATE} />
           </>
         }
         comment={

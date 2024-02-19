@@ -13,6 +13,7 @@ import { Header } from '@/components/layout/header';
 import { PRE_QUESTIONS_LENGTH, QUESTIONS_ORDERS_LENGTH } from '@/constants/test/progress';
 import { QUESTIONS, QUESTIONS_ORDERS } from '@/constants/test/step';
 import { Typography } from '@/foundations/typography';
+import { useToast } from '@/hooks';
 import { Range } from '@/types/util';
 
 import TestQuestionTemplate from './TestQuestionTemplate';
@@ -21,12 +22,26 @@ export type StepProps = Range<0, 12>;
 
 const TestForm = () => {
   const router = useRouter();
+  const toast = useToast();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [step, setStep] = useState<StepProps>(0);
 
   const handleChangeStep = (index: StepProps) => {
     if (index === QUESTIONS_ORDERS.lastPage) router.push('/test/result');
     setStep((index + 2) as StepProps);
+  };
+
+  const handleTestFormInvalid = () => {
+    if (!state.buddy) {
+      return toast({ message: 'NICKNAME_REQUIRED' });
+    }
+    setStep(1);
+  };
+
+  const handleOnKeyEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleTestFormInvalid();
+    }
   };
 
   return (
@@ -54,10 +69,11 @@ const TestForm = () => {
                   className="text-center"
                   value={state.buddy}
                   onChange={(e) => dispatch({ type: 'setBuddyName', value: e.target.value })}
+                  onKeyUp={handleOnKeyEnter}
                 />
               </div>
             </div>
-            <Button width="full" onClick={() => setStep(1)}>
+            <Button width="full" onClick={handleTestFormInvalid}>
               테스트하고 축의금 알아보기
             </Button>
           </main>

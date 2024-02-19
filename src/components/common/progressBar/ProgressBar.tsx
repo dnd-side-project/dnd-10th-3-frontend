@@ -23,7 +23,7 @@ export const ProgressBar = ({
 }: ProgressBarProps) => {
   return (
     <div className={cn(ProgressBarContainerVariants({ width }))} {...props}>
-      <div className={cn('relative h-[6px] overflow-hidden rounded-lg bg-gray-100', className)}>
+      <div className={cn('relative h-[8px] overflow-hidden rounded-lg bg-gray-100', className)}>
         <motion.div
           className="absolute inset-y-0 -left-full right-full -translate-x-full rounded-lg bg-primary-700"
           animate={{ x: `${progress}%` }}
