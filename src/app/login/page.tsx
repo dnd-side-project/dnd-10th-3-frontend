@@ -14,7 +14,7 @@ type Props = {
 };
 
 const LoginPage = ({ searchParams }: Props) => {
-  const { callbackUrl } = searchParams;
+  const callbackUrl = searchParams[CALLBACK_URL] ?? '/';
 
   return (
     <div className="relative flex h-dvh w-full flex-col items-center bg-mainGradient pb-10">
