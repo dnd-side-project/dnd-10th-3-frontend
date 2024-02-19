@@ -1,2 +1,2 @@
 export { default as Previous } from './Previous';
-export { default as Tab } from './Tab';
+export { default as ToggleNav } from './ToggleNav';

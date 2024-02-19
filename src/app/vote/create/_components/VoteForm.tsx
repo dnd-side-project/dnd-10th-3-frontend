@@ -8,6 +8,7 @@ import { VoteItem } from '@/components/features/vote/voteItem';
 import { Typography } from '@/foundations/typography';
 import { MAX_ITEM_LENGTH, MAX_VOTE_COUNT, MIN_VOTE_COUNT } from '@/schema/CreateVoteSchema';
 
+import { VoteItemImgForm } from '.';
 import { CreateVoteInput } from './CreateVoteForm';
 
 const VoteForm = () => {
@@ -43,7 +44,7 @@ const VoteForm = () => {
                 maxLength={MAX_ITEM_LENGTH}
                 {...register(`selections.${index}.content` as const)}
               />
-              <VoteItem.IconButton icon="photo" />
+              <VoteItemImgForm index={index} />
             </VoteItem>
           </div>
         ))}
@@ -55,7 +56,7 @@ const VoteForm = () => {
         iconColor={fields.length >= MAX_VOTE_COUNT ? 'gray-400' : 'gray-1000'}
         iconSize={14}
         className="text-sm"
-        onClick={() => append({ content: '' })}
+        onClick={() => append({ content: '', img: null })}
         disabled={fields.length >= MAX_VOTE_COUNT}
       >
         항목 추가

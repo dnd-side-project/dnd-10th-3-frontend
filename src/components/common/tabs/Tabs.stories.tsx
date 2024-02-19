@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
-import { CATEGORY_TAB, MYPAGE_TAB } from '@/constants/category';
+import { CATEGORY_TAB } from '@/constants/category';
+import { MYPAGE_TAB } from '@/constants/mypage';
 
 import { Tabs } from '.';
 import { Tab } from './Tabs';

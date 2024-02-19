@@ -1,6 +1,6 @@
 import { Tabs } from '@/components/common/tabs';
 import { Header } from '@/components/layout/header';
-import { MYPAGE_TAB } from '@/constants/category';
+import { MYPAGE_TAB } from '@/constants/mypage';
 
 import { MyTest, MyVote, Profile } from './_components';
 

@@ -8,7 +8,7 @@ import { IconColor, IconType } from '@/components/common/icon/assets';
 import { Typography } from '@/foundations/typography';
 import { cn } from '@/lib/core';
 
-import { Previous, Tab } from './components';
+import { Previous, ToggleNav } from './components';
 
 type HeaderProps = { children: React.ReactNode } & HTMLAttributes<HTMLElement>;
 const Header = ({ children, className, ...props }: HeaderProps) => {
@@ -51,7 +51,7 @@ const Text = ({ text }: TextProps) => {
 
 export default Object.assign(Header, {
   Logo,
-  Tab,
+  ToggleNav,
   Text,
   IconLink,
   Previous,

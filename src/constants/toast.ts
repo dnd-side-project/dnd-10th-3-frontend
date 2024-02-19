@@ -25,5 +25,7 @@ export const TOAST_MESSAGES = Object.freeze({
 
   LINK_COPIED: { type: 'warning', text: '링크가 복사되었습니다' },
 
+  IMAGE_FILE_ONLY: { type: 'warning', text: '이미지 파일만 업로드 가능합니다' },
+
   ERROR: { type: 'warning', text: '잠시 후에 다시 시도해 주세요' },
 }) satisfies Record<string, { type: 'default' | 'warning'; text: string }>;

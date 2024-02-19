@@ -31,9 +31,7 @@ const TestForm = () => {
 
   const handleTestFormInvalid = () => {
     if (!state.buddy) {
-      //FIXME 명세대로 사용했으나 string 형식의 인수는 ToastParams 형식 매개 변수 할당할 수 없다고 합니다.
-      // return () => toast('NICKNAME_REQUIRED');
-      return toast({ type: 'default', message: '상대방의 이름을 입력해 주세요' });
+      return toast({ message: 'NICKNAME_REQUIRED' });
     }
     setStep(1);
   };
@@ -50,7 +48,7 @@ const TestForm = () => {
         <div className="relative flex size-full h-dvh flex-col items-center bg-mainGradient pb-2xs">
           <Header>
             <Header.Logo />
-            <Header.Tab />
+            <Header.ToggleNav />
             <Header.IconLink href="/mypage" icon="mypage" />
           </Header>
 
