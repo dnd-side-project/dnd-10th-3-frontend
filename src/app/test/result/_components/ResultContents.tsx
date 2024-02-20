@@ -1,12 +1,11 @@
-import Image from 'next/image';
+'use client';
 
-import ResultType from '@/assets/images/resultType.png';
 import { Button } from '@/components/common/button';
-import { Icon } from '@/components/common/icon';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 
+import ImageBox from './ImageBox';
 import TempertaureBox from './TempertaureBox';
 
 const ResultContents = () => {
@@ -15,18 +14,12 @@ const ResultContents = () => {
       <Header>
         <Header.Previous />
       </Header>
+
+      <article className="flex flex-col items-center justify-center px-2xs">
+        <ImageBox resultTypeId={100} />
+      </article>
       <main className="pb-10">
-        <section className="flex  flex-col items-center justify-center">
-          <article className="flex  flex-col items-center justify-center px-2xs ">
-            <Image src={ResultType} width={335} height={487} alt="result-image" />
-            <div className="flex items-center gap-5xs py-3xs">
-              <Icon icon="caretUp" color="gray-300" size={12} />
-              <Typography type="body2" className="text-gray-500">
-                이미지 꾹 - 눌러서 저장하기
-              </Typography>
-              <Icon icon="caretUp" color="gray-300" size={12} />
-            </div>
-          </article>
+        <section className="flex flex-col items-center justify-center">
           {/* TODO : 컴포넌트 분리 예정 */}
           <article className="my-4xs flex w-full px-2xs ">
             <div className="flex w-full flex-col items-center justify-center  rounded-xl border  border-gray-100 py-xs">
