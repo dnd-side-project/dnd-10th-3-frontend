@@ -22,7 +22,7 @@ type Props = {
   onChangeStep: () => void;
   progress: number;
   badgeStatus: string;
-  question: ReactNode;
+  question: (user?: string) => ReactNode;
   image?: string | StaticImport;
   answerList: string[];
   onPrevStep?: () => void;
@@ -42,7 +42,6 @@ const TestQuestionTemplate = ({
   onDispatchEvent,
 }: Props) => {
   const { mutate } = useCreateTestResult();
-
   return (
     <main className={'relative flex h-dvh w-full flex-col items-center pb-5'}>
       <FormLayout
@@ -57,7 +56,7 @@ const TestQuestionTemplate = ({
         comment={
           <div className="flex flex-col gap-4xs">
             <Tag>{badgeStatus}</Tag>
-            <Typography type={'heading2'}>{question}</Typography>
+            <Typography type={'heading2'}>{question(state.buddy)}</Typography>
           </div>
         }
         body={
