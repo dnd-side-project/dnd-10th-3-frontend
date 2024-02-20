@@ -58,7 +58,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 4,
-    type: 'talk',
+    type: 'love',
     question: (
       <>
         초췌한 몰골로 <br /> 짚 앞 슈퍼에 나온 나, <br />
@@ -70,7 +70,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 5,
-    type: 'trust',
+    type: 'talk',
     question: (
       <>
         지인의 결혼식과 <br /> 상대의 결혼식이 겹쳤다.
@@ -105,7 +105,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 8,
-    type: 'love',
+    type: 'talk',
     question: (
       <>
         상대가 결혼할 사람이라며
@@ -117,7 +117,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 9,
-    type: 'talk',
+    type: 'trust',
     question: (
       <>
         상대에게 다수가 모르는 <br /> 나의 비밀이나 고민을
