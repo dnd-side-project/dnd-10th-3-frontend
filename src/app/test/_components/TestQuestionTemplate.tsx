@@ -67,6 +67,7 @@ const TestQuestionTemplate = ({
             {answerList.map((answer, index) => {
               return (
                 <Button
+                  variant="accent"
                   width="full"
                   onClick={() => {
                     if (id <= PRE_QUESTIONS_LENGTH) {
@@ -82,7 +83,6 @@ const TestQuestionTemplate = ({
                     }
                   }}
                   key={index}
-                  className="h-md bg-primary-800 text-white"
                 >
                   {answer}
                 </Button>

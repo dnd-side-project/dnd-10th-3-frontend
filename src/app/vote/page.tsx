@@ -102,6 +102,7 @@ const VotePage = () => {
           {isVoteExist ? (
             <Link href={'/vote/create'}>
               <Button
+                variant="accent"
                 icon="pencil"
                 iconOnly
                 className=" h-[56px] w-xl rounded-[100%] bg-primary-800"
