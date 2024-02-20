@@ -105,7 +105,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 8,
-    type: 'trust',
+    type: 'love',
     question: (
       <>
         상대가 결혼할 사람이라며
@@ -117,7 +117,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 9,
-    type: 'trust',
+    type: 'talk',
     question: (
       <>
         상대에게 다수가 모르는 <br /> 나의 비밀이나 고민을
