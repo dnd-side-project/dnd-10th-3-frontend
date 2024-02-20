@@ -14,7 +14,7 @@ const ResultContents = () => {
       <Header>
         <Header.Previous />
       </Header>
-      <ImageBox />
+      <ImageBox resultTypeId={3} />
       <main className="pb-10">
         <section className="flex flex-col items-center justify-center">
           {/* TODO : 컴포넌트 분리 예정 */}

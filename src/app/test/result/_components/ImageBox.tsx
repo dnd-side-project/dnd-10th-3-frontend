@@ -1,13 +1,18 @@
 'use client';
 
-import Image from 'next/image';
 import { useRef } from 'react';
 
+import FirstResultType from '@/assets/images/result/firstResultType.svg';
+import ForthResultType from '@/assets/images/result/forthResultType.svg';
+import SecondResultType from '@/assets/images/result/secondResultType.svg';
+import ThirdResultType from '@/assets/images/result/thirdResultType.svg';
 import { Icon } from '@/components/common/icon';
 import { Typography } from '@/foundations/typography';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
+import { Range } from '@/types/util';
 
-const ImageBox = () => {
+// TODO : 백엔드와 논의하여 resultTypeId 프로퍼티 결정
+const ImageBox = ({ resultTypeId = 4 }: { resultTypeId: Range<1, 5> }) => {
   const imageRef = useRef<HTMLButtonElement>(null);
   const { onDownloadImage } = useDownloadImage({ imageRef });
 
@@ -17,12 +22,7 @@ const ImageBox = () => {
   return (
     <article className="flex flex-col items-center justify-center px-2xs">
       <button onClick={handleDownloadImage} ref={imageRef}>
-        <Image
-          src="https://velog.velcdn.com/images/sharphand1/post/18fa9fdc-5078-4477-82ed-0a4f9f5587a6/image.png"
-          width={335}
-          height={487}
-          alt="result-image"
-        />
+        {resultTypeMap[resultTypeId]}
       </button>
       <div className="flex items-center gap-5xs py-3xs">
         <Icon icon="caretUp" color="gray-300" size={12} />
@@ -36,3 +36,12 @@ const ImageBox = () => {
 };
 
 export default ImageBox;
+
+// HELP: 더 좋은 방법이 있을까요!?
+// svg가 tsx 파일에서 가능하여 constants로 뺴지 않았습니다.
+const resultTypeMap = {
+  1: <FirstResultType />,
+  2: <SecondResultType />,
+  3: <ThirdResultType />,
+  4: <ForthResultType />,
+};

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['velog.velcdn.com'], // mock image로 테스트 하기 위한 config입니다. 추후에 제거 예정
+    domains: [], // mock image로 테스트 하기 위한 config입니다. 
   },
   webpack(config) {
     config.module.rules.push({
