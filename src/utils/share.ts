@@ -1,4 +1,4 @@
-type shareLinkParams = ShareData & Pick<Required<ShareData>, 'url'>;
+type shareLinkParams = ShareData & Pick<Required<ShareData>, 'url'> ;
 
 const copyClipboard = async ({ url }: shareLinkParams) => {
   try {

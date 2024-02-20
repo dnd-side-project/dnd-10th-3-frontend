@@ -5,7 +5,10 @@ import { KakaoShareButton } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
 import { shareLink } from '@/utils/share';
 
-const ShareBox = () => {
+const ShareBox = ({ id }: { id: number }) => {
+  // TODO : post시 바디에 담아 보내줄 예정
+  console.log(id);
+
   const handleCopyClipboard = () => {
     shareLink({ url: location.href });
   };
