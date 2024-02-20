@@ -7,6 +7,7 @@ export const inputContainerVariants = cva('flex w-full items-center gap-5xs bord
     },
     bgcolor: {
       white: 'bg-white',
+      lightGray: 'bg-gray-50',
       gray: 'bg-gray-100',
     },
     borderRadius: {

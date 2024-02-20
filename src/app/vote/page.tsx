@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { VoteCard, VoteItem } from '@/components/features/vote';
@@ -26,8 +28,8 @@ const VotePage = () => {
                     icon="search"
                     iconSide="left"
                     borderRadius="large"
-                    bgcolor="gray"
-                    className="text-[14px]"
+                    bgcolor="lightGray"
+                    className="text-[14px] placeholder:text-gray-500"
                   />
                 </div>
               </div>
@@ -98,12 +100,14 @@ const VotePage = () => {
       footer={
         <>
           {isVoteExist ? (
-            <Button
-              icon="add"
-              iconOnly
-              className=" h-[56px] w-xl rounded-[100%] bg-primary-500"
-              iconColor="white"
-            />
+            <Link href={'/vote/create'}>
+              <Button
+                icon="pencil"
+                iconOnly
+                className=" h-[56px] w-xl rounded-[100%] bg-primary-800"
+                iconColor="white"
+              />
+            </Link>
           ) : null}
         </>
       }
