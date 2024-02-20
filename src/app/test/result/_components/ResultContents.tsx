@@ -76,8 +76,9 @@ const ResultContents = () => {
               </VoteCard.SubmitButton>
             </VoteCard>
           </article>
-
-          <ShareBox />
+          <article className="py-sm">
+            <ShareBox />
+          </article>
           <div className="flex w-full gap-4xs px-2xs">
             <Button width="full" className="bg-primary-200 text-primary-800 ">
               테스트 다시 하기

@@ -10,7 +10,7 @@ const ShareBox = () => {
   };
 
   return (
-    <article className="py-sm">
+    <>
       <Typography type="body2" className="pb-3xs text-center">
         내 결과 공유하기
       </Typography>
@@ -30,7 +30,7 @@ const ShareBox = () => {
           onClick={handleCopyClipboard}
         />
       </div>
-    </article>
+    </>
   );
 };
 
