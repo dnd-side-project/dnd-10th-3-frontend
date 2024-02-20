@@ -7,36 +7,32 @@ import ForthResultType from '@/assets/images/result/forthResultType.svg';
 import SecondResultType from '@/assets/images/result/secondResultType.svg';
 import ThirdResultType from '@/assets/images/result/thirdResultType.svg';
 import { Button } from '@/components/common/button';
-import { Spinner } from '@/components/common/spinner';
 import { Typography } from '@/foundations/typography';
+import { useToast } from '@/hooks';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
-import { Range } from '@/types/util';
+import { TestResultType } from '@/types/test';
 
 // TODO : 백엔드와 논의하여 resultTypeId 프로퍼티 결정
-const ImageBox = ({ resultTypeId = 4 }: { resultTypeId: Range<1, 5> }) => {
+const ImageBox = ({ resultTypeId = 4 }: { resultTypeId: TestResultType['ResultTypeid'] }) => {
   const imageRef = useRef<HTMLDivElement>(null);
-  const { isDownloading, onDownloadImage } = useDownloadImage({ imageRef });
+  const { onDownloadImage } = useDownloadImage({ imageRef });
+  const toast = useToast();
 
   const handleDownloadImage = async () => {
     await onDownloadImage();
+    await toast({ type: 'default', message: '이미지를 저장하였습니다.' });
   };
   return (
-    <article className="flex flex-col items-center justify-center px-2xs">
+    <>
       <div ref={imageRef}>{resultTypeMap[resultTypeId]}</div>
       <div className="flex items-center gap-5xs py-xs">
         <Button variant="empty" onClick={handleDownloadImage} className="h-[30px]">
-          {isDownloading ? (
-            <Spinner />
-          ) : (
-            <>
-              <Typography type="body2" className=" border-b-2 border-gray-500 text-gray-500">
-                이미지 저장하기
-              </Typography>
-            </>
-          )}
+          <Typography type="body2" className=" border-b-2 border-[#5382FF] text-[#5382FF]">
+            이미지 저장하기
+          </Typography>
         </Button>
       </div>
-    </article>
+    </>
   );
 };
 
