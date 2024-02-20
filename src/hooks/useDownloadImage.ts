@@ -39,8 +39,11 @@ export const useDownloadImage = ({  imageRef }: DownloadImageOption) => {
     //   TODO: 동적으로 4개의 유형의 이름을 할당할 예정
       const IMAGE_FILE_NAME = '돈워리_결과_사진';
 
+
       downloadFile(imageUrl, IMAGE_FILE_NAME);
+      toast({ type: 'default', message: '이미지를 저장하였습니다.' })
     } catch (error) {
+      console.log(error,'error')
       toast({message:'IMAGE_SAVE_FAIL'})
     } finally {
       setIsDownloading(false);

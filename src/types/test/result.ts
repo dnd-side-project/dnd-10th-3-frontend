@@ -10,7 +10,7 @@ export type TestResultType =  {
     love : number
     talk : number
     temperature: number
-    ResultTypeid : 1 | 2| 3 | 4
+    ResultTypeid : 0 | 36| 70 | 100
     imageUrl: string
     description : string
     title: string

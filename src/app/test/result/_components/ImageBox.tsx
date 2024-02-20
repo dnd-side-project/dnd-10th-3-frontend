@@ -8,19 +8,16 @@ import SecondResultType from '@/assets/images/result/secondResultType.svg';
 import ThirdResultType from '@/assets/images/result/thirdResultType.svg';
 import { Button } from '@/components/common/button';
 import { Typography } from '@/foundations/typography';
-import { useToast } from '@/hooks';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
 import { TestResultType } from '@/types/test';
 
 // TODO : 백엔드와 논의하여 resultTypeId 프로퍼티 결정
-const ImageBox = ({ resultTypeId = 4 }: { resultTypeId: TestResultType['ResultTypeid'] }) => {
+const ImageBox = ({ resultTypeId = 100 }: { resultTypeId: TestResultType['ResultTypeid'] }) => {
   const imageRef = useRef<HTMLDivElement>(null);
   const { onDownloadImage } = useDownloadImage({ imageRef });
-  const toast = useToast();
 
   const handleDownloadImage = async () => {
     await onDownloadImage();
-    await toast({ type: 'default', message: '이미지를 저장하였습니다.' });
   };
   return (
     <>
@@ -38,11 +35,9 @@ const ImageBox = ({ resultTypeId = 4 }: { resultTypeId: TestResultType['ResultTy
 
 export default ImageBox;
 
-// HELP: 더 좋은 방법이 있을까요!?
-// svg가 tsx 파일에서 가능하여 constants로 뺴지 않았습니다.
 const resultTypeMap = {
-  1: <FirstResultType />,
-  2: <SecondResultType />,
-  3: <ThirdResultType />,
-  4: <ForthResultType />,
+  0: <FirstResultType />,
+  36: <SecondResultType />,
+  70: <ThirdResultType />,
+  100: <ForthResultType />,
 };
