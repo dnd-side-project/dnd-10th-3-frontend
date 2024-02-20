@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { Button } from '@/components/common/button';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
@@ -37,38 +39,6 @@ const ResultContents = () => {
 
           <TempertaureBox buddy="상대" trust={1} love={2} talk={3} temperature={4} />
 
-          {/* TODO : 컴포넌트 분리 예정 */}
-          <article className="flex w-full flex-col items-center px-2xs">
-            <Typography type="heading3" className="my-3xs">
-              상대 축의금, 얼마 낼지 결정해봐요!
-            </Typography>
-            <VoteCard className="w-full">
-              <VoteCard.Header />
-              <VoteCard.VoteItemGroup>
-                <VoteItem>
-                  <VoteItem.Radio></VoteItem.Radio>
-                  <VoteItem.Input readOnly value="5만원" />
-                </VoteItem>
-                <VoteItem>
-                  <VoteItem.Radio></VoteItem.Radio>
-                  <VoteItem.Input readOnly value="10만원" />
-                </VoteItem>
-                <VoteItem>
-                  <VoteItem.Radio></VoteItem.Radio>
-                  <VoteItem.Input readOnly value="20만원" />
-                </VoteItem>
-                <VoteItem>
-                  <VoteItem.Radio></VoteItem.Radio>
-                  <VoteItem.Input readOnly value="안내고 싶어요" />
-                </VoteItem>
-              </VoteCard.VoteItemGroup>
-              <VoteCard.SubmitButton>
-                <Button width="full" variant="secondary">
-                  다시 결정하기
-                </Button>
-              </VoteCard.SubmitButton>
-            </VoteCard>
-          </article>
           <article className="py-sm">
             <ShareBox id={1} />
           </article>
@@ -102,9 +72,11 @@ const ResultContents = () => {
                 </VoteCard.VoteItemGroup>
               </VoteCard>
             </div>
-            <Button variant="primary" width="full">
-              투표하고 축의금 논쟁 종결짓기
-            </Button>
+            <Link href="/vote">
+              <Button variant="primary" width="full">
+                투표하고 축의금 논쟁 종결짓기
+              </Button>
+            </Link>
           </article>
         </section>
       </main>
