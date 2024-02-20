@@ -19,7 +19,7 @@ type Props = {
   progress: number;
   badgeStatus: string;
   question: ReactNode;
-  image: string | StaticImport;
+  image?: string | StaticImport;
   answerList: string[];
   onPrevStep?: () => void;
   onDispatchEvent: (value: string) => void;
@@ -54,16 +54,19 @@ const TestQuestionTemplate = ({
           </div>
         }
         body={
-          <div className="absolute right-0">
-            <Image src={image} width={215} height={215} alt="testImage" />
-          </div>
+          <>
+            {image && (
+              <div className="absolute right-0">
+                <Image src={image} width={215} height={215} alt="testImage" />
+              </div>
+            )}
+          </>
         }
         footer={
           <div className=" flex flex-col gap-3xs">
             {answerList.map((answer, index) => {
               return (
                 <Button
-                  variant={'secondary'}
                   width="full"
                   onClick={() => {
                     if (id <= PRE_QUESTIONS_LENGTH) {
@@ -79,7 +82,7 @@ const TestQuestionTemplate = ({
                     }
                   }}
                   key={index}
-                  className="h-md"
+                  className="h-md bg-primary-800 text-white"
                 >
                   {answer}
                 </Button>
