@@ -4,17 +4,21 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
+import { TestState } from '@/app/test/_helper/reducer';
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Tag } from '@/components/common/tag';
+import { QUESTIONS_ORDERS } from '@/constants/test';
 import { PRE_QUESTIONS_LENGTH, PROGRESS_RATE } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
+import { useCreateTestResult } from '@/hooks/api/test';
 
 import FormLayout from './FormLayout';
 
 type Props = {
   id: number;
+  state: TestState;
   onChangeStep: () => void;
   progress: number;
   badgeStatus: string;
@@ -26,6 +30,7 @@ type Props = {
 };
 
 const TestQuestionTemplate = ({
+  state,
   id,
   answerList,
   badgeStatus,
@@ -36,6 +41,8 @@ const TestQuestionTemplate = ({
   onPrevStep,
   onDispatchEvent,
 }: Props) => {
+  const { mutate } = useCreateTestResult();
+
   return (
     <main className={'relative flex h-dvh w-full flex-col items-center pb-5'}>
       <FormLayout
@@ -69,11 +76,15 @@ const TestQuestionTemplate = ({
                 <Button
                   width="full"
                   onClick={() => {
+                    if (id === QUESTIONS_ORDERS.lastPage) {
+                      mutate({ ...state });
+                    }
+
                     if (id <= PRE_QUESTIONS_LENGTH) {
                       onChangeStep();
                       onDispatchEvent(answer);
 
-                      //긍정 답변일 경우 + 1 의도
+                      //긍정 답변일 경우 trust,love,talk + 1 증가
                     } else if (index === 0) {
                       onChangeStep();
                       onDispatchEvent(answer);

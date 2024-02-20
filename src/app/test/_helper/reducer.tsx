@@ -1,4 +1,4 @@
-type TestState = {
+export type TestState = {
   buddy: string;
   gender: string;
   age: string;

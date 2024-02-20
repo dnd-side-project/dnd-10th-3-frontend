@@ -83,6 +83,7 @@ const TestForm = () => {
           <section key={question.id}>
             {step === question.id && (
               <TestQuestionTemplate
+                state={state}
                 id={question.id}
                 onDispatchEvent={(buttonValue) =>
                   dispatch({ type: `${QUESTIONS[index].type}`, value: buttonValue })
