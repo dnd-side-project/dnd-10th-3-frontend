@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 
-export const dividerVariants = cva('mx-auto my-none border-0', {
+export const dividerVariants = cva('mx-auto my-none shrink-0 border-0', {
   variants: {
     width: {
       '25%': 'w-1/4',
