@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
 import { useToast } from '@/hooks';
-import { get, post } from '@/lib/axios';
+import { del, get, post } from '@/lib/axios';
 import { FailResponse, SuccessResponse } from '@/types/response';
 
 import {
@@ -59,7 +59,18 @@ const useAuth = () => {
     },
   });
 
-  return { kakaoLogin, logout, updateNickname };
+  const { mutate: deleteUser } = useMutation({
+    mutationFn: () => del('/user'),
+    onSuccess: () => {
+      toast({ message: 'DELETE_USER_SUCCESS' });
+      router.push('/');
+    },
+    onError: () => {
+      toast({ message: 'DELETE_USER_FAIL' });
+    },
+  });
+
+  return { kakaoLogin, logout, updateNickname, deleteUser };
 };
 
 export default useAuth;
