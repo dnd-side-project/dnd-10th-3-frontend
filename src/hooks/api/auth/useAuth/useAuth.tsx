@@ -3,9 +3,14 @@ import { useRouter } from 'next/navigation';
 
 import { useToast } from '@/hooks';
 import { get, post } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
+import { FailResponse, SuccessResponse } from '@/types/response';
 
-import { KakaoLoginFnVariables, KakaoLoginResponseData } from './types';
+import {
+  KakaoLoginFnVariables,
+  KakaoLoginResponseData,
+  UpdateNicknameFnVariables,
+  UpdateNicknameResponseData,
+} from './types';
 
 const useAuth = () => {
   const router = useRouter();
@@ -39,7 +44,22 @@ const useAuth = () => {
     },
   });
 
-  return { kakaoLogin, logout };
+  const { mutate: updateNickname } = useMutation<
+    SuccessResponse<UpdateNicknameResponseData>,
+    FailResponse,
+    UpdateNicknameFnVariables
+  >({
+    mutationFn: ({ nickname }) => post('/user', { nickname }),
+    onSuccess: () => {
+      toast({ message: 'CHANGE_NICKNAME_SUCCESS' });
+      router.push('/mypage');
+    },
+    onError: () => {
+      toast({ message: 'CHANGE_NICKNAME_FAIL' });
+    },
+  });
+
+  return { kakaoLogin, logout, updateNickname };
 };
 
 export default useAuth;

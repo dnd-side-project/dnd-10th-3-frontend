@@ -7,3 +7,13 @@ export type KakaoLoginResponseData = {
   accessToken: string;
   refreshToken: string;
 };
+
+export type UpdateNicknameFnVariables = {
+  nickname: string;
+};
+
+export type UpdateNicknameResponseData = {
+  userId: number;
+  nickname: string;
+  modifiedAt: string;
+};
