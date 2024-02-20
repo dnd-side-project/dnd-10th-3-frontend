@@ -29,12 +29,13 @@ const useAuth = () => {
   };
 
   const { mutate: logout } = useMutation({
-    mutationFn: () => post('/logout'),
+    mutationFn: () => post('/user/logout'),
     onSuccess: () => {
+      toast({ message: 'LOGOUT_SUCCESS' });
       router.push('/');
     },
     onError: () => {
-      // TODO
+      toast({ message: 'LOGOUT_FAIL' });
     },
   });
 
