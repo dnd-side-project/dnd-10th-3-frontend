@@ -56,7 +56,7 @@ const TestQuestionTemplate = ({
         comment={
           <div className="flex flex-col gap-4xs">
             <Tag>{badgeStatus}</Tag>
-            <Typography type={'heading2'}>{question(state.buddy)}</Typography>
+            <Typography type="question">{question(state.buddy)}</Typography>
           </div>
         }
         body={
@@ -92,7 +92,7 @@ const TestQuestionTemplate = ({
                     }
                   }}
                   key={index}
-                  className="h-md bg-primary-800 text-white"
+                  className="h-md bg-primary-700 text-white"
                 >
                   {answer}
                 </Button>

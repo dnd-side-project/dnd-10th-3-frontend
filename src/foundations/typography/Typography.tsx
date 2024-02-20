@@ -24,6 +24,7 @@ const typographyVariants = cva('whitespace-pre-line text-wrap', {
       caption1: 'text-[12px] font-medium leading-[155%]',
       caption2: 'text-[8px] font-medium leading-[155%]',
       header1: 'text-[14px] font-medium leading-[145%] text-blue-50',
+      question: 'text-[22px] font-normal leading-[145%]',
     },
   },
   defaultVariants: {

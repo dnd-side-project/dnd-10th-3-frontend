@@ -21,31 +21,31 @@ export const QUESTIONS: Question[] = [
   {
     id: 1,
     type: 'setGender',
-    badgeStatus: '사전',
+    badgeStatus: 'Q.사전질문',
     question: () => {
       return (
         <>
-          보다 정확한 답변을 드리기 위해
-          <br /> 성별을 선택해주세요.
+          정확한 테스트 결과를 위해
+          <br /> <strong>당신의 성별이 궁금해요.</strong>
         </>
       );
     },
-    answerList: ['남성', '여성'],
+    answerList: ['남자', '여자'],
   },
   {
     id: 2,
-    badgeStatus: '사전',
+    badgeStatus: 'Q.사전질문',
     type: 'setAge',
     question: () => {
       return (
         <>
-          사전 질문 마지막 단계예요. <br />
-          당신의 나이를 선택해주세요.
+          마지막으로 <br />
+          <strong>당신의 나이를 선택해주세요.</strong>
         </>
       );
     },
 
-    answerList: ['10대', '20대', '30대', '40대'],
+    answerList: ['10대', '20대', '30대', '40대', '50대 이상'],
   },
   {
     id: 3,
