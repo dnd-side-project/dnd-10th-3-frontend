@@ -1,4 +1,7 @@
 export const TOAST_MESSAGES = Object.freeze({
+  LOGIN_SUCCESS: { type: 'default', text: '로그인 되었습니다' },
+  LOGIN_FAIL: { type: 'warning', text: '로그인에 실패했습니다' },
+
   VOTE_UPLOAD_SUCCESS: { type: 'default', text: '투표 업로드가 완료되었습니다' },
   VOTE_UPLOAD_FAIL: { type: 'warning', text: '투표 업로드에 실패했습니다' },
 
