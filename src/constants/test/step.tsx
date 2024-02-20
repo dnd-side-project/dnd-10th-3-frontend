@@ -7,7 +7,7 @@ type Question = {
   type: TestActionType;
   badgeStatus?: string;
   question: ReactNode;
-  image: string;
+  image?: string;
   answerList: string[];
 };
 
@@ -28,7 +28,7 @@ export const QUESTIONS: Question[] = [
         <br /> 성별을 선택해주세요.
       </>
     ),
-    image: `/images/testWorry.png`,
+
     answerList: ['남성', '여성'],
   },
   {
@@ -41,7 +41,6 @@ export const QUESTIONS: Question[] = [
         나이를 선택해주세요.
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: ['10대', '20대', '30대', '40대'],
   },
@@ -55,7 +54,6 @@ export const QUESTIONS: Question[] = [
       </>
     ),
     image: `/images/testWorry.png`,
-
     answerList: ['예', '아니요'],
   },
   {
@@ -67,7 +65,6 @@ export const QUESTIONS: Question[] = [
         우연히 상대와 마주쳤다면?
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: ['창피하지만 인사정도 나눌 수 있다.', '조용히 최대한 피한다.'],
   },
@@ -81,7 +78,6 @@ export const QUESTIONS: Question[] = [
         나의 반응은?
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: ['상대방 결혼식에 참석해 얼굴 비춘다.', '미안하지만 송금으로 마음을 전한다.'],
   },
@@ -93,7 +89,6 @@ export const QUESTIONS: Question[] = [
         나는 상대와 <br /> 단둘이 식사를 할 수 있다.
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: ['예', '아니오'],
   },
@@ -105,7 +100,6 @@ export const QUESTIONS: Question[] = [
         상대의 생일날 <br /> 나의 반응은?
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: ['연락해서 축하라도 해줘야겠다.', '알아서 잘 보내겠지라는 생각으로 넘긴다.'],
   },
@@ -118,7 +112,6 @@ export const QUESTIONS: Question[] = [
         <br /> 인사를 시켜준다. <br /> 나의 반응은?
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: ['예전부터 이상형이 한결 같다.', '왜 나에게 인사를 시켜주는 지 모르겠다.'],
   },
@@ -131,7 +124,6 @@ export const QUESTIONS: Question[] = [
         <br /> 말할 수 있다.
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: ['예', '아니오'],
   },
@@ -143,7 +135,6 @@ export const QUESTIONS: Question[] = [
         상대와 만나기로 약속한 당일 <br /> 갑자기 연락이 없다. <br /> 나의 반응은?
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: [
       '무슨 사정이 있겠지. 연락오기를 기다린다.',
@@ -160,7 +151,6 @@ export const QUESTIONS: Question[] = [
         이때 나는?
       </>
     ),
-    image: `/images/testWorry.png`,
 
     answerList: [
       '어떻게 쓸 지 고민되지만 연락줘서 고맙다.',
