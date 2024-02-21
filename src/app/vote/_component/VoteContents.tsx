@@ -6,11 +6,14 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
+import { useGetAllVotes } from '@/hooks/vote';
 
 import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
+  const { data } = useGetAllVotes();
+  console.log('data', data);
   const isVoteExist = true;
   return (
     <VoteLayout
