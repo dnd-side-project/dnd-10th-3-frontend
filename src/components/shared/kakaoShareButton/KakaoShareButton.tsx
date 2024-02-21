@@ -16,7 +16,7 @@ const KakaoShareButton = () => {
       content: {
         title: `축의금 결정 어려웠나요?`,
         description: `돈워리로 축의금 고민 해결해 보세요.`,
-        imageUrl: 'https://i.imgur.com/0a9RjUz.png',
+        imageUrl: 'https://i.imgur.com/CtZUmU5.png',
         link: {
           mobileWebUrl: `${CONFIG.site}`,
           webUrl: `${CONFIG.site}`,
