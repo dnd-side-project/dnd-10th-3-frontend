@@ -7,6 +7,7 @@ import { Input } from '@/components/common/input';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
 import { VOTE_TEMP_DATA } from '@/constants/vote/test';
+import { getTimeDifference } from '@/utils/date';
 
 import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
@@ -51,10 +52,14 @@ const VoteContents = () => {
                     selections,
                   } = vote;
                   //TODO : closeDate util로 계산하는 로직 필요
+
                   return (
                     <li key={id}>
                       <VoteCard className="shadow-thumb">
-                        <VoteCard.Header categories={category} remainingDay={2} />
+                        <VoteCard.Header
+                          categories={category}
+                          remainingDay={getTimeDifference(closeDate)}
+                        />
                         <VoteCard.Description title={title} content={content} />
                         <VoteCard.VoteItemGroup withBlur>
                           <VoteItem readOnly>
