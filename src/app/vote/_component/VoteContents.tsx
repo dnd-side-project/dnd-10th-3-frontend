@@ -60,7 +60,7 @@ const VoteContents = () => {
                         투표 참여하기
                       </Button>
                     </VoteCard.SubmitButton>
-                    <VoteCard.Footer likes={48} view={48} voter={451} />
+                    <VoteCard.Footer likes={48} views={48} voters={451} />
                   </VoteCard>
                 </li>
               </ul>

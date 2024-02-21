@@ -4,11 +4,11 @@ import { Typography } from '@/foundations/typography';
 
 type Props = {
   likes: number;
-  view: number;
-  voter: number;
+  views: number;
+  voters: number;
 };
 
-const Footer = ({ likes, view, voter }: Props) => {
+const Footer = ({ likes, views, voters }: Props) => {
   return (
     <div className="flex w-full justify-between gap-4xs pt-xs">
       <div className="flex items-center gap-5xs">
@@ -21,7 +21,7 @@ const Footer = ({ likes, view, voter }: Props) => {
         <div className="flex w-full items-center gap-6xs">
           <Icon icon="reply" size={16} color="gray-300" />
           <Typography type="body3" className="text-gray-400">
-            {view}
+            {views}
           </Typography>
         </div>
       </div>
@@ -31,7 +31,7 @@ const Footer = ({ likes, view, voter }: Props) => {
           <Avatar size={32} />
         </div>
         <Typography type="body3" className="text-gray-400">
-          {voter}명 참여중
+          {voters}명 참여중
         </Typography>
       </div>
     </div>
