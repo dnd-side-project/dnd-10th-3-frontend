@@ -1,4 +1,16 @@
 export const TOAST_MESSAGES = Object.freeze({
+  LOGIN_SUCCESS: { type: 'default', text: '로그인 되었습니다' },
+  LOGIN_FAIL: { type: 'warning', text: '로그인에 실패했습니다' },
+
+  LOGOUT_SUCCESS: { type: 'default', text: '로그아웃 되었습니다' },
+  LOGOUT_FAIL: { type: 'warning', text: '로그아웃에 실패했습니다' },
+
+  CHANGE_NICKNAME_SUCCESS: { type: 'default', text: '닉네임 변경이 완료되었습니다' },
+  CHANGE_NICKNAME_FAIL: { type: 'warning', text: '닉네임 변경에 실패했습니다' },
+
+  DELETE_USER_SUCCESS: { type: 'default', text: '회원 탈퇴가 완료되었습니다' },
+  DELETE_USER_FAIL: { type: 'warning', text: '회원 탈퇴에 실패했습니다' },
+
   VOTE_UPLOAD_SUCCESS: { type: 'default', text: '투표 업로드가 완료되었습니다' },
   VOTE_UPLOAD_FAIL: { type: 'warning', text: '투표 업로드에 실패했습니다' },
 
