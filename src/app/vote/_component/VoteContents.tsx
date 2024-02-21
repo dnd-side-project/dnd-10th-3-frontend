@@ -6,15 +6,16 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
-import { useGetAllVotes } from '@/hooks/vote';
+import { VOTE_TEMP_DATA } from '@/constants/vote/test';
 
 import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
-  const { data } = useGetAllVotes();
-  console.log('data', data);
   const isVoteExist = true;
+  const test = VOTE_TEMP_DATA;
+  console.log('test', test);
+
   return (
     <VoteLayout
       header={<VoteHeader />}
@@ -37,32 +38,44 @@ const VoteContents = () => {
               {/* TODO: Select*/}
 
               <ul className="flex flex-col gap-3xs p-3xs">
-                <li>
-                  <VoteCard className="shadow-thumb">
-                    <VoteCard.Header categories="축의금" remainingDay={2} />
-                    <VoteCard.Description
-                      title="갑자기 연락 온 동창 축의금 얼마할까요? 고민됩니다."
-                      content=" 제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 연락 안하고 지내다가 최근에 연락이
-        되었어요. 옛날..."
-                    />
-                    <VoteCard.VoteItemGroup withBlur>
-                      <VoteItem readOnly>
-                        <VoteItem.Radio disabled />
-                        <VoteItem.Text>5만원</VoteItem.Text>
-                      </VoteItem>
-                      <VoteItem readOnly>
-                        <VoteItem.Radio disabled />
-                        <VoteItem.Text>7만원</VoteItem.Text>
-                      </VoteItem>
-                    </VoteCard.VoteItemGroup>
-                    <VoteCard.SubmitButton>
-                      <Button variant="primary" width="full">
-                        투표 참여하기
-                      </Button>
-                    </VoteCard.SubmitButton>
-                    <VoteCard.Footer likes={48} views={48} voters={451} />
-                  </VoteCard>
-                </li>
+                {test.map((vote) => {
+                  const {
+                    closeDate,
+                    category,
+                    id,
+                    likes,
+                    content,
+                    title,
+                    views,
+                    voters,
+                    selections,
+                  } = vote;
+                  //TODO : closeDate util로 계산하는 로직 필요
+                  return (
+                    <li key={id}>
+                      <VoteCard className="shadow-thumb">
+                        <VoteCard.Header categories={category} remainingDay={2} />
+                        <VoteCard.Description title={title} content={content} />
+                        <VoteCard.VoteItemGroup withBlur>
+                          <VoteItem readOnly>
+                            <VoteItem.Radio disabled />
+                            <VoteItem.Text>{selections[0]}</VoteItem.Text>
+                          </VoteItem>
+                          <VoteItem readOnly>
+                            <VoteItem.Radio disabled />
+                            <VoteItem.Text>{selections[1]}</VoteItem.Text>
+                          </VoteItem>
+                        </VoteCard.VoteItemGroup>
+                        <VoteCard.SubmitButton>
+                          <Button variant="primary" width="full">
+                            투표 참여하기
+                          </Button>
+                        </VoteCard.SubmitButton>
+                        <VoteCard.Footer likes={likes} views={views} voters={voters} />
+                      </VoteCard>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ) : (
