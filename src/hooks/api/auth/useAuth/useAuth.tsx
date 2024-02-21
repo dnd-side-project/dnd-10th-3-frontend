@@ -20,10 +20,7 @@ const useAuth = () => {
     try {
       await get<SuccessResponse<KakaoLoginResponseData>>(
         `/login/oauth2/code/kakao?code=${authorizeCode}`,
-        {
-          baseURL: 'https://donworry.online',
-          withCredentials: true,
-        },
+        { baseURL: 'https://donworry.online' },
       );
       toast({ message: 'LOGIN_SUCCESS' });
       router.push(decodeURIComponent(callbackUrl));
