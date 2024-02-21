@@ -3,29 +3,31 @@
 import { usePathname } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
+import { CONFIG } from '@/config';
 
 const KakaoShareButton = () => {
   const path = usePathname();
+  console.log(path);
 
   const handleSendMessage = () => {
     const kakao = window.Kakao;
     kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: `test`,
-        description: `test`,
-        imageUrl: '',
+        title: `축의금 결정 어려웠나요?`,
+        description: `돈워리로 축의금 고민 해결해 보세요.`,
+        imageUrl: 'https://i.imgur.com/0a9RjUz.png',
         link: {
-          mobileWebUrl: ``,
-          webUrl: ``,
+          mobileWebUrl: `${CONFIG.site}`,
+          webUrl: `${CONFIG.site}`,
         },
       },
       buttons: [
         {
           title: '웹으로 보기',
           link: {
-            mobileWebUrl: ``,
-            webUrl: ``,
+            mobileWebUrl: `${CONFIG.site}${path}?${CONFIG.param.query}`,
+            webUrl: `${CONFIG.site}${path}?${CONFIG.param.query}`,
           },
         },
       ],
