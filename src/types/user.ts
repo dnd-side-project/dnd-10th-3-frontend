@@ -4,4 +4,5 @@ export type UserType = {
   modifiedAt: string;
   nickname: string;
   avatar: string;
+  email: string
 };

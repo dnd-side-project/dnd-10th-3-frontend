@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-import useAuth from '@/hooks/api/auth/useAuth';
+import useAuth from '@/hooks/auth/useAuth';
 
 const KakaoLogin = () => {
   const searchParams = useSearchParams();

@@ -1,4 +1,4 @@
-import { CATEGORIES_FOR_TAB } from "@/constants/category";
+import { CATEGORIES } from "@/constants/category";
 
 import { UserType } from "../user";
 
@@ -10,11 +10,11 @@ export type VoteType = {
     selections: string[];
     likes: number;
     views: number;
-    voter: number;
+    voters: number;
     status: boolean;
-    category: (typeof CATEGORIES_FOR_TAB)[number];
+    category: (typeof CATEGORIES)[number];
     closeDate: string;
     createdAt: string;
-    updateAt: string;
+    updatedAt: string;
     selected: number;
   };
