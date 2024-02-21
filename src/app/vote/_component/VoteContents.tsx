@@ -15,7 +15,6 @@ import VoteLayout from './VoteLayout';
 const VoteContents = () => {
   const isVoteExist = true;
   const test = VOTE_TEMP_DATA;
-  console.log('test', test);
 
   return (
     <VoteLayout
@@ -72,9 +71,11 @@ const VoteContents = () => {
                           </VoteItem>
                         </VoteCard.VoteItemGroup>
                         <VoteCard.SubmitButton>
-                          <Button variant="primary" width="full">
-                            투표 참여하기
-                          </Button>
+                          <Link href={`/vote/${id}`}>
+                            <Button variant="primary" width="full">
+                              투표 참여하기
+                            </Button>
+                          </Link>
                         </VoteCard.SubmitButton>
                         <VoteCard.Footer likes={likes} views={views} voters={voters} />
                       </VoteCard>
