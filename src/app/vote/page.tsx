@@ -4,7 +4,6 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
-import { Typography } from '@/foundations/typography';
 
 import VoteHeader from './_component/VoteHeader';
 import VoteLayout from './_component/VoteLayout';
@@ -19,9 +18,6 @@ const VotePage = () => {
           {isVoteExist ? (
             <div className="flex w-full flex-col">
               <div className="w-full p-3xs">
-                <Typography type="heading1">
-                  결혼식 참석시 <br /> 고민이었던 부분을 나눠보세요.
-                </Typography>
                 <div className="py-4xs">
                   <Input
                     placeholder="무엇이 고민이신가요?"
@@ -34,13 +30,7 @@ const VotePage = () => {
                 </div>
               </div>
               {/* TODO: Select*/}
-              <div className="flex justify-end px-xs pb-3xs text-gray-400">
-                <select>
-                  <option>인기순</option>
-                  <option>최신순</option>
-                  <option>추천순</option>
-                </select>
-              </div>
+
               <ul className="flex flex-col gap-3xs p-3xs">
                 <VoteCard className="shadow-thumb">
                   <VoteCard.Header categories="축의금" remainingDay={2} />
