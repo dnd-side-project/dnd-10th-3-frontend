@@ -1,13 +1,14 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitErrorHandler, useForm } from 'react-hook-form';
+import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Button } from '@/components/common/button';
 import { CharCounter } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
+import { useAuth } from '@/hooks/api/auth';
 import { MAX_NICK_LENGTH, updateNicknameSchema } from '@/schema/NicknameSchema';
 
 export type UpdateNickname = z.infer<typeof updateNicknameSchema>;
@@ -18,9 +19,13 @@ const NicknameForm = () => {
     defaultValues: { nickname: '' },
   });
   const toast = useToast();
+  const { updateNickname } = useAuth();
+
+  const onSubmit: SubmitHandler<UpdateNickname> = ({ nickname }) => {
+    updateNickname({ nickname });
+  };
 
   const handleFormInvalid: SubmitErrorHandler<UpdateNickname> = (errors) => {
-    console.log('first');
     toast({ type: 'warning', message: errors.nickname?.message ?? '닉네임을 확인해 주세요' });
   };
 
@@ -48,7 +53,7 @@ const NicknameForm = () => {
         type="submit"
         width="full"
         disabled={watch('nickname').length === 0}
-        onClick={handleSubmit(() => {}, handleFormInvalid)}
+        onClick={handleSubmit(onSubmit, handleFormInvalid)}
       >
         확인
       </Button>
