@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { ToastContainer } from '@/components/common/toast';
+import { META } from '@/constants/metadata';
 import Providers from '@/contexts/Providers';
 
 import { pretendard } from './fonts';
@@ -8,10 +9,7 @@ import { pretendard } from './fonts';
 import './globals.css';
 
 // TODO: 메타 데이터 수정
-export const metadata: Metadata = {
-  title: 'dnd-10th-3-frontend',
-  description: 'dnd-10th-3-frontend',
-};
+export const metadata: Metadata = META;
 
 export default function RootLayout({
   children,
