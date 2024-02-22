@@ -5,7 +5,7 @@ import { QUERY_KEY } from '@/constants/queryKey';
 
 export const useGetAllVotes = (tab: string) => {
   return useQuery({
-    queryKey: QUERY_KEY.VOTE.ALL(tab),
+    queryKey: QUERY_KEY.VOTE.ALL,
     queryFn: VOTE.ALL,
     // 필터링 기능 구현
     select: ({ data }) => {
