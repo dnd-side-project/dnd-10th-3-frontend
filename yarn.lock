@@ -8059,7 +8059,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.10.4":
+"dayjs@npm:^1.10.4, dayjs@npm:^1.11.10":
   version: 1.11.10
   resolution: "dayjs@npm:1.11.10"
   checksum: 4de9af50639d47df87f2e15fa36bb07e0f9ed1e9c52c6caa1482788ee9a384d668f1dbd00c54f82aaab163db07d61d2899384b8254da3a9184fc6deca080e2fe
@@ -8437,6 +8437,7 @@ __metadata:
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.1.0"
     cypress: "npm:^13.6.3"
+    dayjs: "npm:^1.11.10"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.1.0"
     eslint-config-prettier: "npm:^9.1.0"
@@ -8452,6 +8453,7 @@ __metadata:
     husky: "npm:^8.0.0"
     jest: "npm:^29.7.0"
     lodash.compact: "npm:^3.0.1"
+    modern-screenshot: "npm:^4.4.38"
     next: "npm:14.1.0"
     postcss: "npm:^8"
     prettier: "npm:^3.2.4"
@@ -13177,6 +13179,13 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 46ea0f3ffa8bc6a5bc0c7081ffc3907777f0ed6516888d40a518c5111f8366d97d2678911ad1a6882bf592fa9de6c784fea32e1687bb94e1f4944170af48a5cf
+  languageName: node
+  linkType: hard
+
+"modern-screenshot@npm:^4.4.38":
+  version: 4.4.38
+  resolution: "modern-screenshot@npm:4.4.38"
+  checksum: db72a42a6f9d54bda8391f1d4f42c53639320bf994290f51387acdae3864a32133db147ddc17d0ba4b74b22407160b53d555648811bf41da1f2154b934b888bd
   languageName: node
   linkType: hard
 

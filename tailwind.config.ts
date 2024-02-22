@@ -29,6 +29,9 @@ const config: Config = {
       390: { max: '390px' },
     },
   },
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   plugins: [],
 };
 export default config;

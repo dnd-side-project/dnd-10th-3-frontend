@@ -76,6 +76,7 @@ const TestQuestionTemplate = ({
             {answerList.map((answer, index) => {
               return (
                 <Button
+                  variant="accent"
                   width="full"
                   onClick={() => {
                     if (id === QUESTIONS_ORDERS.lastPage) {

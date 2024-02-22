@@ -1,0 +1,1 @@
+export { META } from './metadata';
