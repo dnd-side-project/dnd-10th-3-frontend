@@ -6,7 +6,7 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
-import { VOTE_TEMP_DATA } from '@/constants/vote/test';
+import { useGetAllVotes } from '@/hooks/vote';
 import { getTimeDifference } from '@/utils/date';
 
 import VoteHeader from './VoteHeader';
@@ -14,7 +14,9 @@ import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
   const isVoteExist = true;
-  const test = VOTE_TEMP_DATA;
+  // const test = VOTE_TEMP_DATA;
+  const { data: voteList } = useGetAllVotes();
+  console.log('voteList', voteList);
 
   return (
     <VoteLayout
@@ -38,7 +40,7 @@ const VoteContents = () => {
               {/* TODO: Select*/}
 
               <ul className="flex flex-col gap-3xs p-3xs">
-                {test.map((vote) => {
+                {voteList?.map((vote) => {
                   const {
                     closeDate,
                     category,

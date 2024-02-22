@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 import { get } from '@/lib/axios';
 import { SuccessResponse } from '@/types/response';
 import { VoteType } from '@/types/vote';
@@ -7,7 +12,9 @@ import { VoteType } from '@/types/vote';
 
 //api
 const getAllVotes = async () => {
-  const { data } = await get<SuccessResponse<VoteType>>('/vote/all');
+  const {data}  = await get<SuccessResponse<VoteType[]>>('/vote/all');
+  console.log('data',data)
+
   return data;
 };
 
