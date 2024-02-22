@@ -21,6 +21,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dayjs": "^1.11.10",
+    "cookies-next": "^4.1.1",
     "framer-motion": "^10.18.0",
     "github-label-sync": "^2.3.1",
     "lodash.compact": "^3.0.1",

@@ -7,6 +7,7 @@ export const TOKEN = {
   REFRESH_TOKEN: 'Refresh-Token',
 };
 
+export const IS_LOGIN = 'isLogin';
 export const CALLBACK_URL = 'callbackUrl';
 
 export const LOGIN_MESSAGE = {
