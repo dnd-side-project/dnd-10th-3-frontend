@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
-import { EmptyVote } from '@/components/shared';
+import { CATEGORY_TAB } from '@/constants/category';
 import { useGetAllVotes } from '@/hooks/vote';
 import { getTimeDifference } from '@/utils/date';
 
@@ -14,98 +15,89 @@ import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
-  const isVoteExist = true;
-  const { data: voteList, isLoading } = useGetAllVotes();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab') as string;
+  const findCategoryNameByParam = CATEGORY_TAB.find((category) => category.params === tab);
+
+  const { data: voteList, isLoading } = useGetAllVotes(findCategoryNameByParam?.name as string);
+
+  console.log('voteList', voteList);
+  //TODO : 빈 데이터일경우 처리 <EmptyVote />
 
   return (
     <VoteLayout
       header={<VoteHeader />}
       contents={
         <>
-          {isVoteExist ? (
-            <div className="flex w-full flex-col">
-              <div className="w-full p-3xs">
-                <div className="py-4xs">
-                  <Input
-                    placeholder="무엇이 고민이신가요?"
-                    icon="search"
-                    iconSide="left"
-                    borderRadius="large"
-                    bgcolor="lightGray"
-                    className="text-[14px] placeholder:text-gray-500"
-                  />
-                </div>
+          <div className="flex w-full flex-col">
+            <div className="w-full p-3xs">
+              <div className="py-4xs">
+                <Input
+                  placeholder="무엇이 고민이신가요?"
+                  icon="search"
+                  iconSide="left"
+                  borderRadius="large"
+                  bgcolor="lightGray"
+                  className="text-[14px] placeholder:text-gray-500"
+                />
               </div>
-              {/* TODO: Select*/}
-
-              <ul className="flex flex-col gap-3xs p-3xs">
-                {isLoading && (
-                  <div className="flex w-full items-center justify-center">
-                    <Spinner />
-                  </div>
-                )}
-                {voteList?.data.map(
-                  ({
-                    id,
-                    category,
-                    closeDate,
-                    title,
-                    content,
-                    selections,
-                    likes,
-                    voters,
-                    views,
-                  }) => {
-                    return (
-                      // <div key={id}>{closeDate}</div>
-                      <VoteCard className="shadow-thumb" key={id}>
-                        <VoteCard.Header
-                          categories={category}
-                          remainingDay={getTimeDifference(closeDate)}
-                        />
-                        <VoteCard.Description title={title} content={content} />
-                        <VoteCard.VoteItemGroup withBlur>
-                          <VoteItem readOnly>
-                            <VoteItem.Radio disabled />
-                            <VoteItem.Text>{selections[0].content}</VoteItem.Text>
-                          </VoteItem>
-                          <VoteItem readOnly>
-                            <VoteItem.Radio disabled />
-                            <VoteItem.Text>{selections[1].content}</VoteItem.Text>
-                          </VoteItem>
-                        </VoteCard.VoteItemGroup>
-                        <VoteCard.SubmitButton>
-                          <Link href={`/vote/${id}`}>
-                            <Button variant="primary" width="full">
-                              투표 참여하기
-                            </Button>
-                          </Link>
-                        </VoteCard.SubmitButton>
-                        <VoteCard.Footer likes={likes} views={views} voters={voters} />
-                      </VoteCard>
-                    );
-                  },
-                )}
-              </ul>
             </div>
-          ) : (
-            <EmptyVote />
-          )}
+            {/* TODO: Select*/}
+
+            <ul className="flex flex-col gap-3xs p-3xs">
+              {isLoading && (
+                <div className="flex w-full items-center justify-center">
+                  <Spinner />
+                </div>
+              )}
+              {voteList?.map(
+                ({ id, category, closeDate, title, content, selections, likes, voters, views }) => {
+                  return (
+                    // <div key={id}>{closeDate}</div>
+                    <VoteCard className="shadow-thumb" key={id}>
+                      <VoteCard.Header
+                        categories={category}
+                        remainingDay={getTimeDifference(closeDate)}
+                      />
+                      <VoteCard.Description title={title} content={content} />
+                      <VoteCard.VoteItemGroup withBlur>
+                        <VoteItem readOnly>
+                          <VoteItem.Radio disabled />
+                          <VoteItem.Text>{selections[0].content}</VoteItem.Text>
+                        </VoteItem>
+                        <VoteItem readOnly>
+                          <VoteItem.Radio disabled />
+                          <VoteItem.Text>{selections[1].content}</VoteItem.Text>
+                        </VoteItem>
+                      </VoteCard.VoteItemGroup>
+                      <VoteCard.SubmitButton>
+                        <Link href={`/vote/${id}`}>
+                          <Button variant="primary" width="full">
+                            투표 참여하기
+                          </Button>
+                        </Link>
+                      </VoteCard.SubmitButton>
+                      <VoteCard.Footer likes={likes} views={views} voters={voters} />
+                    </VoteCard>
+                  );
+                },
+              )}
+            </ul>
+          </div>
+          )
         </>
       }
       footer={
         <>
-          {isVoteExist ? (
-            <Link href={'/vote/create'}>
-              <Button
-                variant="accent"
-                icon="pencil"
-                iconOnly
-                className=" h-[56px] w-xl rounded-[100%] bg-primary-800"
-                iconColor="white"
-              />
-            </Link>
-          ) : null}
+          <Link href={'/vote/create'}>
+            <Button
+              variant="accent"
+              icon="pencil"
+              iconOnly
+              className=" h-[56px] w-xl rounded-[100%] bg-primary-800"
+              iconColor="white"
+            />
+          </Link>
         </>
       }
     />
