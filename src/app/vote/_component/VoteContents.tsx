@@ -19,7 +19,9 @@ const VoteContents = () => {
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') as string;
   const findCategoryNameByParam = CATEGORY_TAB.find((category) => category.params === tab);
-  const { data: voteList, isLoading } = useGetAllVotes(findCategoryNameByParam?.name as string);
+  const { data: voteList, isLoading } = useGetAllVotes(
+    findCategoryNameByParam?.name ?? ('전체' as string),
+  );
 
   return (
     <VoteLayout
