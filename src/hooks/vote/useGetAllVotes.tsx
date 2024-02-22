@@ -16,4 +16,3 @@ export const useGetAllVotes = (tab: string) => {
     },
   });
 };
-4;

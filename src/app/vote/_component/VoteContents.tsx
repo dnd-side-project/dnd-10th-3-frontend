@@ -7,6 +7,7 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
+import { EmptyVote } from '@/components/shared';
 import { CATEGORY_TAB } from '@/constants/category';
 import { useGetAllVotes } from '@/hooks/vote';
 import { getTimeDifference } from '@/utils/date';
@@ -22,7 +23,6 @@ const VoteContents = () => {
   const { data: voteList, isLoading } = useGetAllVotes(findCategoryNameByParam?.name as string);
 
   console.log('voteList', voteList);
-  //TODO : 빈 데이터일경우 처리 <EmptyVote />
 
   return (
     <VoteLayout
@@ -45,11 +45,13 @@ const VoteContents = () => {
             {/* TODO: Select*/}
 
             <ul className="flex flex-col gap-3xs p-3xs">
+              {/* TODO : Suspense로 선언적으로 리팩토링 */}
               {isLoading && (
                 <div className="flex w-full items-center justify-center">
                   <Spinner />
                 </div>
               )}
+              {voteList?.length === 0 && <EmptyVote />}
               {voteList?.map(
                 ({ id, category, closeDate, title, content, selections, likes, voters, views }) => {
                   return (
@@ -84,7 +86,6 @@ const VoteContents = () => {
               )}
             </ul>
           </div>
-          )
         </>
       }
       footer={
