@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
 import { useGetAllVotes } from '@/hooks/vote';
@@ -15,8 +16,7 @@ import VoteLayout from './VoteLayout';
 const VoteContents = () => {
   const isVoteExist = true;
   // const test = VOTE_TEMP_DATA;
-  const { data: voteList } = useGetAllVotes();
-  console.log('voteList', voteList);
+  const { data: voteList, isLoading } = useGetAllVotes();
 
   return (
     <VoteLayout
@@ -40,23 +40,26 @@ const VoteContents = () => {
               {/* TODO: Select*/}
 
               <ul className="flex flex-col gap-3xs p-3xs">
-                {voteList?.map((vote) => {
-                  const {
-                    closeDate,
-                    category,
+                {isLoading && (
+                  <div className="flex w-full items-center justify-center">
+                    <Spinner />
+                  </div>
+                )}
+                {voteList?.data.map(
+                  ({
                     id,
-                    likes,
-                    content,
+                    category,
+                    closeDate,
                     title,
-                    views,
-                    voters,
+                    content,
                     selections,
-                  } = vote;
-                  //TODO : closeDate util로 계산하는 로직 필요
-
-                  return (
-                    <li key={id}>
-                      <VoteCard className="shadow-thumb">
+                    likes,
+                    voters,
+                    views,
+                  }) => {
+                    return (
+                      // <div key={id}>{closeDate}</div>
+                      <VoteCard className="shadow-thumb" key={id}>
                         <VoteCard.Header
                           categories={category}
                           remainingDay={getTimeDifference(closeDate)}
@@ -65,11 +68,11 @@ const VoteContents = () => {
                         <VoteCard.VoteItemGroup withBlur>
                           <VoteItem readOnly>
                             <VoteItem.Radio disabled />
-                            <VoteItem.Text>{selections[0]}</VoteItem.Text>
+                            <VoteItem.Text>{selections[0].content}</VoteItem.Text>
                           </VoteItem>
                           <VoteItem readOnly>
                             <VoteItem.Radio disabled />
-                            <VoteItem.Text>{selections[1]}</VoteItem.Text>
+                            <VoteItem.Text>{selections[1].content}</VoteItem.Text>
                           </VoteItem>
                         </VoteCard.VoteItemGroup>
                         <VoteCard.SubmitButton>
@@ -81,9 +84,9 @@ const VoteContents = () => {
                         </VoteCard.SubmitButton>
                         <VoteCard.Footer likes={likes} views={views} voters={voters} />
                       </VoteCard>
-                    </li>
-                  );
-                })}
+                    );
+                  },
+                )}
               </ul>
             </div>
           ) : (
