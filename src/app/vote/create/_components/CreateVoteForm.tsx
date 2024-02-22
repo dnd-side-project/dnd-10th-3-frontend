@@ -33,7 +33,7 @@ const CreateVoteForm = () => {
   });
   const toast = useToast();
 
-  const onSubmit: SubmitHandler<CreateVoteInput> = (data) => {};
+  const onSubmit: SubmitHandler<CreateVoteInput> = () => {};
 
   const handleFormInvalid: SubmitErrorHandler<CreateVoteInput> = (errors) => {
     if (errors.category) {

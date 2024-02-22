@@ -36,13 +36,6 @@ export const Default = {
             <div className="mb-4 h-16 w-[300px] bg-primary-600 hover:shadow-xl">primary-600</div>
             <div className="mb-4 h-16 w-[300px] bg-primary-700 hover:shadow-xl">primary-700</div>
           </div>
-          <div>
-            <div className="mb-4 h-16 w-[300px] bg-purple-10 hover:shadow-xl">purple-10</div>
-            <div className="mb-4 h-16 w-[300px] bg-purple-20 hover:shadow-xl">purple-20</div>
-            <div className="mb-4 h-16 w-[300px] bg-purple-30 hover:shadow-xl">purple-30</div>
-            <div className="mb-4 h-16 w-[300px] bg-purple-40 hover:shadow-xl">purple-40</div>
-            <div className="mb-4 h-16 w-[300px] bg-purple-80 hover:shadow-xl">purple-80</div>
-          </div>
         </div>
         <Divider />
         <Typography type={'title1'}>보조 컬러</Typography>
@@ -62,7 +55,7 @@ export const Default = {
             gray-500
           </div>
           <div className="mb-4 h-16 w-[300px] bg-gray-600 text-white hover:shadow-xl">gray-600</div>
-          <div className="mb-4 h-16 w-[300px] bg-gray-650 text-white hover:shadow-xl">gray-650</div>
+          <div className="bg-gray-650 mb-4 h-16 w-[300px] text-white hover:shadow-xl">gray-650</div>
         </div>
       </div>
     );
