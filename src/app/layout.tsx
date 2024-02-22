@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable}`}>
+      <body className={`${pretendard.variable}`} suppressHydrationWarning={true}>
         <Providers>
           <ToastContainer />
           <div className="layout font-pretendard ">{children}</div>
