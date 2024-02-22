@@ -3,6 +3,8 @@ type Response = {
   message: string;
 };
 
-export type SuccessResponse<TData> = Response & { data: TData };
+export type SuccessResponse<TData> = Response & {
+  data: TData;
+};
 
 export type FailResponse = Response;
