@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { useInput } from '@/hooks/api/useInput';
+import { useInput } from '@/hooks/useInput';
 
 import type { InputProps } from './Input';
 import { Input } from './Input';

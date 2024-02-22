@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 import { Spinner } from '@/components/common/spinner';
-import { useAuth } from '@/hooks/api/auth';
+import { useAuth } from '@/hooks/auth';
 
 const KakaoLogin = () => {
   const searchParams = useSearchParams();
