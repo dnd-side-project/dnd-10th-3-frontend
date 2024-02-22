@@ -19,7 +19,7 @@ const LoginPage = ({ searchParams }: Props) => {
   return (
     <div className="relative flex h-dvh w-full flex-col items-center bg-mainGradient pb-10">
       <Header>
-        <Header.Previous />
+        <Header.IconLink icon="chevronLeft" href="/" iconColor="gray-1000" />
       </Header>
 
       <main className="flex size-full flex-col items-center px-4">
