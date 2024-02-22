@@ -3,7 +3,8 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-import useAuth from '@/hooks/api/auth/useAuth';
+import { Spinner } from '@/components/common/spinner';
+import { useAuth } from '@/hooks/api/auth';
 
 const KakaoLogin = () => {
   const searchParams = useSearchParams();
@@ -16,8 +17,11 @@ const KakaoLogin = () => {
     kakaoLogin({ authorizeCode, callbackUrl });
   }, [authorizeCode, callbackUrl, kakaoLogin]);
 
-  // TODO 로딩 화면
-  return <div>로그인 중...</div>;
+  return (
+    <div className="flex h-dvh items-center justify-center">
+      <Spinner />
+    </div>
+  );
 };
 
 export default KakaoLogin;

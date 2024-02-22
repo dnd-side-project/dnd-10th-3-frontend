@@ -42,15 +42,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           <Icon icon={icon!} size={iconSize} color={iconColor} />
         ) : (
           <>
-            {(icon && iconSide === 'left') ||
-              (icon && iconSide === 'both' && (
-                <Icon icon={icon} size={iconSize} color={iconColor} />
-              ))}
+            {icon && iconSide === 'left' && <Icon icon={icon} size={iconSize} color={iconColor} />}
             {children}
-            {(icon && iconSide === 'right') ||
-              (icon && iconSide === 'both' && (
-                <Icon icon={icon} size={iconSize} color={iconColor} />
-              ))}
+            {icon && iconSide === 'right' && <Icon icon={icon} size={iconSize} color={iconColor} />}
           </>
         )}
       </button>
