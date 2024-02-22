@@ -15,7 +15,6 @@ import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
   const isVoteExist = true;
-  // const test = VOTE_TEMP_DATA;
   const { data: voteList, isLoading } = useGetAllVotes();
 
   return (
