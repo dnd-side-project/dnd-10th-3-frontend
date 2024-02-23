@@ -1,7 +1,13 @@
+import { Suspense } from 'react';
+
 import VoteContents from './_component/VoteContents';
 
 const VotePage = () => {
-  return <VoteContents />;
+  return (
+    <Suspense>
+      <VoteContents />
+    </Suspense>
+  );
 };
 
 export default VotePage;

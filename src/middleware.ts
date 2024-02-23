@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { CALLBACK_URL, TOKEN } from '@/constants/auth';
+import { CALLBACK_URL, IS_LOGIN } from '@/constants/auth';
 
 const middleware = async (request: NextRequest) => {
-  const refreshToken = request.cookies.get(TOKEN.REFRESH_TOKEN);
-
-  if (!refreshToken) {
+  if (!request.cookies.has(IS_LOGIN)) {
     return NextResponse.redirect(
       new URL(`/login?${CALLBACK_URL}=${encodeURIComponent(request.url)}`, request.url),
     );

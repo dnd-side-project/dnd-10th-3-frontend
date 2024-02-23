@@ -4,6 +4,8 @@ import { Divider } from '@/components/common/divider';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 
+import { DeleteAccountButton, LogoutButton } from './_components';
+
 const page = () => {
   return (
     <>
@@ -30,9 +32,9 @@ const page = () => {
         <div className="flex flex-col">
           <Typography type="title3">계정 설정</Typography>
 
-          <button className="w-full py-3xs text-start">로그아웃</button>
+          <LogoutButton />
           <Divider />
-          <button className="w-full py-3xs text-start">회원 탈퇴</button>
+          <DeleteAccountButton />
           <Divider />
         </div>
       </main>
