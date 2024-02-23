@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { VOTE } from '@/api/vote/vote';
+import { VOTE } from '@/api/vote';
 import { QUERY_KEY } from '@/constants/queryKey';
 
 export const useGetAllVotes = (tab: string) => {

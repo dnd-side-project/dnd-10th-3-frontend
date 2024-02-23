@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 import { Loading } from '@/components/features/test/loading';
-import { useCreateTestResult } from '@/hooks/api/test';
+import { useCreateTestResult } from '@/hooks/test';
 import { TestFormType } from '@/types/test';
 
 type Props = {
@@ -26,7 +26,7 @@ const TestLoading = ({ state }: Props) => {
         );
       },
     });
-  }, []);
+  }, [state, mutate, router]);
 
   return (
     <div className="flex size-full flex-col items-center justify-center pb-2xs">

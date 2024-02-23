@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [], // mock image로 테스트 하기 위한 config입니다.
+    domains : ['donworry.s3.ap-northeast-2.amazonaws.com']
   },
   webpack(config) {
     config.module.rules.push({

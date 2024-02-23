@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { TEST } from '@/api/test/test';
+import { TEST } from '@/api/test';
 import { TestFormType } from '@/types/test';
 
 export const useCreateTestResult = () => {

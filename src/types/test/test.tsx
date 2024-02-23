@@ -7,9 +7,10 @@ export type TestFormType = {
   talk: number;
 };
 
-export type TestFormResponseType = TestFormType & {
+// TODO : 엄격한 타입 설정하기
+export type TestResultFormType = TestFormType & {
   id: number;
-  temperature: number;
+  temperature: 0 | 36 | 70 | 100;
   imageUrl: string;
   description: string;
   title: string;

@@ -9,19 +9,26 @@ import ThirdResultType from '@/assets/images/result/thirdResultType.svg';
 import { Button } from '@/components/common/button';
 import { Typography } from '@/foundations/typography';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
-import { TestResultType } from '@/types/test';
+import { TestResultFormType } from '@/types/test';
 
 // TODO : 백엔드와 논의하여 resultTypeId 프로퍼티 결정
-const ImageBox = ({ resultTypeId = 100 }: { resultTypeId: TestResultType['ResultTypeid'] }) => {
+const ImageBox = ({ temperature }: { temperature: TestResultFormType['temperature'] }) => {
   const imageRef = useRef<HTMLDivElement>(null);
   const { onDownloadImage } = useDownloadImage({ imageRef });
 
   const handleDownloadImage = async () => {
     await onDownloadImage();
   };
+
+  const resultTypeMap: Record<TestResultFormType['temperature'], React.ReactNode> = {
+    0: <FirstResultType />,
+    36: <SecondResultType />,
+    70: <ThirdResultType />,
+    100: <ForthResultType />,
+  };
   return (
     <>
-      <div ref={imageRef}>{resultTypeMap[resultTypeId]}</div>
+      <div ref={imageRef}>{resultTypeMap[temperature]}</div>
       <div className="flex items-center gap-5xs py-xs">
         <Button variant="empty" onClick={handleDownloadImage} className="h-[30px]">
           <Typography type="body2" className=" border-b-2 border-[#5382FF] text-[#5382FF]">
@@ -34,10 +41,3 @@ const ImageBox = ({ resultTypeId = 100 }: { resultTypeId: TestResultType['Result
 };
 
 export default ImageBox;
-
-const resultTypeMap = {
-  0: <FirstResultType />,
-  36: <SecondResultType />,
-  70: <ThirdResultType />,
-  100: <ForthResultType />,
-};
