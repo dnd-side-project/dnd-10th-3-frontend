@@ -28,8 +28,8 @@ const Header = ({ remainingDay, voter, categories, className, fontColor }: Props
         <Tag>{categories}</Tag>
       ) : (
         <div className="flex items-center justify-center gap-1">
-          <Icon icon="votebox" color="gray-300" />
-          <Typography type="body2" className="text-gray-600">
+          <Icon icon="votebox" color="gray-300" size={18} />
+          <Typography type="title4" className="text-gray-600">
             투표
           </Typography>
         </div>
@@ -56,7 +56,7 @@ const Header = ({ remainingDay, voter, categories, className, fontColor }: Props
         {voter ? (
           <>
             <Icon icon="divider" color="gray-300" width={8} height={10} />
-            <Typography type="body2" className="pl-5xs text-gray-600">
+            <Typography type="caption1" className="pl-5xs text-gray-600">
               {voter}명 참여
             </Typography>
           </>

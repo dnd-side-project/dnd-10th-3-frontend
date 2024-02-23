@@ -4,5 +4,6 @@ export { default as EmptyVote } from './emptyVote/EmptyVote';
 export { default as ImageUploadButton } from './imgUploadButton/ImageUploadButton';
 export { default as KakaoLoginButton } from './kakaoLoginButton/KakaoLoginButton';
 export { default as KakaoShareButton } from './kakaoShareButton/KakaoShareButton';
+export { default as Notice } from './notice/Notice';
 export { default as OptionButton } from './optionButton/OptionButton';
-
+export { default as ReplyInput } from './replyInput/ReplyInput';
