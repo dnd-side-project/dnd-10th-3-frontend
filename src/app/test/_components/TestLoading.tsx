@@ -1,11 +1,11 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 import { Loading } from '@/components/features/test/loading';
 import { useCreateTestResult } from '@/hooks/api/test';
 import { TestFormType } from '@/types/test';
-import { useRouter } from 'next/navigation';
 
 type Props = {
   state: TestFormType;
@@ -17,12 +17,14 @@ const TestLoading = ({ state }: Props) => {
   const router = useRouter();
   const { mutate } = useCreateTestResult();
 
-  // 걸린시간
   useEffect(() => {
     mutate(state, {
       onSuccess: (response) => {
         console.log();
-        setTimeout(() => router.push(`/test/result/${response.data.id}`), 2000);
+        setTimeout(
+          () => router.push(`/test/result/${response.data.id}`),
+          (DELAY_SECOND - 1) * 1000,
+        );
       },
     });
   }, []);
