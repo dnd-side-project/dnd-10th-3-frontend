@@ -29,6 +29,6 @@ export const colors = {
     deep: '#5382FF',
     light: '#EBF0FF',
   },
-  warning: '#FB2314',
+  warning: '#FF7B72',
   current: 'currentColor',
 };
