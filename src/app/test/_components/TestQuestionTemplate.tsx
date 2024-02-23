@@ -8,17 +8,15 @@ import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Tag } from '@/components/common/tag';
-import { QUESTIONS_ORDERS } from '@/constants/test';
 import { PRE_QUESTIONS_LENGTH, PROGRESS_RATE } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
-import { useCreateTestResult } from '@/hooks/api/test';
 import { TestFormType } from '@/types/test';
 
 import FormLayout from './FormLayout';
 
 type Props = {
   id: number;
-  state: TestFormType;
+  buddy: TestFormType['buddy'];
   onChangeStep: () => void;
   progress: number;
   badgeStatus: string;
@@ -30,7 +28,7 @@ type Props = {
 };
 
 const TestQuestionTemplate = ({
-  state,
+  buddy,
   id,
   answerList,
   badgeStatus,
@@ -41,8 +39,6 @@ const TestQuestionTemplate = ({
   onPrevStep,
   onDispatchEvent,
 }: Props) => {
-  const { mutate } = useCreateTestResult();
-
   return (
     <main className={'relative flex h-dvh w-full flex-col items-center pb-5'}>
       <FormLayout
@@ -57,7 +53,7 @@ const TestQuestionTemplate = ({
         comment={
           <div className="flex flex-col gap-4xs">
             <Tag>{badgeStatus}</Tag>
-            <Typography type="question">{question(state.buddy)}</Typography>
+            <Typography type="question">{question(buddy)}</Typography>
           </div>
         }
         body={
@@ -77,10 +73,6 @@ const TestQuestionTemplate = ({
                   variant="accent"
                   width="full"
                   onClick={() => {
-                    if (id === QUESTIONS_ORDERS.lastPage) {
-                      mutate({ ...state });
-                    }
-
                     if (id <= PRE_QUESTIONS_LENGTH) {
                       onChangeStep();
                       onDispatchEvent(answer);

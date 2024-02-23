@@ -7,7 +7,7 @@ import { CONFIG } from '@/config';
 
 const KakaoShareButton = () => {
   const path = usePathname();
-  console.log(path);
+  // FIXME : 배포환경에서 sendDefault 에러
 
   const handleSendMessage = () => {
     const kakao = window.Kakao;
