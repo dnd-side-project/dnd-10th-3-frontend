@@ -3,7 +3,8 @@ import { ChangeEvent, useState } from 'react';
 import { useToast } from '.';
 
 const useImageUpload = () => {
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [imageSrc, setImageSrc] = useState<string | File>('');
+  const [previewImageSrc, setPreviewImageSrc] = useState<string | null>(null);
   const toast = useToast();
 
   const upload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,14 +22,15 @@ const useImageUpload = () => {
       fileReader.readAsDataURL(files[0]);
       return new Promise<void>((resolve) => {
         fileReader.onload = () => {
-          setImageSrc((fileReader.result as string) || null);
+          setPreviewImageSrc((fileReader.result as string) || null);
+          setImageSrc(file ?? '');
           resolve();
         };
       });
     }
   };
 
-  return { imageSrc, upload };
+  return { imageSrc, upload, previewImageSrc };
 };
 
 export default useImageUpload;

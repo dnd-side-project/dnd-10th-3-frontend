@@ -15,7 +15,7 @@ type Props = {
 
 const VoteItemImgForm = ({ index }: Props) => {
   const { setValue } = useFormContext<CreateVoteInput>();
-  const { imageSrc, upload } = useImageUpload();
+  const { imageSrc, upload, previewImageSrc } = useImageUpload();
 
   useEffect(() => {
     setValue(`selections.${index}.img`, imageSrc);
@@ -23,8 +23,8 @@ const VoteItemImgForm = ({ index }: Props) => {
 
   return (
     <>
-      {imageSrc ? (
-        <VoteItem.Img src={imageSrc} alt="uploaded" />
+      {previewImageSrc ? (
+        <VoteItem.Img src={previewImageSrc} alt="uploaded" />
       ) : (
         <ImageUploadButton uploadHandler={upload} />
       )}
