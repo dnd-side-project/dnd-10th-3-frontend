@@ -10,7 +10,6 @@ import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
 import { CATEGORY_TAB } from '@/constants/category';
 import { useGetAllVotes } from '@/hooks/vote';
-import { getTimeDifference } from '@/utils/date';
 
 import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
@@ -54,12 +53,8 @@ const VoteContents = () => {
               {voteList?.map(
                 ({ id, category, closeDate, title, content, selections, likes, voters, views }) => {
                   return (
-                    // <div key={id}>{closeDate}</div>
                     <VoteCard className="shadow-thumb" key={id}>
-                      <VoteCard.Header
-                        categories={category}
-                        remainingDay={getTimeDifference(closeDate)}
-                      />
+                      <VoteCard.Header categories={category} closeDate={closeDate} />
                       <VoteCard.Description title={title} content={content} />
                       <VoteCard.VoteItemGroup withBlur>
                         <VoteItem readOnly>

@@ -9,7 +9,6 @@ import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 import { useGetTestResultById } from '@/hooks/test';
 import { useGetBestVote } from '@/hooks/vote/useGetBestVote';
-import { getTimeDifference } from '@/utils/date';
 
 import ImageBox from './ImageBox';
 import ShareBox from './ShareBox';
@@ -82,7 +81,7 @@ const ResultContents = ({ id }: { id: number }) => {
                 <VoteCard className="w-full border-b-0">
                   <VoteCard.Header
                     categories={bestVoteContents.category}
-                    remainingDay={getTimeDifference(bestVoteContents.closeDate)}
+                    closeDate={bestVoteContents.closeDate}
                   />
                   <VoteCard.Description
                     title={bestVoteContents.title}

@@ -12,7 +12,7 @@ import { isPast } from '@/utils/dates/isPast';
 
 type Props = HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof headerVariants> & {
-    closeDate: string;
+    closeDate?: string;
     voter?: number;
     categories?: (typeof CATEGORIES)[number];
     fontColor?: 'text-gray-600';

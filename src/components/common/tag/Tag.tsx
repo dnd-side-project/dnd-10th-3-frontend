@@ -11,7 +11,7 @@ export type TagProps = HTMLProps<HTMLLabelElement> & VariantProps<typeof tagVari
 export const Tag = ({ variant, children, ...props }: PropsWithChildren<TagProps>) => {
   return (
     <label className={cn(tagVariants({ variant }))} {...props}>
-      <Typography type="heading3">{children}</Typography>
+      <Typography type="title4">{children}</Typography>
     </label>
   );
 };
