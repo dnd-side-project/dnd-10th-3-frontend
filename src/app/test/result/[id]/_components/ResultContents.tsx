@@ -60,7 +60,7 @@ const ResultContents = ({ id }: { id: number }) => {
           )}
 
           <article className="py-sm">
-            <ShareBox id={id} />
+            <ShareBox />
           </article>
           <div className="flex w-full gap-4xs px-2xs">
             <Link href="/test" className="w-full">
