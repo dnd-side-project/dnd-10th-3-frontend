@@ -46,7 +46,11 @@ const VoteDetailPage = () => {
         </Typography>
 
         <VoteCard>
-          <VoteCard.Header remainingDay={10} voter={voters} fontColor="text-gray-600" />
+          <VoteCard.Header
+            remainingDay={{ day: 1, hour: 1 }} // FIXME
+            voter={voters}
+            fontColor="text-gray-600"
+          />
           <VoteCard.VoteItemGroup>
             {selections.map((selection) => (
               <VoteItem key={selection}>
