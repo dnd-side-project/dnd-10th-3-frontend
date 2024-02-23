@@ -1,1 +1,0 @@
-export { useCreateTestResult } from './useCreateTestResult';

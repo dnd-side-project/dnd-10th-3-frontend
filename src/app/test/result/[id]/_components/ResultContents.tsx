@@ -6,13 +6,15 @@ import { Button } from '@/components/common/button';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
+import { useGetTestResultById } from '@/hooks/test';
 
 import ImageBox from './ImageBox';
 import ShareBox from './ShareBox';
 import TempertaureBox from './TempertaureBox';
 
 const ResultContents = ({ id }: { id: number }) => {
-  console.log('id', id);
+  const { data: resultData } = useGetTestResultById(id);
+
   return (
     <>
       <Header>

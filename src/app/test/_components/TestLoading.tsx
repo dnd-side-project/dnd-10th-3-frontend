@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 import { Loading } from '@/components/features/test/loading';
-import { useCreateTestResult } from '@/hooks/api/test';
+import { useCreateTestResult } from '@/hooks/test';
 import { TestFormType } from '@/types/test';
 
 type Props = {
