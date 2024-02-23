@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import compact from 'lodash.compact';
+import { useRouter } from 'next/navigation';
 import { FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -34,6 +35,7 @@ const CreateVoteForm = () => {
   });
   const submitVote = useCreateVoteMutation();
   const toast = useToast();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<CreateVoteInput> = (data) => {
     submitVote(data);
@@ -65,6 +67,7 @@ const CreateVoteForm = () => {
           iconColor="gray-1000"
           iconSize={15}
           className="!p-0"
+          onClick={() => router.back()}
         />
         <Typography type="body1">투표 만들기</Typography>
         <Button
