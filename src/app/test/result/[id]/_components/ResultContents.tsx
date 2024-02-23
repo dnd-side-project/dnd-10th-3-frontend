@@ -92,18 +92,18 @@ const ResultContents = ({ id }: { id: number }) => {
                     <VoteItem readOnly>
                       <VoteItem.Radio></VoteItem.Radio>
                       <VoteItem.Text>{bestVoteContents.selections[0].content}</VoteItem.Text>
-                      <VoteItem.Img
+                      {/* <VoteItem.Img
                         src={bestVoteContents.selections[0].imagePath}
                         alt="vote_item_image"
-                      />
+                      /> */}
                     </VoteItem>
                     <VoteItem readOnly>
                       <VoteItem.Radio></VoteItem.Radio>
                       <VoteItem.Text>{bestVoteContents.selections[1].content}</VoteItem.Text>
-                      <VoteItem.Img
+                      {/* <VoteItem.Img
                         src={bestVoteContents.selections[1].imagePath}
                         alt="vote_item_image"
-                      />
+                      /> */}
                     </VoteItem>
                   </VoteCard.VoteItemGroup>
                 </VoteCard>

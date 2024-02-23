@@ -6,6 +6,7 @@ import { Typography } from '@/foundations/typography';
 import { shareLink } from '@/utils/share';
 
 const ShareBox = ({ id }: { id: number }) => {
+  console.log(id);
   const handleCopyClipboard = () => {
     shareLink({ url: location.href });
   };

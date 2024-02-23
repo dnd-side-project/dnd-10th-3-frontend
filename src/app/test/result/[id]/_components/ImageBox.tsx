@@ -20,6 +20,8 @@ const ImageBox = ({ temperature }: { temperature: TestResultFormType['temperatur
   const handleDownloadImage = async () => {
     await onDownloadImage();
   };
+  // HERE : 이부분 타입을 어떻게 지정해야하나요?!
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const resultTypeMap: { [key: number]: any } = {
     0: <FirstResultType />,
     36: <SecondResultType />,

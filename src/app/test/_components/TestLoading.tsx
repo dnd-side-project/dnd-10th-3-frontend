@@ -26,7 +26,7 @@ const TestLoading = ({ state }: Props) => {
         );
       },
     });
-  }, []);
+  }, [state, mutate, router]);
 
   return (
     <div className="flex size-full flex-col items-center justify-center pb-2xs">

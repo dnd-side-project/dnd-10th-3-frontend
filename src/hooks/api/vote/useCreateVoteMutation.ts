@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-import { useRouter } from 'next/navigation';
 
 import { CreateVoteInput } from '@/app/vote/create/_components/CreateVoteForm';
 import { useToast } from '@/hooks';
@@ -20,7 +19,6 @@ type PostVoteResponse = {
 
 const useCreateVoteMutation = () => {
   const toast = useToast();
-  const router = useRouter();
 
   const { mutate: submitVote } = useMutation({
     mutationFn: (data: PostVoteRequest) => {
@@ -44,6 +42,8 @@ const useCreateVoteMutation = () => {
     },
     onSuccess: (data) => {
       const { id } = data.data.data;
+      // TODO : 빌드시 lint 에러로 콘솔 처리
+      console.log(id)
       toast({ message: 'VOTE_UPLOAD_SUCCESS' });
       // TODO 쿼리키 만료
       // TODO router.push(`/vote/${id}`);
