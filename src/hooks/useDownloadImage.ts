@@ -43,7 +43,6 @@ export const useDownloadImage = ({  imageRef }: DownloadImageOption) => {
       downloadFile(imageUrl, IMAGE_FILE_NAME);
       toast({ type: 'default', message: '이미지를 저장하였습니다.' })
     } catch (error) {
-      console.log(error,'error')
       toast({message:'IMAGE_SAVE_FAIL'})
     } finally {
       setIsDownloading(false);
