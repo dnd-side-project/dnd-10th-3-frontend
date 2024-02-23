@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 
 import { useToast } from '.';
 
-const useImageUpload = () => {
+const useUploadImage = () => {
   const [imageSrc, setImageSrc] = useState<File | null>(null);
   const [previewImageSrc, setPreviewImageSrc] = useState<string | null>(null);
   const toast = useToast();
@@ -33,4 +33,4 @@ const useImageUpload = () => {
   return { imageSrc, upload, previewImageSrc };
 };
 
-export default useImageUpload;
+export default useUploadImage;

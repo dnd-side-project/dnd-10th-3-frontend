@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 
 import { VoteItem } from '@/components/features/vote/voteItem';
 import { ImageUploadButton } from '@/components/shared';
-import { useImageUpload } from '@/hooks';
+import { useUploadImage } from '@/hooks';
 
 import { CreateVoteInput } from './CreateVoteForm';
 
@@ -17,7 +17,7 @@ const EMPTY_FILE = '';
 
 const VoteItemImgForm = ({ index }: Props) => {
   const { setValue } = useFormContext<CreateVoteInput>();
-  const { imageSrc, upload, previewImageSrc } = useImageUpload();
+  const { imageSrc, upload, previewImageSrc } = useUploadImage();
 
   useEffect(() => {
     setValue(`selections.${index}.img`, imageSrc ?? EMPTY_FILE);
