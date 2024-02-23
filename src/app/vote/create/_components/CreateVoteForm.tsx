@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import compact from 'lodash.compact';
+import { useRouter } from 'next/navigation';
 import { FormProvider, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -11,9 +12,10 @@ import { Textarea as ContentInput } from '@/components/common/textarea';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
+import { useCreateVoteMutation } from '@/hooks/api/vote';
 import { createVoteSchema } from '@/schema/CreateVoteSchema';
 
-import { CategorySelector, TitleInput, VoteDateForm, VoteForm } from '.';
+import { CategorySelector, TitleInput, VoteDateForm, VoteItemForm } from '.';
 
 export type CreateVoteInput = z.infer<typeof createVoteSchema>;
 
@@ -25,15 +27,19 @@ const CreateVoteForm = () => {
       title: '',
       content: '',
       selections: [
-        { content: '', img: null },
-        { content: '', img: null },
+        { content: '', img: '' },
+        { content: '', img: '' },
       ],
       closeDate: '',
     },
   });
+  const submitVote = useCreateVoteMutation();
   const toast = useToast();
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<CreateVoteInput> = () => {};
+  const onSubmit: SubmitHandler<CreateVoteInput> = (data) => {
+    submitVote(data);
+  };
 
   const handleFormInvalid: SubmitErrorHandler<CreateVoteInput> = (errors) => {
     if (errors.category) {
@@ -61,6 +67,7 @@ const CreateVoteForm = () => {
           iconColor="gray-1000"
           iconSize={15}
           className="!p-0"
+          onClick={() => router.back()}
         />
         <Typography type="body1">투표 만들기</Typography>
         <Button
@@ -82,7 +89,7 @@ const CreateVoteForm = () => {
           className="max-h-[340px] min-h-[88px] grow"
           {...methods.register('content')}
         />
-        <VoteForm />
+        <VoteItemForm />
         <VoteDateForm />
       </div>
     </FormProvider>

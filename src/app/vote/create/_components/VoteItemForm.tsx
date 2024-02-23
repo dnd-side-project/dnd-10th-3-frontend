@@ -11,7 +11,7 @@ import { MAX_ITEM_LENGTH, MAX_VOTE_COUNT, MIN_VOTE_COUNT } from '@/schema/Create
 import { VoteItemImgForm } from '.';
 import { CreateVoteInput } from './CreateVoteForm';
 
-const VoteForm = () => {
+const VoteItemForm = () => {
   const { control, register } = useFormContext<CreateVoteInput>();
   const { fields, append, remove } = useFieldArray({
     control,
@@ -56,7 +56,7 @@ const VoteForm = () => {
         iconColor={fields.length >= MAX_VOTE_COUNT ? 'gray-400' : 'gray-1000'}
         iconSize={14}
         className="text-sm"
-        onClick={() => append({ content: '', img: null })}
+        onClick={() => append({ content: '', img: '' })}
         disabled={fields.length >= MAX_VOTE_COUNT}
       >
         항목 추가
@@ -65,4 +65,4 @@ const VoteForm = () => {
   );
 };
 
-export default VoteForm;
+export default VoteItemForm;

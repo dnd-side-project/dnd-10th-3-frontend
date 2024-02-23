@@ -1,0 +1,1 @@
+export { convertNumToDay } from './convertNumToDay';

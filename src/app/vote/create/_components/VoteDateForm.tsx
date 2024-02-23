@@ -1,21 +1,25 @@
-import { Button } from '@/components/common/button';
-import { Divider } from '@/components/common/divider';
+import dayjs from 'dayjs';
 
-// TODO 로직 넣으면서 코드 정리
+import { Button } from '@/components/common/button';
+import { Range } from '@/types/util';
+import { convertNumToDay } from '@/utils/dates';
+
+const DEFAULT_PERIOD = 7;
+
 const VoteDateForm = () => {
+  const today = dayjs();
+  const [dueYear, dueMonth, dueDate, dueDay] = today
+    .add(DEFAULT_PERIOD, 'day')
+    .format('YYYY-MM-DD-d')
+    .split('-');
+
   return (
     <section>
       <Button icon="clock" iconSize={18} variant="empty" width="full" className="px-0">
         <div className="flex grow items-center justify-between font-normal">
-          <span className="text-sm text-gray-600">시작일</span>
-          <span className="text-sm text-gray-700">{`2024.02.05.월요일`}</span>
-        </div>
-      </Button>
-      <Divider height={1} />
-      <Button icon="clock" iconSize={18} variant="empty" width="full" className="px-0">
-        <div className="flex grow items-center justify-between font-normal">
-          <span className="text-sm text-gray-600">종료일</span>
-          <span className="text-sm text-gray-700">{`2024.02.05.월요일`}</span>
+          {/* FIXME: 모달 디자인 나오면 날짜 선택 기능 추가하기 (현재는 기본 7일, 변경 불가)  */}
+          <span className="text-sm text-gray-300">종료일</span>
+          <span className="text-sm text-gray-300">{`${dueYear}. ${dueMonth}. ${dueDate}. ${convertNumToDay(+dueDay as Range<0, 6>)}`}</span>
         </div>
       </Button>
     </section>
