@@ -3,6 +3,7 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/common/button';
+import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
@@ -21,26 +22,39 @@ const ResultContents = ({ id }: { id: number }) => {
         <Header.Previous />
       </Header>
 
-      <article className="flex flex-col items-center justify-center px-2xs">
-        <ImageBox resultTypeId={100} />
-      </article>
       <main className="pb-10">
         <section className="flex flex-col items-center justify-center">
           {/* TODO : 컴포넌트 분리 예정 */}
-          <article className="my-4xs flex w-full px-2xs">
-            <div className="flex w-full flex-col items-center justify-center  rounded-xl border  border-gray-100 py-xs">
-              <Typography type="body2" className="mb-5xs w-[240px] text-center text-gray-1000">
-                &quot;단체 플래시샷 1인분 책임질게요&quot;
-              </Typography>
-              <Typography type="body3" className="w-[240px] text-center text-gray-600">
-                아주 가깝지도 멀지도 않은 미지근한 관계지만 특별한 날, 내 미래 결혼식에서 한 줄기
-                밝은 빛이 되어 줄 지인으로 보여요. 단체사진 한 켠을 채워줄 의리있는 사람이네요.
-                특별한 순간에 플래시로 최선을 다해 비춰줄 미래 모습이 그려지네요.
-              </Typography>
-            </div>
-          </article>
+          {resultData && (
+            <article className="flex flex-col items-center justify-center px-2xs">
+              <ImageBox temperature={resultData.temperature} />
+            </article>
+          )}
 
-          <TempertaureBox buddy="상대" trust={1} love={2} talk={3} temperature={4} />
+          {resultData && (
+            <article className="my-4xs flex w-full px-2xs">
+              <div className="flex w-full flex-col items-center justify-center  rounded-xl border  border-gray-100 py-xs">
+                <Typography type="body2" className="mb-5xs w-[240px] text-center text-gray-1000">
+                  &quot;{resultData.title}&quot;
+                </Typography>
+                <Typography type="body3" className="w-[240px] text-center text-gray-600">
+                  {resultData.description}
+                </Typography>
+              </div>
+            </article>
+          )}
+
+          {resultData ? (
+            <TempertaureBox
+              buddy={resultData.buddy}
+              trust={resultData.trust}
+              love={resultData.love}
+              talk={resultData.talk}
+              temperature={resultData.temperature}
+            />
+          ) : (
+            <Spinner />
+          )}
 
           <article className="py-sm">
             <ShareBox id={id} />

@@ -14,8 +14,8 @@ const TempertaureBox = ({ buddy, trust, love, talk, temperature }: Props) => {
     <article className="my-4xs flex w-full flex-col justify-center rounded-xl px-2xs">
       <div className="w-full rounded-t-xl  bg-primary-200 px-3xs  py-5xs text-center">
         <Typography type="title2">
-          당신과 {buddy}의 온도는{' '}
-          <span className="text-primary-800">{Math.floor((temperature / 10) * 100)}&#8451;</span>
+          당신과 {buddy}의 온도는
+          <span className="text-primary-800"> {temperature}&#8451;</span>
         </Typography>
       </div>
       <div className="flex w-full flex-col gap-3xs rounded-b-xl border border-gray-100  p-3xs text-center">
