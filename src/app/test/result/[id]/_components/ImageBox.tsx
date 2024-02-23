@@ -13,7 +13,6 @@ import { TestResultFormType } from '@/types/test';
 
 // TODO : 백엔드와 논의하여 resultTypeId 프로퍼티 결정
 const ImageBox = ({ temperature }: { temperature: TestResultFormType['temperature'] }) => {
-  console.log('temperature', temperature);
   const imageRef = useRef<HTMLDivElement>(null);
   const { onDownloadImage } = useDownloadImage({ imageRef });
 
