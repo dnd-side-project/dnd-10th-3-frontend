@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 
 import { Loading } from '@/components/features/test/loading';
@@ -7,7 +9,7 @@ const DELAY_SECOND = 3;
 
 const TestLoading = () => {
   const router = useRouter();
-  useTimeout(() => router.push('test/result'), DELAY_SECOND * 1000);
+  useTimeout(() => router.push('test/result/:id'), DELAY_SECOND * 1000);
 
   return (
     <div className="flex size-full flex-col items-center justify-center pb-2xs">

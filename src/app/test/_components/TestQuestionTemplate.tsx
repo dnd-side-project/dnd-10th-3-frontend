@@ -12,7 +12,6 @@ import { QUESTIONS_ORDERS } from '@/constants/test';
 import { PRE_QUESTIONS_LENGTH, PROGRESS_RATE } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
 import { useCreateTestResult } from '@/hooks/api/test';
-import useLocalStorage from '@/hooks/useLocalStorage';
 import { TestFormType } from '@/types/test';
 
 import FormLayout from './FormLayout';
@@ -43,7 +42,6 @@ const TestQuestionTemplate = ({
   onDispatchEvent,
 }: Props) => {
   const { mutate } = useCreateTestResult();
-  const [, saveResultForNoUsers] = useLocalStorage<null | TestFormType>('result', null);
 
   return (
     <main className={'relative flex h-dvh w-full flex-col items-center pb-5'}>
@@ -81,7 +79,6 @@ const TestQuestionTemplate = ({
                   onClick={() => {
                     if (id === QUESTIONS_ORDERS.lastPage) {
                       mutate({ ...state });
-                      saveResultForNoUsers(state);
                     }
 
                     if (id <= PRE_QUESTIONS_LENGTH) {
