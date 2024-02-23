@@ -5,9 +5,8 @@ import { motion } from 'framer-motion';
 import { HTMLAttributes } from 'react';
 
 import { cn } from '@/lib/core';
-import { Range } from '@/types/util';
 
-type Props = { progress: Range<0, 101> } & VariantProps<typeof progressVariants> &
+type Props = { progress: number } & VariantProps<typeof progressVariants> &
   HTMLAttributes<HTMLDivElement>;
 
 const progressVariants = cva('absolute inset-y-0 -left-full right-full -z-10 -translate-x-full', {

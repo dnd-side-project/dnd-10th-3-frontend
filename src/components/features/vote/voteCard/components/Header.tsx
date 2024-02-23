@@ -1,4 +1,5 @@
 import { VariantProps, cva } from 'class-variance-authority';
+import dayjs from 'dayjs';
 import { HTMLAttributes } from 'react';
 
 import { Icon } from '@/components/common/icon';
@@ -6,22 +7,21 @@ import { Tag } from '@/components/common/tag';
 import { CATEGORIES } from '@/constants/category';
 import { Typography } from '@/foundations/typography';
 import { cn } from '@/lib/core';
-import { GetDifferenceTimeType } from '@/utils/date';
+import { fromNowOf } from '@/utils/dates';
+import { isPast } from '@/utils/dates/isPast';
 
 type Props = HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof headerVariants> & {
-    remainingDay?: GetDifferenceTimeType;
+    closeDate?: string;
     voter?: number;
     categories?: (typeof CATEGORIES)[number];
     fontColor?: 'text-gray-600';
+    fontSize?: 'text-xs';
   };
 
 const headerVariants = cva(`flex items-center justify-between pb-3xs`);
 
-const Header = ({ remainingDay, voter, categories, className, fontColor }: Props) => {
-  const expiredCondition = remainingDay && remainingDay?.day <= 0 && remainingDay?.hour <= 0;
-  const validDayCondition = remainingDay && remainingDay.day > 0;
-  const validHourCondition = remainingDay && remainingDay?.day === 0 && remainingDay.hour > 0;
+const Header = ({ closeDate, voter, categories, className, fontColor, fontSize }: Props) => {
   return (
     <div className={cn(headerVariants({ className }))}>
       {categories ? (
@@ -35,28 +35,22 @@ const Header = ({ remainingDay, voter, categories, className, fontColor }: Props
         </div>
       )}
 
-      <div className="flex items-center">
-        {/* TODO : 정확히 날짜 처리 논의 후 리팩토링 예정 */}
-        {expiredCondition && (
-          <Typography type="body2" className="text-gray-600">
-            투표기간 종료
-          </Typography>
-        )}
-        {validDayCondition ? (
-          <Typography type="body2" className={cn('pr-5xs text-primary-700', fontColor)}>
-            {remainingDay.day}일 남음
-          </Typography>
-        ) : null}
-        {validHourCondition && (
-          <Typography type="body2" className={cn('pr-5xs text-primary-700', fontColor)}>
-            {remainingDay.hour}시간 남음
-          </Typography>
-        )}
+      <div className="flex items-center gap-5xs">
+        {closeDate &&
+          (isPast(dayjs(closeDate).endOf('day')) ? (
+            <Typography type="body3" className={cn('text-gray-600', fontSize)}>
+              투표기간 종료
+            </Typography>
+          ) : (
+            <Typography type="body3" className={cn('text-primary-700', fontColor, fontSize)}>
+              {fromNowOf(dayjs(closeDate).endOf('day'))}
+            </Typography>
+          ))}
 
-        {voter ? (
+        {voter !== undefined ? (
           <>
             <Icon icon="divider" color="gray-300" width={8} height={10} />
-            <Typography type="caption1" className="pl-5xs text-gray-600">
+            <Typography type="caption1" className="font-normal text-gray-600">
               {voter}명 참여
             </Typography>
           </>

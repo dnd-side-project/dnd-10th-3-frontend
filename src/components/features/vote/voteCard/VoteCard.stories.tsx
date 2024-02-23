@@ -58,7 +58,7 @@ export const ReadOnlyWithFooter: Story = {
   render: () => {
     return (
       <VoteCard className="shadow-thumb">
-        <VoteCard.Header categories="축의금" remainingDay={{ day: 2, hour: 0 }} />
+        <VoteCard.Header categories="축의금" closeDate="2024-02-24" />
         <VoteCard.Description
           title="갑자기 연락 온 동창 축의금 얼마할까요? 고민됩니다."
           content=" 제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 연락 안하고 지내다가 최근에 연락이
@@ -89,7 +89,7 @@ export const VoteWithoutFooter: Story = {
   render: () => {
     return (
       <VoteCard>
-        <VoteCard.Header remainingDay={{ day: 2, hour: 2 }} voter={89} fontColor="text-gray-600" />
+        <VoteCard.Header closeDate="2024-02-24" voter={89} fontColor="text-gray-600" />
         <VoteCard.VoteItemGroup>
           <VoteItem>
             <VoteItem.Radio checked />
