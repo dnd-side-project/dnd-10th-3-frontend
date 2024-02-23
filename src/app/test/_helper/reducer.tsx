@@ -1,11 +1,4 @@
-type TestState = {
-  buddy: string;
-  gender: string;
-  age: string;
-  trust: number;
-  love: number;
-  talk: number;
-};
+import { TestFormType } from '@/types/test';
 
 export type TestAction =
   | { type: 'setBuddyName'; value: string }
@@ -17,7 +10,7 @@ export type TestAction =
 
 export type TestActionType = TestAction['type'];
 
-export function reducer(state: TestState, action: TestAction): TestState {
+export function reducer(state: TestFormType, action: TestAction): TestFormType {
   switch (action.type) {
     case 'setBuddyName': {
       return {

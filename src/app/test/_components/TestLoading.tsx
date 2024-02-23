@@ -1,13 +1,32 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 import { Loading } from '@/components/features/test/loading';
-import useTimeout from '@/hooks/useTimeout';
+import { useCreateTestResult } from '@/hooks/api/test';
+import { TestFormType } from '@/types/test';
+
+type Props = {
+  state: TestFormType;
+};
 
 const DELAY_SECOND = 3;
 
-const TestLoading = () => {
+const TestLoading = ({ state }: Props) => {
   const router = useRouter();
-  useTimeout(() => router.push('test/result'), DELAY_SECOND * 1000);
+  const { mutate } = useCreateTestResult();
+
+  useEffect(() => {
+    mutate(state, {
+      onSuccess: (response) => {
+        setTimeout(
+          () => router.push(`/test/result/${response.data.id}`),
+          (DELAY_SECOND - 1) * 1000,
+        );
+      },
+    });
+  }, []);
 
   return (
     <div className="flex size-full flex-col items-center justify-center pb-2xs">

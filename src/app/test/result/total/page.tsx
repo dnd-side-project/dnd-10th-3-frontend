@@ -15,7 +15,6 @@ const TotalPage = () => {
 
       <section className="pb-10">
         {RESULT_TYPE_LIST.map((resultType) => {
-          console.log('resultType', resultType);
           return (
             <article className="my-4xs flex w-full px-2xs" key={resultType.id}>
               <div className="flex w-full items-center rounded-xl border border-gray-100 p-3xs">

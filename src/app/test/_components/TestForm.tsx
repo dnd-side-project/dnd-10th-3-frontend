@@ -83,6 +83,7 @@ const TestForm = () => {
           <section key={question.id}>
             {step === question.id && (
               <TestQuestionTemplate
+                buddy={state.buddy}
                 id={question.id}
                 onDispatchEvent={(buttonValue) =>
                   dispatch({ type: `${QUESTIONS[index].type}`, value: buttonValue })
@@ -103,7 +104,7 @@ const TestForm = () => {
         );
       })}
 
-      {step === QUESTIONS_ORDERS.loadingPage && <TestLoading />}
+      {step === QUESTIONS_ORDERS.loadingPage && <TestLoading state={state} />}
     </>
   );
 };

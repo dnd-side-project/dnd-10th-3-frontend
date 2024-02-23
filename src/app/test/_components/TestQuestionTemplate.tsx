@@ -10,15 +10,17 @@ import { ProgressBar } from '@/components/common/progressBar';
 import { Tag } from '@/components/common/tag';
 import { PRE_QUESTIONS_LENGTH, PROGRESS_RATE } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
+import { TestFormType } from '@/types/test';
 
 import FormLayout from './FormLayout';
 
 type Props = {
   id: number;
+  buddy: TestFormType['buddy'];
   onChangeStep: () => void;
   progress: number;
   badgeStatus: string;
-  question: ReactNode;
+  question: (user?: string) => ReactNode;
   image?: string | StaticImport;
   answerList: string[];
   onPrevStep?: () => void;
@@ -26,6 +28,7 @@ type Props = {
 };
 
 const TestQuestionTemplate = ({
+  buddy,
   id,
   answerList,
   badgeStatus,
@@ -50,7 +53,7 @@ const TestQuestionTemplate = ({
         comment={
           <div className="flex flex-col gap-4xs">
             <Tag>{badgeStatus}</Tag>
-            <Typography type={'heading2'}>{question}</Typography>
+            <Typography type="question">{question(buddy)}</Typography>
           </div>
         }
         body={
@@ -74,7 +77,7 @@ const TestQuestionTemplate = ({
                       onChangeStep();
                       onDispatchEvent(answer);
 
-                      //긍정 답변일 경우 + 1 의도
+                      //긍정 답변일 경우 trust,love,talk + 1 증가
                     } else if (index === 0) {
                       onChangeStep();
                       onDispatchEvent(answer);
@@ -83,6 +86,7 @@ const TestQuestionTemplate = ({
                     }
                   }}
                   key={index}
+                  className="h-md bg-primary-700 text-white"
                 >
                   {answer}
                 </Button>

@@ -44,7 +44,7 @@ export const Default = {
         </Typography>
         <Divider />
         <div className="flex flex-col">
-          <div className="mb-4 h-16 w-[300px] bg-gray-50 hover:shadow-xl">gray-50</div>
+          <div className="mb-4 h-16 w-[300px] bg-gray-50 hover:shadow-xl">gray-50</div>
           <div className="mb-4 h-16 w-[300px] bg-gray-100 hover:shadow-xl">gray-100</div>
           <div className="mb-4 h-16 w-[300px] bg-gray-200 hover:shadow-xl">gray-200</div>
           <div className="mb-4 h-16 w-[300px] bg-gray-300 hover:shadow-xl">gray-300</div>
@@ -55,7 +55,6 @@ export const Default = {
             gray-500
           </div>
           <div className="mb-4 h-16 w-[300px] bg-gray-600 text-white hover:shadow-xl">gray-600</div>
-          <div className="bg-gray-650 mb-4 h-16 w-[300px] text-white hover:shadow-xl">gray-650</div>
         </div>
       </div>
     );
