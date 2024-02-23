@@ -6,7 +6,7 @@ import { Typography } from '@/foundations/typography';
 const TotalPage = () => {
   return (
     <>
-      <Header>
+      <Header className="bg-white shadow-thumb">
         <Header.Previous />
         <Header.Text text="전체유형" />
         {/* //FIXME : 고쳐주세요 */}
