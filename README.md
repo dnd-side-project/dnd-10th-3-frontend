@@ -23,7 +23,7 @@
 
 ## 배포 URL
 
-- **서비스 임시 배포 URL**: https://dontworry-3th.vercel.app/test
+- **서비스 임시 배포 URL**: https://donworry.vercel.app
 - **Storybook 배포 URL**: https://65abd47d09661c4e79c3c260-hnnhgamhoo.chromatic.com/
 
 ## 개발 환경 설정
