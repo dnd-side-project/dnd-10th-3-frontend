@@ -8,6 +8,8 @@ import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 import { useGetTestResultById } from '@/hooks/test';
+import { useGetBestVote } from '@/hooks/vote/useGetBestVote';
+import { getTimeDifference } from '@/utils/date';
 
 import ImageBox from './ImageBox';
 import ShareBox from './ShareBox';
@@ -15,6 +17,7 @@ import TempertaureBox from './TempertaureBox';
 
 const ResultContents = ({ id }: { id: number }) => {
   const { data: resultData } = useGetTestResultById(id);
+  const { data: bestVoteContents } = useGetBestVote();
 
   return (
     <>
@@ -72,33 +75,46 @@ const ResultContents = ({ id }: { id: number }) => {
             </Link>
           </div>
 
-          <article className="w-full px-2xs pt-lg">
-            <div className="flex  flex-col items-center gap-3xs">
-              <Typography type="heading3">투표로 더 많은 논쟁을 해결해봐요</Typography>
-              <VoteCard className="w-full border-b-0">
-                <VoteCard.Header categories="축의금" remainingDay={{ hour: 0, day: 1 }} />
-                <VoteCard.Description
-                  title="갑자기 연락온 동창 축의금 얼마할까요? 고민됩니다."
-                  content="제목 그대로 학창시절 조금 친했던 친구였는데요. 서로 하고 지내다가 최근에 연락이 되었어요. 옛날 생각이 나.."
-                />
-                <VoteCard.VoteItemGroup withBlur>
-                  <VoteItem readOnly>
-                    <VoteItem.Radio></VoteItem.Radio>
-                    <VoteItem.Text>5만원</VoteItem.Text>
-                  </VoteItem>
-                  <VoteItem readOnly>
-                    <VoteItem.Radio></VoteItem.Radio>
-                    <VoteItem.Text>5만원</VoteItem.Text>
-                  </VoteItem>
-                </VoteCard.VoteItemGroup>
-              </VoteCard>
-            </div>
-            <Link href="/vote">
-              <Button variant="primary" width="full">
-                투표하고 축의금 논쟁 종결짓기
-              </Button>
-            </Link>
-          </article>
+          {bestVoteContents && (
+            <article className="w-full px-2xs pt-lg">
+              <div className="flex  flex-col items-center gap-3xs">
+                <Typography type="heading3">투표로 더 많은 논쟁을 해결해봐요</Typography>
+                <VoteCard className="w-full border-b-0">
+                  <VoteCard.Header
+                    categories={bestVoteContents.category}
+                    remainingDay={getTimeDifference(bestVoteContents.closeDate)}
+                  />
+                  <VoteCard.Description
+                    title={bestVoteContents.title}
+                    content={bestVoteContents.content}
+                  />
+                  <VoteCard.VoteItemGroup withBlur>
+                    <VoteItem readOnly>
+                      <VoteItem.Radio></VoteItem.Radio>
+                      <VoteItem.Text>{bestVoteContents.selections[0].content}</VoteItem.Text>
+                      <VoteItem.Img
+                        src={bestVoteContents.selections[0].imagePath}
+                        alt="vote_item_image"
+                      />
+                    </VoteItem>
+                    <VoteItem readOnly>
+                      <VoteItem.Radio></VoteItem.Radio>
+                      <VoteItem.Text>{bestVoteContents.selections[1].content}</VoteItem.Text>
+                      <VoteItem.Img
+                        src={bestVoteContents.selections[1].imagePath}
+                        alt="vote_item_image"
+                      />
+                    </VoteItem>
+                  </VoteCard.VoteItemGroup>
+                </VoteCard>
+              </div>
+              <Link href="/vote">
+                <Button variant="primary" width="full">
+                  투표하고 축의금 논쟁 종결짓기
+                </Button>
+              </Link>
+            </article>
+          )}
         </section>
       </main>
     </>
