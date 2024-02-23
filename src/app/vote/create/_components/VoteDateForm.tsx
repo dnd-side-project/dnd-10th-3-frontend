@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 import { Button } from '@/components/common/button';
 import { Range } from '@/types/util';
-import { convertNumToDay } from '@/utils/date';
+import { convertNumToDay } from '@/utils/dates';
 
 const DEFAULT_PERIOD = 7;
 
