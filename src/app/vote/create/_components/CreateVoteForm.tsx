@@ -11,6 +11,7 @@ import { Textarea as ContentInput } from '@/components/common/textarea';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
+import { useCreateVoteMutation } from '@/hooks/api/vote';
 import { createVoteSchema } from '@/schema/CreateVoteSchema';
 
 import { CategorySelector, TitleInput, VoteDateForm, VoteItemForm } from '.';
@@ -25,15 +26,18 @@ const CreateVoteForm = () => {
       title: '',
       content: '',
       selections: [
-        { content: '', img: null },
-        { content: '', img: null },
+        { content: '', img: '' },
+        { content: '', img: '' },
       ],
       closeDate: '',
     },
   });
+  const submitVote = useCreateVoteMutation();
   const toast = useToast();
 
-  const onSubmit: SubmitHandler<CreateVoteInput> = () => {};
+  const onSubmit: SubmitHandler<CreateVoteInput> = (data) => {
+    submitVote(data);
+  };
 
   const handleFormInvalid: SubmitErrorHandler<CreateVoteInput> = (errors) => {
     if (errors.category) {

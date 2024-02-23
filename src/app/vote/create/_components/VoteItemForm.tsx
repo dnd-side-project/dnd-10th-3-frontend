@@ -56,7 +56,7 @@ const VoteItemForm = () => {
         iconColor={fields.length >= MAX_VOTE_COUNT ? 'gray-400' : 'gray-1000'}
         iconSize={14}
         className="text-sm"
-        onClick={() => append({ content: '', img: null })}
+        onClick={() => append({ content: '', img: '' })}
         disabled={fields.length >= MAX_VOTE_COUNT}
       >
         항목 추가
