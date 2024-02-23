@@ -13,12 +13,14 @@ type Props = {
   index: number;
 };
 
+const EMPTY_FILE = '';
+
 const VoteItemImgForm = ({ index }: Props) => {
   const { setValue } = useFormContext<CreateVoteInput>();
   const { imageSrc, upload, previewImageSrc } = useImageUpload();
 
   useEffect(() => {
-    setValue(`selections.${index}.img`, imageSrc);
+    setValue(`selections.${index}.img`, imageSrc ?? EMPTY_FILE);
   }, [imageSrc, index, setValue]);
 
   return (
