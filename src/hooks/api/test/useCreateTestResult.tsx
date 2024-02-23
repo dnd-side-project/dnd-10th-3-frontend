@@ -1,41 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { post } from '@/lib/axios';
-
-export type TestRequest = {
-  age: string;
-  gender: string;
-  buddy: string;
-  trust: number;
-  love: number;
-  talk: number;
-};
-
-type TestResponse = {
-  code: number;
-  message: string;
-  data: TestResponseDataType;
-};
-
-type TestResponseDataType = TestRequest & {
-  temperature: number;
-  imageUrl: string;
-  description: string;
-  title: string;
-  createdAt: string;
-};
-
-// type TestResponse = {};
+import { TEST } from '@/api/test/test';
+import { TestFormType } from '@/types/test';
 
 export const useCreateTestResult = () => {
   return useMutation({
-    mutationFn: (data: TestRequest) => post<TestResponse>('/test/result_no_user', data),
+    mutationFn: (data: TestFormType) => TEST.POST_RESULT(data),
     //TODO : 성공 및 에러 처리
-    onSuccess: () => {
-      console.log('Post 성공');
+    onSuccess: (response) => {
+      console.log('Post 성공', response);
     },
-    onError: () => {
-      console.log('Post 실패');
+    onError: (error) => {
+      console.log('Post 실패', error);
     },
   });
 };

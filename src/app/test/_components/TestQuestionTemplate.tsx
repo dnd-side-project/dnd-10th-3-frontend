@@ -4,7 +4,6 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
-import { TestState } from '@/app/test/_helper/reducer';
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
@@ -14,12 +13,13 @@ import { PRE_QUESTIONS_LENGTH, PROGRESS_RATE } from '@/constants/test/progress';
 import { Typography } from '@/foundations/typography';
 import { useCreateTestResult } from '@/hooks/api/test';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { TestFormType } from '@/types/test';
 
 import FormLayout from './FormLayout';
 
 type Props = {
   id: number;
-  state: TestState;
+  state: TestFormType;
   onChangeStep: () => void;
   progress: number;
   badgeStatus: string;
@@ -43,7 +43,7 @@ const TestQuestionTemplate = ({
   onDispatchEvent,
 }: Props) => {
   const { mutate } = useCreateTestResult();
-  const [, saveResultForNoUsers] = useLocalStorage<null | TestState>('result', null);
+  const [, saveResultForNoUsers] = useLocalStorage<null | TestFormType>('result', null);
 
   return (
     <main className={'relative flex h-dvh w-full flex-col items-center pb-5'}>

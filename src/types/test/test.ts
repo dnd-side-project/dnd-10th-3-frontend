@@ -1,10 +1,8 @@
-
-export type TestFormValue =  {
-    buddy: string
-    firstPreTest: string
-    secondPreTest: string
-    trust: number,
-    love : number,
-    talk : number
-}
-  
+export type TestFormType = {
+  buddy: string;
+  gender: string;
+  age: string;
+  trust: number;
+  love: number;
+  talk: number;
+};
