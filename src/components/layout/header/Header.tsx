@@ -33,11 +33,12 @@ type IconLinkProps = {
   href: string;
   icon: IconType;
   iconColor?: IconColor;
+  iconSize?: number;
 };
-const IconLink = ({ href, icon, iconColor = 'gray-300' }: IconLinkProps) => {
+const IconLink = ({ href, icon, iconColor = 'gray-300', iconSize = 27 }: IconLinkProps) => {
   return (
     <Link href={href}>
-      <Icon icon={icon} color={iconColor} size={27} />
+      <Icon icon={icon} color={iconColor} size={iconSize} />
     </Link>
   );
 };
