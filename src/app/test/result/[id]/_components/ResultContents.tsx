@@ -11,7 +11,8 @@ import ImageBox from './ImageBox';
 import ShareBox from './ShareBox';
 import TempertaureBox from './TempertaureBox';
 
-const ResultContents = () => {
+const ResultContents = ({ id }: { id: number }) => {
+  console.log('id', id);
   return (
     <>
       <Header>
@@ -40,7 +41,7 @@ const ResultContents = () => {
           <TempertaureBox buddy="상대" trust={1} love={2} talk={3} temperature={4} />
 
           <article className="py-sm">
-            <ShareBox id={1} />
+            <ShareBox id={id} />
           </article>
           <div className="flex w-full gap-4xs px-2xs">
             <Link href="/test" className="w-full">
