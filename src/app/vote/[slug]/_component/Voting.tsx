@@ -4,7 +4,9 @@ import { useState } from 'react';
 
 import { Button } from '@/components/common/button';
 import { VoteCard, VoteItem } from '@/components/features/vote';
-import useVotingMutation from '@/hooks/vote/useVotingMutation';
+import { useToast } from '@/hooks';
+import { useVotingMutation } from '@/hooks/vote';
+import { cn } from '@/lib/core';
 import { SelectionType } from '@/types/vote';
 
 type Props = {
@@ -15,12 +17,23 @@ type Props = {
 
 const Voting = ({ voteId, selections, selected }: Props) => {
   const [mode, setMode] = useState<'voting' | 'result'>(selected === null ? 'voting' : 'result');
-  const [selectedItem, setSelectedItem] = useState(-1);
+  const [selectedItem, setSelectedItem] = useState(selected);
   const { mutate: vote, isPending } = useVotingMutation(voteId);
+  const toast = useToast();
+
   const topVoteRate = Math.max(...selections.map((selection) => selection.votePercentage));
 
   const handleVote = () => {
+    if (selectedItem === null) {
+      toast({ message: 'SELECTION_REQUIRED' });
+      return;
+    }
     vote({ selectionId: selectedItem }, { onSuccess: () => setMode('result') });
+  };
+
+  const setVotingMode = () => {
+    setMode('voting');
+    setSelectedItem(null);
   };
 
   return (
@@ -64,7 +77,7 @@ const Voting = ({ voteId, selections, selected }: Props) => {
                 <VoteItem.Text doubleLine>
                   <div>{selection.content}</div>
                   <div
-                    className={selection.votePercentage === topVoteRate ? 'text-primary-700' : ''}
+                    className={cn(selection.votePercentage === topVoteRate && 'text-primary-700')}
                   >
                     {selection.count}표 / {selection.votePercentage}%
                   </div>
@@ -76,7 +89,7 @@ const Voting = ({ voteId, selections, selected }: Props) => {
             ))}
           </VoteCard.VoteItemGroup>
           <VoteCard.SubmitButton>
-            <Button variant="secondary" width="full" onClick={() => setMode('voting')}>
+            <Button variant="secondary" width="full" onClick={setVotingMode}>
               다시 투표하기
             </Button>
           </VoteCard.SubmitButton>

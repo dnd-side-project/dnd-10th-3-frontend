@@ -23,6 +23,8 @@ export const TOAST_MESSAGES = Object.freeze({
   NAME_REQUIRED: { type: 'warning', text: '상대방의 이름을 입력해 주세요' },
   NICKNAME_REQUIRED: { type: 'warning', text: '닉네임을 입력해 주세요' },
 
+  SELECTION_REQUIRED: { type: 'warning', text: '투표할 항목을 선택해 주세요' },
+
   VOTING_SUCCESS: { type: 'default', text: '투표 참여가 완료되었습니다' },
   VOTING_FAIL: { type: 'warning', text: '투표 참여에 실패했습니다' },
 
