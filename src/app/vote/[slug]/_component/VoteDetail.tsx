@@ -6,10 +6,9 @@ import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard } from '@/components/features/vote';
 import { Typography } from '@/foundations/typography';
-import { useGetVoteById } from '@/hooks/vote/useGetVoteById';
+import { useGetVoteById } from '@/hooks/vote';
 
-import { VoteExtraDetail } from '.';
-import Voting from './Voting';
+import { VoteExtraDetail, Voting } from '.';
 
 type Props = {
   voteId: number;
@@ -21,12 +20,18 @@ const VoteDetail = ({ voteId }: Props) => {
   return (
     <section className="h-fit px-2xs">
       {status === 'pending' ? (
-        <Spinner />
+        <div className="flex min-h-[480px] items-center justify-center">
+          <Spinner />
+        </div>
       ) : status === 'error' ? (
         notFound()
       ) : (
         <>
-          <VoteExtraDetail nickname={data.user.nickname} views={data.views} category="축의금" />
+          <VoteExtraDetail
+            nickname={data.user.nickname}
+            views={data.views}
+            category={data.category}
+          />
 
           <Typography type="title2" className="mt-3xs text-gray-1000">
             Q. {data.title}
@@ -48,10 +53,10 @@ const VoteDetail = ({ voteId }: Props) => {
 
           <div className="mb-3xs mt-sm flex justify-between">
             <Button
-              icon={status ? 'filledHeart' : 'heart'}
+              icon={data.status ? 'filledHeart' : 'heart'}
               iconColor="primary-700"
               variant="empty"
-              className="gap-6xs !p-0 text-[14px] text-gray-600 "
+              className="gap-6xs !p-0 text-[14px] text-gray-600"
             >
               {data.likes}
             </Button>
