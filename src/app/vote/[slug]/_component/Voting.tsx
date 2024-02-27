@@ -16,8 +16,12 @@ type Props = {
 const Voting = ({ voteId, selections, selected }: Props) => {
   const [mode, setMode] = useState<'voting' | 'result'>(selected === null ? 'voting' : 'result');
   const [selectedItem, setSelectedItem] = useState(-1);
-  const { mutate } = useVotingMutation(voteId);
+  const { mutate: vote, isPending } = useVotingMutation(voteId);
   const topVoteRate = Math.max(...selections.map((selection) => selection.votePercentage));
+
+  const handleVote = () => {
+    vote({ selectionId: selectedItem }, { onSuccess: () => setMode('result') });
+  };
 
   return (
     <>
@@ -38,9 +42,11 @@ const Voting = ({ voteId, selections, selected }: Props) => {
             <Button
               variant="primary"
               width="full"
-              onClick={() => mutate({ selectionId: selectedItem })}
+              onClick={handleVote}
+              isLoading={isPending}
+              disabled={isPending}
             >
-              투표 참여하기
+              {isPending ? '투표 반영 중' : '투표 참여하기'}
             </Button>
           </VoteCard.SubmitButton>
         </>
