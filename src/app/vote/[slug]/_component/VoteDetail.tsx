@@ -5,8 +5,9 @@ import { notFound } from 'next/navigation';
 import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard } from '@/components/features/vote';
+import { LikeButton } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
-import { useGetVoteById } from '@/hooks/vote';
+import { useGetVoteById, useLikeVoteMutation } from '@/hooks/vote';
 
 import { VoteExtraDetail, Voting } from '.';
 
@@ -16,6 +17,7 @@ type Props = {
 
 const VoteDetail = ({ voteId }: Props) => {
   const { status, data } = useGetVoteById(voteId);
+  const { mutate: toggleLike } = useLikeVoteMutation();
 
   return (
     <section className="h-fit px-2xs">
@@ -52,14 +54,13 @@ const VoteDetail = ({ voteId }: Props) => {
           </VoteCard>
 
           <div className="mb-3xs mt-sm flex justify-between">
-            <Button
-              icon={data.status ? 'filledHeart' : 'heart'}
-              iconColor="primary-700"
-              variant="empty"
-              className="gap-6xs !p-0 text-[14px] text-gray-600"
-            >
-              {data.likes}
-            </Button>
+            <LikeButton
+              isLiked={data.status}
+              likeCount={data.likes}
+              clickHandler={() => {
+                toggleLike({ voteId, isLiked: !data.status });
+              }}
+            />
             <Button iconOnly icon="share" variant="empty" className="!p-0" />
           </div>
         </>
