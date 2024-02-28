@@ -11,7 +11,7 @@ type Props = {
 
 const TempertaureBox = ({ buddy, trust, love, talk, temperature }: Props) => {
   return (
-    <article className="my-4xs flex w-full flex-col justify-center rounded-xl px-2xs">
+    <>
       <div className="w-full rounded-t-xl  bg-primary-200 px-3xs  py-5xs text-center">
         <Typography type="title2">
           당신과 {buddy}의 온도는
@@ -50,7 +50,7 @@ const TempertaureBox = ({ buddy, trust, love, talk, temperature }: Props) => {
           </div>
         </div>
       </div>
-    </article>
+    </>
   );
 };
 
