@@ -1,7 +1,9 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
+import { useRouter } from 'next/navigation';
 
 import { CreateVoteInput } from '@/app/vote/create/_components/CreateVoteForm';
+import { VOTE_KEY } from '@/constants/queryKey/vote';
 import { useToast } from '@/hooks';
 import { post } from '@/lib/axios';
 import { SuccessResponse } from '@/types/response';
@@ -19,6 +21,8 @@ type PostVoteResponse = {
 
 const useCreateVoteMutation = () => {
   const toast = useToast();
+  const router = useRouter();
+  const queryClient = useQueryClient();
 
   const { mutate: submitVote } = useMutation({
     mutationFn: (data: PostVoteRequest) => {
@@ -30,7 +34,7 @@ const useCreateVoteMutation = () => {
           content: data.content,
           category: data.category,
           selections: data.selections.map((selection) => ({ content: selection.content })),
-          closeDate: dayjs().format('YYYY-MM-DD-d'),
+          closeDate: dayjs().format('YYYY-MM-DD'),
         }),
       );
       data.selections.forEach((selection) => {
@@ -42,16 +46,13 @@ const useCreateVoteMutation = () => {
     },
     onSuccess: (data) => {
       const { id } = data.data.data;
-      // TODO : 빌드시 lint 에러로 콘솔 처리
-      console.log(id)
       toast({ message: 'VOTE_UPLOAD_SUCCESS' });
-      // TODO 쿼리키 만료
-      // TODO router.push(`/vote/${id}`);
+      queryClient.invalidateQueries({ queryKey: VOTE_KEY.ALL });
+      router.replace(`/vote/${id}`);
     },
     onError: () => {
       toast({ message: 'VOTE_UPLOAD_FAIL' });
     },
-    retry: 2,
   });
 
   return submitVote;
