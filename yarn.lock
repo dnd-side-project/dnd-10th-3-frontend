@@ -4918,6 +4918,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toss/hangul@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "@toss/hangul@npm:1.6.1"
+  checksum: 345a114c09ce8b062dd99c16b91a61c79d7da82d90291df0be9fc781f87993a7623ff681ac9c014316a990663d6b1f3ea791113f770d4c03e5aaa8dfa7ab8c60
+  languageName: node
+  linkType: hard
+
 "@trysound/sax@npm:0.2.0":
   version: 0.2.0
   resolution: "@trysound/sax@npm:0.2.0"
@@ -8456,6 +8463,7 @@ __metadata:
     "@svgr/webpack": "npm:^8.1.0"
     "@tanstack/react-query": "npm:^5.17.15"
     "@tanstack/react-query-devtools": "npm:^5.17.18"
+    "@toss/hangul": "npm:^1.6.1"
     "@types/github-label-sync": "npm:^2"
     "@types/lodash.compact": "npm:^3"
     "@types/node": "npm:^20"
