@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
@@ -10,18 +10,23 @@ import { EmptyVote } from '@/components/shared';
 import { CATEGORY_TAB } from '@/constants/category';
 import { useGetAllVotes } from '@/hooks/vote';
 
-import SearchInput from './SearchInput';
-import SearchResults from './SearchResults';
+import { SearchInput, SearchResults } from './search';
 import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') as string;
+  const searchValue = searchParams.get('q') as string;
   const findCategoryNameByParam = CATEGORY_TAB.find((category) => category.params === tab);
   const { data: voteList, isLoading } = useGetAllVotes(
     findCategoryNameByParam?.name ?? ('전체' as string),
   );
+
+  const inputValueHandler = (targetValue: string) => {
+    router.replace(`?q=${targetValue}`);
+  };
 
   return (
     <VoteLayout
@@ -29,8 +34,8 @@ const VoteContents = () => {
       contents={
         <>
           <div className="flex w-full flex-col">
-            <SearchInput />
-            <SearchResults />
+            <SearchInput inputValueHandler={inputValueHandler} searchValue={searchValue} />
+            <SearchResults searchValue={searchValue} />
 
             <ul className="flex flex-col gap-3xs p-3xs">
               {/* TODO : Suspense로 선언적으로 리팩토링 */}
