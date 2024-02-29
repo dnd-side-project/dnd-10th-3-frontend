@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
-import { Input } from '@/components/common/input';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
 import { CATEGORY_TAB } from '@/constants/category';
 import { useGetAllVotes } from '@/hooks/vote';
 
+import SearchInput from './SearchInput';
+import SearchResults from './SearchResults';
 import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
 
@@ -28,19 +29,8 @@ const VoteContents = () => {
       contents={
         <>
           <div className="flex w-full flex-col">
-            <div className="w-full p-3xs">
-              <div className="py-4xs">
-                <Input
-                  placeholder="무엇이 고민이신가요?"
-                  icon="search"
-                  borderRadius="large"
-                  bgcolor="lightGray"
-                  height="large"
-                  className=" placeholder:text-gray-500 "
-                />
-              </div>
-            </div>
-            {/* TODO: Select*/}
+            <SearchInput />
+            <SearchResults />
 
             <ul className="flex flex-col gap-3xs p-3xs">
               {/* TODO : Suspense로 선언적으로 리팩토링 */}
