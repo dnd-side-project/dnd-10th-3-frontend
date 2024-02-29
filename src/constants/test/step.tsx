@@ -1,3 +1,4 @@
+import { josa } from '@toss/hangul';
 import { ReactNode } from 'react';
 
 import { TestActionType } from '@/app/test/_helper/reducer';
@@ -67,8 +68,8 @@ export const QUESTIONS: Question[] = [
     question: (user) => {
       return (
         <>
-          초췌한 몰골로 <br /> 짚 앞 슈퍼에 나온 나, <br />
-          우연히 {user}와 마주쳤다면?
+          초췌한 몰골로 <br /> 집 앞 슈퍼에 나온 나, <br />
+          우연히 {josa(user as string, '와/과')} 마주쳤다면?
         </>
       );
     },
@@ -95,7 +96,7 @@ export const QUESTIONS: Question[] = [
     question: (user) => {
       return (
         <>
-          나는 {user}와/과 <br /> 단둘이 식사를 할 수 있다.
+          나는 {josa(user as string, '와/과')} <br /> 단둘이 식사를 할 수 있다.
         </>
       );
     },
@@ -119,7 +120,7 @@ export const QUESTIONS: Question[] = [
     question: (user) => {
       return (
         <>
-          {user}가 결혼할 사람이라며
+          {josa(user as string, '이/가')} 결혼할 사람이라며
           <br /> 인사를 시켜준다. <br /> 나의 반응은?
         </>
       );
@@ -145,7 +146,8 @@ export const QUESTIONS: Question[] = [
     question: (user) => {
       return (
         <>
-          {user}와 만나기로 약속한 당일 <br /> 갑자기 연락이 없다. <br /> 나의 반응은?
+          {josa(user as string, '와/과')} 만나기로 약속한 당일 <br /> 갑자기 연락이 없다. <br />{' '}
+          나의 반응은?
         </>
       );
     },
@@ -160,7 +162,7 @@ export const QUESTIONS: Question[] = [
     question: (user) => {
       return (
         <>
-          {user}가 연락와서
+          {josa(user as string, '이/가')} 연락와서
           <br /> 축사를 하기로 약속했다. <br />
           이때 나는?
         </>
