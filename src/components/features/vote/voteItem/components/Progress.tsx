@@ -12,7 +12,7 @@ type Props = { progress: number } & VariantProps<typeof progressVariants> &
 const progressVariants = cva('absolute inset-y-0 -left-full right-full -z-10 -translate-x-full', {
   variants: {
     color: {
-      gray: 'bg-gray-100',
+      gray: 'bg-gray-50',
       primary: 'bg-primary-200',
     },
   },
