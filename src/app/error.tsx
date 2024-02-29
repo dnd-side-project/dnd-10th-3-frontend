@@ -10,7 +10,6 @@ import {
 } from '@/components/shared/errorHandler';
 
 const getErrorHandler = (error: unknown) => {
-  console.log(error);
   if (isAxiosError(error) && error.code === 'ERR_NETWORK') {
     return NetworkErrorHandler;
   }
