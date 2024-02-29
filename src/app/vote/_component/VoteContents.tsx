@@ -33,10 +33,10 @@ const VoteContents = () => {
                 <Input
                   placeholder="무엇이 고민이신가요?"
                   icon="search"
-                  iconSide="left"
                   borderRadius="large"
                   bgcolor="lightGray"
-                  className="text-[14px] placeholder:text-gray-500"
+                  height="large"
+                  className=" placeholder:text-gray-500 "
                 />
               </div>
             </div>
