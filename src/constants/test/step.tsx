@@ -68,7 +68,7 @@ export const QUESTIONS: Question[] = [
     question: (user) => {
       return (
         <>
-          초췌한 몰골로 <br /> 짚 앞 슈퍼에 나온 나, <br />
+          초췌한 몰골로 <br /> 집 앞 슈퍼에 나온 나, <br />
           우연히 {josa(user as string, '와/과')} 마주쳤다면?
         </>
       );
