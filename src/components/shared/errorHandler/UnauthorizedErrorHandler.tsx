@@ -9,10 +9,10 @@ const UnauthorizedErrorHandler: ErrorHandler = ({}) => {
   return (
     <Fallback
       title="로그인이 만료되었어요"
-      description={`로그인이 만료되어 재로그인이 필요해요.\n다시 로그인해 주세요`}
-      buttonText="로그인"
+      description={`로그인이 만료되어 재로그인이 필요해요.\n다시 로그인해 주세요.`}
+      buttonText="다시 로그인하기"
       buttonClickHandler={() => {
-        window.location.href = KAKAO_LOGIN_URL; // TODO callbackUrl
+        window.location.href = KAKAO_LOGIN_URL + `&state=${window.location.href}`;
       }}
     />
   );
