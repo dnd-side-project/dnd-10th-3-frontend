@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
@@ -18,14 +19,26 @@ const VoteContents = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') as string;
-  const searchValue = searchParams.get('q') as string;
+  const searchQueryValue = searchParams.get('q') as string;
+  const [value, setValue] = useState('');
   const findCategoryNameByParam = CATEGORY_TAB.find((category) => category.params === tab);
   const { data: voteList, isLoading } = useGetAllVotes(
     findCategoryNameByParam?.name ?? ('전체' as string),
   );
 
-  const inputValueHandler = (targetValue: string) => {
-    router.replace(`?q=${targetValue}`);
+  // 의도 : 입력할 경우 바로 결과 SearchResults 컴포넌트에 반영되도록 하기 위해 state를 사용 추후에 검색시 쓰로틀링 혹은 디바운스 적용
+  const onChangeInputHandler = (targetValue: string) => {
+    setValue(targetValue);
+  };
+
+  //Enter키가 눌리면 query string에 반영하는 로직
+  const onKeyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      if (!value) {
+        return router.push('/vote');
+      }
+      router.push(`?q=${value}`);
+    }
   };
 
   return (
@@ -34,8 +47,12 @@ const VoteContents = () => {
       contents={
         <>
           <div className="flex w-full flex-col">
-            <SearchInput inputValueHandler={inputValueHandler} searchValue={searchValue} />
-            <SearchResults searchValue={searchValue} />
+            <SearchInput
+              onChangeInputHandler={onChangeInputHandler}
+              searchValue={value}
+              onKeyUpHandler={onKeyUpHandler}
+            />
+            <SearchResults searchValue={searchQueryValue} />
 
             <ul className="flex flex-col gap-3xs p-3xs">
               {/* TODO : Suspense로 선언적으로 리팩토링 */}

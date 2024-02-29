@@ -3,18 +3,20 @@
 import { Input } from '@/components/common/input';
 
 type Props = {
-  inputValueHandler: (e: string) => void;
+  onChangeInputHandler: (e: string) => void;
   searchValue: string;
+  onKeyUpHandler: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
-const SearchInput = ({ inputValueHandler, searchValue }: Props) => {
+const SearchInput = ({ onChangeInputHandler, searchValue, onKeyUpHandler }: Props) => {
   return (
     <div className="w-full p-3xs">
       <div className="py-4xs">
         <Input
           type="search"
           placeholder="무엇이 고민이신가요?"
-          onChange={(e) => inputValueHandler(e.target.value)}
+          onChange={(e) => onChangeInputHandler(e.target.value)}
+          onKeyUp={onKeyUpHandler}
           icon="search"
           borderRadius="large"
           bgcolor="lightGray"
