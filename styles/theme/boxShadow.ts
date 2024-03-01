@@ -3,4 +3,5 @@ export const boxShadow = {
   'radio-primary': '0 0 0 1.5px #FF75B8', // primary-700
   'radio-gray': '0 0 0 1.5px #9CABBB', // gray-400
   'reply-input': '0px -5px 8px -5px #eee',
+  'vote-card': '0px 5px 8px -5px #eee',
 };

@@ -53,7 +53,7 @@ const VoteContents = () => {
               {voteList?.map(
                 ({ id, category, closeDate, title, content, selections, likes, voters, views }) => {
                   return (
-                    <VoteCard className="shadow-thumb" key={id}>
+                    <VoteCard className="shadow-vote-card" key={id}>
                       <VoteCard.Header categories={category} closeDate={closeDate} />
                       <VoteCard.Description title={title} content={content} />
                       <VoteCard.VoteItemGroup withBlur>
