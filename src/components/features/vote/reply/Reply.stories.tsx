@@ -29,28 +29,46 @@ export const Basic: Story = {
   render: () => (
     <>
       <Reply
-        id={1}
-        nickname="옹기종기"
-        createdAt={'10분전'} // TODO: timestamp
-        content="트위드 원피스가 화사하고 예뻐요! 혹시 옷 정보 어딘지 알 수 있을까요?"
-        likes={4}
-        status={false}
+        reply={{
+          commentId: 1,
+          voteId: 1,
+          userId: 0,
+          nickname: '옹기종기',
+          status: false,
+          content: '트위드 원피스가 화사하고 예뻐요! 혹시 옷 정보 어딘지 알 수 있을까요?',
+          avatar: '1',
+          likes: 0,
+          createdAt: '1709391770112',
+          modifiedAt: '1709391770112',
+        }}
       />
       <Reply
-        id={1}
-        nickname="옹기종기"
-        createdAt={'10분전'} // TODO: timestamp
-        content="저도 트위드 원피스가 날 것 같아요! 정보 부탁드려요~"
-        likes={10}
-        status={true}
+        reply={{
+          commentId: 2,
+          voteId: 1,
+          userId: 0,
+          nickname: '옹기종기',
+          status: true,
+          content: '저도 트위드 원피스가 날 것 같아요! 정보 부탁드려요~',
+          avatar: '1',
+          likes: 10,
+          createdAt: '1709391770112',
+          modifiedAt: '1709391770112',
+        }}
       />
       <Reply
-        id={1}
-        nickname="옹기종기"
-        createdAt={'10분전'} // TODO: timestamp
-        content="저는 두 번째 원피스가 예쁘네요!"
-        likes={0}
-        status={false}
+        reply={{
+          commentId: 3,
+          voteId: 1,
+          userId: 0,
+          nickname: '옹기종기',
+          status: true,
+          content: '저는 두 번째 원피스가 예쁘네요!',
+          avatar: '1',
+          likes: 3,
+          createdAt: '1709391770112',
+          modifiedAt: '1709391770112',
+        }}
       />
     </>
   ),
