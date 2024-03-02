@@ -25,4 +25,5 @@ export type VoteType = {
   createdAt: string;
   updatedAt: string;
   selected: null | number;
+  isLiked: boolean;
 };

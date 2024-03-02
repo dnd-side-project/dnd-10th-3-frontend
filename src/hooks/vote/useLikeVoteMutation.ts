@@ -1,33 +1,35 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { AxiosResponse } from 'axios';
 import cloneDeep from 'lodash.clonedeep';
 
 import { post } from '@/lib/axios';
 import { SuccessResponse } from '@/types/response';
 import { VoteType } from '@/types/vote';
 
-type LikeVoteFnVariables = {
+type PostLikeVoteRequest = {
   voteId: number;
   isLiked: boolean;
 };
 
 type LikeVoteResponse = undefined;
 
+// TODO api 분리
+const postLikeVote = async ({ voteId, isLiked }: PostLikeVoteRequest) => {
+  const response = await post<SuccessResponse<LikeVoteResponse>>(`/vote/${voteId}/likes`, {
+    isLiked,
+  });
+  return response.data.data;
+};
+
 const useLikeVoteMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ voteId, isLiked }: LikeVoteFnVariables) =>
-      post<SuccessResponse<LikeVoteResponse>>(`/vote/${voteId}/likes`, { status: isLiked }),
+    mutationFn: postLikeVote,
     onMutate: async ({ voteId, isLiked }) => {
       await queryClient.cancelQueries({ queryKey: ['vote', voteId] });
-      const previousVoteDetail = queryClient.getQueryData<AxiosResponse<SuccessResponse<VoteType>>>(
-        ['vote', voteId],
-      );
-      queryClient.setQueryData(
-        ['vote', voteId],
-        (oldVoteDetail: AxiosResponse<SuccessResponse<VoteType>>) =>
-          getOptimisticUpdatedLikesVoteDetailData(oldVoteDetail, isLiked),
+      const previousVoteDetail = queryClient.getQueryData<VoteType>(['vote', voteId]);
+      queryClient.setQueryData(['vote', voteId], (oldVoteDetail: VoteType) =>
+        getOptimisticUpdatedLikesVoteDetailData(oldVoteDetail, isLiked),
       );
       return { previousVoteDetail, voteId };
     },
@@ -40,18 +42,15 @@ const useLikeVoteMutation = () => {
   });
 };
 
-const getOptimisticUpdatedLikesVoteDetailData = (
-  oldData: AxiosResponse<SuccessResponse<VoteType>>,
-  isLiked: boolean,
-) => {
+const getOptimisticUpdatedLikesVoteDetailData = (oldData: VoteType, isLiked: boolean) => {
   const clonedOldVoteDetail = cloneDeep(oldData);
 
   if (isLiked === true) {
-    clonedOldVoteDetail.data.data.likes += 1;
+    clonedOldVoteDetail.likes += 1;
   } else {
-    clonedOldVoteDetail.data.data.likes -= 1;
+    clonedOldVoteDetail.likes -= 1;
   }
-  clonedOldVoteDetail.data.data.status = isLiked;
+  clonedOldVoteDetail.isLiked = isLiked;
 
   return clonedOldVoteDetail;
 };

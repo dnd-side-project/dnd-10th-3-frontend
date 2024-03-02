@@ -55,10 +55,10 @@ const VoteDetail = ({ voteId }: Props) => {
 
           <div className="mb-3xs mt-sm flex justify-between">
             <LikeButton
-              isLiked={data.status}
+              isLiked={data.isLiked}
               likeCount={data.likes}
               clickHandler={() => {
-                toggleLike({ voteId, isLiked: !data.status });
+                toggleLike({ voteId, isLiked: !data.isLiked });
               }}
             />
             <Button iconOnly icon="share" variant="empty" className="!p-0" />
