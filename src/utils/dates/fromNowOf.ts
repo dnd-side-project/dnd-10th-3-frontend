@@ -9,7 +9,7 @@ dayjs.locale('ko');
 dayjs.updateLocale('ko', {
   relativeTime: {
     future: '%s 남음',
-    past: '%s 지남',
+    past: '%s 전',
     s: '몇 초',
     m: '1분',
     mm: '%d분',
@@ -17,8 +17,8 @@ dayjs.updateLocale('ko', {
     hh: '%d시간',
     d: '1일',
     dd: '%d일',
-    M: '1개월',
-    MM: '%d개월',
+    M: '한 달',
+    MM: '%d달',
     y: '1년',
     yy: '%d년',
   },

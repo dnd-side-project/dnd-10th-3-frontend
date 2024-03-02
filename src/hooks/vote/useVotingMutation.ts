@@ -17,9 +17,9 @@ const useVotingMutation = (voteId: number) => {
       post<SuccessResponse<Record<string, string>>>(
         `/userVote/voteId/${voteId}/selectionId/${selectionId}`,
       ),
-    onSuccess: () => {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['vote', voteId] });
       toast({ message: 'VOTING_SUCCESS' });
-      queryClient.invalidateQueries({ queryKey: ['vote', voteId] });
     },
     onError: () => {
       toast({ message: 'VOTING_FAIL' });
