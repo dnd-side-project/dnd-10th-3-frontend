@@ -8,4 +8,5 @@ export { default as KakaoShareButton } from './kakaoShareButton/KakaoShareButton
 export { default as LikeButton } from './likeButton/LikeButton';
 export { default as Notice } from './notice/Notice';
 export { default as OptionButton } from './optionButton/OptionButton';
+export { default as Profile } from './profile/Profile';
 export { default as ReplyInput } from './replyInput/ReplyInput';
