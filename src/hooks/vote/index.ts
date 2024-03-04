@@ -1,4 +1,5 @@
 export { default as useCreateVoteReplyMutation } from './useCreateVoteReplyMutation';
+export { default as useDeleteVoteReplyMutation } from './useDeleteVoteReplyMutation';
 export { useGetAllVotes } from './useGetAllVotes';
 export { useGetVoteById } from './useGetVoteById';
 export { default as useGetVotePaginatedReplies } from './useGetVotePaginatedReplies';
