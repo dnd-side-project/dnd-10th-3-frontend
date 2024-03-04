@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ControlTab } from '@/components/common/controlTab';
 import { Spinner } from '@/components/common/spinner';
 import { Reply } from '@/components/features/vote';
-import { EndObserverList, Notice, ReplyInput } from '@/components/shared';
+import { Notice, ReplyInput } from '@/components/shared';
 import { REPLY_SORT_OPTIONS, ReplySortOptions } from '@/constants/options';
 import { Typography } from '@/foundations/typography';
 import { useGetVoteReplies } from '@/hooks/vote';
@@ -16,14 +16,12 @@ type Props = {
 };
 
 const Replies = ({ voteId }: Props) => {
-  const { status, data: replyPages, fetchNextPage, hasNextPage } = useGetVoteReplies({ voteId });
+  const { status, data: replies } = useGetVoteReplies({ voteId });
 
   const [sortOption, setSortOption] = useState<ReplySortOptions>('등록순');
 
-  const totalReplyCount = replyPages ? replyPages[0].pages.totalElements : 0;
-  const sortedReplyData = replyPages
-    ? sortReply(replyPages.map((page) => page.list).flat(), sortOption)
-    : [];
+  const totalReplyCount = replies ? replies.length : 0;
+  const sortedReplyData = replies ? sortReply(replies, sortOption) : [];
 
   return (
     <section className="flex grow flex-col">
@@ -41,24 +39,17 @@ const Replies = ({ voteId }: Props) => {
 
       {/* TODO: Suspense or SSR */}
       {status === 'pending' ? (
-        <div className="flex h-full items-center justify-center">
+        <div className="flex items-center justify-center py-lg">
           <Spinner />
         </div>
       ) : status === 'error' ? (
         <div>에러</div>
       ) : sortedReplyData.length > 0 ? (
-        <EndObserverList
-          isEndHandler={() => {
-            if (hasNextPage) {
-              fetchNextPage();
-            }
-          }}
-          className="flex h-full flex-col px-2xs py-3xs"
-        >
+        <ul className="flex h-full flex-col px-2xs py-3xs">
           {sortedReplyData.map((reply) => (
             <Reply key={reply.commentId} reply={reply} />
           ))}
-        </EndObserverList>
+        </ul>
       ) : (
         <NoReplies />
       )}
