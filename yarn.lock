@@ -8502,6 +8502,7 @@ __metadata:
     framer-motion: "npm:^10.18.0"
     github-label-sync: "npm:^2.3.1"
     husky: "npm:^8.0.0"
+    immer: "npm:^10.0.3"
     jest: "npm:^29.7.0"
     lodash.clonedeep: "npm:^4.5.0"
     lodash.compact: "npm:^3.0.1"
@@ -11014,6 +11015,13 @@ __metadata:
   bin:
     image-size: bin/image-size.js
   checksum: 2660470096d12be82195f7e80fe03274689fbd14184afb78eaf66ade7cd06352518325814f88af4bde4b26647889fe49e573129f6e7ba8f5ff5b85cc7f559000
+  languageName: node
+  linkType: hard
+
+"immer@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "immer@npm:10.0.3"
+  checksum: 282a4f8479a40f7d12b2b3243c095e3e892bf99058e2ffcdd6b8e9fd143e6a90f2717ab9b6c8b97c927ffb8054465c8f647056f41660dbfd672e240cf1063503
   languageName: node
   linkType: hard
 
