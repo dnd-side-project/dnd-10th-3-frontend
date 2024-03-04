@@ -20,7 +20,7 @@ const VoteContents = () => {
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') as string;
   const searchQueryValue = searchParams.get('q') as string;
-  const [value, setValue] = useState('');
+  const [seacrValueState, setSearchValueState] = useState('');
   const findCategoryNameByParam = CATEGORY_TAB.find((category) => category.params === tab);
   const { data: voteList, isLoading } = useGetAllVotes(
     findCategoryNameByParam?.name ?? ('전체' as string),
@@ -28,16 +28,16 @@ const VoteContents = () => {
 
   // 의도 : 입력할 경우 바로 결과 SearchResults 컴포넌트에 반영되도록 하기 위해 state를 사용 추후에 검색시 쓰로틀링 혹은 디바운스 적용
   const onChangeInputHandler = (targetValue: string) => {
-    setValue(targetValue);
+    setSearchValueState(targetValue);
   };
 
-  //Enter키가 눌리면 query string에 반영하는 로직
+  //Enter키가 눌리면 전역 url에 검색 키워드를 추가하는 로직
   const onKeyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      if (!value) {
+      if (!seacrValueState) {
         return router.push('/vote');
       }
-      router.push(`?q=${value}`);
+      router.push(`?q=${seacrValueState}`);
     }
   };
 
@@ -49,7 +49,7 @@ const VoteContents = () => {
           <div className="flex w-full flex-col">
             <SearchInput
               onChangeInputHandler={onChangeInputHandler}
-              searchValue={value}
+              searchValue={seacrValueState}
               onKeyUpHandler={onKeyUpHandler}
             />
             <SearchResults searchValue={searchQueryValue} />
@@ -62,6 +62,7 @@ const VoteContents = () => {
                 </div>
               )}
               {voteList?.length === 0 && <EmptyVote />}
+
               {voteList?.map(
                 ({ id, category, closeDate, title, content, selections, likes, voters, views }) => {
                   return (
