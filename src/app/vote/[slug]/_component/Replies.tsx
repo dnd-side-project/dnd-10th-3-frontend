@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { ControlTab } from '@/components/common/controlTab';
 import { Spinner } from '@/components/common/spinner';
 import { Reply } from '@/components/features/vote';
-import { EndObserverList, Notice, ReplyInput } from '@/components/shared';
+import { Notice, ReplyInput } from '@/components/shared';
 import { REPLY_SORT_OPTIONS, ReplySortOptions } from '@/constants/options';
 import { Typography } from '@/foundations/typography';
-import { useGetVoteReplies } from '@/hooks/vote';
+import { useCreateVoteReplyMutation, useGetVoteReplies } from '@/hooks/vote';
 import { VoteReplyType } from '@/types/vote';
 
 type Props = {
@@ -16,17 +16,24 @@ type Props = {
 };
 
 const Replies = ({ voteId }: Props) => {
-  const { status, data: replyPages, fetchNextPage, hasNextPage } = useGetVoteReplies({ voteId });
+  const { status, data: replies } = useGetVoteReplies({ voteId });
+  const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
 
   const [sortOption, setSortOption] = useState<ReplySortOptions>('등록순');
 
-  const totalReplyCount = replyPages ? replyPages[0].pages.totalElements : 0;
-  const sortedReplyData = replyPages
-    ? sortReply(replyPages.map((page) => page.list).flat(), sortOption)
-    : [];
+  const scrollContainerRef = useRef<HTMLElement | null>(null);
+
+  const totalReplyCount = replies ? replies.length : 0;
+  const sortedReplyData = replies ? sortReply(replies, sortOption) : [];
+
+  const scrollToBottom = useCallback(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, []);
 
   return (
-    <section className="flex grow flex-col">
+    <section className="flex grow flex-col" ref={scrollContainerRef}>
       <div className="flex items-center justify-between px-2xs py-3xs">
         <Typography type="title4">댓글 {totalReplyCount}</Typography>
 
@@ -41,29 +48,27 @@ const Replies = ({ voteId }: Props) => {
 
       {/* TODO: Suspense or SSR */}
       {status === 'pending' ? (
-        <div className="flex h-full items-center justify-center">
+        <div className="flex items-center justify-center py-lg">
           <Spinner />
         </div>
       ) : status === 'error' ? (
         <div>에러</div>
       ) : sortedReplyData.length > 0 ? (
-        <EndObserverList
-          isEndHandler={() => {
-            if (hasNextPage) {
-              fetchNextPage();
-            }
-          }}
-          className="flex h-full flex-col px-2xs py-3xs"
-        >
+        <ul className="flex h-full flex-col px-2xs py-3xs">
           {sortedReplyData.map((reply) => (
             <Reply key={reply.commentId} reply={reply} />
           ))}
-        </EndObserverList>
+        </ul>
       ) : (
         <NoReplies />
       )}
 
-      <ReplyInput />
+      <ReplyInput
+        onSubmit={async (content) => {
+          await createVoteReplyAsync({ voteId, content });
+          scrollToBottom();
+        }}
+      />
     </section>
   );
 };

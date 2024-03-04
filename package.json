@@ -25,6 +25,7 @@
     "dayjs": "^1.11.10",
     "framer-motion": "^10.18.0",
     "github-label-sync": "^2.3.1",
+    "immer": "^10.0.3",
     "lodash.clonedeep": "^4.5.0",
     "lodash.compact": "^3.0.1",
     "modern-screenshot": "^4.4.38",
