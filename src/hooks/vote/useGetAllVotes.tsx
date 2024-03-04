@@ -5,6 +5,7 @@ import { VOTE } from '@/api/vote';
 import { CATEGORY_TAB } from '@/constants/category';
 import { QUERY_KEY } from '@/constants/queryKey';
 
+//TODO : useGetAllVotes 함수에서 두가지 역할을 하는데 분리해야함.
 export const useGetAllVotes = () => {
   const searchParams = useSearchParams();
   const tab = searchParams.get('tab') as string;

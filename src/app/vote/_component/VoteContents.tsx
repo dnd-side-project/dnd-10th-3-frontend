@@ -20,9 +20,10 @@ const VoteContents = () => {
   const searchParams = useSearchParams();
   const searchQueryValue = searchParams.get('q') as string;
   const [seacrValueState, setSearchValueState] = useState('');
+  const isSearching = seacrValueState.length > 0;
   const { data: voteList, isLoading } = useGetAllVotes();
   const [isSearchLoading, setIsSearchLoading] = useState(false);
-  const isSearching = seacrValueState.length > 0;
+
   // 의도 : 입력할 경우 바로 결과 SearchResults 컴포넌트에 반영되도록 하기 위해 state를 사용 추후에 검색시 쓰로틀링 혹은 디바운스 적용
   const onChangeInputValue = (targetValue: string) => {
     setIsSearchLoading(true);
@@ -34,7 +35,6 @@ const VoteContents = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onDebounceHandlerInputValue = useCallback(
     debounce(async (params: string) => {
-      console.log('디바운스 함수 안', params);
       router.push(`?q=${params}`);
       setIsSearchLoading(false);
     }, 500),
