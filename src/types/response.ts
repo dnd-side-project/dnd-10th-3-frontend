@@ -8,3 +8,11 @@ export type SuccessResponse<TData> = Response & {
 };
 
 export type FailResponse = Response;
+
+export type Pages = {
+  totalPages: number;
+  totalElements: number;
+  currentPage: number;
+  hasPrevious: boolean;
+  hasNext: boolean;
+};

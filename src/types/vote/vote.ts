@@ -27,3 +27,16 @@ export type VoteType = {
   selected: null | number;
   isLiked: boolean;
 };
+
+export type VoteReplyType = {
+  commentId: number;
+  voteId: number;
+  userId: number;
+  nickname: string;
+  status: boolean;
+  content: string;
+  avatar: string;
+  likes: number;
+  createdAt: string;
+  modifiedAt: string;
+};
