@@ -15,7 +15,7 @@ const postVoteReply = async ({ voteId, content }: PostVoteReplyRequest) => {
   return response.data.data;
 };
 
-const useVoteReplyMutation = () => {
+const useCreateVoteReplyMutation = () => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
@@ -60,4 +60,4 @@ const getOptimisticUpdatedVoteRepliesData = (
   });
 };
 
-export default useVoteReplyMutation;
+export default useCreateVoteReplyMutation;

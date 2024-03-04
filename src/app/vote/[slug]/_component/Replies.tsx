@@ -8,7 +8,7 @@ import { Reply } from '@/components/features/vote';
 import { Notice, ReplyInput } from '@/components/shared';
 import { REPLY_SORT_OPTIONS, ReplySortOptions } from '@/constants/options';
 import { Typography } from '@/foundations/typography';
-import { useGetVoteReplies, useVoteReplyMutation } from '@/hooks/vote';
+import { useCreateVoteReplyMutation, useGetVoteReplies } from '@/hooks/vote';
 import { VoteReplyType } from '@/types/vote';
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 
 const Replies = ({ voteId }: Props) => {
   const { status, data: replies } = useGetVoteReplies({ voteId });
-  const { mutateAsync: createVoteReplyAsync } = useVoteReplyMutation();
+  const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
 
   const [sortOption, setSortOption] = useState<ReplySortOptions>('등록순');
 
