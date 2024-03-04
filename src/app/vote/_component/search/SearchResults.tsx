@@ -5,12 +5,13 @@ import { cn } from '@/lib/core';
 
 import { searchResultVariants } from './variant';
 
-const SearchResults = ({ searchValue }: { searchValue?: string }) => {
-  const isSearchValue = !!searchValue;
+const SearchResults = ({ debouncedValue }: { debouncedValue: string }) => {
+  const isSearchValue = !!debouncedValue;
+
   return (
     <div className="flex w-full justify-between p-6xs px-3xs">
       <Typography type="title1" className={cn(searchResultVariants({ isSearchValue }))}>
-        <span className="text-[#5382FF]">{searchValue}</span> 검색 결과
+        <span className="text-[#5382FF]">{debouncedValue}</span> 검색 결과
       </Typography>
 
       <select defaultValue="최신순" className="text-gray-400">

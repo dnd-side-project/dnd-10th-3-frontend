@@ -1,55 +1,31 @@
 'use client';
 
-import debounce from 'lodash.debounce';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
-import { useGetAllVotes } from '@/hooks/vote';
+import { useDebounce } from '@/hooks/useDebounce';
+import { useGetAllVotes, useGetVoteBySearch } from '@/hooks/vote';
 
 import { SearchInput, SearchResults } from './search';
 import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const searchQueryValue = searchParams.get('q') as string;
-  const [seacrValueState, setSearchValueState] = useState('');
-  const isSearching = seacrValueState.length > 0;
+  const [searchValueState, setSearchValueState] = useState('');
+  const debouncedValue = useDebounce(searchValueState);
+  const isSearching = searchValueState.length > 0;
   const { data: voteList, isLoading } = useGetAllVotes();
-  const [isSearchLoading, setIsSearchLoading] = useState(false);
+  const { data: searchedVoteList, isLoading: isSearchLoading } = useGetVoteBySearch({
+    keyword: debouncedValue,
+  });
 
   // 의도 : 입력할 경우 바로 결과 SearchResults 컴포넌트에 반영되도록 하기 위해 state를 사용 추후에 검색시 쓰로틀링 혹은 디바운스 적용
   const onChangeInputValue = (targetValue: string) => {
-    setIsSearchLoading(true);
     setSearchValueState(targetValue);
-    onDebounceHandlerInputValue(targetValue);
-  };
-
-  //FIXME : eslint에서 수정
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onDebounceHandlerInputValue = useCallback(
-    debounce(async (params: string) => {
-      router.push(`?q=${params}`);
-      setIsSearchLoading(false);
-    }, 500),
-    [],
-  );
-
-  const onKeyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      if (!seacrValueState) {
-        return router.push('/vote');
-      }
-      //의도 : 중복 엔터 방지 queryString과 비교하여 동일하면 EnterKey 방지
-      if (searchQueryValue === seacrValueState) return;
-      router.push(`?q=${seacrValueState}`);
-    }
   };
 
   return (
@@ -60,10 +36,9 @@ const VoteContents = () => {
           <div className="flex w-full flex-col">
             <SearchInput
               onChangeInputHandler={onChangeInputValue}
-              searchValue={seacrValueState}
-              onKeyUpHandler={onKeyUpHandler}
+              searchValueState={searchValueState}
             />
-            <SearchResults searchValue={searchQueryValue} />
+            <SearchResults debouncedValue={debouncedValue} />
 
             <ul className="flex flex-col gap-3xs p-3xs">
               {/* TODO : Suspense로 선언적으로 리팩토링 */}
