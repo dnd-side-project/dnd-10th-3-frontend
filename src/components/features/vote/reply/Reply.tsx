@@ -1,36 +1,32 @@
 import { Button } from '@/components/common/button';
-import Profile from '@/components/shared/profile/Profile';
+import { LikeButton, Profile } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
+import { VoteReplyType } from '@/types/vote';
+import { fromNowOf } from '@/utils/dates';
 
 type Props = {
-  id: number; // U,D에 필요
-  nickname: string;
-  createdAt: string;
-  content: string;
-  likes: number;
-  status: boolean;
+  reply: VoteReplyType; // NOTE: 다른 피쳐에서 댓글 사용 시 변경 필요
 };
 
-const Reply = ({ nickname, createdAt, content, likes, status }: Props) => {
+const Reply = ({ reply }: Props) => {
+  const { nickname, createdAt, content, likes, status } = reply;
+
   return (
-    <li className="flex list-none flex-col [&+&]:mt-xs">
-      <Profile
-        nickname={nickname}
-        subText={createdAt} // TODO fromNow()
-        actionButton={<Button variant="empty" iconOnly icon="more" className="!p-0" />}
-      />
-      <Typography type="body3" className="ml-md">
-        {content}
-      </Typography>
-      <Button
-        icon={status ? 'filledHeart' : 'heart'}
-        iconColor="primary-700"
-        variant="empty"
-        className="ml-md mt-5xs gap-6xs !p-0 text-[14px] text-gray-600 "
-      >
-        {likes}
-      </Button>
-    </li>
+    <>
+      <li className="flex list-none flex-col [&+&]:mt-xs">
+        <Profile
+          nickname={nickname}
+          subText={fromNowOf(+createdAt)}
+          actionButton={<Button variant="empty" iconOnly icon="more" className="!p-0" />}
+        />
+        <Typography type="body3" className="ml-md">
+          {content}
+        </Typography>
+        <div className="ml-md mt-5xs">
+          <LikeButton isLiked={status} likeCount={likes} clickHandler={() => {}} />
+        </div>
+      </li>
+    </>
   );
 };
 
