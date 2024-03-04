@@ -1,3 +1,5 @@
+'use client';
+
 import { BottomSheet } from '@/components/common/bottomSheet';
 import { Typography } from '@/foundations/typography';
 
