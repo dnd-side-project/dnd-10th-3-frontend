@@ -26,9 +26,11 @@ const VoteContents = () => {
   const { data: voteList, isLoading } = useGetAllVotes(
     findCategoryNameByParam?.name ?? ('전체' as string),
   );
+  const [isSearchLoading, setIsSearchLoading] = useState(false);
 
   // 의도 : 입력할 경우 바로 결과 SearchResults 컴포넌트에 반영되도록 하기 위해 state를 사용 추후에 검색시 쓰로틀링 혹은 디바운스 적용
   const onChangeInputValue = (targetValue: string) => {
+    setIsSearchLoading(true);
     setSearchValueState(targetValue);
     onDebounceHandlerInputValue(targetValue);
   };
@@ -39,6 +41,7 @@ const VoteContents = () => {
     debounce(async (params: string) => {
       console.log('디바운스 함수 안', params);
       router.push(`?q=${params}`);
+      setIsSearchLoading(false);
     }, 500),
     [],
   );
@@ -69,40 +72,57 @@ const VoteContents = () => {
 
             <ul className="flex flex-col gap-3xs p-3xs">
               {/* TODO : Suspense로 선언적으로 리팩토링 */}
-              {isLoading && (
-                <div className="flex w-full items-center justify-center">
-                  <Spinner />
-                </div>
-              )}
+              {isLoading ||
+                (isSearchLoading && (
+                  <div className="flex w-full items-center justify-center">
+                    <Spinner />
+                  </div>
+                ))}
               {voteList?.length === 0 && <EmptyVote />}
 
-              {voteList?.map(
-                ({ id, category, closeDate, title, content, selections, likes, voters, views }) => {
-                  return (
-                    <VoteCard className="shadow-vote-card" key={id}>
-                      <VoteCard.Header categories={category} closeDate={closeDate} />
-                      <VoteCard.Description title={title} content={content} />
-                      <VoteCard.VoteItemGroup withBlur>
-                        <VoteItem readOnly>
-                          <VoteItem.Radio disabled />
-                          <VoteItem.Text>{selections[0].content}</VoteItem.Text>
-                        </VoteItem>
-                        <VoteItem readOnly>
-                          <VoteItem.Radio disabled />
-                          <VoteItem.Text>{selections[1].content}</VoteItem.Text>
-                        </VoteItem>
-                      </VoteCard.VoteItemGroup>
-                      <VoteCard.SubmitButton>
-                        <Link href={`/vote/${id}`}>
-                          <Button variant="primary" width="full">
-                            투표 참여하기
-                          </Button>
-                        </Link>
-                      </VoteCard.SubmitButton>
-                      <VoteCard.Footer likes={likes} views={views} voters={voters} />
-                    </VoteCard>
-                  );
-                },
+              {seacrValueState.length > 0 ? (
+                <>123</>
+              ) : (
+                <>
+                  {voteList?.map(
+                    ({
+                      id,
+                      category,
+                      closeDate,
+                      title,
+                      content,
+                      selections,
+                      likes,
+                      voters,
+                      views,
+                    }) => {
+                      return (
+                        <VoteCard className="shadow-vote-card" key={id}>
+                          <VoteCard.Header categories={category} closeDate={closeDate} />
+                          <VoteCard.Description title={title} content={content} />
+                          <VoteCard.VoteItemGroup withBlur>
+                            <VoteItem readOnly>
+                              <VoteItem.Radio disabled />
+                              <VoteItem.Text>{selections[0].content}</VoteItem.Text>
+                            </VoteItem>
+                            <VoteItem readOnly>
+                              <VoteItem.Radio disabled />
+                              <VoteItem.Text>{selections[1].content}</VoteItem.Text>
+                            </VoteItem>
+                          </VoteCard.VoteItemGroup>
+                          <VoteCard.SubmitButton>
+                            <Link href={`/vote/${id}`}>
+                              <Button variant="primary" width="full">
+                                투표 참여하기
+                              </Button>
+                            </Link>
+                          </VoteCard.SubmitButton>
+                          <VoteCard.Footer likes={likes} views={views} voters={voters} />
+                        </VoteCard>
+                      );
+                    },
+                  )}
+                </>
               )}
             </ul>
           </div>
