@@ -9,7 +9,6 @@ import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote } from '@/components/shared';
-import { CATEGORY_TAB } from '@/constants/category';
 import { useGetAllVotes } from '@/hooks/vote';
 
 import { SearchInput, SearchResults } from './search';
@@ -19,15 +18,11 @@ import VoteLayout from './VoteLayout';
 const VoteContents = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const tab = searchParams.get('tab') as string;
   const searchQueryValue = searchParams.get('q') as string;
   const [seacrValueState, setSearchValueState] = useState('');
-  const findCategoryNameByParam = CATEGORY_TAB.find((category) => category.params === tab);
-  const { data: voteList, isLoading } = useGetAllVotes(
-    findCategoryNameByParam?.name ?? ('전체' as string),
-  );
+  const { data: voteList, isLoading } = useGetAllVotes();
   const [isSearchLoading, setIsSearchLoading] = useState(false);
-
+  const isSearching = seacrValueState.length > 0;
   // 의도 : 입력할 경우 바로 결과 SearchResults 컴포넌트에 반영되도록 하기 위해 state를 사용 추후에 검색시 쓰로틀링 혹은 디바운스 적용
   const onChangeInputValue = (targetValue: string) => {
     setIsSearchLoading(true);
@@ -78,12 +73,13 @@ const VoteContents = () => {
                     <Spinner />
                   </div>
                 ))}
-              {voteList?.length === 0 && <EmptyVote />}
 
-              {seacrValueState.length > 0 ? (
+              {isSearching ? (
                 <>123</>
               ) : (
                 <>
+                  {/* Fallback UI로 수정 */}
+                  {voteList?.length === 0 && <EmptyVote />}
                   {voteList?.map(
                     ({
                       id,
