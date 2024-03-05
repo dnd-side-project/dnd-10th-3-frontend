@@ -41,6 +41,7 @@ export const Basic: Story = {
           createdAt: '1709391770112',
           modifiedAt: '1709391770112',
         }}
+        onDelete={() => {}}
       />
       <Reply
         reply={{
@@ -55,6 +56,7 @@ export const Basic: Story = {
           createdAt: '1709391770112',
           modifiedAt: '1709391770112',
         }}
+        onDelete={() => {}}
       />
       <Reply
         reply={{
@@ -69,6 +71,7 @@ export const Basic: Story = {
           createdAt: '1709391770112',
           modifiedAt: '1709391770112',
         }}
+        onDelete={() => {}}
       />
     </>
   ),

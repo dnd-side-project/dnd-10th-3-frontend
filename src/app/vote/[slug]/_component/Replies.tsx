@@ -8,7 +8,11 @@ import { Reply } from '@/components/features/vote';
 import { Notice, ReplyInput } from '@/components/shared';
 import { REPLY_SORT_OPTIONS, ReplySortOptions } from '@/constants/options';
 import { Typography } from '@/foundations/typography';
-import { useCreateVoteReplyMutation, useGetVoteReplies } from '@/hooks/vote';
+import {
+  useCreateVoteReplyMutation,
+  useDeleteVoteReplyMutation,
+  useGetVoteReplies,
+} from '@/hooks/vote';
 import { VoteReplyType } from '@/types/vote';
 
 type Props = {
@@ -18,6 +22,7 @@ type Props = {
 const Replies = ({ voteId }: Props) => {
   const { status, data: replies } = useGetVoteReplies({ voteId });
   const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
+  const { mutate: deleteVoteReply } = useDeleteVoteReplyMutation();
 
   const [sortOption, setSortOption] = useState<ReplySortOptions>('등록순');
 
@@ -56,7 +61,16 @@ const Replies = ({ voteId }: Props) => {
       ) : sortedReplyData.length > 0 ? (
         <ul className="flex h-full flex-col px-2xs py-3xs">
           {sortedReplyData.map((reply) => (
-            <Reply key={reply.commentId} reply={reply} />
+            <Reply
+              key={reply.commentId}
+              reply={reply}
+              onDelete={() =>
+                deleteVoteReply({
+                  commentId: reply.commentId,
+                  voteId: reply.voteId,
+                })
+              }
+            />
           ))}
         </ul>
       ) : (
