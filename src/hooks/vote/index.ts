@@ -1,3 +1,4 @@
+export { default as useCreateVoteReplyMutation } from './useCreateVoteReplyMutation';
 export { useGetAllVotes } from './useGetAllVotes';
 export { useGetVoteById } from './useGetVoteById';
 export { useGetVoteBySearch } from './useGetVoteBySearch';
