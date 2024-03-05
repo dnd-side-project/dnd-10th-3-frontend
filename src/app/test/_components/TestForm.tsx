@@ -64,7 +64,8 @@ const TestForm = () => {
                 <Input
                   type="fit"
                   placeholder=" 상대 이름을 입력해주세요"
-                  className="text-center"
+                  className="text-center placeholder:text-gray-1000"
+                  bgcolor="lightGray"
                   value={state.buddy}
                   onChange={(e) => dispatch({ type: 'setBuddyName', value: e.target.value })}
                   onKeyUp={handleOnKeyEnter}
