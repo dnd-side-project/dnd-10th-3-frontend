@@ -14,8 +14,8 @@ type Props = {
 
 const ReplyInput = ({ initialInput, onSubmit }: Props) => {
   const [{ input, isSubmitButtonDisabled }, dispatchReplyInputState] = useReducer(replyReducer, {
-    input: initialInput ?? '',
-    isSubmitButtonDisabled: true,
+    input: initialInput || '',
+    isSubmitButtonDisabled: initialInput ? false : true,
   });
 
   const onSubmitReply = async (input: string) => {
