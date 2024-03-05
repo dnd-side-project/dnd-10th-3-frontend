@@ -16,3 +16,11 @@
 [data-rsbs-footer] {
   box-shadow: none;
 }
+
+[data-rsbs-backdrop] {
+  z-index: 50;
+}
+
+[data-rsbs-overlay] {
+  z-index: 50;
+}
