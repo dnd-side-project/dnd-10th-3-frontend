@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
-import { EmptyVote } from '@/components/shared';
+import { EmptyVote, EndObserverList } from '@/components/shared';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useGetAllVotes, useGetVoteBySearch } from '@/hooks/vote';
 
@@ -19,11 +19,20 @@ const VoteContents = () => {
   const debouncedValue = useDebounce(searchValueState);
   const isSearching = searchValueState.length > 0;
   const { data: voteList, isLoading } = useGetAllVotes();
-  const { data: searchedVoteList, isLoading: isSearchLoading } = useGetVoteBySearch({
+  const {
+    status,
+    hasNextPage,
+    fetchNextPage,
+    data: searchedVoteList,
+    isLoading: isSearchLoading,
+  } = useGetVoteBySearch({
     keyword: debouncedValue,
   });
 
-  // 의도 : 입력할 경우 바로 결과 SearchResults 컴포넌트에 반영되도록 하기 위해 state를 사용 추후에 검색시 쓰로틀링 혹은 디바운스 적용
+  const searchedVoteListIntoSingleArray = searchedVoteList
+    ? searchedVoteList.map((page) => page.list).flat()
+    : [];
+
   const onChangeInputValue = (targetValue: string) => {
     setSearchValueState(targetValue);
   };
@@ -40,20 +49,70 @@ const VoteContents = () => {
             />
             <SearchResults debouncedValue={debouncedValue} />
 
-            <ul className="flex flex-col gap-3xs p-3xs">
+            <div className="flex flex-col gap-3xs p-3xs">
               {/* TODO : Suspense로 선언적으로 리팩토링 */}
-              {isLoading ||
-                (isSearchLoading && (
-                  <div className="flex w-full items-center justify-center">
-                    <Spinner />
-                  </div>
-                ))}
+              {(isLoading || isSearchLoading) && (
+                <div className="flex w-full items-center justify-center">
+                  <Spinner />
+                </div>
+              )}
 
               {isSearching ? (
-                <>123</>
+                <>
+                  {status === 'success' && (
+                    <>
+                      {searchedVoteListIntoSingleArray.length === 0 && <EmptyVote />}
+                      <EndObserverList
+                        isEndHandler={() => {
+                          if (hasNextPage) {
+                            fetchNextPage();
+                          }
+                        }}
+                      >
+                        {searchedVoteListIntoSingleArray.map(
+                          ({
+                            id,
+                            category,
+                            closeDate,
+                            title,
+                            content,
+                            selections,
+                            likes,
+                            voters,
+                            views,
+                          }) => {
+                            return (
+                              <VoteCard className="shadow-vote-card" key={id}>
+                                <VoteCard.Header categories={category} closeDate={closeDate} />
+                                <VoteCard.Description title={title} content={content} />
+                                <VoteCard.VoteItemGroup withBlur>
+                                  <VoteItem readOnly>
+                                    <VoteItem.Radio disabled />
+                                    <VoteItem.Text>{selections[0].content}</VoteItem.Text>
+                                  </VoteItem>
+                                  <VoteItem readOnly>
+                                    <VoteItem.Radio disabled />
+                                    <VoteItem.Text>{selections[1].content}</VoteItem.Text>
+                                  </VoteItem>
+                                </VoteCard.VoteItemGroup>
+                                <VoteCard.SubmitButton>
+                                  <Link href={`/vote/${id}`}>
+                                    <Button variant="primary" width="full">
+                                      투표 참여하기
+                                    </Button>
+                                  </Link>
+                                </VoteCard.SubmitButton>
+                                <VoteCard.Footer likes={likes} views={views} voters={voters} />
+                              </VoteCard>
+                            );
+                          },
+                        )}
+                      </EndObserverList>
+                    </>
+                  )}
+                </>
               ) : (
                 <>
-                  {/* Fallback UI로 수정 */}
                   {voteList?.length === 0 && <EmptyVote />}
                   {voteList?.map(
                     ({
@@ -95,7 +154,7 @@ const VoteContents = () => {
                   )}
                 </>
               )}
-            </ul>
+            </div>
           </div>
         </>
       }
