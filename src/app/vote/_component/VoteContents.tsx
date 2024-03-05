@@ -1,13 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote, EndObserverList } from '@/components/shared';
-import { useDebounce } from '@/hooks/useDebounce';
 import { useGetAllVotes, useGetVoteBySearch } from '@/hooks/vote';
 
 import { SearchInput, SearchResults } from './search';
@@ -15,9 +14,8 @@ import VoteHeader from './VoteHeader';
 import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
-  const [searchValueState, setSearchValueState] = useState('');
-  const debouncedValue = useDebounce(searchValueState);
-  const isSearching = searchValueState.length > 0;
+  const searchParams = useSearchParams();
+  const searchQueryStringValue = searchParams.get('q') ?? (' ' as string);
   const { status: allVoteStatus, data: voteList, isLoading } = useGetAllVotes();
   const {
     status: searchedVoteStatus,
@@ -26,16 +24,12 @@ const VoteContents = () => {
     data: searchedVoteList,
     isLoading: isSearchLoading,
   } = useGetVoteBySearch({
-    keyword: debouncedValue,
+    keyword: searchQueryStringValue,
   });
 
   const searchedVoteListIntoSingleArray = searchedVoteList
     ? searchedVoteList.map((page) => page.list).flat()
     : [];
-
-  const onChangeInputValue = (targetValue: string) => {
-    setSearchValueState(targetValue);
-  };
 
   return (
     <VoteLayout
@@ -43,11 +37,8 @@ const VoteContents = () => {
       contents={
         <>
           <div className="flex w-full flex-col">
-            <SearchInput
-              onChangeInputHandler={onChangeInputValue}
-              searchValueState={searchValueState}
-            />
-            <SearchResults debouncedValue={debouncedValue} />
+            <SearchInput searchQueryStringValue={searchQueryStringValue} />
+            <SearchResults searchQueryStringValue={searchQueryStringValue} />
 
             <div className="flex flex-col gap-3xs p-3xs">
               {/* TODO : Suspense로 선언적으로 리팩토링 */}
@@ -57,7 +48,7 @@ const VoteContents = () => {
                 </div>
               )}
 
-              {isSearching ? (
+              {searchQueryStringValue.length > 0 ? (
                 <>
                   {searchedVoteStatus === 'success' && (
                     <>
