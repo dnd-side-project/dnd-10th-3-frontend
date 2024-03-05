@@ -28,13 +28,20 @@ const INITIAL_PAGE_NO = 0;
 const VOTE_COUNT_PER_PAGE = 5;
 
 export const useGetVoteBySearch = ({ keyword }: Pick<GetSearchVoteRequest, 'keyword'>) => {
+  const addSpaceBarInKeywordByDefault = keyword === '' ? ' ' : keyword;
+
   return useInfiniteQuery({
-    queryKey: ['votes', keyword],
+    queryKey: ['votes', addSpaceBarInKeywordByDefault],
     initialPageParam: { page: INITIAL_PAGE_NO, size: VOTE_COUNT_PER_PAGE },
     queryFn: ({ pageParam }) =>
-      getVoteBySearch({ keyword, page: pageParam.page, size: pageParam.size, sort: 'createdAt' }),
+      getVoteBySearch({
+        keyword: addSpaceBarInKeywordByDefault,
+        page: pageParam.page,
+        size: pageParam.size,
+        //TODO : 다른 PR에서 정렬 기능 구현 예정
+        sort: 'createdAt',
+      }),
     getNextPageParam: (lastPage, _, lastPageParam) => {
-      console.log(lastPage);
       const hasNextPage = lastPage.pages.hasNext;
       if (hasNextPage) {
         return {
