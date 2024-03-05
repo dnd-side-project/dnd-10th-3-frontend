@@ -51,6 +51,7 @@ export const useGetVoteBySearch = ({ keyword }: Pick<GetSearchVoteRequest, 'keyw
       }
       return null;
     },
-    select: (data) => data.pages,
+    // HERE : 아예 select에 구현해놓는건 어떨까요?
+    select: (data) => (data.pages ? data.pages.map((page) => page.list).flat() : []),
   });
 };

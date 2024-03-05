@@ -27,10 +27,6 @@ const VoteContents = () => {
     keyword: searchQueryStringValue,
   });
 
-  const searchedVoteListIntoSingleArray = searchedVoteList
-    ? searchedVoteList.map((page) => page.list).flat()
-    : [];
-
   return (
     <VoteLayout
       header={<VoteHeader />}
@@ -52,7 +48,7 @@ const VoteContents = () => {
                 <>
                   {searchedVoteStatus === 'success' && (
                     <>
-                      {searchedVoteListIntoSingleArray.length > 0 ? (
+                      {searchedVoteList.length > 0 ? (
                         <EndObserverList
                           className="flex flex-col gap-3xs"
                           onScrollEnd={() => {
@@ -61,7 +57,7 @@ const VoteContents = () => {
                             }
                           }}
                         >
-                          {searchedVoteListIntoSingleArray.map(
+                          {searchedVoteList.map(
                             ({
                               id,
                               category,
