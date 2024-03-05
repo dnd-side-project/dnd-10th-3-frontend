@@ -44,7 +44,7 @@ const Reply = ({ reply, onDelete }: Props) => {
 
       <OptionBottomSheet
         isOpen={openedSheet === 'replyOption'}
-        closeSheetHandler={() => setOpenedSheet(null)}
+        onClose={() => setOpenedSheet(null)}
         options={[
           {
             variant: 'warning',
@@ -55,7 +55,7 @@ const Reply = ({ reply, onDelete }: Props) => {
       />
       <ConfirmBottomSheet
         isOpen={openedSheet === 'askDelete'}
-        closeSheetHandler={() => setOpenedSheet(null)}
+        onClose={() => setOpenedSheet(null)}
         title="댓글을 삭제하시겠어요?"
         description="댓글을 삭제하면 되돌릴 수 없어요."
         PrimaryButton={

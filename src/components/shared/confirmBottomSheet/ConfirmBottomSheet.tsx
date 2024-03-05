@@ -5,7 +5,7 @@ import { Typography } from '@/foundations/typography';
 
 type Props = {
   isOpen: boolean;
-  closeSheetHandler: () => void;
+  onClose: () => void;
   title: string;
   description?: string;
   PrimaryButton: React.ReactNode;
@@ -14,7 +14,7 @@ type Props = {
 
 const ConfirmBottomSheet = ({
   isOpen,
-  closeSheetHandler,
+  onClose: closeSheetHandler,
   title,
   description,
   PrimaryButton,

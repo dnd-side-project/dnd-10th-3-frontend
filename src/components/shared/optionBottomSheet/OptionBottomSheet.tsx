@@ -11,7 +11,7 @@ export type OptionButtonProps = {
 
 type OptionBottomSheetProps = {
   isOpen: boolean;
-  closeSheetHandler: () => void;
+  onClose: () => void;
   options: OptionButtonProps[];
 };
 
@@ -29,7 +29,11 @@ const OptionButton = ({ variant, optionLabel, onClick }: OptionButtonProps) => {
   );
 };
 
-const OptionBottomSheet = ({ isOpen, closeSheetHandler, options }: OptionBottomSheetProps) => {
+const OptionBottomSheet = ({
+  isOpen,
+  onClose: closeSheetHandler,
+  options,
+}: OptionBottomSheetProps) => {
   return (
     <BottomSheet open={isOpen} onDismiss={closeSheetHandler}>
       {options.map(({ variant, optionLabel, onClick }) => (
