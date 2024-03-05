@@ -63,6 +63,7 @@ const VoteContents = () => {
                     <>
                       {searchedVoteListIntoSingleArray.length === 0 && <EmptyVote />}
                       <EndObserverList
+                        className="flex flex-col gap-3xs"
                         isEndHandler={() => {
                           if (hasNextPage) {
                             fetchNextPage();
