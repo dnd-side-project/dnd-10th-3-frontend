@@ -15,7 +15,7 @@ import VoteLayout from './VoteLayout';
 
 const VoteContents = () => {
   const searchParams = useSearchParams();
-  const searchQueryStringValue = searchParams.get('q') ?? (' ' as string);
+  const searchQueryStringValue = searchParams.get('q') ?? ('' as string);
   const { status: allVoteStatus, data: voteList, isLoading } = useGetAllVotes();
   const {
     status: searchedVoteStatus,
@@ -33,7 +33,7 @@ const VoteContents = () => {
       contents={
         <>
           <div className="flex w-full flex-col">
-            <SearchInput searchQueryStringValue={searchQueryStringValue} />
+            <SearchInput />
             <SearchResults searchQueryStringValue={searchQueryStringValue} />
 
             <div className="flex flex-col gap-3xs p-3xs">

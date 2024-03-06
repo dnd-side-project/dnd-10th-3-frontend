@@ -5223,7 +5223,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.debounce@npm:^4":
+"@types/lodash.debounce@npm:^4.0.9":
   version: 4.0.9
   resolution: "@types/lodash.debounce@npm:4.0.9"
   dependencies:
@@ -8485,7 +8485,7 @@ __metadata:
     "@types/github-label-sync": "npm:^2"
     "@types/lodash.clonedeep": "npm:^4"
     "@types/lodash.compact": "npm:^3"
-    "@types/lodash.debounce": "npm:^4"
+    "@types/lodash.debounce": "npm:^4.0.9"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"

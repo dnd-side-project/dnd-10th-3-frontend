@@ -1,27 +1,25 @@
 'use client';
 
+import debounce from 'lodash.debounce';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Input } from '@/components/common/input';
-import { useDebounce } from '@/hooks/useDebounce';
 
-const SearchInput = ({ searchQueryStringValue }: { searchQueryStringValue: string }) => {
+const SearchInput = () => {
   const router = useRouter();
   const [searchValueState, setSearchValueState] = useState('');
-  const debouncedValue = useDebounce(searchValueState);
 
   const onKeyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      //의도 : 중복 엔터 방지 queryString과 비교하여 동일하면 EnterKey 방지
-      if (searchQueryStringValue === searchValueState) return;
       router.push(`?q=${searchValueState}`);
     }
   };
 
-  useEffect(() => {
-    router.push(`?q=${debouncedValue}`);
-  }, [router, debouncedValue]);
+  const delayedSearchHandler = useMemo(
+    () => debounce((targetValue) => router.push(`?q=${targetValue}`), 500),
+    [router],
+  );
 
   return (
     <div className="w-full p-3xs">
@@ -31,6 +29,7 @@ const SearchInput = ({ searchQueryStringValue }: { searchQueryStringValue: strin
           placeholder="무엇이 고민이신가요?"
           onChange={(e) => {
             setSearchValueState(e.target.value);
+            delayedSearchHandler(e.target.value);
           }}
           onKeyUp={onKeyUpHandler}
           icon="search"
