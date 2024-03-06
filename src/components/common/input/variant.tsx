@@ -34,5 +34,5 @@ export const inputContainerVariants = cva('flex w-full items-center gap-5xs bord
 });
 
 export const inputVariants = cva(
-  ' w-full bg-transparent placeholder:text-gray-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 ',
+  'w-full bg-transparent text-[16px] placeholder:text-gray-900 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
 );

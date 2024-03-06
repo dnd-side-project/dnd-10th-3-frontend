@@ -27,6 +27,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       iconColor = 'gray-400',
       iconSide = 'left',
       onSubmit = () => {},
+      height,
       ...props
     }: InputProps,
     ref,
@@ -35,9 +36,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const handleFocus = useCallback(() => setIsFocused(true), []);
     const handleBlur = useCallback(() => setIsFocused(false), []);
-
     return (
-      <div className={inputContainerVariants({ isFocused, borderRadius, bgcolor, variant })}>
+      <div
+        className={inputContainerVariants({
+          isFocused,
+          borderRadius,
+          bgcolor,
+          variant,
+          height,
+        })}
+      >
         {icon && iconSide === 'left' && <Icon icon={icon} size={20} color={iconColor} />}
         <input
           className={cn(inputVariants(), className)}
