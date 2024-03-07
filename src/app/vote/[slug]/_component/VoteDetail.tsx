@@ -57,9 +57,7 @@ const VoteDetail = ({ voteId }: Props) => {
             <LikeButton
               isLiked={data.isLiked}
               likeCount={data.likes}
-              clickHandler={() => {
-                toggleLike({ voteId, isLiked: !data.isLiked });
-              }}
+              onClick={() => toggleLike({ voteId })}
             />
             <Button iconOnly icon="share" variant="empty" className="!p-0" />
           </div>

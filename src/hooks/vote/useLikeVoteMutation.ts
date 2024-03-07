@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import cloneDeep from 'lodash.clonedeep';
+import { produce } from 'immer';
 
 import { post } from '@/lib/axios';
 import { SuccessResponse } from '@/types/response';
@@ -7,16 +7,13 @@ import { VoteType } from '@/types/vote';
 
 type PostLikeVoteRequest = {
   voteId: number;
-  isLiked: boolean;
 };
 
 type LikeVoteResponse = undefined;
 
 // TODO api 분리
-const postLikeVote = async ({ voteId, isLiked }: PostLikeVoteRequest) => {
-  const response = await post<SuccessResponse<LikeVoteResponse>>(`/vote/${voteId}/likes`, {
-    isLiked,
-  });
+const postLikeVote = async ({ voteId }: PostLikeVoteRequest) => {
+  const response = await post<SuccessResponse<LikeVoteResponse>>(`/vote/${voteId}/likes`);
   return response.data.data;
 };
 
@@ -25,11 +22,11 @@ const useLikeVoteMutation = () => {
 
   return useMutation({
     mutationFn: postLikeVote,
-    onMutate: async ({ voteId, isLiked }) => {
+    onMutate: async ({ voteId }) => {
       await queryClient.cancelQueries({ queryKey: ['vote', voteId] });
       const previousVoteDetail = queryClient.getQueryData<VoteType>(['vote', voteId]);
       queryClient.setQueryData(['vote', voteId], (oldVoteDetail: VoteType) =>
-        getOptimisticUpdatedLikesVoteDetailData(oldVoteDetail, isLiked),
+        getOptimisticUpdatedLikesVoteDetailData(oldVoteDetail),
       );
       return { previousVoteDetail, voteId };
     },
@@ -42,17 +39,16 @@ const useLikeVoteMutation = () => {
   });
 };
 
-const getOptimisticUpdatedLikesVoteDetailData = (oldData: VoteType, isLiked: boolean) => {
-  const clonedOldVoteDetail = cloneDeep(oldData);
-
-  if (isLiked === true) {
-    clonedOldVoteDetail.likes += 1;
-  } else {
-    clonedOldVoteDetail.likes -= 1;
-  }
-  clonedOldVoteDetail.isLiked = isLiked;
-
-  return clonedOldVoteDetail;
+const getOptimisticUpdatedLikesVoteDetailData = (oldData: VoteType) => {
+  return produce(oldData, (draft) => {
+    if (draft.isLiked === true) {
+      draft.isLiked = false;
+      draft.likes -= 1;
+    } else {
+      draft.isLiked = true;
+      draft.likes += 1;
+    }
+  });
 };
 
 export default useLikeVoteMutation;

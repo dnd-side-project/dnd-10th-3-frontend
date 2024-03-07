@@ -42,6 +42,7 @@ export const Basic: Story = {
           modifiedAt: '1709391770112',
         }}
         onDelete={() => {}}
+        onLikeToggle={() => {}}
       />
       <Reply
         reply={{
@@ -57,6 +58,7 @@ export const Basic: Story = {
           modifiedAt: '1709391770112',
         }}
         onDelete={() => {}}
+        onLikeToggle={() => {}}
       />
       <Reply
         reply={{
@@ -72,6 +74,7 @@ export const Basic: Story = {
           modifiedAt: '1709391770112',
         }}
         onDelete={() => {}}
+        onLikeToggle={() => {}}
       />
     </>
   ),
