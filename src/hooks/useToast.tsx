@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 
 import { TOAST_MESSAGES } from '@/constants/toast';
 import { ToastUpdateContext } from '@/contexts/toast/ToastProvider';
@@ -16,16 +16,19 @@ type ToastParams =
 const useToast = () => {
   const setToast = useContext(ToastUpdateContext);
 
-  const toast = ({ type, message }: ToastParams) => {
-    if (type) {
-      setToast({ type, message });
-    } else {
-      setToast({ type: TOAST_MESSAGES[message].type, message: TOAST_MESSAGES[message].text });
-    }
-    setTimeout(() => {
-      setToast(null);
-    }, 2000);
-  };
+  const toast = useCallback(
+    ({ type, message }: ToastParams) => {
+      if (type) {
+        setToast({ type, message });
+      } else {
+        setToast({ type: TOAST_MESSAGES[message].type, message: TOAST_MESSAGES[message].text });
+      }
+      setTimeout(() => {
+        setToast(null);
+      }, 2000);
+    },
+    [setToast],
+  );
 
   return toast;
 };
