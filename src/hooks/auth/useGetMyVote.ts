@@ -12,7 +12,7 @@ const getMyVote = async () => {
 const useGetMyVote = () => {
   return useQuery({
     queryFn: getMyVote,
-    queryKey: ['my-vote'],
+    queryKey: ['votes', 'mine'],
     retry: 1,
     staleTime: Infinity,
     gcTime: Infinity,
