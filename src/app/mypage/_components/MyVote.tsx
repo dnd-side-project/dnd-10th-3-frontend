@@ -9,8 +9,7 @@ import { VoteCard } from '@/components/features/vote';
 import { ConfirmBottomSheet, EmptyVote, OptionBottomSheet } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
 import { useBottomSheetState } from '@/hooks';
-import { useGetMyVote } from '@/hooks/auth';
-import { useDeleteVoteMutation } from '@/hooks/vote';
+import { useDeleteVoteMutation, useGetMyVote } from '@/hooks/vote';
 import { VoteType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
 

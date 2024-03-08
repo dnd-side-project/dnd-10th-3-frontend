@@ -3,6 +3,7 @@ export { default as useCreateVoteReplyMutation } from './useCreateVoteReplyMutat
 export { default as useDeleteVoteMutation } from './useDeleteVoteMutation';
 export { default as useDeleteVoteReplyMutation } from './useDeleteVoteReplyMutation';
 export { useGetAllVotes } from './useGetAllVotes';
+export { default as useGetMyVote } from './useGetMyVote';
 export { useGetVoteById } from './useGetVoteById';
 export { useGetVoteBySearch } from './useGetVoteBySearch';
 export { default as useGetVoteReplies } from './useGetVoteReplies';
