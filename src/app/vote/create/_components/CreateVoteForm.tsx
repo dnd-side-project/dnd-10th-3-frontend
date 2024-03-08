@@ -12,7 +12,7 @@ import { Textarea as ContentInput } from '@/components/common/textarea';
 import { Header } from '@/components/layout/header';
 import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
-import { useCreateVoteMutation } from '@/hooks/api/vote';
+import { useCreateVoteMutation } from '@/hooks/vote';
 import { createVoteSchema } from '@/schema/CreateVoteSchema';
 
 import { CategorySelector, TitleInput, VoteDateForm, VoteItemForm } from '.';
