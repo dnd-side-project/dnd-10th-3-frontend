@@ -31,7 +31,7 @@ const TestForm = () => {
 
   const handleTestFormInvalid = () => {
     if (!state.buddy) {
-      return toast({ message: 'NICKNAME_REQUIRED' });
+      return toast({ message: 'NICKNAME_REQUIRED', above: 'button' });
     }
     setStep(1);
   };

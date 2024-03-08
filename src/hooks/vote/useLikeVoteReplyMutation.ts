@@ -36,7 +36,7 @@ const useLikeVoteReplyMutation = () => {
     },
     onError: (err, { voteId }, context) => {
       queryClient.setQueryData(['vote-reply', voteId], context?.previousVoteReplies);
-      toast({ message: 'ERROR' });
+      toast({ message: 'ERROR', above: 'input' });
     },
     onSettled: (data, err, { voteId }) => {
       queryClient.invalidateQueries({ queryKey: ['vote-reply', voteId] });
