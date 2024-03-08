@@ -3,23 +3,22 @@ import { useState } from 'react';
 import { Button } from '@/components/common/button';
 import { ConfirmBottomSheet, LikeButton, OptionBottomSheet, Profile } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
-import { useGetUser } from '@/hooks/auth';
 import { VoteReplyType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
 
 type Props = {
   reply: VoteReplyType; // NOTE: 다른 피쳐에서 댓글 사용 시 변경 필요
+  isWrittenByCurrentUser: boolean;
   onLikeToggle: () => void;
   onDelete: () => void;
 };
 
 type BottomSheetType = 'askDelete' | 'replyOption';
 
-const Reply = ({ reply, onLikeToggle, onDelete }: Props) => {
-  const { data: user } = useGetUser();
+const Reply = ({ reply, onLikeToggle, onDelete, isWrittenByCurrentUser }: Props) => {
   const [openedSheet, setOpenedSheet] = useState<BottomSheetType | null>(null);
 
-  const { nickname, createdAt, content, likes, status, userId } = reply;
+  const { nickname, createdAt, content, likes, status } = reply;
 
   return (
     <>
@@ -28,7 +27,7 @@ const Reply = ({ reply, onLikeToggle, onDelete }: Props) => {
           nickname={nickname}
           subText={fromNowOf(+createdAt)}
           actionButton={
-            user?.userId === userId && (
+            isWrittenByCurrentUser && (
               <Button
                 variant="empty"
                 iconOnly

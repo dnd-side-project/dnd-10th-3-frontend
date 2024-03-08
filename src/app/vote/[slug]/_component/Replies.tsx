@@ -8,6 +8,7 @@ import { Reply } from '@/components/features/vote';
 import { Notice, ReplyInput } from '@/components/shared';
 import { REPLY_SORT_OPTIONS, ReplySortOptions } from '@/constants/options';
 import { Typography } from '@/foundations/typography';
+import { useGetUser } from '@/hooks/auth';
 import {
   useCreateVoteReplyMutation,
   useDeleteVoteReplyMutation,
@@ -21,6 +22,7 @@ type Props = {
 };
 
 const Replies = ({ voteId }: Props) => {
+  const { data: user } = useGetUser();
   const { status, data: replies } = useGetVoteReplies({ voteId });
   const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
   const { mutate: deleteVoteReply } = useDeleteVoteReplyMutation();
@@ -75,6 +77,7 @@ const Replies = ({ voteId }: Props) => {
                   voteId: reply.voteId,
                 })
               }
+              isWrittenByCurrentUser={reply.userId === user?.userId}
             />
           ))}
         </ul>
