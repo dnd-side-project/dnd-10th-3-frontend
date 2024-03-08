@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/common/button';
 import { ConfirmBottomSheet, LikeButton, OptionBottomSheet, Profile } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
+import { useGetUser } from '@/hooks/auth';
 import { VoteReplyType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
 
@@ -15,9 +16,10 @@ type Props = {
 type BottomSheetType = 'askDelete' | 'replyOption';
 
 const Reply = ({ reply, onLikeToggle, onDelete }: Props) => {
+  const { data: user } = useGetUser();
   const [openedSheet, setOpenedSheet] = useState<BottomSheetType | null>(null);
 
-  const { nickname, createdAt, content, likes, status } = reply;
+  const { nickname, createdAt, content, likes, status, userId } = reply;
 
   return (
     <>
@@ -26,13 +28,15 @@ const Reply = ({ reply, onLikeToggle, onDelete }: Props) => {
           nickname={nickname}
           subText={fromNowOf(+createdAt)}
           actionButton={
-            <Button
-              variant="empty"
-              iconOnly
-              icon="more"
-              className="!p-0"
-              onClick={() => setOpenedSheet('replyOption')}
-            />
+            user?.userId === userId && (
+              <Button
+                variant="empty"
+                iconOnly
+                icon="more"
+                className="!p-0"
+                onClick={() => setOpenedSheet('replyOption')}
+              />
+            )
           }
         />
         <Typography type="body3" className="ml-md">
