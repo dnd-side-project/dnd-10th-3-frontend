@@ -47,7 +47,7 @@ const useCreateVoteMutation = () => {
     onSuccess: (data) => {
       const { id } = data.data.data;
       toast({ message: 'VOTE_UPLOAD_SUCCESS' });
-      queryClient.invalidateQueries({ queryKey: VOTE_KEY.ALL });
+      queryClient.invalidateQueries({ queryKey: VOTE_KEY.ALL, refetchType: 'all' });
       router.replace(`/vote/${id}`);
     },
     onError: () => {
