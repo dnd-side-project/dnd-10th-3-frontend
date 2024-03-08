@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { isAxiosError } from 'axios';
 import { hasCookie } from 'cookies-next';
 
 import { IS_LOGIN } from '@/constants/auth';
@@ -17,7 +16,7 @@ const useGetUser = () => {
     queryKey: ['user'],
     queryFn: getUser,
     enabled: hasCookie(IS_LOGIN),
-    throwOnError: (error) => isAxiosError(error),
+    throwOnError: true,
     staleTime: Infinity,
     gcTime: Infinity,
   });
