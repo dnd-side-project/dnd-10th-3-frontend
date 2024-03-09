@@ -30,7 +30,8 @@ const VoteDetail = ({ voteId }: Props) => {
       ) : (
         <>
           <VoteExtraDetail
-            nickname={data.user.nickname}
+            voteId={data.id}
+            author={data.user}
             views={data.views}
             category={data.category}
           />

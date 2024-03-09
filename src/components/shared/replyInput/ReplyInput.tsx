@@ -40,6 +40,7 @@ const ReplyInput = ({ initialInput, onSubmit }: Props) => {
             onSubmitReply(input);
           }
         }}
+        className="placeholder:text-gray-500"
         onChange={(e) => dispatchReplyInputState({ type: 'typing', input: e.target.value })}
       />
       {input.length > 0 && (

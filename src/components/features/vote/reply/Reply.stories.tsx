@@ -43,6 +43,7 @@ export const Basic: Story = {
         }}
         onDelete={() => {}}
         onLikeToggle={() => {}}
+        isWrittenByCurrentUser={true}
       />
       <Reply
         reply={{
@@ -59,6 +60,7 @@ export const Basic: Story = {
         }}
         onDelete={() => {}}
         onLikeToggle={() => {}}
+        isWrittenByCurrentUser={false}
       />
       <Reply
         reply={{
@@ -75,6 +77,7 @@ export const Basic: Story = {
         }}
         onDelete={() => {}}
         onLikeToggle={() => {}}
+        isWrittenByCurrentUser={false}
       />
     </>
   ),
