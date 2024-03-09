@@ -22,10 +22,10 @@ const useDeleteVoteReplyMutation = () => {
     mutationFn: deleteVoteReply,
     onSuccess: async (_, { voteId }) => {
       await queryClient.invalidateQueries({ queryKey: ['vote-reply', voteId] });
-      toast({ message: 'REPLY_DELETE_SUCCESS' });
+      toast({ message: 'REPLY_DELETE_SUCCESS', above: 'input' });
     },
     onError: () => {
-      toast({ message: 'REPLY_DELETE_FAIL' });
+      toast({ message: 'REPLY_DELETE_FAIL', above: 'input' });
     },
   });
 };
