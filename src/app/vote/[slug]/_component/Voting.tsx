@@ -25,7 +25,7 @@ const Voting = ({ voteId, selections, selected }: Props) => {
 
   const handleVote = () => {
     if (selectedItem === null) {
-      toast({ message: 'SELECTION_REQUIRED' });
+      toast({ message: 'SELECTION_REQUIRED', above: 'input' });
       return;
     }
     vote({ selectionId: selectedItem }, { onSuccess: () => setMode('result') });

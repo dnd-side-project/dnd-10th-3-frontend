@@ -11,4 +11,5 @@ export { default as Notice } from './notice/Notice';
 export { default as OptionBottomSheet } from './optionBottomSheet/OptionBottomSheet';
 export { default as OptionButton } from './optionButton/OptionButton';
 export { default as Profile } from './profile/Profile';
+export { default as RedirectToPreviousPage } from './redirectToPreviousPage/RedirectToPreviousPage';
 export { default as ReplyInput } from './replyInput/ReplyInput';
