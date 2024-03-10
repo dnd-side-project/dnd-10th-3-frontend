@@ -8,7 +8,7 @@ const TotalPage = () => {
       <Header className="bg-white shadow-thumb">
         <Header.Previous />
         <Header.Text text="전체유형" />
-        {/* //FIXME : 고쳐주세요 */}
+
         <Header.Text text=" " />
       </Header>
 
@@ -19,7 +19,7 @@ const TotalPage = () => {
               <div className="flex w-full items-center rounded-xl border border-gray-100 p-3xs">
                 <div className="flex w-full items-center justify-center">
                   <Typography type="heading2" className="pr-xs 390:pr-3xs">
-                    {resultType.id}
+                    {resultType.id + 1}
                   </Typography>
                   <div className="flex w-full flex-1 justify-between">
                     <div className="flex flex-col gap-4xs">
@@ -40,12 +40,6 @@ const TotalPage = () => {
                     </div>
 
                     {resultType.image}
-                    {/* <Image
-                      src={resultType.image}
-                      alt="first_small_result_type"
-                      width={100}
-                      height={125}
-                    /> */}
                   </div>
                 </div>
               </div>
