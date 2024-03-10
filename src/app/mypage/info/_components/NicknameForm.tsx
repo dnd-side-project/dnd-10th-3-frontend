@@ -19,7 +19,7 @@ const NicknameForm = () => {
     resolver: zodResolver(updateNicknameSchema),
     defaultValues: { nickname: '' },
   });
-  const { mutate: updateNickname } = useUpdateNicknameMutation();
+  const { mutate: updateNickname, isPending } = useUpdateNicknameMutation();
   const { data: user } = useGetUser();
   const toast = useToast();
   const router = useRouter();
@@ -59,7 +59,8 @@ const NicknameForm = () => {
       <Button
         type="submit"
         width="full"
-        disabled={watch('nickname').length === 0}
+        disabled={watch('nickname').length === 0 || isPending}
+        isLoading={isPending}
         onClick={handleSubmit(onSubmit, handleFormInvalid)}
       >
         확인
