@@ -22,7 +22,7 @@ type BottomSheetType = 'askDelete' | 'replyOption';
 
 const VoteExtraDetail = ({ author, views, category, voteId }: Props) => {
   const { data: user } = useGetUser();
-  const { mutate: onDelete } = useDeleteVoteMutation();
+  const { mutate: onDelete, isPending } = useDeleteVoteMutation();
 
   const router = useRouter();
   const { onOpenSheet, openedSheet, onCloseSheet } = useBottomSheetState<BottomSheetType>();
@@ -44,6 +44,7 @@ const VoteExtraDetail = ({ author, views, category, voteId }: Props) => {
                 icon="more"
                 className="!p-0"
                 onClick={() => onOpenSheet('replyOption')}
+                disabled={isPending}
               />
             )
           }

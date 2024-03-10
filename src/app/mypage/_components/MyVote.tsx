@@ -17,7 +17,7 @@ type BottomSheetType = 'askDelete' | 'selectOption';
 
 const MyVote = () => {
   const { data, status } = useGetMyVote();
-  const { mutate: onDelete } = useDeleteVoteMutation();
+  const { mutate: onDelete, isPending } = useDeleteVoteMutation();
   const { onOpenSheet, openedSheet, onCloseSheet } = useBottomSheetState<BottomSheetType>();
   const deleteTarget = useRef<VoteType['id'] | null>(null);
 
@@ -51,6 +51,7 @@ const MyVote = () => {
                     onOpenSheet('selectOption');
                     deleteTarget.current = vote.id;
                   }}
+                  disabled={isPending && deleteTarget.current === vote.id}
                 />
               </div>
 
