@@ -9,7 +9,7 @@ import { Button } from '@/components/common/button';
 import { CharCounter } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
-import { useUpdateNicknameMutation } from '@/hooks/auth';
+import { useGetUser, useUpdateNicknameMutation } from '@/hooks/auth';
 import { MAX_NICK_LENGTH, updateNicknameSchema } from '@/schema/NicknameSchema';
 
 export type UpdateNickname = z.infer<typeof updateNicknameSchema>;
@@ -20,11 +20,16 @@ const NicknameForm = () => {
     defaultValues: { nickname: '' },
   });
   const { mutate: updateNickname } = useUpdateNicknameMutation();
+  const { data: user } = useGetUser();
   const toast = useToast();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<UpdateNickname> = ({ nickname }) => {
-    updateNickname({ nickname }, { onSuccess: () => router.replace('/mypage') });
+    if (user?.nickname === nickname) {
+      router.replace('/mypage');
+    } else {
+      updateNickname({ nickname }, { onSuccess: () => router.replace('/mypage') });
+    }
   };
 
   const handleFormInvalid: SubmitErrorHandler<UpdateNickname> = (errors) => {
