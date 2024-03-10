@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -8,7 +9,7 @@ import { Button } from '@/components/common/button';
 import { CharCounter } from '@/components/shared';
 import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
-import { useAuth } from '@/hooks/api/auth';
+import { useUpdateNicknameMutation } from '@/hooks/auth';
 import { MAX_NICK_LENGTH, updateNicknameSchema } from '@/schema/NicknameSchema';
 
 export type UpdateNickname = z.infer<typeof updateNicknameSchema>;
@@ -18,11 +19,12 @@ const NicknameForm = () => {
     resolver: zodResolver(updateNicknameSchema),
     defaultValues: { nickname: '' },
   });
+  const { mutate: updateNickname } = useUpdateNicknameMutation();
   const toast = useToast();
-  const { updateNickname } = useAuth();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<UpdateNickname> = ({ nickname }) => {
-    updateNickname({ nickname });
+    updateNickname({ nickname }, { onSuccess: () => router.replace('/mypage') });
   };
 
   const handleFormInvalid: SubmitErrorHandler<UpdateNickname> = (errors) => {
