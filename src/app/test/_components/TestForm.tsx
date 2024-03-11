@@ -51,35 +51,34 @@ const TestForm = () => {
           </Header>
 
           <main className="flex size-full flex-col items-center">
-            <div className="flex size-full flex-col items-center">
-              <div className="flex flex-col items-center justify-center py-sm">
-                <h1 className="text-[32px] font-semibold">축의금 얼마 내지?</h1>
-                <div className="h-md w-6xl rounded-md border-2 border-primary-700 text-center">
-                  <Typography type="heading1" className="text-primary-700">
-                    $ ??,???
-                  </Typography>
-                </div>
-                <Typography type="title4" className="pt-4xs text-gray-500">
-                  상대와의 친밀도 알아보고 축의금 결정해보세요
+            <div className="flex flex-col items-center justify-center py-sm">
+              <h1 className="text-[32px] font-semibold">축의금 얼마 내지?</h1>
+              <div className="h-md w-6xl rounded-md border-2 border-primary-700 text-center">
+                <Typography type="heading1" className="text-primary-700">
+                  $ ??,???
                 </Typography>
               </div>
-              <section className=" flex w-full flex-1 flex-col items-center">
-                <div className="w-10/12 390:w-full">
-                  <MainLogo />
-                </div>
-                <div className="w-[70%]">
-                  <Input
-                    type="fit"
-                    placeholder=" 상대 이름을 입력해주세요"
-                    className="text-center placeholder:text-gray-1000"
-                    bgcolor="lightGray"
-                    value={state.buddy}
-                    onChange={(e) => dispatch({ type: 'setBuddyName', value: e.target.value })}
-                    onKeyUp={handleOnKeyEnter}
-                  />
-                </div>
-              </section>
+              <Typography type="title4" className="pt-4xs text-gray-500">
+                상대와의 친밀도 알아보고 축의금 결정해보세요
+              </Typography>
             </div>
+            <section className=" flex w-full flex-1 flex-col items-center">
+              <div className="w-full">
+                <MainLogo />
+              </div>
+              <div className="w-[70%]">
+                <Input
+                  type="fit"
+                  placeholder=" 상대 이름을 입력해주세요"
+                  className="text-center placeholder:text-gray-1000"
+                  bgcolor="lightGray"
+                  value={state.buddy}
+                  onChange={(e) => dispatch({ type: 'setBuddyName', value: e.target.value })}
+                  onKeyUp={handleOnKeyEnter}
+                />
+              </div>
+            </section>
+
             <footer className="w-full px-2xs">
               <Button width="full" onClick={handleTestFormInvalid}>
                 테스트하고 축의금 알아보기
