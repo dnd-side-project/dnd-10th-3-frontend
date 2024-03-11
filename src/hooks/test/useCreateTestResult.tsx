@@ -1,10 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { TEST } from '@/api/test';
-import { TestFormType } from '@/types/test';
+import { donworryApi } from '@/api';
 
 export const useCreateTestResult = () => {
   return useMutation({
-    mutationFn: (data: TestFormType) => TEST.POST_RESULT(data),
+    mutationFn: donworryApi.test.postResult,
   });
 };
