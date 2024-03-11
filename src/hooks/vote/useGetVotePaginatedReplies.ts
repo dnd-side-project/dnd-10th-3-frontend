@@ -1,13 +1,14 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 
 const INITIAL_PAGE_NO = 0;
 const COMMENT_COUNT_PER_PAGE = 10;
 
 const useGetVotePaginatedReplies = (voteId: number) => {
   return useInfiniteQuery({
-    queryKey: ['vote-reply', voteId],
+    queryKey: queryKey.vote.reply(voteId),
     initialPageParam: { page: INITIAL_PAGE_NO, size: COMMENT_COUNT_PER_PAGE },
     queryFn: ({ pageParam }) =>
       donworryApi.vote.getVotePaginatedReplies({

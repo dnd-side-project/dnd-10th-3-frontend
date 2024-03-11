@@ -19,11 +19,8 @@ const TestLoading = ({ state }: Props) => {
 
   useEffect(() => {
     mutate(state, {
-      onSuccess: (response) => {
-        setTimeout(
-          () => router.push(`/test/result/${response.data.id}`),
-          (DELAY_SECOND - 1) * 1000,
-        );
+      onSuccess: (data) => {
+        setTimeout(() => router.push(`/test/result/${data.id}`), (DELAY_SECOND - 1) * 1000);
       },
     });
   }, [state, mutate, router]);

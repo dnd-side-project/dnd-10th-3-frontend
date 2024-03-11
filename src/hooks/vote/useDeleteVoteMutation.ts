@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 import { useToast } from '@/hooks';
 
 const useDeleteVoteMutation = () => {
@@ -10,7 +11,7 @@ const useDeleteVoteMutation = () => {
   return useMutation({
     mutationFn: donworryApi.vote.deleteVote,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['votes'], refetchType: 'all' });
+      await queryClient.invalidateQueries({ queryKey: queryKey.vote.lists(), refetchType: 'all' });
       toast({ message: 'VOTE_DELETE_SUCCESS' });
     },
     onError: () => {

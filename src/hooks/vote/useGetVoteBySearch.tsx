@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 import { GetSearchVoteRequest } from '@/api/vote/types';
 
 const INITIAL_PAGE_NO = 0;
@@ -10,7 +11,7 @@ export const useGetVoteBySearch = ({ keyword }: Pick<GetSearchVoteRequest, 'keyw
   const addSpaceBarInKeywordByDefault = keyword === '' ? ' ' : keyword;
 
   return useInfiniteQuery({
-    queryKey: ['votes', addSpaceBarInKeywordByDefault],
+    queryKey: queryKey.vote.search(addSpaceBarInKeywordByDefault),
     initialPageParam: { page: INITIAL_PAGE_NO, size: VOTE_COUNT_PER_PAGE },
     queryFn: ({ pageParam }) =>
       donworryApi.vote.getVoteBySearch({

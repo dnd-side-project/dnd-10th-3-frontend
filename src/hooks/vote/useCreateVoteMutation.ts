@@ -3,9 +3,9 @@ import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 
 import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 import { VoteFormData } from '@/api/vote/types';
 import { CreateVoteInput } from '@/app/vote/create/_components/CreateVoteForm';
-import { VOTE_KEY } from '@/constants/queryKey/vote';
 import { useToast } from '@/hooks';
 
 const useCreateVoteMutation = () => {
@@ -33,7 +33,7 @@ const useCreateVoteMutation = () => {
     },
     onSuccess: (data) => {
       toast({ message: 'VOTE_UPLOAD_SUCCESS' });
-      queryClient.invalidateQueries({ queryKey: VOTE_KEY.ALL, refetchType: 'all' });
+      queryClient.invalidateQueries({ queryKey: queryKey.vote.lists(), refetchType: 'all' });
       router.replace(`/vote/${data.id}`);
     },
     onError: () => {
