@@ -28,8 +28,7 @@ export const useSlotMachine = ({ textList, duration }: Props) => {
   const count = Math.floor(Math.random() * textList.length);
   const [currentIndex, setCurrentIndex] = useState(0);
   const textArr = Array(duration).fill(textList).flat();
-  // FIXME: 고민하다 우선 구현
-  shuffleArray(textArr);
+  shuffleTextArr(textArr);
   const lastIndex = textArr.length - 1;
 
   useEffect(() => {
@@ -53,7 +52,7 @@ export const useSlotMachine = ({ textList, duration }: Props) => {
       return props;
     },
   };
-  function shuffleArray(textArr: string[]) {
+  function shuffleTextArr(textArr: string[]) {
     for (let i = textArr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [textArr[i], textArr[j]] = [textArr[j], textArr[i]];
