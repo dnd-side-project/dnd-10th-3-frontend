@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { donworryApi } from '@/api';
-import { QUERY_KEY } from '@/constants/queryKey';
+import { queryKey } from '@/api/queryKey';
 
 export const useGetTestResultById = (id: number) => {
   return useQuery({
-    queryKey: QUERY_KEY.TEST.GET_RESULT_BY_ID(id),
+    queryKey: queryKey.test.result(id),
     queryFn: () => donworryApi.test.getResultById(id),
   });
 };
