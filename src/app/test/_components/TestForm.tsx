@@ -60,8 +60,11 @@ const TestForm = () => {
           <main className="flex size-full flex-col items-center">
             <div className="flex flex-col items-center justify-center py-sm">
               <h1 className="text-[32px] font-semibold">축의금 얼마 내지?</h1>
-              <div className="h-md w-6xl rounded-md border-2 border-primary-700 text-center">
-                <SlotMachine />
+              <div className="h-md w-[150px] rounded-md border-2 border-primary-700 text-center">
+                <div className="flex items-center justify-between gap-2 px-4xs text-[24px] font-bold leading-[145%] text-primary-700">
+                  <span>₩</span>
+                  <SlotMachine />
+                </div>
               </div>
               <Typography type="title4" className="pt-4xs text-gray-500">
                 상대와의 친밀도 알아보고 축의금 결정해보세요

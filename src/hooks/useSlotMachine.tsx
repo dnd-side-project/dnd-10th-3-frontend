@@ -68,10 +68,7 @@ export const useSlotMachine = ({ textList, duration }: Props) => {
             return (
               i === currentIndex && (
                 <motion.div
-                  className={cn(
-                    'overflow-hidden text-[24px] font-bold leading-[145%] text-primary-700',
-                    className,
-                  )}
+                  className={cn('overflow-hidden', className)}
                   key={text}
                   custom={{ isLast }}
                   variants={variants}
