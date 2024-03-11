@@ -19,10 +19,10 @@ const useVotingMutation = (voteId: number) => {
       ),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['vote', voteId] });
-      toast({ message: 'VOTING_SUCCESS' });
+      toast({ message: 'VOTING_SUCCESS', above: 'input' });
     },
     onError: () => {
-      toast({ message: 'VOTING_FAIL' });
+      toast({ message: 'VOTING_FAIL', above: 'input' });
     },
   });
 };

@@ -30,7 +30,8 @@ const VoteDetail = ({ voteId }: Props) => {
       ) : (
         <>
           <VoteExtraDetail
-            nickname={data.user.nickname}
+            voteId={data.id}
+            author={data.user}
             views={data.views}
             category={data.category}
           />
@@ -57,9 +58,7 @@ const VoteDetail = ({ voteId }: Props) => {
             <LikeButton
               isLiked={data.isLiked}
               likeCount={data.likes}
-              clickHandler={() => {
-                toggleLike({ voteId, isLiked: !data.isLiked });
-              }}
+              onClick={() => toggleLike({ voteId })}
             />
             <Button iconOnly icon="share" variant="empty" className="!p-0" />
           </div>

@@ -1,10 +1,20 @@
 'use client';
 
-import { ComponentProps, PropsWithChildren, createContext, useState } from 'react';
+import { PropsWithChildren, createContext, useState } from 'react';
 
-import { Toast } from '@/components/common/toast';
+import { TOAST_MESSAGES } from '@/constants/toast';
 
-type ToastInterface = Pick<ComponentProps<typeof Toast>, 'type' | 'message'>;
+export type ToastInterface =
+  | {
+      type?: never;
+      message: keyof typeof TOAST_MESSAGES;
+      above?: 'button' | 'input' | 'default';
+    }
+  | {
+      type: 'default' | 'warning';
+      message: string;
+      above?: 'button' | 'input' | 'default';
+    };
 
 export const ToastContext = createContext<ToastInterface | null>(null);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

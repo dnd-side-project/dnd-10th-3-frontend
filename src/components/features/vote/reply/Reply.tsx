@@ -8,12 +8,14 @@ import { fromNowOf } from '@/utils/dates';
 
 type Props = {
   reply: VoteReplyType; // NOTE: 다른 피쳐에서 댓글 사용 시 변경 필요
+  isWrittenByCurrentUser: boolean;
+  onLikeToggle: () => void;
   onDelete: () => void;
 };
 
 type BottomSheetType = 'askDelete' | 'replyOption';
 
-const Reply = ({ reply, onDelete }: Props) => {
+const Reply = ({ reply, onLikeToggle, onDelete, isWrittenByCurrentUser }: Props) => {
   const [openedSheet, setOpenedSheet] = useState<BottomSheetType | null>(null);
 
   const { nickname, createdAt, content, likes, status } = reply;
@@ -25,20 +27,22 @@ const Reply = ({ reply, onDelete }: Props) => {
           nickname={nickname}
           subText={fromNowOf(+createdAt)}
           actionButton={
-            <Button
-              variant="empty"
-              iconOnly
-              icon="more"
-              className="!p-0"
-              onClick={() => setOpenedSheet('replyOption')}
-            />
+            isWrittenByCurrentUser && (
+              <Button
+                variant="empty"
+                iconOnly
+                icon="more"
+                className="!p-0"
+                onClick={() => setOpenedSheet('replyOption')}
+              />
+            )
           }
         />
         <Typography type="body3" className="ml-md">
           {content}
         </Typography>
         <div className="ml-md mt-5xs">
-          <LikeButton isLiked={status} likeCount={likes} clickHandler={() => {}} />
+          <LikeButton isLiked={status} likeCount={likes} onClick={onLikeToggle} />
         </div>
       </li>
 

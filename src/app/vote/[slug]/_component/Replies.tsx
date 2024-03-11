@@ -8,10 +8,12 @@ import { Reply } from '@/components/features/vote';
 import { Notice, ReplyInput } from '@/components/shared';
 import { REPLY_SORT_OPTIONS, ReplySortOptions } from '@/constants/options';
 import { Typography } from '@/foundations/typography';
+import { useGetUser } from '@/hooks/auth';
 import {
   useCreateVoteReplyMutation,
   useDeleteVoteReplyMutation,
   useGetVoteReplies,
+  useLikeVoteReplyMutation,
 } from '@/hooks/vote';
 import { VoteReplyType } from '@/types/vote';
 
@@ -20,9 +22,11 @@ type Props = {
 };
 
 const Replies = ({ voteId }: Props) => {
+  const { data: user } = useGetUser();
   const { status, data: replies } = useGetVoteReplies({ voteId });
   const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
   const { mutate: deleteVoteReply } = useDeleteVoteReplyMutation();
+  const { mutate: toggleLikeVoteReply } = useLikeVoteReplyMutation();
 
   const [sortOption, setSortOption] = useState<ReplySortOptions>('등록순');
 
@@ -53,7 +57,7 @@ const Replies = ({ voteId }: Props) => {
 
       {/* TODO: Suspense or SSR */}
       {status === 'pending' ? (
-        <div className="flex items-center justify-center py-lg">
+        <div className="flex h-full items-center justify-center py-lg">
           <Spinner />
         </div>
       ) : status === 'error' ? (
@@ -64,12 +68,16 @@ const Replies = ({ voteId }: Props) => {
             <Reply
               key={reply.commentId}
               reply={reply}
+              onLikeToggle={() =>
+                toggleLikeVoteReply({ voteId: reply.voteId, commentId: reply.commentId })
+              }
               onDelete={() =>
                 deleteVoteReply({
                   commentId: reply.commentId,
                   voteId: reply.voteId,
                 })
               }
+              isWrittenByCurrentUser={reply.userId === user?.userId}
             />
           ))}
         </ul>

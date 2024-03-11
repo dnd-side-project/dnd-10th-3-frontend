@@ -31,11 +31,11 @@ const useCreateVoteReplyMutation = () => {
     },
     onError: (err, { voteId }, context) => {
       queryClient.setQueryData(['vote-reply', voteId], context?.previousVoteReplies);
-      toast({ message: 'REPLY_REGISTER_FAIL' });
+      toast({ message: 'REPLY_REGISTER_FAIL', above: 'input' });
     },
     onSettled: (data, error, { voteId }) => {
       queryClient.invalidateQueries({ queryKey: ['vote-reply', voteId] });
-      toast({ message: 'REPLY_REGISTER_SUCCESS' });
+      toast({ message: 'REPLY_REGISTER_SUCCESS', above: 'input' });
     },
   });
 };
