@@ -1,17 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { get } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
-import { VoteType } from '@/types/vote';
-
-const getMyVote = async () => {
-  const response = await get<SuccessResponse<VoteType[]>>('/vote/mine');
-  return response.data.data;
-};
+import { donworryApi } from '@/api';
 
 const useGetMyVote = () => {
   return useQuery({
-    queryFn: getMyVote,
+    queryFn: donworryApi.vote.getMyVotes,
     queryKey: ['votes', 'mine'],
     retry: 1,
     staleTime: Infinity,

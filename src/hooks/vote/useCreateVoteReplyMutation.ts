@@ -1,26 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { produce } from 'immer';
 
+import { donworryApi } from '@/api';
+import { PostVoteReplyRequest } from '@/api/vote/types';
 import { useToast } from '@/hooks';
-import { post } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
 import { VoteReplyType } from '@/types/vote';
-
-type PostVoteReplyRequest = { voteId: number; content: string };
-
-const postVoteReply = async ({ voteId, content }: PostVoteReplyRequest) => {
-  const response = await post<SuccessResponse<VoteReplyType>>(`/comment/vote/${voteId}`, {
-    content,
-  });
-  return response.data.data;
-};
 
 const useCreateVoteReplyMutation = () => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: postVoteReply,
+    mutationFn: donworryApi.vote.postVoteReply,
     onMutate: async ({ voteId, content }) => {
       await queryClient.cancelQueries({ queryKey: ['vote-reply', voteId] });
       const previousVoteReplies = queryClient.getQueryData<VoteReplyType[]>(['vote-reply', voteId]);

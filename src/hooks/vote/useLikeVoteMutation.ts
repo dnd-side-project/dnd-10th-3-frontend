@@ -1,27 +1,14 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { produce } from 'immer';
 
-import { post } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
+import { donworryApi } from '@/api';
 import { VoteType } from '@/types/vote';
-
-type PostLikeVoteRequest = {
-  voteId: number;
-};
-
-type LikeVoteResponse = undefined;
-
-// TODO api 분리
-const postLikeVote = async ({ voteId }: PostLikeVoteRequest) => {
-  const response = await post<SuccessResponse<LikeVoteResponse>>(`/vote/${voteId}/likes`);
-  return response.data.data;
-};
 
 const useLikeVoteMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: postLikeVote,
+    mutationFn: donworryApi.vote.postLikeVote,
     onMutate: async ({ voteId }) => {
       await queryClient.cancelQueries({ queryKey: ['vote', voteId] });
       const previousVoteDetail = queryClient.getQueryData<VoteType>(['vote', voteId]);

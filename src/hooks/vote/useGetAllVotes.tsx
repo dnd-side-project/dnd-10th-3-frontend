@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 
-import { VOTE } from '@/api/vote';
+import { donworryApi } from '@/api';
 import { CATEGORY_TAB } from '@/constants/category';
 import { QUERY_KEY } from '@/constants/queryKey';
 
@@ -14,7 +14,7 @@ export const useGetAllVotes = () => {
 
   return useQuery({
     queryKey: QUERY_KEY.VOTE.ALL,
-    queryFn: VOTE.ALL,
+    queryFn: donworryApi.vote.getAllVotes,
     select: ({ data }) => {
       if (currentTab === '전체') return data;
 

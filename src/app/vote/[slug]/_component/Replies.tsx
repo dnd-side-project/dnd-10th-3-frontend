@@ -23,7 +23,7 @@ type Props = {
 
 const Replies = ({ voteId }: Props) => {
   const { data: user } = useGetUser();
-  const { status, data: replies } = useGetVoteReplies({ voteId });
+  const { status, data: replies } = useGetVoteReplies(voteId);
   const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
   const { mutate: deleteVoteReply } = useDeleteVoteReplyMutation();
   const { mutate: toggleLikeVoteReply } = useLikeVoteReplyMutation();

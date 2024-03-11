@@ -1,28 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { get } from '@/lib/axios';
-import { Pages, SuccessResponse } from '@/types/response';
-import { VoteType } from '@/types/vote';
-
-type GetSearchVoteResponse = {
-  list: VoteType[];
-  pages: Pages;
-};
-
-type GetSearchVoteRequest = {
-  keyword: string;
-  page: number;
-  size: number;
-  sort: string;
-};
-
-const getVoteBySearch = async ({ keyword, page, size, sort }: GetSearchVoteRequest) => {
-  const response = await get<SuccessResponse<GetSearchVoteResponse>>(`/vote/search/${keyword}`, {
-    params: { page, size, sort },
-  });
-
-  return response.data.data;
-};
+import { donworryApi } from '@/api';
+import { GetSearchVoteRequest } from '@/api/vote/types';
 
 const INITIAL_PAGE_NO = 0;
 const VOTE_COUNT_PER_PAGE = 5;
@@ -34,7 +13,7 @@ export const useGetVoteBySearch = ({ keyword }: Pick<GetSearchVoteRequest, 'keyw
     queryKey: ['votes', addSpaceBarInKeywordByDefault],
     initialPageParam: { page: INITIAL_PAGE_NO, size: VOTE_COUNT_PER_PAGE },
     queryFn: ({ pageParam }) =>
-      getVoteBySearch({
+      donworryApi.vote.getVoteBySearch({
         keyword: addSpaceBarInKeywordByDefault,
         page: pageParam.page,
         size: pageParam.size,
