@@ -41,6 +41,7 @@ const TestForm = () => {
   };
 
   return (
+    // 테스트 시작 랜딩 페이지 다음 PR SSR로 분리 예정
     <>
       {step === QUESTIONS_ORDERS.home && (
         <div className="relative flex size-full h-dvh flex-col items-center bg-mainGradient pb-2xs">
@@ -63,9 +64,7 @@ const TestForm = () => {
               </Typography>
             </div>
             <section className=" flex w-full flex-1 flex-col items-center">
-              <div className="w-full">
-                <MainLogo />
-              </div>
+              <MainLogo width="100%" height="70%" />
               <div className="w-[70%]">
                 <Input
                   type="fit"
