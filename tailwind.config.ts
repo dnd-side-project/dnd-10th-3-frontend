@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-import { borderRadius, boxShadow, colors, spacing } from './styles/theme';
+import { borderRadius, boxShadow, colors, spacing } from './src/styles/theme';
 
 const config: Config = {
   content: [
