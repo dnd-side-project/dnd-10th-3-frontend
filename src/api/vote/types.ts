@@ -1,8 +1,8 @@
 import { Pages } from '@/types/response';
-import { VoteReplyType, VoteType } from '@/types/vote';
+import { SelectionType, VoteReplyType, VoteType } from '@/types/vote';
 
 export type GetVoteByIdRequest = {
-  voteId: number;
+  voteId: VoteType['id'];
 };
 
 export type GetSearchVoteResponse = {
@@ -21,23 +21,23 @@ export interface VoteFormData extends FormData {
   append(name: 'voteRequestDto' | 'images', value: string | Blob): void;
 }
 
-export type PostVoteReplyRequest = { voteId: number; content: string };
+export type PostVoteReplyRequest = { voteId: VoteType['id']; content: VoteReplyType['content'] };
 
 export type DeleteVoteRequest = {
-  voteId: number;
+  voteId: VoteType['id'];
 };
 
 export type PostLikeVoteRequest = {
-  voteId: number;
+  voteId: VoteType['id'];
 };
 
 export type PostVotingRequest = {
-  voteId: number;
-  selectionId: number;
+  voteId: VoteType['id'];
+  selectionId: SelectionType['id'];
 };
 
 export type GetVoteRepliesRequest = {
-  voteId: number;
+  voteId: VoteType['id'];
 };
 
 export type GetVotePaginatedRepliesResponse = {
@@ -46,22 +46,22 @@ export type GetVotePaginatedRepliesResponse = {
 };
 
 export type GetVotePaginatedRepliesRequest = {
-  voteId: number;
+  voteId: VoteType['id'];
   page: number;
   size: number;
 };
 
 export type UpdateVoteReplyRequest = {
-  commentId: number;
-  content: string;
+  commentId: VoteReplyType['commentId'];
+  content: VoteReplyType['content'];
 };
 
 export type DeleteVoteReplyRequest = {
-  voteId: number;
-  commentId: number;
+  voteId: VoteType['id'];
+  commentId: VoteReplyType['commentId'];
 };
 
 export type PostLikeVoteReplyRequest = {
-  voteId: number;
-  commentId: number;
+  voteId: VoteType['id'];
+  commentId: VoteReplyType['commentId'];
 };
