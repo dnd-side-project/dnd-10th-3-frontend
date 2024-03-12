@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { PropsWithChildren } from 'react';
 
 import { Result0, Result100, Result36, Result70 } from '@/assets/images/result';
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 import { TestResultFormType } from '@/types/test';
 
 type Props = { result: TestResultFormType };

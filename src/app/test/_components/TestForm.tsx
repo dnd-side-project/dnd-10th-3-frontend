@@ -8,10 +8,10 @@ import LogoImage from '@/assets/images/logo.png';
 import { default as WorryImage } from '@/assets/images/test-worry.png';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
 import { PRE_QUESTIONS_LENGTH, QUESTIONS_ORDERS_LENGTH } from '@/constants/test/progress';
 import { QUESTIONS, QUESTIONS_ORDERS } from '@/constants/test/step';
-import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
 import { Range } from '@/types/util';
 

@@ -5,9 +5,9 @@ import { useFormContext } from 'react-hook-form';
 
 import { BottomSheet } from '@/components/common/bottomSheet';
 import { Icon } from '@/components/common/icon';
+import { Typography } from '@/components/common/typography';
 import { OptionButton } from '@/components/shared';
 import { CATEGORIES } from '@/constants/category';
-import { Typography } from '@/foundations/typography';
 
 import { CreateVoteInput } from './CreateVoteForm';
 

@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { useRef } from 'react';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { VoteCard } from '@/components/features/vote';
 import { ConfirmBottomSheet, EmptyVote, OptionBottomSheet } from '@/components/shared';
-import { Typography } from '@/foundations/typography';
 import { useBottomSheetState } from '@/hooks';
 import { useDeleteVoteMutation, useGetMyVote } from '@/hooks/vote';
 import { VoteType } from '@/types/vote';

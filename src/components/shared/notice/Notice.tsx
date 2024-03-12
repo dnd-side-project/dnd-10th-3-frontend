@@ -1,4 +1,4 @@
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 
 type Props = {
   text: string;

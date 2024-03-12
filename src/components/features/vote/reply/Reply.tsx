@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { ConfirmBottomSheet, LikeButton, OptionBottomSheet, Profile } from '@/components/shared';
-import { Typography } from '@/foundations/typography';
 import { VoteReplyType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
 

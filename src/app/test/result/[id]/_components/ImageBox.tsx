@@ -3,8 +3,8 @@
 import { useRef } from 'react';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { resultTypeMap } from '@/constants/result/resultType';
-import { Typography } from '@/foundations/typography';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
 import { TestResultFormType } from '@/types/test';
 

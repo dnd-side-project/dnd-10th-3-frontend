@@ -4,8 +4,8 @@ import { HTMLAttributes } from 'react';
 
 import { Icon } from '@/components/common/icon';
 import { Tag } from '@/components/common/tag';
+import { Typography } from '@/components/common/typography';
 import { CATEGORIES } from '@/constants/category';
-import { Typography } from '@/foundations/typography';
 import { cn } from '@/lib/core';
 import { fromNowOf } from '@/utils/dates';
 import { isPast } from '@/utils/dates/isPast';

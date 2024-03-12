@@ -8,8 +8,8 @@ import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
 import { ProgressBar } from '@/components/common/progressBar';
 import { Tag } from '@/components/common/tag';
+import { Typography } from '@/components/common/typography';
 import { PRE_QUESTIONS_LENGTH, PROGRESS_RATE } from '@/constants/test/progress';
-import { Typography } from '@/foundations/typography';
 import { TestFormType } from '@/types/test';
 
 import FormLayout from './FormLayout';
