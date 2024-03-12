@@ -1,0 +1,90 @@
+import { Meta, Typeset } from '@storybook/blocks';
+
+<Meta title="Foundations/Typography" />
+
+export const typography = {
+
+weight: {
+noraml :'400',
+medium: '500',
+semibold: '600',
+bold: '700',
+},
+size: {
+s1: 12,
+s2: 14,
+s3: 16,
+m1: 20,
+m2: 24,
+m3: 28,
+l1: 32,
+l2: 40,
+l3: 48,
+},
+};
+
+export const SampleText = '축의금 결정이 어려웠나요?!';
+
+# Typo scale
+
+Type scales are hierarchical type systems consisting of style definitions for common elements, such as Heading 1, Heading 2, Paragraph
+
+**Font:** Pretendard
+
+**Weights:** 400(nor),500(medium), 600(semibold) ,700(bold)
+
+<Typeset
+  fontSizes={['24px']}
+  fontWeight={typography.weight.bold}
+  sampleText={`Heading 1 - ${SampleText}`}
+/>
+<Typeset
+  fontSizes={['22px']}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Heading 2- ${SampleText}`}
+/>
+<Typeset
+  fontSizes={['18px']}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Heading 3 - ${SampleText}`}
+/>
+<Typeset
+  fontSizes={['16px']}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Heading 4 - ${SampleText}`}
+/>
+
+---
+
+<Typeset
+  fontSizes={['20px']}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Title1 - ${SampleText}`}
+/>
+<Typeset
+  fontSizes={['18px']}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Title2 - ${SampleText}`}
+/>
+<Typeset
+  fontSizes={['16px']}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Title3 - ${SampleText}`}
+/>
+---
+
+<Typeset
+  fontSizes={['18px']}
+  fontWeight={typography.weight.medium}
+  sampleText={`Body1 - ${SampleText}`}
+/>
+<Typeset
+  fontSizes={['16px']}
+  fontWeight={typography.weight.medium}
+  sampleText={`Body2 - ${SampleText}`}
+/>
+<Typeset
+  fontSizes={['14px']}
+  fontWeight={typography.weight.noraml}
+  sampleText={`Body3 - ${SampleText}`}
+/>
