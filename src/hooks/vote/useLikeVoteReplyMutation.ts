@@ -1,45 +1,34 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { produce } from 'immer';
 
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
+import { PostLikeVoteReplyRequest } from '@/api/vote/types';
 import { useToast } from '@/hooks';
-import { post } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
 import { VoteReplyType } from '@/types/vote';
-
-type PostLikeVoteReplyRequest = {
-  voteId: number;
-  commentId: number;
-};
-
-type LikeVoteReplyResponse = undefined;
-
-const postLikeVoteReply = async ({ commentId }: PostLikeVoteReplyRequest) => {
-  const response = await post<SuccessResponse<LikeVoteReplyResponse>>(
-    `/comment/${commentId}/likes`,
-  );
-  return response.data;
-};
 
 const useLikeVoteReplyMutation = () => {
   const queryClient = useQueryClient();
   const toast = useToast();
 
   return useMutation({
-    mutationFn: postLikeVoteReply,
+    mutationFn: donworryApi.vote.postLikeVoteReply,
     onMutate: async ({ voteId, commentId }) => {
-      await queryClient.cancelQueries({ queryKey: ['vote-reply', voteId] });
-      const previousVoteReplies = queryClient.getQueryData<VoteReplyType[]>(['vote-reply', voteId]);
-      queryClient.setQueryData(['vote-reply', voteId], (oldVoteReplies: VoteReplyType[]) =>
+      await queryClient.cancelQueries({ queryKey: queryKey.vote.reply(voteId) });
+      const previousVoteReplies = queryClient.getQueryData<VoteReplyType[]>(
+        queryKey.vote.reply(voteId),
+      );
+      queryClient.setQueryData(queryKey.vote.reply(voteId), (oldVoteReplies: VoteReplyType[]) =>
         getOptimisticUpdatedVoteRepliesData(oldVoteReplies, { commentId }),
       );
       return { previousVoteReplies };
     },
     onError: (err, { voteId }, context) => {
-      queryClient.setQueryData(['vote-reply', voteId], context?.previousVoteReplies);
+      queryClient.setQueryData(queryKey.vote.reply(voteId), context?.previousVoteReplies);
       toast({ message: 'ERROR', above: 'input' });
     },
     onSettled: (data, err, { voteId }) => {
-      queryClient.invalidateQueries({ queryKey: ['vote-reply', voteId] });
+      queryClient.invalidateQueries({ queryKey: queryKey.vote.reply(voteId) });
     },
   });
 };

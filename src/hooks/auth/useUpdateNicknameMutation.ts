@@ -1,32 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 import { useToast } from '@/hooks';
-import { patch } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
-
-type PatchNicknameRequest = {
-  nickname: string;
-};
-
-type PatchNicknameResponse = {
-  userId: number;
-  nickname: string;
-  modifiedAt: string;
-};
-
-const patchNickname = async ({ nickname }: PatchNicknameRequest) => {
-  const response = await patch<SuccessResponse<PatchNicknameResponse>>('/user', { nickname });
-  return response.data;
-};
 
 const useUpdateNicknameMutation = () => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: patchNickname,
+    mutationFn: donworryApi.auth.patchNickname,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['user'], refetchType: 'all' });
+      await queryClient.invalidateQueries({ queryKey: queryKey.auth.user, refetchType: 'all' });
       toast({ message: 'CHANGE_NICKNAME_SUCCESS' });
     },
     onError: () => {

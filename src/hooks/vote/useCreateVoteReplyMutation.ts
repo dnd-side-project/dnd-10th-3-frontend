@@ -1,40 +1,34 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { produce } from 'immer';
 
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
+import { PostVoteReplyRequest } from '@/api/vote/types';
 import { useToast } from '@/hooks';
-import { post } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
 import { VoteReplyType } from '@/types/vote';
-
-type PostVoteReplyRequest = { voteId: number; content: string };
-
-const postVoteReply = async ({ voteId, content }: PostVoteReplyRequest) => {
-  const response = await post<SuccessResponse<VoteReplyType>>(`/comment/vote/${voteId}`, {
-    content,
-  });
-  return response.data.data;
-};
 
 const useCreateVoteReplyMutation = () => {
   const toast = useToast();
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: postVoteReply,
+    mutationFn: donworryApi.vote.postVoteReply,
     onMutate: async ({ voteId, content }) => {
-      await queryClient.cancelQueries({ queryKey: ['vote-reply', voteId] });
-      const previousVoteReplies = queryClient.getQueryData<VoteReplyType[]>(['vote-reply', voteId]);
-      queryClient.setQueryData(['vote-reply', voteId], (oldVoteReplies: VoteReplyType[]) =>
+      await queryClient.cancelQueries({ queryKey: queryKey.vote.reply(voteId) });
+      const previousVoteReplies = queryClient.getQueryData<VoteReplyType[]>(
+        queryKey.vote.reply(voteId),
+      );
+      queryClient.setQueryData(queryKey.vote.reply(voteId), (oldVoteReplies: VoteReplyType[]) =>
         getOptimisticUpdatedVoteRepliesData(oldVoteReplies, { voteId, content }),
       );
       return { previousVoteReplies, voteId };
     },
     onError: (err, { voteId }, context) => {
-      queryClient.setQueryData(['vote-reply', voteId], context?.previousVoteReplies);
+      queryClient.setQueryData(queryKey.vote.reply(voteId), context?.previousVoteReplies);
       toast({ message: 'REPLY_REGISTER_FAIL', above: 'input' });
     },
     onSettled: (data, error, { voteId }) => {
-      queryClient.invalidateQueries({ queryKey: ['vote-reply', voteId] });
+      queryClient.invalidateQueries({ queryKey: queryKey.vote.reply(voteId) });
       toast({ message: 'REPLY_REGISTER_SUCCESS', above: 'input' });
     },
   });
