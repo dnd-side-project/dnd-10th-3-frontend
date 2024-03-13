@@ -8,7 +8,7 @@ import { useState, type PropsWithChildren } from 'react';
 const queryClientOption: QueryClientConfig = {
   defaultOptions: {
     queries: {
-      retry: false,
+      retry: 1,
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       networkMode: 'always',
