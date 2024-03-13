@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import ErrorWorry from '@/assets/images/error-worry.png';
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 
 type Props = {
   message: string;

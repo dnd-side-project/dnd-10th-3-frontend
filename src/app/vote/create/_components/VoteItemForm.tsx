@@ -4,8 +4,8 @@ import { useFieldArray, useFormContext } from 'react-hook-form';
 
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
+import { Typography } from '@/components/common/typography';
 import { VoteItem } from '@/components/features/vote/voteItem';
-import { Typography } from '@/foundations/typography';
 import { MAX_ITEM_LENGTH, MAX_VOTE_COUNT, MIN_VOTE_COUNT } from '@/schema/CreateVoteSchema';
 
 import { VoteItemImgForm } from '.';

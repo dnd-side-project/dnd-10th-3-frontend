@@ -6,8 +6,8 @@ import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { CharCounter } from '@/components/shared';
-import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
 import { useGetUser, useUpdateNicknameMutation } from '@/hooks/auth';
 import { MAX_NICK_LENGTH, updateNicknameSchema } from '@/schema/NicknameSchema';

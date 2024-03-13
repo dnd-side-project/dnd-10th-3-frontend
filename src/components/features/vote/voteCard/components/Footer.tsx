@@ -1,6 +1,6 @@
 import { Avatar } from '@/components/common/avatar';
 import { Icon } from '@/components/common/icon';
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 
 type Props = {
   likes: number;

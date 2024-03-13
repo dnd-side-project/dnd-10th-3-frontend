@@ -1,6 +1,6 @@
 'use client';
 
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 import { cn } from '@/lib/core';
 
 import { searchResultVariants } from './variant';

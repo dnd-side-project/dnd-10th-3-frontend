@@ -3,9 +3,9 @@
 import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { ConfirmBottomSheet, OptionBottomSheet } from '@/components/shared';
 import Profile from '@/components/shared/profile/Profile';
-import { Typography } from '@/foundations/typography';
 import { useBottomSheetState } from '@/hooks';
 import { useGetUser } from '@/hooks/auth';
 import { useDeleteVoteMutation } from '@/hooks/vote';

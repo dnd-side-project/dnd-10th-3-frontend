@@ -5,7 +5,7 @@ import { HTMLAttributes } from 'react';
 import LogoImage from '@/assets/images/logo.png';
 import { Icon } from '@/components/common/icon';
 import { IconColor, IconType } from '@/components/common/icon/assets';
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 import { cn } from '@/lib/core';
 
 import { Previous, ToggleNav } from './components';

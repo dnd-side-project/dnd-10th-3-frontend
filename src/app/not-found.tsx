@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 import NotFoundImage from '@/assets/images/404.svg';
+import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
-import { Typography } from '@/foundations/typography';
 
 const NotFoundPage = () => {
   return (

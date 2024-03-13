@@ -3,9 +3,9 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { Header } from '@/components/layout/header';
-import { Typography } from '@/foundations/typography';
 import { useGetTestResultById } from '@/hooks/test';
 import { useGetBestVote } from '@/hooks/vote/useGetBestVote';
 

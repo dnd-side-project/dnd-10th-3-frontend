@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 import { Divider } from '@/components/common/divider';
+import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
-import { Typography } from '@/foundations/typography';
 
 import { DeleteAccountButton, LogoutButton } from './_components';
 

@@ -2,10 +2,10 @@ import { cookies } from 'next/headers';
 import Image from 'next/image';
 
 import worry from '@/assets/images/test-worry.png';
+import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
 import { KakaoLoginButton, RedirectToPreviousPage } from '@/components/shared';
 import { CALLBACK_URL, IS_LOGIN } from '@/constants/auth';
-import { Typography } from '@/foundations/typography';
 import { getLoginMessage } from '@/utils/auth';
 
 type Props = {

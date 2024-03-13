@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { TOAST_MESSAGES } from '@/constants/toast';
 import ToastProvider from '@/contexts/toast/ToastProvider';
-import { Typography } from '@/foundations/typography';
 import { useToast } from '@/hooks';
 
 import { Toast, ToastContainer } from '.';
