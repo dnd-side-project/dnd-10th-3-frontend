@@ -2,22 +2,11 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
+import { VoteFormData } from '@/api/vote/types';
 import { CreateVoteInput } from '@/app/vote/create/_components/CreateVoteForm';
-import { VOTE_KEY } from '@/constants/queryKey/vote';
 import { useToast } from '@/hooks';
-import { post } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
-
-interface VoteFormData extends FormData {
-  append(name: 'voteRequestDto' | 'images', value: string | Blob): void;
-}
-
-type PostVoteRequest = CreateVoteInput;
-
-type PostVoteResponse = {
-  id: number;
-  // NOTE: 응답 더 많이 오는데 필요 없음
-};
 
 const useCreateVoteMutation = () => {
   const toast = useToast();
@@ -25,7 +14,7 @@ const useCreateVoteMutation = () => {
   const queryClient = useQueryClient();
 
   const { mutate: submitVote } = useMutation({
-    mutationFn: (data: PostVoteRequest) => {
+    mutationFn: (data: CreateVoteInput) => {
       const formData: VoteFormData = new FormData();
       formData.append(
         'voteRequestDto',
@@ -40,15 +29,12 @@ const useCreateVoteMutation = () => {
       data.selections.forEach((selection) => {
         formData.append('images', selection.img);
       });
-      return post<SuccessResponse<PostVoteResponse>>('/vote', formData, {
-        headers: { 'Content-Type': 'form-data' },
-      });
+      return donworryApi.vote.postVote(formData);
     },
     onSuccess: (data) => {
-      const { id } = data.data.data;
       toast({ message: 'VOTE_UPLOAD_SUCCESS' });
-      queryClient.invalidateQueries({ queryKey: VOTE_KEY.ALL, refetchType: 'all' });
-      router.replace(`/vote/${id}`);
+      queryClient.invalidateQueries({ queryKey: queryKey.vote.lists(), refetchType: 'all' });
+      router.replace(`/vote/${data.id}`);
     },
     onError: () => {
       toast({ message: 'VOTE_UPLOAD_FAIL' });

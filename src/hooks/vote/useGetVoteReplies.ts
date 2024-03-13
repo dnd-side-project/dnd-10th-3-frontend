@@ -1,25 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { get } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
-import { VoteReplyType } from '@/types/vote';
-
-type GetVoteRepliesResponse = VoteReplyType[];
-
-type GetVoteRepliesRequest = {
-  voteId: number;
-};
-
-// TODO: api func 정리 (+queryKey)
-const getVoteReplies = async ({ voteId }: GetVoteRepliesRequest) => {
-  const response = await get<SuccessResponse<GetVoteRepliesResponse>>(`/comment/${voteId}/all`);
-  return response.data.data;
-};
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
+import { GetVoteRepliesRequest } from '@/api/vote/types';
 
 const useGetVoteReplies = ({ voteId }: GetVoteRepliesRequest) => {
   return useQuery({
-    queryKey: ['vote-reply', voteId],
-    queryFn: () => getVoteReplies({ voteId }),
+    queryKey: queryKey.vote.reply(voteId),
+    queryFn: () => donworryApi.vote.getVoteReplies({ voteId }),
   });
 };
 

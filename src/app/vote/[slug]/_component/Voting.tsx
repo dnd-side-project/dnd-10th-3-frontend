@@ -18,7 +18,7 @@ type Props = {
 const Voting = ({ voteId, selections, selected }: Props) => {
   const [mode, setMode] = useState<'voting' | 'result'>(selected === null ? 'voting' : 'result');
   const [selectedItem, setSelectedItem] = useState(selected);
-  const { mutate: vote, isPending } = useVotingMutation(voteId);
+  const { mutate: vote, isPending } = useVotingMutation();
   const toast = useToast();
 
   const topVoteRate = Math.max(...selections.map((selection) => selection.votePercentage));
@@ -28,7 +28,7 @@ const Voting = ({ voteId, selections, selected }: Props) => {
       toast({ message: 'SELECTION_REQUIRED', above: 'input' });
       return;
     }
-    vote({ selectionId: selectedItem }, { onSuccess: () => setMode('result') });
+    vote({ voteId, selectionId: selectedItem }, { onSuccess: () => setMode('result') });
   };
 
   const setVotingMode = () => {

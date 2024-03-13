@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 
-import { VOTE } from '@/api/vote';
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 import { CATEGORY_TAB } from '@/constants/category';
-import { QUERY_KEY } from '@/constants/queryKey';
 
 //TODO : useGetAllVotes 함수에서 두가지 역할을 하는데 분리해야함.
 export const useGetAllVotes = () => {
@@ -13,8 +13,8 @@ export const useGetAllVotes = () => {
   const currentTab = findCategoryNameByParam?.name ?? ('전체' as string);
 
   return useQuery({
-    queryKey: QUERY_KEY.VOTE.ALL,
-    queryFn: VOTE.ALL,
+    queryKey: queryKey.vote.lists(),
+    queryFn: donworryApi.vote.getAllVotes,
     select: ({ data }) => {
       if (currentTab === '전체') return data;
 
