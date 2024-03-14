@@ -37,7 +37,7 @@ const VoteItemForm = () => {
               disabled={fields.length <= MIN_VOTE_COUNT}
               onClick={() => remove(index)}
             />
-            <VoteItem>
+            <VoteItem mode="input">
               <VoteItem.Input
                 key={field.id}
                 placeholder="텍스트를 입력해 주세요."

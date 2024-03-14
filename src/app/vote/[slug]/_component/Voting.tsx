@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/common/button';
 import { VoteCard, VoteItem } from '@/components/features/vote';
+import { VoteItemMode } from '@/components/features/vote/voteItem/VoteItem';
 import { useToast } from '@/hooks';
 import { useVotingMutation } from '@/hooks/vote';
 import { cn } from '@/lib/core';
@@ -16,7 +17,9 @@ type Props = {
 };
 
 const Voting = ({ voteId, selections, selected }: Props) => {
-  const [mode, setMode] = useState<'voting' | 'result'>(selected === null ? 'voting' : 'result');
+  const [mode, setMode] = useState<Extract<VoteItemMode, 'select' | 'result'>>(
+    selected === null ? 'select' : 'result',
+  );
   const [selectedItem, setSelectedItem] = useState(selected);
   const { mutate: vote, isPending } = useVotingMutation();
   const toast = useToast();
@@ -32,17 +35,21 @@ const Voting = ({ voteId, selections, selected }: Props) => {
   };
 
   const setVotingMode = () => {
-    setMode('voting');
+    setMode('select');
     setSelectedItem(null);
   };
 
   return (
     <>
-      {mode === 'voting' ? (
+      {mode === 'select' ? (
         <>
           <VoteCard.VoteItemGroup>
             {selections.map((selection) => (
-              <VoteItem key={selection.id} onClick={() => setSelectedItem(selection.id)}>
+              <VoteItem
+                mode="select"
+                key={selection.id}
+                onClick={() => setSelectedItem(selection.id)}
+              >
                 <VoteItem.Radio checked={selection.id === selectedItem} />
                 <VoteItem.Text>{selection.content}</VoteItem.Text>
                 {selection.imagePath && (
@@ -68,13 +75,13 @@ const Voting = ({ voteId, selections, selected }: Props) => {
           {/* NOTE: mode === 'result' 인 경우 */}
           <VoteCard.VoteItemGroup>
             {selections.map((selection) => (
-              <VoteItem key={selection.id}>
+              <VoteItem mode="result" key={selection.id}>
                 <VoteItem.Progress
                   color={selection.votePercentage === topVoteRate ? 'primary' : 'gray'}
                   progress={selection.votePercentage}
                 />
-                <VoteItem.Radio disabled checked={selected === selection.id} />
-                <VoteItem.Text doubleLine>
+                <VoteItem.Radio checked={selected === selection.id} />
+                <VoteItem.Text>
                   <div>{selection.content}</div>
                   <div
                     className={cn(selection.votePercentage === topVoteRate && 'text-primary-700')}

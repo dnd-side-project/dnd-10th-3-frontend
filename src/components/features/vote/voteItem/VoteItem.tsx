@@ -9,7 +9,7 @@ import { cn } from '@/lib/core';
 
 import { voteItemVariant } from './VoteItem.variant';
 
-type VoteItemMode = 'read' | 'select' | 'input' | 'result';
+export type VoteItemMode = 'read' | 'select' | 'input' | 'result';
 const VoteItemContext = createContext<VoteItemMode>('read');
 
 const VoteItem = ({

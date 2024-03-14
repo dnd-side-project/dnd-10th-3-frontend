@@ -86,16 +86,16 @@ const ResultContents = ({ id }: { id: number }) => {
                     content={bestVoteContents.content}
                   />
                   <VoteCard.VoteItemGroup withBlur>
-                    <VoteItem readOnly>
-                      <VoteItem.Radio></VoteItem.Radio>
+                    <VoteItem mode="read">
+                      <VoteItem.Radio />
                       <VoteItem.Text>{bestVoteContents.selections[0].content}</VoteItem.Text>
                       <VoteItem.Img
                         src={bestVoteContents.selections[0].imagePath}
                         alt="vote_item_image"
                       />
                     </VoteItem>
-                    <VoteItem readOnly>
-                      <VoteItem.Radio></VoteItem.Radio>
+                    <VoteItem mode="read">
+                      <VoteItem.Radio />
                       <VoteItem.Text>{bestVoteContents.selections[1].content}</VoteItem.Text>
                       <VoteItem.Img
                         src={bestVoteContents.selections[1].imagePath}
@@ -122,12 +122,12 @@ const ResultContents = ({ id }: { id: number }) => {
                     content="제목 그대로 학창시절 조금 친했던 친구였는데요. 지내다가 최근에 연락이 되었어요. 옛날 생각이 나네요... 그런데 얼마하는게 맞을까요?!"
                   />
                   <VoteCard.VoteItemGroup withBlur>
-                    <VoteItem readOnly>
-                      <VoteItem.Radio></VoteItem.Radio>
+                    <VoteItem mode="read">
+                      <VoteItem.Radio />
                       <VoteItem.Text>5만원</VoteItem.Text>
                     </VoteItem>
-                    <VoteItem readOnly>
-                      <VoteItem.Radio></VoteItem.Radio>
+                    <VoteItem mode="read">
+                      <VoteItem.Radio />
                       <VoteItem.Text>10만원</VoteItem.Text>
                     </VoteItem>
                   </VoteCard.VoteItemGroup>
