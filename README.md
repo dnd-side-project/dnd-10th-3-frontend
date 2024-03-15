@@ -1,55 +1,108 @@
-# 돈워리 (DND 10기 3팀)
 
-## 프론트엔드팀 소개
+<img width="100%" alt="donworry-main" src="https://github.com/dnd-side-project/dnd-10th-3-frontend/assets/69228045/ceb39cdf-a5da-4b1b-b757-0f7304835af7">
 
-<table>
-  <tr>
-  <td>
-      <a href="https://github.com/CodyMan0">
-          	<img src="https://avatars.githubusercontent.com/u/93697790?v=4" width="100px" />
-        </a>
-    </td>
-    <td>
-      <a href="https://github.com/jhsung23">
-            <img src="https://avatars.githubusercontent.com/u/69228045?v=4" width="100px"/>
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td><b>이주영</b></td>
-    <td><b>성지현</b></td>
-  </tr>
-</table>
+# 돈워리 (DonWorry)
 
-## 배포 URL
+**결혼식 축의금 얼마내지? 돈워리가 함께 해결해 줄게요!**
 
-- **서비스 임시 배포 URL**: https://donworry.vercel.app
-- **Storybook 배포 URL**: https://65abd47d09661c4e79c3c260-hnnhgamhoo.chromatic.com/
+친밀도, 참석 여부, 물가 상승 등 고민할 부분이 너무 많은 축의금! 돈워리를 통해 언제 어디서나 손쉽게 축의금 고민을 나눠보세요.
 
-## 개발 환경 설정
+## 목차
+1. [주요 기능](#주요-기능)
+2. [배포 링크](#배포-링크)
+4. [시연 영상](#시연-영상)
+5. [기술 스택](#기술-스택)
+6. [폴더 구조](#폴더-구조)
+7. [커밋 컨벤션](#커밋-컨벤션)
+8. [팀 소개](#팀-소개)
 
-```sh
-yarn install ## 패키지 설치
-yarn run dev # 로컬에서 개발 서버 실행
-yarn run storybook # 로컬에서 스토리북 실행
+
+## 주요 기능
+
+### 1. 친밀도 테스트
+
+**다양한 상황 테스트를 통해 상대방과의 친밀도를 알아보고, 축의금 금액을 결정해 보세요.**
+
+- 테스트 진행
+  - 2개의 사전 질문과 9개의 질문으로 구성된 친밀도 확인 테스트
+  - 사용자 이탈률을 낮추기 위한 퍼널 UI
+- 테스트 결과
+  - 테스트 결과 비동기 통신 성공 전 로딩 기능
+  - 테스트 결과 이미지 저장 및 공유 기능
+
+### 2. 투표
+
+**축의금 고민부터 결혼 축하 파티와 하객룩까지, 3초만에 로그인한 다음 투표를 만들고 참여하며 하객들의 다양한 고민을 해결해 보세요.**
+
+- 투표 등록하기
+  - 카테고리, 제목, 본문 내용, 투표 항목을 입력할 수 있는 투표 작성 폼
+  - 각 항목 유효성 검사 기능
+- 투표 참여하기
+  - 커뮤니티에 등록된 투표의 항목을 선택해 투표 참여 및 결과 확인 가능
+  - 투표 공감 기능
+- 댓글 작성하기
+  - 커뮤니티에 등록된 투표에 댓글 등록 및 삭제, 공감 기능
+  - optimistic update 적용
+
+## 배포 링크
+
+- 돈워리 배포 링크: [https://donworry.vercel.app](https://donworry.vercel.app/)
+- Storybook 배포 링크: [https://65abd47d09661c4e79c3c260-dmfwnaokvy.chromatic.com/](https://65abd47d09661c4e79c3c260-dmfwnaokvy.chromatic.com/)
+
+## 시연 영상
+
+준비중입니다.
+
+## 기술 스택
+
+<img width="560" alt="스크린샷 2024-03-15 오후 2 28 14" src="https://github.com/dnd-side-project/dnd-10th-3-frontend/assets/69228045/8a545878-9b81-42e8-8c61-3594597e646f">
+
+## 폴더 구조
+
+```markdown
+.
+└── src
+    ├── api
+    ├── app
+    ├── assets
+    ├── components
+    │   ├── common
+    │   ├── features
+    │   ├── layout
+    │   └── shared
+    ├── constants
+    ├── contexts
+    ├── hooks
+    ├── lib
+    ├── schema
+    ├── types
+    └── utils
 ```
 
-## 프로젝트 기술 스택 선정 이유
+## 커밋 컨벤션
 
-![Alt text](image.png)
+| type | description |
+| --- | --- |
+| ✨ | (feat) 새로운 기능 추가 |
+| 🐛 | (fix) 버그 수정 |
+| ⚡️ | (performance) 성능 향상 작업 |
+| ♻️ | (refactor) 기능 추가가 없는 코드 리팩토링 |
+| 📝 | (docs) 문서 수정 |
+| 🚀 | (deploy) 배포 관련 작업 |
+| 💄 | (design) 단순 css 디자인 수정 작업 |
+| ✅ | (test) 테스트 관련 작업 |
+| 🚧 | (wip) working in progress, 임시 커밋 |
+| ➕ | (add file) 파일 추가 |
+| ➖ | (remove file) 파일 삭제 |
+| 🛠️ | (set) 프로젝트 셋팅 작업 및 라이브러리 설치/제거 |
+| 🧹 | (chore) 기타 작업 |
+| 💬 | (comment) 주석 추가 삭제 작업 |
 
-- **Next.js**
-  많은 사용자 유입이 중요한 프로덕트기 때문에 SEO에 유리한 Next.js 채택
-- **Typescript**
-  협업에 용이하고 휴먼 에러를 사전에 막을 수 있으며 인텔리센스로부터 오는 DX가 상당하다고 생각
-- **TailwindCSS**
-  빠른 마크업을 바탕으로 디자인 시스템까지 구축하기 위해 채택
-- **Zustand**
-  사용 경험이 있는 리덕스와 유사한 중앙 집중형 스토어 형태이면서도, 작성해야 하는 코드양과 번들 사이즈가 훨씬 적고 가볍다는 장점
-  지금 상황에서는 전역으로 관리할 상태가 많지 않을 것으로 예상되어 1차적으로는 Context API를 사용하고, Context API의 한계가 느껴질 경우 Zustand를 사용하기로 결정
-- **Storybook**
-  공통 컴포넌트 관리 및 디자이너와의 효율적인 협업(디자인 QA 등)을 위해 도입
-- **React-Query**
-  개발 팀 모두 사용 경험이 있으며 캐싱을 포함한 효율적인 서버 상태 관리를 위함
-- **Axios**
-  인터셉터를 사용하기 위함
+## 팀 소개
+
+| 이주영                                                                                                    | 성지현                                                                                                    | 이진호                                                                                                        | 이희건                                                                                                         | 길도현                                                                                                      | 길은진                                                                                                  |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| <img src="https://avatars.githubusercontent.com/u/93697790?v=4" alt='@CodyMan0' width="130" height="130"> | <img src="https://avatars.githubusercontent.com/u/69228045?v=4" alt='@jhsung23' width="130" height="130"> | <img src="https://avatars.githubusercontent.com/u/118791679?v=4" alt='@wlshooo' width="130" height="130"> | <img src="https://avatars.githubusercontent.com/u/81156109?v=4" alt='@dlrjs2360' width="130" height="130"> | <img src="https://ca.slack-edge.com/TK0T8KE4F-U06CKN2NM50-c81cd55d97ac-512" alt='@chaehaeun' width="130" height="130"> | <img src="https://ca.slack-edge.com/TK0T8KE4F-U06C9KMUSSD-c71d6b321133-512" alt='@ukssss' width="130" height="130"> |
+| [@CodyMan0](https://github.com/CodyMan0/)                                                                 | [@jhsung23](https://github.com/jhsung23/)                                                                 | [@wlshooo](https://github.com/wlshooo/)                                                                   | [@dlrjs2360](https://github.com/dlrjs2360/)                                                              | [@]()                                                                 | [@e_unjin](https://notefolio.net/e_unjin/)                                                                   |
+| <p style='text-align:center'>팀장, 프론트엔드</p>                                                             | <p style='text-align:center'>프론트엔드</p>                                                                  | <p style='text-align:center'>백엔드</p>                                                                    | <p style='text-align:center'>백엔드</p>                                         | <p style='text-align:center'>디자이너</p>                                        | <p style='text-align:center'>디자이너</p>                                           |
+
