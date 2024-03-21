@@ -14,7 +14,7 @@ type Question = {
 type QustionType = Record<string, Question>;
 
 //TODO : string 좁히자
-const PRE_QUESTIONS: QustionType = {
+export const PRE_QUESTIONS: QustionType = {
   사전1: {
     id: 1,
     type: 'setGender',
@@ -45,9 +45,9 @@ const PRE_QUESTIONS: QustionType = {
   },
 };
 
-const MAIN_QUESTION: QustionType = {
+export const MAIN_QUESTIONS: QustionType = {
   본1: {
-    id: 3,
+    id: 1,
     type: 'love',
     question: (user) => {
       return (
@@ -61,7 +61,7 @@ const MAIN_QUESTION: QustionType = {
     answerList: ['예', '아니요'],
   },
   본2: {
-    id: 4,
+    id: 2,
     type: 'love',
     question: (user) => {
       return (
@@ -76,7 +76,7 @@ const MAIN_QUESTION: QustionType = {
   },
 
   본3: {
-    id: 5,
+    id: 3,
     type: 'talk',
     question: (user) => {
       return (
@@ -90,7 +90,7 @@ const MAIN_QUESTION: QustionType = {
     answerList: ['상대방 결혼식에 참석해 얼굴 비춘다.', '미안하지만 송금으로 마음을 전한다.'],
   },
   본4: {
-    id: 6,
+    id: 4,
     type: 'talk',
     question: (user) => {
       return (
@@ -102,7 +102,7 @@ const MAIN_QUESTION: QustionType = {
     answerList: ['예', '아니오'],
   },
   본5: {
-    id: 7,
+    id: 5,
     type: 'love',
     question: (user) => {
       return (
@@ -114,7 +114,7 @@ const MAIN_QUESTION: QustionType = {
     answerList: ['연락해서 축하라도 해줘야겠다.', '알아서 잘 보내겠지라는 생각으로 넘긴다.'],
   },
   본6: {
-    id: 8,
+    id: 6,
     type: 'talk',
     question: (user) => {
       return (
@@ -127,7 +127,7 @@ const MAIN_QUESTION: QustionType = {
     answerList: ['예전부터 이상형이 한결 같다.', '왜 나에게 인사를 시켜주는 지 모르겠다.'],
   },
   본7: {
-    id: 9,
+    id: 7,
     type: 'trust',
     question: (user) => {
       return (
@@ -140,7 +140,7 @@ const MAIN_QUESTION: QustionType = {
     answerList: ['예', '아니오'],
   },
   본8: {
-    id: 10,
+    id: 8,
     type: 'trust',
     question: (user) => {
       return (
@@ -156,7 +156,7 @@ const MAIN_QUESTION: QustionType = {
     ],
   },
   본9: {
-    id: 11,
+    id: 9,
     type: 'trust',
     question: (user) => {
       return (
@@ -174,8 +174,7 @@ const MAIN_QUESTION: QustionType = {
   },
 };
 
-export const QUESTIONS: QustionType = { ...PRE_QUESTIONS, ...MAIN_QUESTION };
+export const ALL_QUESTIONS: QustionType = { ...PRE_QUESTIONS, ...MAIN_QUESTIONS };
 
-export type QuestionOrderType = keyof typeof QUESTIONS;
-export const preQuestionList = Object.keys(PRE_QUESTIONS) as QuestionOrderType[];
-export const allQuestionList = Object.keys(QUESTIONS) as QuestionOrderType[];
+export const preQuestionList = Object.keys(PRE_QUESTIONS);
+export const allQuestionList = Object.keys(ALL_QUESTIONS);
