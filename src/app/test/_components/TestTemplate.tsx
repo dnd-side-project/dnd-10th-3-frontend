@@ -7,7 +7,7 @@ interface FormLayoutProps {
   footer: ReactNode;
 }
 
-const TestLayout = ({ header, comment, body, footer }: PropsWithChildren<FormLayoutProps>) => {
+const TestTemplate = ({ header, comment, body, footer }: PropsWithChildren<FormLayoutProps>) => {
   return (
     <div className="flex h-dvh w-full flex-col px-2xs py-4xs">
       <div className="flex h-1/3 flex-col">
@@ -20,4 +20,4 @@ const TestLayout = ({ header, comment, body, footer }: PropsWithChildren<FormLay
   );
 };
 
-export default TestLayout;
+export default TestTemplate;
