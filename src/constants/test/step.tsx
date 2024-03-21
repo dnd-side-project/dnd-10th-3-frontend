@@ -13,6 +13,20 @@ type Question = {
 
 type QustionType = Record<string, Question>;
 
+export const funnelList = [
+  '홈',
+  '사전1',
+  '사전2',
+  '본1',
+  '본2',
+  '본3',
+  '본4',
+  '본5',
+  '본6',
+  '본7',
+  '본8',
+  '본9',
+] as const;
 //TODO : string 좁히자
 export const PRE_QUESTIONS: QustionType = {
   사전1: {

@@ -10,6 +10,7 @@ import { Input } from '@/components/common/input';
 import { Typography } from '@/components/common/typography';
 import createFunnel from '@/components/features/test/funnel/createFunnel';
 import { Header } from '@/components/layout/header';
+import { funnelList } from '@/constants/test/step';
 import { TestContext } from '@/contexts/test/TestProvider';
 import { FunnelProvider } from '@/contexts/test/useFunnelContext';
 import { useToast } from '@/hooks';
@@ -19,20 +20,7 @@ import TestStep from './TestStep';
 
 export type StepProps = Range<0, 12>;
 
-const { Funnel, Step, useFunnel } = createFunnel([
-  '홈',
-  '사전1',
-  '사전2',
-  '본1',
-  '본2',
-  '본3',
-  '본4',
-  '본5',
-  '본6',
-  '본7',
-  '본8',
-  '본9',
-] as const);
+const { Funnel, Step, useFunnel } = createFunnel(funnelList);
 
 const TestForm = () => {
   const toast = useToast();
@@ -91,40 +79,13 @@ const TestForm = () => {
             </main>
           </div>
         </Step>
-        <Step name="사전1">
-          <TestStep step={step} />
-        </Step>
-        <Step name="사전2">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본1">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본2">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본3">
-          <TestStep step={step} />
-        </Step>
-
-        <Step name="본4">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본5">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본6">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본7">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본8">
-          <TestStep step={step} />
-        </Step>
-        <Step name="본9">
-          <TestStep step={step} />
-        </Step>
+        {funnelList.map((funnelName, index) => {
+          return (
+            <Step name={funnelName} key={index}>
+              <TestStep step={step} />
+            </Step>
+          );
+        })}
       </Funnel>
     </FunnelProvider>
   );
