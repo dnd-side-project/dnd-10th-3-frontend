@@ -18,10 +18,10 @@ const TestForm = () => {
         <Step name="홈">
           <TestHomePage />
         </Step>
-        {funnelList.map((funnelName, index) => {
+        {funnelList.map((funnelName) => {
           return (
-            <Step name={funnelName} key={index}>
-              <TestStep step={step} />
+            <Step name={funnelName} key={funnelName}>
+              <TestStep currentStep={step} />
             </Step>
           );
         })}

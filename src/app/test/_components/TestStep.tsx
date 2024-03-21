@@ -18,13 +18,13 @@ import { useFunnelContext } from '@/contexts/test/useFunnelContext';
 import TestTemplate from './TestTemplate';
 
 type TestProps = {
-  step: string;
+  currentStep: string;
 };
 
-const TestStep = ({ step }: TestProps) => {
+const TestStep = ({ currentStep }: TestProps) => {
   const { toNext, toPrev } = useFunnelContext();
   const testState = useContext(TestContext);
-  const isPreQuestion = step.slice(0, 2) === '사전';
+  const isPreQuestion = currentStep.slice(0, 2) === '사전';
   return (
     <TestTemplate
       header={
@@ -40,19 +40,19 @@ const TestStep = ({ step }: TestProps) => {
           <Tag>
             {isPreQuestion
               ? 'Q.사전질문'
-              : `${MAIN_QUESTIONS[step].id}/${ALL_QUESTIONS_LENGTH - PRE_QUESTIONS_LENGTH}`}
+              : `${MAIN_QUESTIONS[currentStep].id}/${ALL_QUESTIONS_LENGTH - PRE_QUESTIONS_LENGTH}`}
           </Tag>
           <Typography type="question">
-            {ALL_QUESTIONS[step].question(isPreQuestion ? '' : testState?.state.buddy)}
+            {ALL_QUESTIONS[currentStep].question(isPreQuestion ? '' : testState?.state.buddy)}
           </Typography>
         </div>
       }
       body={
         <>
-          {ALL_QUESTIONS[step].image ? (
+          {ALL_QUESTIONS[currentStep].image ? (
             <div className="absolute right-0">
               <Image
-                src={ALL_QUESTIONS[step].image as string}
+                src={ALL_QUESTIONS[currentStep].image as string}
                 width={215}
                 height={215}
                 alt="testImage"
@@ -63,7 +63,7 @@ const TestStep = ({ step }: TestProps) => {
       }
       footer={
         <div className=" flex flex-col gap-3xs">
-          {ALL_QUESTIONS[step].answerList.map((answer, index) => {
+          {ALL_QUESTIONS[currentStep].answerList.map((answer, index) => {
             return (
               <Button
                 variant="accent"
@@ -71,12 +71,15 @@ const TestStep = ({ step }: TestProps) => {
                 onClick={() => {
                   if (isPreQuestion) {
                     toNext();
-                    testState?.dispatch({ type: `${ALL_QUESTIONS[step].type}`, value: answer });
+                    testState?.dispatch({
+                      type: `${ALL_QUESTIONS[currentStep].type}`,
+                      value: answer,
+                    });
                     return;
                   }
                   if (index === 0) {
                     // FIXME : typeError value : '' 임시 해결 ('{ type: "trust" | "love" | "talk" | "setBuddyName" | "setGender" | "setAge"; }' 형식의 인수는 'TestAction' 형식의 매개 변수에 할당될 수 없습니다.)
-                    testState?.dispatch({ type: `${ALL_QUESTIONS[step].type}`, value: '' });
+                    testState?.dispatch({ type: `${ALL_QUESTIONS[currentStep].type}`, value: '' });
                   }
                   toNext();
                 }}
