@@ -42,7 +42,9 @@ const TestStep = ({ step }: TestProps) => {
               ? 'Q.사전질문'
               : `${MAIN_QUESTIONS[step].id}/${ALL_QUESTIONS_LENGTH - PRE_QUESTIONS_LENGTH}`}
           </Tag>
-          <Typography type="question">{ALL_QUESTIONS[step].question('상대')}</Typography>
+          <Typography type="question">
+            {ALL_QUESTIONS[step].question(isPreQuestion ? '' : testState?.state.buddy)}
+          </Typography>
         </div>
       }
       body={
@@ -70,6 +72,7 @@ const TestStep = ({ step }: TestProps) => {
                   if (isPreQuestion) {
                     toNext();
                     testState?.dispatch({ type: `${ALL_QUESTIONS[step].type}`, value: answer });
+                    return;
                   }
                   if (index === 0) {
                     // FIXME : typeError value : '' 임시 해결 ('{ type: "trust" | "love" | "talk" | "setBuddyName" | "setGender" | "setAge"; }' 형식의 인수는 'TestAction' 형식의 매개 변수에 할당될 수 없습니다.)

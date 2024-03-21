@@ -3,12 +3,9 @@
 import createFunnel from '@/components/features/test/funnel/createFunnel';
 import { funnelList } from '@/constants/test/step';
 import { FunnelProvider } from '@/contexts/test/useFunnelContext';
-import { Range } from '@/types/util';
 
 import TestHomePage from './TestHomePage';
 import TestStep from './TestStep';
-
-export type StepProps = Range<0, 12>;
 
 const { Funnel, Step, useFunnel } = createFunnel(funnelList);
 
