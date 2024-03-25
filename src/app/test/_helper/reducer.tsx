@@ -51,7 +51,7 @@ export function reducer(state: TestFormType, action: TestAction) {
   }
 }
 
-export const initialState = {
+export const initialTestState = {
   buddy: '',
   gender: '',
   age: '',

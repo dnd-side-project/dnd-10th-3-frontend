@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useContext } from 'react';
 
 import LogoImage from '@/assets/images/logo.png';
 import { default as WorryImage } from '@/assets/images/test-worry.png';
@@ -7,17 +6,18 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
-import { TestContext } from '@/contexts/test/TestProvider';
+import { useTestDispatch, useTestState } from '@/contexts/test/TestsProvider';
 import { useFunnelContext } from '@/contexts/test/useFunnelContext';
 import { useToast } from '@/hooks';
 
 const TestHomePage = () => {
   const toast = useToast();
   const { toNext } = useFunnelContext();
-  const testState = useContext(TestContext);
+  const test = useTestState();
+  const dispatch = useTestDispatch();
 
   const handleTestFormInvalid = () => {
-    if (testState?.state.buddy) {
+    if (test.buddy) {
       toNext();
       return;
     }
@@ -50,8 +50,8 @@ const TestHomePage = () => {
               type="fit"
               placeholder=" 상대 이름을 입력해주세요"
               className="text-center"
-              value={testState?.state.buddy}
-              onChange={(e) => testState?.dispatch({ type: 'setBuddyName', value: e.target.value })}
+              value={test.buddy}
+              onChange={(e) => dispatch({ type: 'setBuddyName', value: e.target.value })}
               onKeyUp={handleOnKeyEnter}
             />
           </div>

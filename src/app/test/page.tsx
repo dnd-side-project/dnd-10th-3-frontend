@@ -1,12 +1,12 @@
-import TestProvider from '@/contexts/test/TestProvider';
+import { TestsProvider } from '@/contexts/test/TestsProvider';
 
 import TestForm from './_components/TestForm';
 
 const TestPage = () => {
   return (
-    <TestProvider>
+    <TestsProvider>
       <TestForm />
-    </TestProvider>
+    </TestsProvider>
   );
 };
 
