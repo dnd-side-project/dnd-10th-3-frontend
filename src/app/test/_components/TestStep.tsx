@@ -18,9 +18,10 @@ import TestTemplate from './TestTemplate';
 
 type TestProps = {
   currentStep: string;
+  onLoading: () => void;
 };
 
-const TestStep = ({ currentStep }: TestProps) => {
+const TestStep = ({ currentStep, onLoading }: TestProps) => {
   const { toNext, toPrev } = useFunnelContext();
   const test = useTestState();
   const dispatch = useTestDispatch();
@@ -79,13 +80,9 @@ const TestStep = ({ currentStep }: TestProps) => {
                     });
                     return;
                   }
-
                   if (isLastQuestion) {
-                    console.log('제출');
-                    //
+                    onLoading();
                   }
-
-                  // 사전 질문을 제외하고 첫번째 버튼을 클릭할 경우 reducer 상태를 변경하도록 구현
                   if (index === 0) {
                     // FIXME : typeError value : '' 임시 해결 ('{ type: "trust" | "love" | "talk" | "setBuddyName" | "setGender" | "setAge"; }' 형식의 인수는 'TestAction' 형식의 매개 변수에 할당될 수 없습니다.)
                     dispatch({
