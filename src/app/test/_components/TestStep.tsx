@@ -11,7 +11,7 @@ import {
   PRE_QUESTIONS_LENGTH,
   PROGRESS_RATE,
 } from '@/constants/test/progress';
-import { ALL_QUESTIONS, MAIN_QUESTIONS } from '@/constants/test/step';
+import { ALL_QUESTIONS, FUNNEL_LIST, MAIN_QUESTIONS } from '@/constants/test/step';
 import { TestContext } from '@/contexts/test/TestProvider';
 import { useFunnelContext } from '@/contexts/test/useFunnelContext';
 
@@ -25,6 +25,8 @@ const TestStep = ({ currentStep }: TestProps) => {
   const { toNext, toPrev } = useFunnelContext();
   const testState = useContext(TestContext);
   const isPreQuestion = currentStep.slice(0, 2) === '사전';
+  const isLastQuestion = currentStep === FUNNEL_LIST[FUNNEL_LIST.length - 1];
+
   return (
     <TestTemplate
       header={
@@ -77,9 +79,19 @@ const TestStep = ({ currentStep }: TestProps) => {
                     });
                     return;
                   }
+
+                  if (isLastQuestion) {
+                    console.log('제출');
+                    //
+                  }
+
+                  // 사전 질문을 제외하고 첫번째 버튼을 클릭할 경우 reducer 상태를 변경하도록 구현
                   if (index === 0) {
                     // FIXME : typeError value : '' 임시 해결 ('{ type: "trust" | "love" | "talk" | "setBuddyName" | "setGender" | "setAge"; }' 형식의 인수는 'TestAction' 형식의 매개 변수에 할당될 수 없습니다.)
-                    testState?.dispatch({ type: `${ALL_QUESTIONS[currentStep].type}`, value: '' });
+                    testState?.dispatch({
+                      type: `${ALL_QUESTIONS[currentStep].type}`,
+                      value: '',
+                    });
                   }
                   toNext();
                 }}

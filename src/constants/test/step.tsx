@@ -13,7 +13,7 @@ type Question = {
 
 type QustionType = Record<string, Question>;
 
-export const funnelList = [
+export const FUNNEL_LIST = [
   '홈',
   '사전1',
   '사전2',
