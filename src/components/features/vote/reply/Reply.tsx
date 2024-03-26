@@ -1,10 +1,18 @@
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
 import { Button } from '@/components/common/button';
 import { Typography } from '@/components/common/typography';
-import { ConfirmBottomSheet, LikeButton, OptionBottomSheet, Profile } from '@/components/shared';
+import { LikeButton, Profile } from '@/components/shared';
 import { VoteReplyType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
+
+const ConfirmBottomSheet = dynamic(
+  () => import('@/components/shared/confirmBottomSheet/ConfirmBottomSheet'),
+);
+const OptionBottomSheet = dynamic(
+  () => import('@/components/shared/optionBottomSheet/OptionBottomSheet'),
+);
 
 type Props = {
   reply: VoteReplyType; // NOTE: 다른 피쳐에서 댓글 사용 시 변경 필요

@@ -6,14 +6,14 @@ type Props = {
   params: { slug: string };
 };
 
-const VoteDetailPage = async ({ params }: Props) => {
-  const voteId = params.slug;
+const VoteDetailPage = ({ params }: Props) => {
+  const voteId = +params.slug;
 
   return (
     <>
-      <VoteDetail voteId={Number(voteId)} />
+      <VoteDetail voteId={voteId} />
       <Divider height={8} />
-      <Replies voteId={Number(voteId)} />
+      <Replies voteId={voteId} />
     </>
   );
 };

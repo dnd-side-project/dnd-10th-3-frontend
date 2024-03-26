@@ -1,15 +1,22 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
 import { Typography } from '@/components/common/typography';
-import { ConfirmBottomSheet, OptionBottomSheet } from '@/components/shared';
 import Profile from '@/components/shared/profile/Profile';
 import { useBottomSheetState } from '@/hooks';
 import { useGetUser } from '@/hooks/auth';
 import { useDeleteVoteMutation } from '@/hooks/vote';
 import { VoteType } from '@/types/vote';
+
+const ConfirmBottomSheet = dynamic(
+  () => import('@/components/shared/confirmBottomSheet/ConfirmBottomSheet'),
+);
+const OptionBottomSheet = dynamic(
+  () => import('@/components/shared/optionBottomSheet/OptionBottomSheet'),
+);
 
 type Props = {
   voteId: number;

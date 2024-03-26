@@ -1,34 +1,39 @@
 'use client';
 
 import dayjs from 'dayjs';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 
 import { Button } from '@/components/common/button';
 import { Typography } from '@/components/common/typography';
 import { VoteCard } from '@/components/features/vote';
-import { ConfirmBottomSheet, EmptyVote, OptionBottomSheet } from '@/components/shared';
+import { EmptyVote } from '@/components/shared';
 import { useBottomSheetState } from '@/hooks';
 import { useDeleteVoteMutation, useGetMyVote } from '@/hooks/vote';
 import { VoteType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
 
+import { Fallback as MyVoteFallback } from '.';
+
+const ConfirmBottomSheet = dynamic(
+  () => import('@/components/shared/confirmBottomSheet/ConfirmBottomSheet'),
+);
+const OptionBottomSheet = dynamic(
+  () => import('@/components/shared/optionBottomSheet/OptionBottomSheet'),
+);
+
 type BottomSheetType = 'askDelete' | 'selectOption';
 
 const MyVote = () => {
-  const { data, status } = useGetMyVote();
+  const { data } = useGetMyVote();
   const { mutate: onDelete, isPending } = useDeleteVoteMutation();
   const { onOpenSheet, openedSheet, onCloseSheet } = useBottomSheetState<BottomSheetType>();
   const deleteTarget = useRef<VoteType['id'] | null>(null);
 
-  // TODO Suspense or ssr
   return (
-    <>
-      {status === 'pending' ? (
-        <></>
-      ) : status === 'error' ? (
-        <></>
-      ) : data.length > 0 ? (
+    <Suspense fallback={<MyVoteFallback />}>
+      {data.length > 0 ? (
         <div className="mt-3xs flex flex-col gap-3xs">
           {data.map((vote) => (
             <VoteCard key={vote.id}>
@@ -114,7 +119,7 @@ const MyVote = () => {
       ) : (
         <EmptyVote />
       )}
-    </>
+    </Suspense>
   );
 };
 

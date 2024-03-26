@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { Suspense, useCallback, useRef, useState } from 'react';
 
 import { ControlTab } from '@/components/common/controlTab';
 import { Spinner } from '@/components/common/spinner';
@@ -23,7 +23,7 @@ type Props = {
 
 const Replies = ({ voteId }: Props) => {
   const { data: user } = useGetUser();
-  const { status, data: replies } = useGetVoteReplies({ voteId });
+  const { data: replies } = useGetVoteReplies({ voteId });
   const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
   const { mutate: deleteVoteReply } = useDeleteVoteReplyMutation();
   const { mutate: toggleLikeVoteReply } = useLikeVoteReplyMutation();
@@ -55,35 +55,30 @@ const Replies = ({ voteId }: Props) => {
 
       <Notice text="댓글을 사용할 때는 타인을 존중해야합니다." />
 
-      {/* TODO: Suspense or SSR */}
-      {status === 'pending' ? (
-        <div className="flex h-full items-center justify-center py-lg">
-          <Spinner />
-        </div>
-      ) : status === 'error' ? (
-        <div>에러</div>
-      ) : sortedReplyData.length > 0 ? (
-        <ul className="flex h-full flex-col px-2xs py-3xs">
-          {sortedReplyData.map((reply) => (
-            <Reply
-              key={reply.commentId}
-              reply={reply}
-              onLikeToggle={() =>
-                toggleLikeVoteReply({ voteId: reply.voteId, commentId: reply.commentId })
-              }
-              onDelete={() =>
-                deleteVoteReply({
-                  commentId: reply.commentId,
-                  voteId: reply.voteId,
-                })
-              }
-              isWrittenByCurrentUser={reply.userId === user?.userId}
-            />
-          ))}
-        </ul>
-      ) : (
-        <NoReplies />
-      )}
+      <Suspense fallback={<ReplyFallback />}>
+        {sortedReplyData.length > 0 ? (
+          <ul className="flex h-full flex-col px-2xs py-3xs">
+            {sortedReplyData.map((reply) => (
+              <Reply
+                key={reply.commentId}
+                reply={reply}
+                onLikeToggle={() =>
+                  toggleLikeVoteReply({ voteId: reply.voteId, commentId: reply.commentId })
+                }
+                onDelete={() =>
+                  deleteVoteReply({
+                    commentId: reply.commentId,
+                    voteId: reply.voteId,
+                  })
+                }
+                isWrittenByCurrentUser={reply.userId === user?.userId}
+              />
+            ))}
+          </ul>
+        ) : (
+          <NoReplies />
+        )}
+      </Suspense>
 
       <ReplyInput
         onSubmit={async (content) => {
@@ -92,6 +87,14 @@ const Replies = ({ voteId }: Props) => {
         }}
       />
     </section>
+  );
+};
+
+const ReplyFallback = () => {
+  return (
+    <div className="flex h-full items-center justify-center py-lg">
+      <Spinner />
+    </div>
   );
 };
 
