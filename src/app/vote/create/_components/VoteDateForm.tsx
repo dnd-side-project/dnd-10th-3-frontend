@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Range } from '@/types/util';
 import { convertNumToDay } from '@/utils/dates';
 
@@ -15,7 +16,12 @@ const VoteDateForm = () => {
 
   return (
     <section>
-      <Button icon="clock" iconSize={18} variant="empty" width="full" className="px-0">
+      <Button
+        Icon={<Icon icon="clock" size={18} color="gray-300" />}
+        variant="empty"
+        width="full"
+        className="px-0"
+      >
         <div className="flex grow items-center justify-between font-normal">
           {/* FIXME: 모달 디자인 나오면 날짜 선택 기능 추가하기 (현재는 기본 7일, 변경 불가)  */}
           <span className="text-sm text-gray-300">종료일</span>

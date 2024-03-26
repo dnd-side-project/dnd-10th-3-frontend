@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { VoteItem } from '@/components/features/vote/voteItem';
 
 import VoteCard from './VoteCard';
@@ -45,7 +46,11 @@ export const Basic: Story = {
           </VoteItem>
         </VoteCard.VoteItemGroup>
         <VoteCard.SubmitButton>
-          <Button variant="secondary" width="full" icon="add" iconColor="gray-1000" iconSize={12}>
+          <Button
+            variant="secondary"
+            width="full"
+            Icon={<Icon icon="add" color="gray-1000" size={12} />}
+          >
             항목 추가
           </Button>
         </VoteCard.SubmitButton>

@@ -31,8 +31,12 @@ const VoteItemForm = () => {
             <Button
               variant="empty"
               iconOnly
-              icon="remove"
-              iconColor={fields.length <= MIN_VOTE_COUNT ? 'gray-100' : 'gray-300'}
+              Icon={
+                <Icon
+                  icon="remove"
+                  color={fields.length <= MIN_VOTE_COUNT ? 'gray-100' : 'gray-300'}
+                />
+              }
               className="!p-0"
               disabled={fields.length <= MIN_VOTE_COUNT}
               onClick={() => remove(index)}
@@ -50,11 +54,15 @@ const VoteItemForm = () => {
         ))}
       </div>
       <Button
-        icon="add"
+        Icon={
+          <Icon
+            icon="add"
+            size={14}
+            color={fields.length >= MAX_VOTE_COUNT ? 'gray-400' : 'gray-1000'}
+          />
+        }
         width="full"
         variant="secondary"
-        iconColor={fields.length >= MAX_VOTE_COUNT ? 'gray-400' : 'gray-1000'}
-        iconSize={14}
         className="text-sm"
         onClick={() => append({ content: '', img: '' })}
         disabled={fields.length >= MAX_VOTE_COUNT}

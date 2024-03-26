@@ -1,7 +1,6 @@
 import { type VariantProps } from 'class-variance-authority';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 
-import { Icon } from '@/components/common/icon';
 import { Spinner } from '@/components/common/spinner';
 import { cn } from '@/lib/core';
 
@@ -20,9 +19,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       width,
       className,
       children,
-      icon,
-      iconColor = 'gray-300',
-      iconSize = 20,
+      Icon,
       iconOnly = false,
       iconSide = 'left',
       isLoading,
@@ -39,12 +36,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading && <Spinner />}
         {iconOnly ? (
-          <Icon icon={icon!} size={iconSize} color={iconColor} />
+          Icon
         ) : (
           <>
-            {icon && iconSide === 'left' && <Icon icon={icon} size={iconSize} color={iconColor} />}
+            {Icon && iconSide === 'left' && Icon}
             {children}
-            {icon && iconSide === 'right' && <Icon icon={icon} size={iconSize} color={iconColor} />}
+            {Icon && iconSide === 'right' && Icon}
           </>
         )}
       </button>

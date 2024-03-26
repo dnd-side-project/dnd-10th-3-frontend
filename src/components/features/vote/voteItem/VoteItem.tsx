@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { ComponentProps, createContext, forwardRef, HTMLAttributes, useContext } from 'react';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { IconType } from '@/components/common/icon/assets';
 import { Radio as RadioButton } from '@/components/common/radio';
 import { cn } from '@/lib/core';
@@ -38,8 +39,7 @@ const IconButton = ({
     <Button
       variant="empty"
       iconOnly
-      icon={icon}
-      iconColor="gray-300"
+      Icon={<Icon icon={icon} color="gray-300" />}
       className={cn('!p-0', className)}
     />
   );

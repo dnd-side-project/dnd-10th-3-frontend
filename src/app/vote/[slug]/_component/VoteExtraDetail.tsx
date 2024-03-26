@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Typography } from '@/components/common/typography';
 import { ConfirmBottomSheet, OptionBottomSheet } from '@/components/shared';
 import Profile from '@/components/shared/profile/Profile';
@@ -41,7 +42,7 @@ const VoteExtraDetail = ({ author, views, category, voteId }: Props) => {
               <Button
                 variant="empty"
                 iconOnly
-                icon="more"
+                Icon={<Icon icon="more" color="gray-300" />}
                 className="!p-0"
                 onClick={() => onOpenSheet('replyOption')}
                 disabled={isPending}

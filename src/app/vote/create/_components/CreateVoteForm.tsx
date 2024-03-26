@@ -8,6 +8,7 @@ import { z } from 'zod';
 
 import { Button } from '@/components/common/button';
 import { Divider } from '@/components/common/divider';
+import { Icon } from '@/components/common/icon';
 import { Textarea as ContentInput } from '@/components/common/textarea';
 import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
@@ -61,11 +62,9 @@ const CreateVoteForm = () => {
     <FormProvider {...methods}>
       <Header className="z-auto bg-white">
         <Button
-          icon="x"
           iconOnly
+          Icon={<Icon icon="x" color="gray-1000" size={15} />}
           variant="empty"
-          iconColor="gray-1000"
-          iconSize={15}
           className="!p-0"
           onClick={() => router.back()}
         />
