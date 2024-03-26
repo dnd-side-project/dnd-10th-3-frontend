@@ -1,10 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { donworryApi } from '@/api';
 import { queryKey } from '@/api/queryKey';
 
 const useGetMyVote = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryFn: donworryApi.vote.getMyVotes,
     queryKey: queryKey.vote.myVotes(),
     retry: 1,
