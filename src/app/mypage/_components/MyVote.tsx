@@ -1,19 +1,27 @@
 'use client';
 
 import dayjs from 'dayjs';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Suspense, useRef } from 'react';
 
 import { Button } from '@/components/common/button';
 import { Typography } from '@/components/common/typography';
 import { VoteCard } from '@/components/features/vote';
-import { ConfirmBottomSheet, EmptyVote, OptionBottomSheet } from '@/components/shared';
+import { EmptyVote } from '@/components/shared';
 import { useBottomSheetState } from '@/hooks';
 import { useDeleteVoteMutation, useGetMyVote } from '@/hooks/vote';
 import { VoteType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
 
 import { Fallback as MyVoteFallback } from '.';
+
+const ConfirmBottomSheet = dynamic(
+  () => import('@/components/shared/confirmBottomSheet/ConfirmBottomSheet'),
+);
+const OptionBottomSheet = dynamic(
+  () => import('@/components/shared/optionBottomSheet/OptionBottomSheet'),
+);
 
 type BottomSheetType = 'askDelete' | 'selectOption';
 
