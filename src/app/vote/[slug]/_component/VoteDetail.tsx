@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
 import { Spinner } from '@/components/common/spinner';
+import { Typography } from '@/components/common/typography';
 import { VoteCard } from '@/components/features/vote';
 import { LikeButton } from '@/components/shared';
-import { Typography } from '@/foundations/typography';
 import { useGetVoteById, useLikeVoteMutation } from '@/hooks/vote';
 
 import { VoteExtraDetail, Voting } from '.';

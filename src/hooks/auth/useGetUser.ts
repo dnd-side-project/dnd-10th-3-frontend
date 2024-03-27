@@ -1,20 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import { hasCookie } from 'cookies-next';
 
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 import { IS_LOGIN } from '@/constants/auth';
-import { get } from '@/lib/axios';
-import { SuccessResponse } from '@/types/response';
-import { UserInfo } from '@/types/user';
-
-const getUser = async () => {
-  const response = await get<SuccessResponse<UserInfo>>('/user');
-  return response.data.data;
-};
 
 const useGetUser = () => {
   return useQuery({
-    queryKey: ['user'],
-    queryFn: getUser,
+    queryKey: queryKey.auth.user,
+    queryFn: donworryApi.auth.getUser,
     enabled: hasCookie(IS_LOGIN),
     throwOnError: true,
     staleTime: Infinity,

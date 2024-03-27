@@ -1,8 +1,8 @@
 'use client';
 
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { KakaoShareButton } from '@/components/shared';
-import { Typography } from '@/foundations/typography';
 import { shareLink } from '@/utils/share';
 
 const ShareBox = () => {

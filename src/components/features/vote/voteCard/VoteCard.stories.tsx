@@ -35,11 +35,11 @@ export const Basic: Story = {
         <VoteCard.Header />
         <VoteCard.VoteItemGroup>
           {/* TODO : VoteItem 컴포넌트 기능 추가된 후 구현 가능 */}
-          <VoteItem>
+          <VoteItem mode="input">
             <VoteItem.Input placeholder="텍스트를 입력해 주세요." />
             <VoteItem.IconButton icon="photo" />
           </VoteItem>
-          <VoteItem>
+          <VoteItem mode="input">
             <VoteItem.Input placeholder="텍스트를 입력해 주세요." />
             <VoteItem.IconButton icon="photo" />
           </VoteItem>
@@ -65,12 +65,12 @@ export const ReadOnlyWithFooter: Story = {
         되었어요. 옛날..."
         />
         <VoteCard.VoteItemGroup withBlur>
-          <VoteItem readOnly>
-            <VoteItem.Radio disabled />
+          <VoteItem mode="read">
+            <VoteItem.Radio />
             <VoteItem.Text>5만원</VoteItem.Text>
           </VoteItem>
-          <VoteItem readOnly>
-            <VoteItem.Radio disabled />
+          <VoteItem mode="read">
+            <VoteItem.Radio />
             <VoteItem.Text>7만원</VoteItem.Text>
           </VoteItem>
         </VoteCard.VoteItemGroup>
@@ -91,11 +91,11 @@ export const VoteWithoutFooter: Story = {
       <VoteCard>
         <VoteCard.Header closeDate="2024-02-24" voter={89} fontColor="text-gray-600" />
         <VoteCard.VoteItemGroup>
-          <VoteItem>
+          <VoteItem mode="select">
             <VoteItem.Radio checked />
             <VoteItem.Text>5만원</VoteItem.Text>
           </VoteItem>
-          <VoteItem>
+          <VoteItem mode="select">
             <VoteItem.Radio />
             <VoteItem.Text>7만원</VoteItem.Text>
           </VoteItem>

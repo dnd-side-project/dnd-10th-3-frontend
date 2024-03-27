@@ -1,5 +1,5 @@
-import { TEST } from '@/api/test';
-import { QUERY_KEY } from '@/constants/queryKey';
+import { donworryApi } from '@/api';
+import { queryKey } from '@/api/queryKey';
 import PrefetchHydration from '@/contexts/reactQuery/PrefetchHydration';
 
 import { ResultContents } from './_components';
@@ -13,8 +13,8 @@ const ResultPage = ({ params }: Props) => {
 
   return (
     <PrefetchHydration
-      queryKey={QUERY_KEY.TEST.GET_RESULT_BY_ID(id)}
-      queryFn={() => TEST.GET_RESULT_BY_ID(id)}
+      queryKey={queryKey.test.result(id)}
+      queryFn={() => donworryApi.test.getResultById(id)}
     >
       <ResultContents id={id} />;
     </PrefetchHydration>

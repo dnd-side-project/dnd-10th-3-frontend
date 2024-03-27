@@ -14,7 +14,7 @@ const KakaoLogin = () => {
   const { kakaoLogin } = useAuth();
 
   useEffect(() => {
-    kakaoLogin({ authorizeCode, callbackUrl });
+    kakaoLogin(authorizeCode, callbackUrl);
   }, [authorizeCode, callbackUrl, kakaoLogin]);
 
   return (

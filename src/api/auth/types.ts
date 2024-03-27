@@ -1,19 +1,18 @@
-export type KakaoLoginFnVariables = {
+export type LoginRequest = {
   authorizeCode: string;
-  callbackUrl: string;
 };
 
-export type KakaoLoginResponseData = {
+export type LoginResponse = {
   accessToken: string;
   refreshToken: string;
   nickname: string;
 };
 
-export type UpdateNicknameFnVariables = {
+export type PatchNicknameRequest = {
   nickname: string;
 };
 
-export type UpdateNicknameResponseData = {
+export type PatchNicknameResponse = {
   userId: number;
   nickname: string;
   modifiedAt: string;

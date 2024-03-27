@@ -1,6 +1,6 @@
+import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
 import { RESULT_TYPE_LIST } from '@/constants/result/total';
-import { Typography } from '@/foundations/typography';
 
 const TotalPage = () => {
   return (

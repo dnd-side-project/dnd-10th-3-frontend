@@ -1,6 +1,6 @@
 import LoadingSVGWorry from '@/assets/images/charater.svg';
 import { ProgressBar } from '@/components/common/progressBar';
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 import { Range } from '@/types/util';
 
 type Props = {

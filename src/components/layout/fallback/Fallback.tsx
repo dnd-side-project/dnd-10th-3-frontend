@@ -1,7 +1,7 @@
 import ErrorImage from '@/assets/images/error.svg';
 import { Button } from '@/components/common/button';
+import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
-import { Typography } from '@/foundations/typography';
 
 type Props = {
   title: string;

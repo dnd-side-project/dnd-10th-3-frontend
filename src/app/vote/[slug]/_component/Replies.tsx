@@ -4,10 +4,10 @@ import { useCallback, useRef, useState } from 'react';
 
 import { ControlTab } from '@/components/common/controlTab';
 import { Spinner } from '@/components/common/spinner';
+import { Typography } from '@/components/common/typography';
 import { Reply } from '@/components/features/vote';
 import { Notice, ReplyInput } from '@/components/shared';
 import { REPLY_SORT_OPTIONS, ReplySortOptions } from '@/constants/options';
-import { Typography } from '@/foundations/typography';
 import { useGetUser } from '@/hooks/auth';
 import {
   useCreateVoteReplyMutation,

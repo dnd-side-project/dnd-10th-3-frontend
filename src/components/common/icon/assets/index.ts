@@ -1,4 +1,4 @@
-import { colors } from 'styles/theme';
+import { colors } from '@/styles/theme';
 
 import Add from './Add';
 import Airplane from './Airplane';

@@ -1,6 +1,6 @@
 import { ProgressBar } from '@/components/common/progressBar';
+import { Typography } from '@/components/common/typography';
 import { QUESTIONS_LENGTH_PER_TOPIC } from '@/constants/test/progress';
-import { Typography } from '@/foundations/typography';
 type Props = {
   buddy: string;
   trust: number;

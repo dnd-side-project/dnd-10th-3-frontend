@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 import type { HTMLProps, PropsWithChildren } from 'react';
 
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 import { cn } from '@/lib/core';
 
 import { tagVariants } from './variant';

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { Icon } from '@/components/common/icon';
-import { Typography } from '@/foundations/typography';
+import { Typography } from '@/components/common/typography';
 import { useGetUser } from '@/hooks/auth';
 
 const Profile = () => {
