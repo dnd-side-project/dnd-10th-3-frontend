@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import Loading from './Loading';
+import LoadingPage from './LoadingPage';
 
 const meta = {
-  title: 'components/features/loading',
-  component: Loading,
+  title: 'components/features/LoadingPage',
+  component: LoadingPage,
   parameters: {
     layout: 'fullscreen',
   },
@@ -20,10 +20,10 @@ const meta = {
     ),
   ],
   tags: ['autodocs'],
-} satisfies Meta<typeof Loading>;
+} satisfies Meta<typeof LoadingPage>;
 
 export default meta;
-type Story = StoryObj<typeof Loading>;
+type Story = StoryObj<typeof LoadingPage>;
 
 export const Basic: Story = {
   args: {

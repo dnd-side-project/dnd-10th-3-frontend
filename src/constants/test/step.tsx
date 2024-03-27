@@ -6,23 +6,32 @@ import { TestActionType } from '@/app/test/_helper/reducer';
 type Question = {
   id: number;
   type: TestActionType;
-  badgeStatus?: string;
   question: (user?: string) => ReactNode;
   image?: string;
   answerList: string[];
 };
 
-export const QUESTIONS_ORDERS = {
-  home: 0,
-  lastPage: 11,
-  loadingPage: 12,
-};
+type QustionType = Record<string, Question>;
 
-export const QUESTIONS: Question[] = [
-  {
+export const FUNNEL_LIST = [
+  '홈',
+  '사전1',
+  '사전2',
+  '본1',
+  '본2',
+  '본3',
+  '본4',
+  '본5',
+  '본6',
+  '본7',
+  '본8',
+  '본9',
+] as const;
+//TODO : string 좁히자
+export const PRE_QUESTIONS: QustionType = {
+  사전1: {
     id: 1,
     type: 'setGender',
-    badgeStatus: 'Q.사전질문',
     question: () => {
       return (
         <>
@@ -33,9 +42,9 @@ export const QUESTIONS: Question[] = [
     },
     answerList: ['남자', '여자'],
   },
-  {
+
+  사전2: {
     id: 2,
-    badgeStatus: 'Q.사전질문',
     type: 'setAge',
     question: () => {
       return (
@@ -48,8 +57,11 @@ export const QUESTIONS: Question[] = [
 
     answerList: ['10대', '20대', '30대', '40대', '50대 이상'],
   },
-  {
-    id: 3,
+};
+
+export const MAIN_QUESTIONS: QustionType = {
+  본1: {
+    id: 1,
     type: 'love',
     question: (user) => {
       return (
@@ -62,8 +74,8 @@ export const QUESTIONS: Question[] = [
     image: `/images/testWorry.png`,
     answerList: ['예', '아니요'],
   },
-  {
-    id: 4,
+  본2: {
+    id: 2,
     type: 'love',
     question: (user) => {
       return (
@@ -76,8 +88,9 @@ export const QUESTIONS: Question[] = [
 
     answerList: ['창피하지만 인사정도 나눌 수 있다.', '조용히 최대한 피한다.'],
   },
-  {
-    id: 5,
+
+  본3: {
+    id: 3,
     type: 'talk',
     question: (user) => {
       return (
@@ -90,8 +103,8 @@ export const QUESTIONS: Question[] = [
     },
     answerList: ['상대방 결혼식에 참석해 얼굴 비춘다.', '미안하지만 송금으로 마음을 전한다.'],
   },
-  {
-    id: 6,
+  본4: {
+    id: 4,
     type: 'talk',
     question: (user) => {
       return (
@@ -102,8 +115,8 @@ export const QUESTIONS: Question[] = [
     },
     answerList: ['예', '아니오'],
   },
-  {
-    id: 7,
+  본5: {
+    id: 5,
     type: 'love',
     question: (user) => {
       return (
@@ -114,8 +127,8 @@ export const QUESTIONS: Question[] = [
     },
     answerList: ['연락해서 축하라도 해줘야겠다.', '알아서 잘 보내겠지라는 생각으로 넘긴다.'],
   },
-  {
-    id: 8,
+  본6: {
+    id: 6,
     type: 'talk',
     question: (user) => {
       return (
@@ -127,8 +140,8 @@ export const QUESTIONS: Question[] = [
     },
     answerList: ['예전부터 이상형이 한결 같다.', '왜 나에게 인사를 시켜주는 지 모르겠다.'],
   },
-  {
-    id: 9,
+  본7: {
+    id: 7,
     type: 'trust',
     question: (user) => {
       return (
@@ -140,8 +153,8 @@ export const QUESTIONS: Question[] = [
     },
     answerList: ['예', '아니오'],
   },
-  {
-    id: 10,
+  본8: {
+    id: 8,
     type: 'trust',
     question: (user) => {
       return (
@@ -156,8 +169,8 @@ export const QUESTIONS: Question[] = [
       '잠수탄 것 아닐까? 의심하며 귀가 준비한다.',
     ],
   },
-  {
-    id: 11,
+  본9: {
+    id: 9,
     type: 'trust',
     question: (user) => {
       return (
@@ -173,4 +186,9 @@ export const QUESTIONS: Question[] = [
       '쓸 말이 없어 막막하고 스트레스 받는다.',
     ],
   },
-];
+};
+
+export const ALL_QUESTIONS: QustionType = { ...PRE_QUESTIONS, ...MAIN_QUESTIONS };
+
+export const preQuestionList = Object.keys(PRE_QUESTIONS);
+export const allQuestionList = Object.keys(ALL_QUESTIONS);
