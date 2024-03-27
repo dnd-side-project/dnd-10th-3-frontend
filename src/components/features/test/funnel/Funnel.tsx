@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 
 type FunnelProps<T extends readonly string[]> = {
   /** children 중에서 현재 렌더링하려는 스텝 이름입니다. */
@@ -34,7 +34,7 @@ type StepProps<T extends readonly string[]> = {
 
 /** 퍼널에서 스텝 별로 렌더링 할 컴포넌트입니다. */
 export const Step = <T extends readonly string[]>({ children, onEnter }: StepProps<T>) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (onEnter) {
       onEnter();
     }
