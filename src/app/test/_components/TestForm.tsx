@@ -8,26 +8,19 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { Typography } from '@/components/common/typography';
 import { Header } from '@/components/layout/header';
-import { SLOT_AMOUNT_LIST } from '@/constants/test';
 import { PRE_QUESTIONS_LENGTH, QUESTIONS_ORDERS_LENGTH } from '@/constants/test/progress';
 import { QUESTIONS, QUESTIONS_ORDERS } from '@/constants/test/step';
 import { useToast } from '@/hooks';
-import { useSlotMachine } from '@/hooks/useSlotMachine';
 import { Range } from '@/types/util';
 
 import TestLoading from './TestLoading';
 import TestQuestionTemplate from './TestQuestionTemplate';
 
 export type StepProps = Range<0, 12>;
-
 const TestForm = () => {
   const toast = useToast();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [step, setStep] = useState<StepProps>(0);
-  const { SlotMachine } = useSlotMachine({
-    textList: SLOT_AMOUNT_LIST,
-    duration: 10,
-  });
 
   const handleChangeStep = (index: StepProps) => {
     setStep((index + 2) as StepProps);
@@ -60,10 +53,10 @@ const TestForm = () => {
           <main className="flex size-full flex-col items-center">
             <div className="flex flex-col items-center justify-center py-sm">
               <h1 className="text-[32px] font-semibold">축의금 얼마 내지?</h1>
-              <div className="h-md w-[150px] rounded-md border-2 border-primary-700 text-center">
+              <div className="h-md  rounded-md border-2 border-primary-700 text-center">
                 <div className="flex items-center justify-between gap-2 px-4xs text-[24px] font-bold leading-[145%] text-primary-700">
                   <span>₩</span>
-                  <SlotMachine />
+                  <p>??,???</p>
                 </div>
               </div>
               <Typography type="title4" className="pt-4xs text-gray-500">
