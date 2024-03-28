@@ -18,11 +18,15 @@ const TestForm = () => {
 
   return (
     <>
+      {/* onLoading이란 props를 넘길 필요가 있나?! 
+     onLoaindg을 컨텍스트로?! -> 두가지 상태를 분리?! -> 로딩 상태 자체?! 비동기, 자체 로딩을 고민해보고 적용해보자! */}
+
       {isLoading && (
         <TestLoadingPage onReset={() => setStep('홈')} onLoading={() => setIsLoading(false)} />
       )}
       <FunnelProvider value={{ toPrev, toNext }}>
         <Funnel step={step}>
+          {/* TODO : 한글 지양, const 관리하는 것이 좋다. 왜?! */}
           <Step name="홈">
             <TestHomePage />
           </Step>
