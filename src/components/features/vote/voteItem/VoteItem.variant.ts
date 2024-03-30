@@ -5,10 +5,12 @@ export const voteItemVariant = cva(
   has-[:checked]:border-primary-700 has-[input[type=text]:focus]:border-gray-700`,
   {
     variants: {
-      readOnly: { true: '!border-gray-50 bg-gray-50', false: 'cursor-pointer' },
-    },
-    defaultVariants: {
-      readOnly: false,
+      mode: {
+        read: 'cursor-default !border-gray-50 bg-gray-50',
+        select: 'cursor-pointer',
+        input: '',
+        result: 'cursor-default',
+      },
     },
   },
 );

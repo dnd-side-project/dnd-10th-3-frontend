@@ -74,12 +74,12 @@ const VoteContents = () => {
                                   <VoteCard.Header categories={category} closeDate={closeDate} />
                                   <VoteCard.Description title={title} content={content} />
                                   <VoteCard.VoteItemGroup withBlur>
-                                    <VoteItem readOnly>
-                                      <VoteItem.Radio disabled />
+                                    <VoteItem mode="read">
+                                      <VoteItem.Radio />
                                       <VoteItem.Text>{selections[0].content}</VoteItem.Text>
                                     </VoteItem>
-                                    <VoteItem readOnly>
-                                      <VoteItem.Radio disabled />
+                                    <VoteItem mode="read">
+                                      <VoteItem.Radio />
                                       <VoteItem.Text>{selections[1].content}</VoteItem.Text>
                                     </VoteItem>
                                   </VoteCard.VoteItemGroup>
@@ -125,12 +125,12 @@ const VoteContents = () => {
                                   <VoteCard.Header categories={category} closeDate={closeDate} />
                                   <VoteCard.Description title={title} content={content} />
                                   <VoteCard.VoteItemGroup withBlur>
-                                    <VoteItem readOnly>
-                                      <VoteItem.Radio disabled />
+                                    <VoteItem mode="read">
+                                      <VoteItem.Radio />
                                       <VoteItem.Text>{selections[0].content}</VoteItem.Text>
                                     </VoteItem>
-                                    <VoteItem readOnly>
-                                      <VoteItem.Radio disabled />
+                                    <VoteItem mode="read">
+                                      <VoteItem.Radio />
                                       <VoteItem.Text>{selections[1].content}</VoteItem.Text>
                                     </VoteItem>
                                   </VoteCard.VoteItemGroup>

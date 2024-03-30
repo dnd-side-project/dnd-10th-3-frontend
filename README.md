@@ -47,7 +47,7 @@
 ## 배포 링크
 
 - 돈워리 배포 링크: [https://donworry.vercel.app](https://donworry.vercel.app/)
-- Storybook 배포 링크: [https://65abd47d09661c4e79c3c260-dmfwnaokvy.chromatic.com/](https://65abd47d09661c4e79c3c260-dmfwnaokvy.chromatic.com/)
+- Storybook 배포 링크: [https://65abd47d09661c4e79c3c260-xxrkvzfeor.chromatic.com/](https://65abd47d09661c4e79c3c260-xxrkvzfeor.chromatic.com/)
 
 ## 시연 영상
 
