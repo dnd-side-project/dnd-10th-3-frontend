@@ -10,7 +10,7 @@ export type TestAction =
 
 export type TestActionType = TestAction['type'];
 
-export function reducer(state: TestFormType, action: TestAction): TestFormType {
+export function reducer(state: TestFormType, action: TestAction) {
   switch (action.type) {
     case 'setBuddyName': {
       return {
@@ -51,7 +51,7 @@ export function reducer(state: TestFormType, action: TestAction): TestFormType {
   }
 }
 
-export const initialState = {
+export const initialTestState = {
   buddy: '',
   gender: '',
   age: '',
