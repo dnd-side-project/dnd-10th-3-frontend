@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRef } from 'react';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Typography } from '@/components/common/typography';
 import { VoteCard } from '@/components/features/vote';
 import { ConfirmBottomSheet, EmptyVote, OptionBottomSheet } from '@/components/shared';
@@ -44,8 +45,7 @@ const MyVote = () => {
                 <Button
                   variant="empty"
                   iconOnly
-                  icon="more"
-                  iconSize={16}
+                  Icon={<Icon icon="more" size={16} color="gray-300" />}
                   className="!p-0"
                   onClick={() => {
                     onOpenSheet('selectOption');

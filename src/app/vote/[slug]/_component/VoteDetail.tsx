@@ -3,6 +3,7 @@
 import { notFound } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Spinner } from '@/components/common/spinner';
 import { Typography } from '@/components/common/typography';
 import { VoteCard } from '@/components/features/vote';
@@ -60,7 +61,12 @@ const VoteDetail = ({ voteId }: Props) => {
               likeCount={data.likes}
               onClick={() => toggleLike({ voteId })}
             />
-            <Button iconOnly icon="share" variant="empty" className="!p-0" />
+            <Button
+              iconOnly
+              Icon={<Icon icon="share" color="gray-300" />}
+              variant="empty"
+              className="!p-0"
+            />
           </div>
         </>
       )}
