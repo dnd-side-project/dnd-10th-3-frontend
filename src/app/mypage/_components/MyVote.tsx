@@ -2,7 +2,7 @@
 
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 
 import { Button } from '@/components/common/button';
 import { Icon } from '@/components/common/icon';
@@ -14,22 +14,19 @@ import { useDeleteVoteMutation, useGetMyVote } from '@/hooks/vote';
 import { VoteType } from '@/types/vote';
 import { fromNowOf } from '@/utils/dates';
 
+import { Fallback as MyVoteFallback } from '.';
+
 type BottomSheetType = 'askDelete' | 'selectOption';
 
 const MyVote = () => {
-  const { data, status } = useGetMyVote();
+  const { data } = useGetMyVote();
   const { mutate: onDelete, isPending } = useDeleteVoteMutation();
   const { onOpenSheet, openedSheet, onCloseSheet } = useBottomSheetState<BottomSheetType>();
   const deleteTarget = useRef<VoteType['id'] | null>(null);
 
-  // TODO Suspense or ssr
   return (
-    <>
-      {status === 'pending' ? (
-        <></>
-      ) : status === 'error' ? (
-        <></>
-      ) : data.length > 0 ? (
+    <Suspense fallback={<MyVoteFallback />}>
+      {data.length > 0 ? (
         <div className="mt-3xs flex flex-col gap-3xs">
           {data.map((vote) => (
             <VoteCard key={vote.id}>
@@ -114,7 +111,7 @@ const MyVote = () => {
       ) : (
         <EmptyVote />
       )}
-    </>
+    </Suspense>
   );
 };
 
