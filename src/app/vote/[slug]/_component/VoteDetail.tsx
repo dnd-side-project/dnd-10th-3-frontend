@@ -48,21 +48,20 @@ const VoteDetail = ({ voteId }: Props) => {
           <Voting voteId={data.id} selected={data.selected} selections={data.selections} />
         </VoteCard>
 
-          <div className="mb-3xs mt-sm flex justify-between">
-            <LikeButton
-              isLiked={data.isLiked}
-              likeCount={data.likes}
-              onClick={() => toggleLike({ voteId })}
-            />
-            <Button
-              iconOnly
-              Icon={<Icon icon="share" color="gray-300" />}
-              variant="empty"
-              className="!p-0"
-            />
-          </div>
-        </>
-      )}
+        <div className="mb-3xs mt-sm flex justify-between">
+          <LikeButton
+            isLiked={data.isLiked}
+            likeCount={data.likes}
+            onClick={() => toggleLike({ voteId })}
+          />
+          <Button
+            iconOnly
+            Icon={<Icon icon="share" color="gray-300" />}
+            variant="empty"
+            className="!p-0"
+          />
+        </div>
+      </Suspense>
     </section>
   );
 };
