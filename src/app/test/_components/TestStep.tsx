@@ -13,10 +13,12 @@ import {
 import { ALL_QUESTIONS, FUNNEL_LIST, MAIN_QUESTIONS } from '@/constants/test/step';
 import { useTestDispatch, useTestState } from '@/contexts/test/TestsProvider';
 import { useFunnelContext } from '@/contexts/test/useFunnelContext';
+import { valueToPercent } from '@/utils/number';
 
 import TestTemplate from './TestTemplate';
 
 type TestProps = {
+  // TODO : 타입 좁히기
   currentStep: string;
   onLoading: () => void;
 };
@@ -27,6 +29,12 @@ const TestStep = ({ currentStep, onLoading }: TestProps) => {
   const dispatch = useTestDispatch();
   const isPreQuestion = currentStep.slice(0, 2) === '사전';
   const isLastQuestion = currentStep === FUNNEL_LIST[FUNNEL_LIST.length - 1];
+  // TODO : 관심사 분리 예정 이로직이 여기 있어야하나?!
+  const value = isPreQuestion
+    ? ALL_QUESTIONS[currentStep].id
+    : ALL_QUESTIONS[currentStep].id + PRE_QUESTIONS_LENGTH;
+
+  // TODO : 빠르게 누를경우 의도하지 않은 에러가 발생한다. 결과 페이지에서 프로그래스바를 통해 알 수 있다. 리팩터링 요망
 
   return (
     <TestTemplate
@@ -35,7 +43,11 @@ const TestStep = ({ currentStep, onLoading }: TestProps) => {
           <div className="w-fit" onClick={toPrev} role="presentation">
             <Icon icon="chevronLeft" color="gray-1000" size={20} />
           </div>
-          <ProgressBar progress={10} className="mt-3xs" progressRate={PROGRESS_RATE} />
+          <ProgressBar
+            progress={valueToPercent(value, 0, ALL_QUESTIONS_LENGTH)}
+            className="mt-3xs"
+            progressRate={PROGRESS_RATE}
+          />
         </>
       }
       comment={
