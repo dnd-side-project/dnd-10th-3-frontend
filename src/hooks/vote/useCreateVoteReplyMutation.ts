@@ -13,13 +13,13 @@ const useCreateVoteReplyMutation = () => {
 
   return useMutation({
     mutationFn: donworryApi.vote.postVoteReply,
-    onMutate: async ({ voteId, content }) => {
+    onMutate: async ({ voteId, content, user }) => {
       await queryClient.cancelQueries({ queryKey: queryKey.vote.reply(voteId) });
       const previousVoteReplies = queryClient.getQueryData<VoteReplyType[]>(
         queryKey.vote.reply(voteId),
       );
       queryClient.setQueryData(queryKey.vote.reply(voteId), (oldVoteReplies: VoteReplyType[]) =>
-        getOptimisticUpdatedVoteRepliesData(oldVoteReplies, { voteId, content }),
+        getOptimisticUpdatedVoteRepliesData(oldVoteReplies, { voteId, content, user }),
       );
       return { previousVoteReplies, voteId };
     },
@@ -29,6 +29,8 @@ const useCreateVoteReplyMutation = () => {
     },
     onSettled: (data, error, { voteId }) => {
       queryClient.invalidateQueries({ queryKey: queryKey.vote.reply(voteId) });
+    },
+    onSuccess: () => {
       toast({ message: 'REPLY_REGISTER_SUCCESS', above: 'input' });
     },
   });
@@ -36,17 +38,17 @@ const useCreateVoteReplyMutation = () => {
 
 const getOptimisticUpdatedVoteRepliesData = (
   oldData: VoteReplyType[],
-  { voteId, content }: PostVoteReplyRequest,
+  { voteId, content, user }: PostVoteReplyRequest,
 ) => {
   return produce(oldData, (draft) => {
     draft.push({
       voteId,
       content,
       commentId: -1,
-      userId: 0,
-      nickname: '등록중...', // TODO 사용자 닉네임
+      userId: user.userId,
+      nickname: user.nickname,
       status: false,
-      avatar: '',
+      avatar: user.avatar,
       likes: 0,
       createdAt: Date.now().toString(),
       modifiedAt: Date.now().toString(),

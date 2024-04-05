@@ -1,10 +1,9 @@
 ---
-name: "[옹기종기] Bug Report Template"
+name: '[옹기종기] Bug Report Template'
 about: DND 10기 3조의 버그 리포트 템플릿입니다.
-title: "[BUG] 버그를_한_줄로_요약해서_작성"
+title: '[BUG] 버그를_한_줄로_요약해서_작성'
 labels: ''
 assignees: ''
-
 ---
 
 <!-- 버그 리포트 이슈 제목입니다. -->

@@ -12,6 +12,7 @@ const useUpdateNicknameMutation = () => {
     mutationFn: donworryApi.auth.patchNickname,
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: queryKey.auth.user, refetchType: 'all' });
+      queryClient.invalidateQueries({ queryKey: queryKey.vote.all, refetchType: 'all' });
       toast({ message: 'CHANGE_NICKNAME_SUCCESS' });
     },
     onError: () => {

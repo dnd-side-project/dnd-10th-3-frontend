@@ -10,7 +10,7 @@ import { replyReducer } from './helper/replyReducer';
 
 type Props = {
   initialInput?: string;
-  onSubmit: (content: string) => Promise<unknown>;
+  onSubmit: (content: string) => void;
 };
 
 const ReplyInput = ({ initialInput, onSubmit }: Props) => {
