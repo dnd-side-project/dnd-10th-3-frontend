@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { CALLBACK_URL, KAKAO_LOGIN_URL } from '@/constants/auth';
 
 type Props = {
@@ -14,9 +15,8 @@ const KakaoLoginButton = ({ callbackUrl = '/' }: Props) => {
 
   return (
     <Button
-      icon="kakaotalk"
       width="full"
-      iconColor="gray-1000"
+      Icon={<Icon icon="kakaotalk" color="gray-1000" />}
       className="rounded-lg bg-auth-kakao px-[14px] text-gray-1000"
       onClick={navigateToKakaoLogin}
     >

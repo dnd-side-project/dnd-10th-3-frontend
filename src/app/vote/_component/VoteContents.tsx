@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Spinner } from '@/components/common/spinner';
 import { VoteCard, VoteItem } from '@/components/features/vote';
 import { EmptyVote, EndObserverList } from '@/components/shared';
@@ -163,10 +164,9 @@ const VoteContents = () => {
           <Link href={'/vote/create'}>
             <Button
               variant="accent"
-              icon="pencil"
+              Icon={<Icon icon="pencil" color="white" />}
               iconOnly
               className=" h-[56px] w-xl rounded-[100%] bg-primary-800"
-              iconColor="white"
             />
           </Link>
         </>

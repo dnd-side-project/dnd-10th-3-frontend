@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Typography } from '@/components/common/typography';
 import { ConfirmBottomSheet, LikeButton, OptionBottomSheet, Profile } from '@/components/shared';
 import { VoteReplyType } from '@/types/vote';
@@ -31,7 +32,7 @@ const Reply = ({ reply, onLikeToggle, onDelete, isWrittenByCurrentUser }: Props)
               <Button
                 variant="empty"
                 iconOnly
-                icon="more"
+                Icon={<Icon icon="more" color="gray-300" />}
                 className="!p-0"
                 onClick={() => setOpenedSheet('replyOption')}
               />

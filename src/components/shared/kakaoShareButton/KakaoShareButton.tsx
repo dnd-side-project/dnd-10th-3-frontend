@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { CONFIG } from '@/config';
 
 const KakaoShareButton = () => {
@@ -36,10 +37,9 @@ const KakaoShareButton = () => {
   return (
     <Button
       onClick={handleSendMessage}
-      icon="kakaotalk"
+      Icon={<Icon icon="kakaotalk" color="gray-1000" />}
       iconOnly
       className="rounded-[100%] bg-[#FEE500]"
-      iconColor="gray-1000"
     />
   );
 };

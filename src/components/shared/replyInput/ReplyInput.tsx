@@ -3,6 +3,7 @@
 import { useReducer } from 'react';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Input } from '@/components/common/input';
 
 import { replyReducer } from './helper/replyReducer';
@@ -46,9 +47,8 @@ const ReplyInput = ({ initialInput, onSubmit }: Props) => {
       {input.length > 0 && (
         <Button
           iconOnly
-          icon="airplane"
+          Icon={<Icon icon="airplane" color="white" />}
           variant="accent"
-          iconColor="white"
           className="rounded-full !p-2"
           disabled={isSubmitButtonDisabled}
           onClick={() => {

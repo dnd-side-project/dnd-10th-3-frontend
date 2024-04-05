@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/common/button';
+import { Icon } from '@/components/common/icon';
 import { Typography } from '@/components/common/typography';
 import { KakaoShareButton } from '@/components/shared';
 import { shareLink } from '@/utils/share';
@@ -19,10 +20,9 @@ const ShareBox = () => {
         <KakaoShareButton />
         <Button
           width="fit"
-          icon="link"
+          Icon={<Icon icon="link" color="white" />}
           iconOnly
           className="rounded-[100%] bg-gray-600"
-          iconColor="white"
           onClick={handleCopyClipboard}
         />
       </div>
