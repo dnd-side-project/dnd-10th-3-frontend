@@ -2,7 +2,7 @@ name: deploy with vercel
 
 on:
   push:
-    branches: [fix]
+    branches: ['fix']
 
 jobs:
   chromatic:
