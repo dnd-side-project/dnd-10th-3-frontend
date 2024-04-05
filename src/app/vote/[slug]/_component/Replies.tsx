@@ -24,7 +24,7 @@ type Props = {
 const Replies = ({ voteId }: Props) => {
   const { data: user } = useGetUser();
   const { data: replies } = useGetVoteReplies({ voteId });
-  const { mutateAsync: createVoteReplyAsync } = useCreateVoteReplyMutation();
+  const { mutate: createVoteReply } = useCreateVoteReplyMutation();
   const { mutate: deleteVoteReply } = useDeleteVoteReplyMutation();
   const { mutate: toggleLikeVoteReply } = useLikeVoteReplyMutation();
 
@@ -81,8 +81,8 @@ const Replies = ({ voteId }: Props) => {
       </Suspense>
 
       <ReplyInput
-        onSubmit={async (content) => {
-          await createVoteReplyAsync({ voteId, content });
+        onSubmit={(content) => {
+          createVoteReply({ voteId, content, user: user! });
           scrollToBottom();
         }}
       />

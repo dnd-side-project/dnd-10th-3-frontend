@@ -1,4 +1,5 @@
 import { Pages } from '@/types/response';
+import { UserInfo } from '@/types/user';
 import { SelectionType, VoteReplyType, VoteType } from '@/types/vote';
 
 export type GetVoteByIdRequest = {
@@ -21,7 +22,11 @@ export interface VoteFormData extends FormData {
   append(name: 'voteRequestDto' | 'images', value: string | Blob): void;
 }
 
-export type PostVoteReplyRequest = { voteId: VoteType['id']; content: VoteReplyType['content'] };
+export type PostVoteReplyRequest = {
+  voteId: VoteType['id'];
+  content: VoteReplyType['content'];
+  user: UserInfo;
+};
 
 export type DeleteVoteRequest = {
   voteId: VoteType['id'];
