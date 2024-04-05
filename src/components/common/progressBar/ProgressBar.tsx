@@ -23,6 +23,7 @@ export const ProgressBar = ({
   className,
   ...props
 }: ProgressBarProps) => {
+  //TODO : 프로그래스바 리팩터링
   return (
     <div className={cn(ProgressBarContainerVariants({ width }))} {...props}>
       <div className={cn('relative h-[8px] overflow-hidden rounded-lg bg-gray-100', className)}>
