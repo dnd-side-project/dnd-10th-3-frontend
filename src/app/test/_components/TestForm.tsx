@@ -17,7 +17,6 @@ const TestForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    // 테스트 시작 랜딩 페이지 다음 PR SSR로 분리 예정
     <>
       {isLoading && (
         <TestLoadingPage onReset={() => setStep('홈')} onLoading={() => setIsLoading(false)} />
