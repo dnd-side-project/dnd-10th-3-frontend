@@ -15,7 +15,7 @@ const ResultContents = ({ id }: { id: number }) => {
   const { data: resultData } = useGetTestResultById(id);
 
   return (
-    <main className="pb-10">
+    <div className="pb-10">
       <section className="flex flex-col items-center justify-center">
         {resultData && (
           <>
@@ -90,7 +90,7 @@ const ResultContents = ({ id }: { id: number }) => {
           </Link>
         </article>
       </section>
-    </main>
+    </div>
   );
 };
 
