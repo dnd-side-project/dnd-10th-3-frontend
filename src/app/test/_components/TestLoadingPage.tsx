@@ -31,10 +31,13 @@ const TestLoadingPage = ({ onReset, onLoading }: TestLoadingType) => {
         const testResult = await mutateAsync(test);
         const endMs = performance.now();
         const diffMsToSec = Math.round(endMs - startMs) / 1000;
+
         queryClient.prefetchQuery({
           queryKey: queryKey.test.result(testResult.id),
           queryFn: () => donworryApi.test.getResultById(testResult.id),
         });
+        // TEST : 배포 환경에서 prefetch가 진행되는지 확인
+        router.prefetch(`/test/result/${testResult.id}`);
         setTimeout(
           () => {
             router.push(`/test/result/${testResult.id}`);
